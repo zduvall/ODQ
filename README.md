@@ -1,3 +1,3 @@
 # ODQ
 
-## Outcome and Diagnostic Questionnaires for helping professionals
+## Outcome and Diagnostic Questionnaires for mental-health and other helping professionals

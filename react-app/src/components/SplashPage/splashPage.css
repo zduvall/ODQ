@@ -1,0 +1,57 @@
+.home__background-container {
+  position: relative;
+  height: 100vh;
+  background: url('./rottweiler-puppies.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.home__background {
+  width: 100%;
+  min-height: 100%;
+  vertical-align: bottom;
+  opacity: 85%;
+}
+
+.home__greeting {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 30%;
+  text-align: center;
+  width: 100%;
+}
+
+.home__greeting__text {
+  color: rgb(242, 160, 84);
+  text-shadow: 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0);
+  font-size: 3rem;
+}
+
+@media (max-width: 800px) {
+  .home__greeting__text {
+    font-size: 2rem;
+    top: 30%;
+  }
+}
+
+.fa-chevron-down {
+  position: fixed;
+  bottom: 0;
+  z-index: 5;
+  animation: updown 2s ease infinite;
+  color: rgba(242, 160, 84, 0.8);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.521);
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-8%);
+  }
+
+  70% {
+    transform: translateY(8%);
+  }
+
+  100% {
+    transform: translateY(-8%);
+  }
+}

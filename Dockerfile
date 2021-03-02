@@ -4,7 +4,9 @@ WORKDIR /react-app
 COPY react-app/. .
 
 # You have to set this because it should be set during build time.
-ENV REACT_APP_BASE_URL=http://pairyopet.herokuapp.com/
+ENV REACT_APP_BASE_URL=http://something.herokuapp.com/
+
+# This line above may not be needed
 
 # Build our React App
 RUN npm install

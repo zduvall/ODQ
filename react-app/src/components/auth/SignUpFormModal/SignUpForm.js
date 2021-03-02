@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 
 // redux store
@@ -7,7 +7,7 @@ import {setUser} from '../../../store/session'
 
 // other
 import { signUp } from '../../../services/auth';
-import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
+// import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function SignUpFormPage() {
   const dispatch = useDispatch();

@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+
+// redux store
+import {setUser} from '../../../store/session'
+
+// other
 import { signUp } from '../../../services/auth';
 import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function SignUpFormPage() {
-  const { authenticated, setAuthenticated } = useModalAndAuthContext();
-  // const [errors, setErrors] = useState([]);
+  const dispatch = useDispatch();
+
+  const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,13 +20,16 @@ function SignUpFormPage() {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setErrors([]);
     if (password === repeatPassword) {
       const user = await signUp(username, email, password);
       if (!user.errors) {
-        setAuthenticated(true);
-        // } else {
-        //   setErrors(user.errors);
+        dispatch(setUser(user));
+      } else {
+        setErrors(user.errors);
       }
+    } else {
+      setErrors((prevErrors) => [...prevErrors, 'Password fields must match']);
     }
   };
 
@@ -39,17 +49,17 @@ function SignUpFormPage() {
     setRepeatPassword(e.target.value);
   };
 
-  if (authenticated) {
-    return <Redirect to='/' />;
-  }
+  // if (authenticated) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <form onSubmit={onSignUp}>
-      {/* <div>
+      <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
-      </div> */}
+      </div>
       <div>
         <label>User Name</label>
         <input

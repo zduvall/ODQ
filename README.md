@@ -1,3 +1,3 @@
-# ODQ
+# DOT
 
-## Outcome and Diagnostic Questionnaires for mental-health and other helping professionals
+## Diagnostic and Outcome Testing for mental-health and other helping professionals

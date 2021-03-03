@@ -7,15 +7,16 @@ from flask_login import current_user, login_user, logout_user, login_required
 auth_routes = Blueprint("auth", __name__)
 
 
-# def validation_errors_to_error_messages(validation_errors):
-#     """
-#     Simple function that turns the WTForms validation errors into a simple list
-#     """
-#     errorMessages = []
-#     for field in validation_errors:
-#         for error in validation_errors[field]:
-#             errorMessages.append(f"{field} : {error}")
-#     return errorMessages
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            # errorMessages.append(f"{field} : {error}")
+            errorMessages.append(error)
+    return errorMessages
 
 
 @auth_routes.route("/")
@@ -34,7 +35,6 @@ def login():
     Logs a user in
     """
     form = LoginForm()
-    print(request.get_json())
     # Get the csrf_token from the request cookie and put it into the
     # form manually so validate_on_submit can be used
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -43,8 +43,9 @@ def login():
         user = User.query.filter(User.email == form.data["email"]).first()
         login_user(user)
         return user.to_dict()
-    return {"errors": form.errors}, 401
-    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+    print("-------errors-------", form.errors)
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route("/logout")
@@ -74,9 +75,9 @@ def sign_up():
         db.session.commit()
         login_user(user)
         return user.to_dict()
-    print('-------errors-------', form.errors)    
-    return {"errors": form.errors}
-    # return {'errors': validation_errors_to_error_messages(form.errors)}
+
+    print("-------errors-------", form.errors)
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route("/unauthorized")

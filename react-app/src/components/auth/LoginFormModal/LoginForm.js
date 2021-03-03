@@ -13,21 +13,14 @@ function LoginForm() {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = dispatch(loginUser(email, password));
+    const user = await dispatch(loginUser(email, password));
+
     if (!user.errors) {
       console.log('logged in!!!!');
       // history.push('/')
     } else {
       setErrors(user.errors);
     }
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
   };
 
   return (
@@ -44,7 +37,7 @@ function LoginForm() {
           type='text'
           placeholder='Email'
           value={email}
-          onChange={updateEmail}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div>
@@ -54,7 +47,7 @@ function LoginForm() {
           type='password'
           placeholder='Password'
           value={password}
-          onChange={updatePassword}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <button type='submit'>Login</button>

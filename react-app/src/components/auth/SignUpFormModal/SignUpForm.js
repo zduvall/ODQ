@@ -24,11 +24,11 @@ function SignUpFormPage() {
 
     allFields.forEach((field) => {
       if (field === '') {
-        setErrors(['Please fill out all form fields']);
+        setErrors(['Please fill out all fields']);
       }
     });
 
-    let validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w+/;
+    const validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w+/;
     if (!validEmail.test(email)) {
       setErrors((prevErrors) => [
         ...prevErrors,
@@ -43,9 +43,9 @@ function SignUpFormPage() {
       ]);
     }
 
-    if (!!errors.length) return;
-
-    const user = dispatch(signUpUser(firstName, lastName, email, password));
+    const user = await dispatch(
+      signUpUser(firstName, lastName, email, password)
+    );
     if (!user.errors) {
       console.log('logged in!!!!');
       // history.push('/')
@@ -59,7 +59,7 @@ function SignUpFormPage() {
     <form onSubmit={onSignUp}>
       <div>
         {errors.map((error) => (
-          <div>{error}</div>
+          <div key={error}>{error}</div>
         ))}
       </div>
       <div>

@@ -29,9 +29,10 @@ export const loginUser = (email, password) => async (dispatch) => {
     }),
   });
   const user = await res.json();
-  if (res.ok) {
+  if (res.ok && !user.errors) {
     dispatch(setUser(user));
   }
+  return user
 };
 
 export const signUpUser = (firstName, lastName, email, password) => async (
@@ -49,10 +50,13 @@ export const signUpUser = (firstName, lastName, email, password) => async (
       password,
     }),
   });
+
   const user = await res.json();
-  if (res.ok) {
+
+  if (res.ok && !user.errors) {
     dispatch(setUser(user));
   }
+  return user;
 };
 
 export const logoutUser = () => async (dispatch) => {

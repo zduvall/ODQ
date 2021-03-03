@@ -9,7 +9,7 @@ def user_exists(form, field):
     data = field.data
     user = User.query.filter(User.email == data).first()
     if user:
-        raise ValidationError("User is already registered.")
+        raise ValidationError(f"A user is already registered with the email {data}.")
 
 
 class SignUpForm(FlaskForm):

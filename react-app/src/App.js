@@ -8,6 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
+import LoginForm from './components/auth/LoginFormModal/LoginForm'
+import SignUpForm from './components/auth/SignUpFormModal/SignUpForm'
 
 // import thunk
 import { authenticateUser } from './store/session';
@@ -30,6 +32,12 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/login' exact={true}>
+          <LoginForm />
+        </Route>
+        <Route path='/signup' exact={true}>
+          <SignUpForm />
+        </Route>
         <ProtectedRoute
           path='/users'
           exact={true}
@@ -44,7 +52,7 @@ function App() {
         >
           <User />
         </ProtectedRoute>
-        <Route path='/' exact={true} authenticated={!!sessionUser}>
+        <Route path='/' exact={true}>
           <SplashPage />
         </Route>
       </Switch>

@@ -52,6 +52,15 @@ export const signUpUser = (username, email, password) => async (dispatch) => {
   }
 };
 
+export const logoutUser = () => async (dispatch) => {
+  const res = await fetch('/api/auth/logout', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  dispatch(removeUser());
+  // return await res.json();
+};
 
 // Reducer
 const sessionReducer = (state = { user: null }, action) => {

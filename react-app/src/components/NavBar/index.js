@@ -30,11 +30,6 @@ const NavBar = () => {
               Users
             </NavLink>
           </li>
-          {/* <li className='nav__item'>
-            <NavLink to='/' exact={true} activeClassName='active'>
-              Home
-            </NavLink>
-          </li> */}
           <li className='nav__item'>
             <ProfileButton user={sessionUser} />
           </li>

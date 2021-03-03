@@ -69,14 +69,12 @@ const NavBar = () => {
 
   return (
     <header className='site-header'>
-      <div className='site-header__wrapper'>
-        <a className='site-header__title' href='/'>
-          Home
-        </a>
-        <nav className='nav'>
-          <ul className='nav__wrapper'>{navLinks}</ul>
-        </nav>
-      </div>
+      <a className='site-header__title' href='/'>
+        Home
+      </a>
+      <nav className='nav'>
+        <ul className='nav__wrapper'>{navLinks}</ul>
+      </nav>
     </header>
   );
 };

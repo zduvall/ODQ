@@ -5,6 +5,10 @@ body {
   background-size: cover; */
 }
 
+.ev-after-nav {
+  padding: 0 10%;
+}
+
 button {
   background: none;
   border: none;

@@ -1,21 +1,13 @@
 .site-header {
-  position: sticky;
-  z-index: 10;
-  width: 100%;
-  top: 0;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 3px 6px -3px rgba(0, 0, 0, 0.5);
-}
-
-.site-header__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* max-width: 1140px;
-  padding-left: 1rem;
-  padding-right: 1rem; */
-  margin-left: auto;
-  margin-right: auto;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 3px 6px -3px rgba(0, 0, 0, 0.5);
+  padding: 0 10%;
   font-size: 1.2rem;
 }
 

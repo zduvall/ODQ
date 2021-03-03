@@ -1,52 +1,74 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 // import custom hook
 import { useWindowWidth } from '../../services/windowWidth';
 
 // import components
-import LogoutButton from '../auth/LogoutButton';
 import Dropdown from './Dropdown';
+
+// import thunk
+import { removeUser } from '../../store/session';
 
 // import css
 import './navBar.css';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleClick = () => {
+    setShowDropdown(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(removeUser());
+    setShowDropdown(false);
+  };
 
   let navLinks;
 
   let loggedInLinks = (
     <>
       <NavLink
-        className='nav__item'
+        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
         to='/users'
-        exact={true}
-        activeClassName='active'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
       >
         Users
       </NavLink>
-      <LogoutButton />
+      <button
+        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
     </>
   );
 
   let loggedOutLinks = (
     <>
       <NavLink
-        className='nav__item'
+        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
         to='/signup'
-        exact={true}
-        activeClassName='active'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
       >
         Sign Up
       </NavLink>
       <NavLink
-        className='nav__item'
+        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
         to='/login'
-        exact={true}
-        activeClassName='active'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
       >
         Log In
       </NavLink>
@@ -57,13 +79,25 @@ const NavBar = () => {
     if (width > 800) {
       navLinks = loggedInLinks;
     } else {
-      navLinks = <Dropdown dropdownLinks={loggedInLinks} />;
+      navLinks = (
+        <Dropdown
+          dropdownLinks={loggedInLinks}
+          showDropdown={showDropdown}
+          setShowDropdown={setShowDropdown}
+        />
+      );
     }
   } else {
     if (width > 800) {
       navLinks = loggedOutLinks;
     } else {
-      navLinks = <Dropdown dropdownLinks={loggedOutLinks} />;
+      navLinks = (
+        <Dropdown
+          dropdownLinks={loggedOutLinks}
+          showDropdown={showDropdown}
+          setShowDropdown={setShowDropdown}
+        />
+      );
     }
   }
 

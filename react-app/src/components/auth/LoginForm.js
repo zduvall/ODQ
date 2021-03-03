@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
-import { loginUser } from '../../../store/session';
+import { loginUser } from '../../store/session';
 
 function LoginForm() {
   const dispatch = useDispatch();

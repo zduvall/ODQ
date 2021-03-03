@@ -6,11 +6,8 @@ import { NavLink } from 'react-router-dom';
 import { useWindowWidth } from '../../services/windowWidth';
 
 // import components
-import SignUpFormModal from '../auth/SignUpFormModal';
-import LoginFormModal from '../auth/LoginFormModal';
-import ProfileButton from './ProfileButton';
-import LoggedInDropdown from './LoggedInDropdown';
-import SessionLinksDropdown from './SessionLinksDropdown';
+import LogoutButton from '../auth/LogoutButton';
+import Dropdown from './Dropdown';
 
 // import css
 import './navBar.css';
@@ -19,52 +16,65 @@ const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
 
-  let sessionLinks;
+  let navLinks;
+
+  let loggedInLinks = (
+    <>
+      <NavLink
+        className='nav__item'
+        to='/users'
+        exact={true}
+        activeClassName='active'
+      >
+        Users
+      </NavLink>
+      <LogoutButton />
+    </>
+  );
+
+  let loggedOutLinks = (
+    <>
+      <NavLink
+        className='nav__item'
+        to='/signup'
+        exact={true}
+        activeClassName='active'
+      >
+        Sign Up
+      </NavLink>
+      <NavLink
+        className='nav__item'
+        to='/login'
+        exact={true}
+        activeClassName='active'
+      >
+        Log In
+      </NavLink>
+    </>
+  );
 
   if (!!sessionUser) {
     if (width > 800) {
-      sessionLinks = (
-        <>
-          <li className='nav__item'>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
-            </NavLink>
-          </li>
-          <li className='nav__item'>
-            <ProfileButton user={sessionUser} />
-          </li>
-        </>
-      );
+      navLinks = loggedInLinks;
     } else {
-      sessionLinks = <LoggedInDropdown />;
+      navLinks = <Dropdown dropdownLinks={loggedInLinks} />;
     }
   } else {
     if (width > 800) {
-      sessionLinks = (
-        <>
-          <li className='nav__item'>
-            <LoginFormModal />
-          </li>
-          <li className='nav__item'>
-            <SignUpFormModal />
-          </li>
-        </>
-      );
+      navLinks = loggedOutLinks;
     } else {
-      sessionLinks = <SessionLinksDropdown />;
+      navLinks = <Dropdown dropdownLinks={loggedOutLinks} />;
     }
   }
 
   return (
-    <header
-      className='site-header'
-    >
+    <header className='site-header'>
       <div className='site-header__wrapper'>
         <a className='site-header__title' href='/'>
           Home
         </a>
         <nav className='nav'>
-          <ul className='nav__wrapper'>{sessionLinks}</ul>
+          <ul className='nav__wrapper'>{navLinks}</ul>
         </nav>
       </div>
     </header>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // redux store
-import { signUpUser } from '../../../store/session';
+import { signUpUser } from '../../store/session';
 
 function SignUpFormPage() {
   const dispatch = useDispatch();

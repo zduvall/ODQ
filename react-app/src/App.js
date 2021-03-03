@@ -8,8 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
-import LoginForm from './components/auth/LoginFormModal/LoginForm'
-import SignUpForm from './components/auth/SignUpFormModal/SignUpForm'
+import LoginForm from './components/auth/LoginForm'
+import SignUpForm from './components/auth/SignUpForm'
 
 // import thunk
 import { authenticateUser } from './store/session';

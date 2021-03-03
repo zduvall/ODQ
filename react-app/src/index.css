@@ -4,3 +4,22 @@ body {
   /* background: url('./components/SplashPage/dog-silhouettes-vector.png') no-repeat center center fixed;
   background-size: cover; */
 }
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+*:focus {
+  outline: none;
+}

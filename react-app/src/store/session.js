@@ -53,13 +53,24 @@ export const signUpUser = (username, email, password) => async (dispatch) => {
 };
 
 export const logoutUser = () => async (dispatch) => {
-  const res = await fetch('/api/auth/logout', {
+  await fetch('/api/auth/logout', {
     headers: {
       'Content-Type': 'application/json',
     },
   });
   dispatch(removeUser());
-  // return await res.json();
+};
+
+export const authenticateUser = () => async (dispatch) => {
+  const res = await fetch('/api/auth/', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const user = await res.json();
+  if (!user.errors) {
+    dispatch(setUser(user));
+  }
 };
 
 // Reducer

@@ -10,8 +10,8 @@ import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
 
 // import other
-import { setUser } from './store/session';
-import { authenticate } from './services/auth';
+import { authenticateUser } from './store/session';
+// import { authenticate } from './services/auth';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,13 +19,15 @@ function App() {
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        dispatch(setUser(user));
-      }
-      setLoaded(true);
-    })();
+    // (async () => {
+    //   const user = await authenticate();
+    //   if (!user.errors) {
+    //     dispatch(setUser(user));
+    //   }
+    //   setLoaded(true);
+    // })();
+    dispatch(authenticateUser());
+    setLoaded(true);
   }, [dispatch]);
 
   if (!loaded) {

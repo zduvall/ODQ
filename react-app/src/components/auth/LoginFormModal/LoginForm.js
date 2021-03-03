@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { login } from '../../../services/auth';
+// import { useHistory } from 'react-router-dom';
 import { loginUser } from '../../../store/session';
 
 function LoginForm() {
+  const dispatch = useDispatch();
+  // const history = useHistory()
+
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
 
   const onLogin = async (e) => {
     e.preventDefault();
     const user = dispatch(loginUser(email, password));
     if (!user.errors) {
-      console.log("logged in!!!!")
+      console.log('logged in!!!!');
+      // history.push('/')
     } else {
       setErrors(user.errors);
     }

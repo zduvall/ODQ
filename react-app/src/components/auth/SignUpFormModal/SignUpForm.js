@@ -1,16 +1,13 @@
 import { useState } from 'react';
-// import { Redirect } from 'react-router-dom';
+// import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 // redux store
 import { signUpUser } from '../../../store/session';
 
-// other
-// import { signUp } from '../../../services/auth';
-// import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
-
 function SignUpFormPage() {
   const dispatch = useDispatch();
+  // const history = useHistory()
 
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
@@ -25,6 +22,8 @@ function SignUpFormPage() {
       const user = dispatch(signUpUser(username, email, password));
       if (!user.errors) {
         console.log('logged in!!!!');
+        // history.push('/')
+        // return <Redirect to='/' />;
       } else {
         setErrors(user.errors);
       }
@@ -48,10 +47,6 @@ function SignUpFormPage() {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
-
-  // if (authenticated) {
-  //   return <Redirect to='/' />;
-  // }
 
   return (
     <form onSubmit={onSignUp}>

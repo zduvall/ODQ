@@ -10,7 +10,8 @@ function SignUpFormPage() {
   // const history = useHistory()
 
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -18,34 +19,40 @@ function SignUpFormPage() {
   const onSignUp = async (e) => {
     e.preventDefault();
     setErrors([]);
-    if (password === repeatPassword) {
-      const user = dispatch(signUpUser(username, email, password));
-      if (!user.errors) {
-        console.log('logged in!!!!');
-        // history.push('/')
-        // return <Redirect to='/' />;
-      } else {
-        setErrors(user.errors);
+
+    const allFields = [firstName, lastName, email, password, repeatPassword];
+
+    allFields.forEach((field) => {
+      if (field === '') {
+        setErrors(['Please fill out all form fields']);
       }
-    } else {
-      setErrors((prevErrors) => [...prevErrors, 'Password fields must match']);
+    });
+
+    let validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w+/;
+    if (!validEmail.test(email)) {
+      setErrors((prevErrors) => [
+        ...prevErrors,
+        'Please ensure email is valid',
+      ]);
     }
-  };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
+    if (password !== repeatPassword || password === '') {
+      setErrors((prevErrors) => [
+        ...prevErrors,
+        'Please ensure the passowrd fields match',
+      ]);
+    }
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+    if (!!errors.length) return;
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
+    const user = dispatch(signUpUser(firstName, lastName, email, password));
+    if (!user.errors) {
+      console.log('logged in!!!!');
+      // history.push('/')
+      // return <Redirect to='/' />;
+    } else {
+      setErrors(user.errors);
+    }
   };
 
   return (
@@ -56,12 +63,23 @@ function SignUpFormPage() {
         ))}
       </div>
       <div>
-        <label>User Name</label>
+        <label>First Name</label>
         <input
           type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
+          name='firstName'
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstName}
+          required
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type='text'
+          name='lastName'
+          onChange={(e) => setLastName(e.target.value)}
+          value={lastName}
+          required
         ></input>
       </div>
       <div>
@@ -69,8 +87,9 @@ function SignUpFormPage() {
         <input
           type='text'
           name='email'
-          onChange={updateEmail}
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
+          required
         ></input>
       </div>
       <div>
@@ -78,8 +97,9 @@ function SignUpFormPage() {
         <input
           type='password'
           name='password'
-          onChange={updatePassword}
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
+          required
         ></input>
       </div>
       <div>
@@ -87,9 +107,9 @@ function SignUpFormPage() {
         <input
           type='password'
           name='repeat_password'
-          onChange={updateRepeatPassword}
+          onChange={(e) => setRepeatPassword(e.target.value)}
           value={repeatPassword}
-          required={true}
+          required
         ></input>
       </div>
       <button type='submit'>Sign Up</button>

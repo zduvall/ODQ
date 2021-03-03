@@ -6,7 +6,8 @@ def seed_users():
 
     users = [
         User(
-            username="Demo",
+            firstName="Demo",
+            lastName="User",
             email="demo@aa.io",
             password="password",
         ),

@@ -27,7 +27,9 @@ export default function LoggedInDropdown() {
       </button>
       {showMenu && (
         <ul className='navbar__dropdown navbar__dropdown-collapse'>
-          <li className='navbar__dropdown__info'>{sessionUser.username}</li>
+          <li className='navbar__dropdown__info'>
+            {sessionUser.FirstName} {sessionUser.FirstName}
+          </li>
           <li className='navbar__dropdown__info'>{sessionUser.email}</li>
           <li className='navbar__dropdown__button'>
             <NavLink to='/users' exact={true} activeClassName='active'>

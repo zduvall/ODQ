@@ -24,7 +24,6 @@ export default function ProfileButton({ user }) {
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu]);
 
-
   return (
     <>
       <button onClick={openMenu}>
@@ -32,7 +31,9 @@ export default function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className='navbar__dropdown'>
-          <li className='navbar__dropdown__info'>{user.username}</li>
+          <li className='navbar__dropdown__info'>
+            {user.firstName} {user.lastName}
+          </li>
           <li className='navbar__dropdown__info'>{user.email}</li>
           <li>
             <button

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../../../services/auth';
-import { setUser } from '../../../store/session';
+// import { login } from '../../../services/auth';
+import { loginUser } from '../../../store/session';
 
 function LoginForm() {
   const [errors, setErrors] = useState([]);
@@ -11,9 +11,9 @@ function LoginForm() {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
+    const user = dispatch(loginUser(email, password));
     if (!user.errors) {
-      dispatch(setUser(user));
+      console.log("logged in!!!!")
     } else {
       setErrors(user.errors);
     }

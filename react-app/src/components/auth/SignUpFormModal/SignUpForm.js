@@ -1,12 +1,12 @@
 import { useState } from 'react';
 // import { Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 
 // redux store
-import {setUser} from '../../../store/session'
+import { signUpUser } from '../../../store/session';
 
 // other
-import { signUp } from '../../../services/auth';
+// import { signUp } from '../../../services/auth';
 // import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function SignUpFormPage() {
@@ -22,9 +22,9 @@ function SignUpFormPage() {
     e.preventDefault();
     setErrors([]);
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = dispatch(signUpUser(username, email, password));
       if (!user.errors) {
-        dispatch(setUser(user));
+        console.log('logged in!!!!');
       } else {
         setErrors(user.errors);
       }

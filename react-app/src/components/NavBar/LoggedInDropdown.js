@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { logout } from '../../services/auth';
-import { removeUser } from '../../store/session';
+// import thunk
+import { logoutUser } from '../../store/session';
 
 export default function LoggedInDropdown() {
-  
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -15,12 +14,6 @@ export default function LoggedInDropdown() {
     let show = true;
     if (showMenu) show = false;
     setShowMenu(show);
-  };
-
-  const logoutUser = async (e) => {
-    e.preventDefault();
-    await logout();
-    dispatch(removeUser());
   };
 
   return (
@@ -47,7 +40,10 @@ export default function LoggedInDropdown() {
             </NavLink>
           </li>
           <li>
-            <button className='navbar__dropdown__button' onClick={logoutUser}>
+            <button
+              className='navbar__dropdown__button'
+              onClick={() => dispatch(logoutUser())}
+            >
               Log Out
             </button>
           </li>

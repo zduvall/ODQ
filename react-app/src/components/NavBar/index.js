@@ -30,11 +30,6 @@ const NavBar = () => {
               Users
             </NavLink>
           </li>
-          {/* <li className='nav__item'>
-            <NavLink to='/' exact={true} activeClassName='active'>
-              Home
-            </NavLink>
-          </li> */}
           <li className='nav__item'>
             <ProfileButton user={sessionUser} />
           </li>
@@ -66,11 +61,7 @@ const NavBar = () => {
     >
       <div className='site-header__wrapper'>
         <a className='site-header__title' href='/'>
-          <img
-            className='logo'
-            alt="pair yo' pet logo"
-            src='/images/pyp-logo-cropped.png'
-          ></img>
+          Home
         </a>
         <nav className='nav'>
           <ul className='nav__wrapper'>{sessionLinks}</ul>

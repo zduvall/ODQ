@@ -13,7 +13,6 @@ This is the backend for the Flask React project.
 2. Install dependencies
 
       ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
       ```
 
 3. Create a **.env** file based on the example with proper settings for your
@@ -73,6 +72,9 @@ This is the backend for the Flask React project.
 
 6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
    This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
+
+   - note: this step above may not be needed
+
 7. Push your docker container to heroku from the root directory of your project.
    This will build the dockerfile and push the image to your heroku container registry
 
@@ -96,4 +98,4 @@ This is the backend for the Flask React project.
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 11. profit
-# pimp-yo-pets
+

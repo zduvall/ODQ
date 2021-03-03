@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { logout } from '../../services/auth';
-import { removeUser } from '../../store/session';
-
+import { logoutUser } from '../../store/session';
 
 export default function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -26,11 +24,6 @@ export default function ProfileButton({ user }) {
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu]);
 
-  const logoutUser = async (e) => {
-    e.preventDefault();
-    await logout();
-    dispatch(removeUser());
-  };
 
   return (
     <>
@@ -42,7 +35,10 @@ export default function ProfileButton({ user }) {
           <li className='navbar__dropdown__info'>{user.username}</li>
           <li className='navbar__dropdown__info'>{user.email}</li>
           <li>
-            <button className='navbar__dropdown__button' onClick={logoutUser}>
+            <button
+              className='navbar__dropdown__button'
+              onClick={() => dispatch(logoutUser())}
+            >
               Log Out
             </button>
           </li>

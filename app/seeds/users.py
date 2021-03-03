@@ -9,15 +9,6 @@ def seed_users():
             username="Demo",
             email="demo@aa.io",
             password="password",
-            city="Salt Lake",
-            stateAbbr="UT",
-        ),
-        User(
-            username="Demo2",
-            email="demo2@aa.io",
-            password="password",
-            city="Provo",
-            stateAbbr="UT",
         ),
     ]
 

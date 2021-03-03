@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { Redirect, useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 // redux store
@@ -49,7 +49,6 @@ function SignUpFormPage() {
     if (!user.errors) {
       console.log('logged in!!!!');
       // history.push('/')
-      // return <Redirect to='/' />;
     } else {
       setErrors(user.errors);
     }

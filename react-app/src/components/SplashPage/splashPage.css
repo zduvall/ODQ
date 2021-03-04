@@ -8,3 +8,23 @@
   width: 100%;
 }
 
+.splash__secondary-content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.splash__secondary-content-backwards {
+  flex-direction: row-reverse;
+}
+
+.splash__secondary-image {
+  width: 50%;
+}
+
+.splash__secondary-text {
+  padding: 2rem;
+}

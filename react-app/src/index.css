@@ -55,6 +55,13 @@ a {
   box-shadow: none;
 } */
 
+.errors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(255, 83, 83);
+}
+
 /* for app.js */
 .loading {
   color: rgb(122, 122, 122);

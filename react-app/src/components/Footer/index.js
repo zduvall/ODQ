@@ -3,7 +3,9 @@ import './Footer.css';
 export default function Footer() {
   return (
     <div className='footer'>
-      <p>Designed and created by Zachary Duvall</p>
+      <p className='footer__text'>
+        Designed & created by Zachary Duvall, LCSW
+      </p>
       <button
         onClick={() =>
           (window.location = 'https://www.linkedin.com/in/zachary-duvall/')

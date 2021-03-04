@@ -1,4 +1,5 @@
 import './splashPage.css';
+import womanInTherapy from './woman-in-therapy.jpg';
 
 export default function SplashPage() {
   return (
@@ -9,13 +10,10 @@ export default function SplashPage() {
       </h2>
       <img
         className='splash__primary-image'
-        src='./images/woman-in-therapy.jpg'
+        src={womanInTherapy}
         title='Designed by pch.vector / Freepik'
         alt='woman in therapy, vector created by pch.vector - https://www.freepik.com/vectors/people'
       />
     </div>
   );
 }
-
-// /Users/zduvall/app-Academy/Projects/DOT/react-app/public/images/woman-in-therapy.jpg
-// react-app/public/images/woman-in-therapy.jpg

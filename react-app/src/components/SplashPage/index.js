@@ -6,7 +6,7 @@ import './splashPage.css';
 import womanInTherapy from './images/woman-in-therapy.jpg';
 import takingNotes from './images/1_taking_notes.svg';
 import mobileUser from './images/2_mobile_user.svg';
-import vistualData from './images/DOT_3_visual_data.png';
+import vistualData from './images/3_visual_data.png';
 
 export default function SplashPage() {
   return (

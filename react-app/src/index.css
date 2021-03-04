@@ -1,8 +1,7 @@
 /* TODO Add site wide styles */
 body {
   margin: 0;
-  /* background: url('./components/SplashPage/dog-silhouettes-vector.png') no-repeat center center fixed;
-  background-size: cover; */
+  font-family: 'Open Sans', sans-serif;
 }
 
 .ev-after-nav {
@@ -30,6 +29,13 @@ a {
 }
 
 .button-primary {
-  background-color: whitesmoke;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  background-color: rgb(138, 138, 138);
+  border-radius: 0.5rem;
   padding: 1rem;
+}
+
+.button-primary:hover {
+  background-color: rgb(167, 167, 167);
 }

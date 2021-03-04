@@ -25,5 +25,9 @@
   margin: 0 0.75rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: whitesmoke solid;
+  border: rgb(138, 138, 138) solid;
+}
+
+.auth-form__input:focus {
+  background-color: rgb(240, 240, 240);
 }

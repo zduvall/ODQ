@@ -9,7 +9,7 @@ import { useWindowWidth } from '../../services/windowWidth';
 import Dropdown from './Dropdown';
 
 // import thunk
-import { removeUser } from '../../store/session';
+import { logoutUser } from '../../store/session';
 
 // import css
 import './navBar.css';
@@ -26,7 +26,7 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
-    dispatch(removeUser());
+    dispatch(logoutUser());
     setShowDropdown(false);
   };
 

@@ -15,7 +15,8 @@
 
 .site-header__title {
   font-size: 1.4rem;
-  font-weight: 650;
+  font-weight: 1000;
+  color: var(--primary-color);
 }
 
 .nav {
@@ -34,6 +35,7 @@
 
 .nav__item-active {
   font-weight: 800;
+  color: var(--primary-color)
 }
 
 /* dropdown styling */
@@ -72,4 +74,9 @@
   left: 0;
   bottom: 0;
   background-color: transparent;
+}
+
+.ev-after-nav {
+  padding: 0 10%;
+  margin-top: 2rem;
 }

@@ -4,11 +4,18 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.ev-after-nav {
-  padding: 0 10%;
-  margin-top: 2rem;
+/* custom css variables */
+:root {
+  --primary-color: rgb(32, 156, 238);
+  --primary-color-light: rgb(88, 181, 242);
+  /* --primary-color: rgb(77, 111, 245); */
+  --secondary-color: rgb(238, 114, 32);
+  /* --secondary-color: rgb(245, 211, 77); */
+  --tertiary-color: rgb(138, 138, 138);
+  --tertiary-color-light: rgb(245, 245, 245);
 }
 
+/* reset css */
 button {
   background: none;
   border: none;
@@ -28,19 +35,27 @@ a {
   outline: none;
 }
 
+/* global classes */
 .button-primary {
   color: rgb(255, 255, 255);
   font-weight: 700;
-  background-color: rgb(138, 138, 138);
+  background-color: var(--primary-color);
   border-radius: 0.5rem;
   padding: 1rem;
   font-size: 1.1rem;
 }
 
 .button-primary:hover {
-  background-color: rgb(167, 167, 167);
+  background-color: var(--primary-color-light);
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
 }
 
+.button-primary:focus {
+  background-color: var(--primary-color);
+  box-shadow: none;
+}
+
+/* for app.js */
 .loading {
   color: rgb(122, 122, 122);
   position: fixed;

@@ -8,12 +8,3 @@
   width: 100%;
 }
 
-.splash__primary-title {
-  color: var(--primary-color);
-  text-align: center;
-}
-
-.splash__secondary-title {
-  color: var(--tertiary-color);
-  text-align: center;
-}

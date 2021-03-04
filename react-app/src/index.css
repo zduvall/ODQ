@@ -9,10 +9,10 @@ body {
   --primary-color: rgb(32, 156, 238);
   --primary-color-light: rgb(88, 181, 242);
   /* --primary-color: rgb(77, 111, 245); */
-  --secondary-color: rgb(238, 114, 32);
-  /* --secondary-color: rgb(245, 211, 77); */
-  --tertiary-color: rgb(138, 138, 138);
-  --tertiary-color-light: rgb(245, 245, 245);
+  --secondary-color: rgb(138, 138, 138);
+  --secondary-color-light: rgb(245, 245, 245);
+  --tertiary-color: rgb(238, 114, 32);
+  /* --tertiary-color: rgb(245, 211, 77); */
 }
 
 /* reset css */
@@ -60,6 +60,16 @@ a {
   flex-direction: column;
   align-items: center;
   color: rgb(255, 83, 83);
+}
+
+.primary-title {
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.secondary-title {
+  color: var(--secondary-color);
+  text-align: center;
 }
 
 /* for app.js */

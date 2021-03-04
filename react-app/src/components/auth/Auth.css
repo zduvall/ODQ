@@ -35,12 +35,13 @@
   margin: 0.75rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: var(--tertiary-color) solid 2px;
+  border: var(--secondary-color) solid 1px;
   font-size: 1.1rem;
+  box-sizing: border-box;
 }
 
 .auth-form__input:focus {
-  background-color: var(--tertiary-color-light);
+  background-color: var(--secondary-color-light);
   border: var(--primary-color) solid 2px;
 }
 

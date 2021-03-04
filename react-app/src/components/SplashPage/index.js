@@ -3,8 +3,8 @@ import './splashPage.css';
 export default function SplashPage() {
   return (
     <div className='splash'>
-      <h1 className='splash__primary-title'>Diagnostic and Outcome Testing</h1>
-      <h2 className='splash__secondary-title'>
+      <h1 className='primary-title'>Diagnostic and Outcome Testing</h1>
+      <h2 className='secondary-title'>
         for therapists and other helping professionals
       </h2>
       <img

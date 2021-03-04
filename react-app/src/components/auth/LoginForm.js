@@ -45,7 +45,7 @@ function LoginForm() {
 
   return (
     <div className='auth-form-container'>
-      <h1>Log In</h1>
+      <h1 className='secondary-title'>Log In</h1>
       <form className='auth-form' onSubmit={onLogin}>
         <div>
           {errors.map((error) => (

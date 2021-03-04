@@ -53,9 +53,9 @@ function SignUpFormPage() {
     }
 
     if (errors.length) {
-      setErrors([]) // this is because the set errors is too slow, so I have to reset it before clicking submit again
-      return
-    };
+      setErrors([]); // this is because the set errors is too slow, so I have to reset it before clicking submit again
+      return;
+    }
 
     const user = await dispatch(
       signUpUser(firstName, lastName, email, password)
@@ -70,7 +70,7 @@ function SignUpFormPage() {
 
   return (
     <div className='auth-form-container'>
-      <h1>Sign Up</h1>
+      <h1 className='secondary-title'>Sign Up</h1>
       <form className='auth-form' onSubmit={onSignUp}>
         <div className='errors-container'>
           {errors.map((error) => (

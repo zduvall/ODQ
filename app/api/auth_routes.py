@@ -105,7 +105,6 @@ def update(userId):
     if form.validate_on_submit():
         db.session.add(user_to_update)
         db.session.commit()
-        # login_user(user)
         return user_to_update.to_dict()
 
     print("-------errors-------", form.errors)

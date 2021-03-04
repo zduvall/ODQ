@@ -1,12 +1,17 @@
 import { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+// import { useHistory, Redirect } from 'react-router-dom';
 
 // redux store
 import { signUpUser } from '../../store/session';
 
+// import css
+import './Auth.css';
+
 function SignUpFormPage() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   // const history = useHistory()
 
   const [errors, setErrors] = useState([]);
@@ -14,13 +19,17 @@ function SignUpFormPage() {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  if (sessionUser) {
+    return <Redirect to='/' />;
+  }
 
   const onSignUp = async (e) => {
     e.preventDefault();
     setErrors([]);
 
-    const allFields = [firstName, lastName, email, password, repeatPassword];
+    const allFields = [firstName, lastName, email, password, confirmPassword];
 
     allFields.forEach((field) => {
       if (field === '') {
@@ -36,7 +45,7 @@ function SignUpFormPage() {
       ]);
     }
 
-    if (password !== repeatPassword || password === '') {
+    if (password !== confirmPassword || password === '') {
       setErrors((prevErrors) => [
         ...prevErrors,
         'Please ensure the passowrd fields match',
@@ -47,7 +56,7 @@ function SignUpFormPage() {
       signUpUser(firstName, lastName, email, password)
     );
     if (!user.errors) {
-      console.log('logged in!!!!');
+      console.log('logged in');
       // history.push('/')
     } else {
       setErrors(user.errors);
@@ -55,64 +64,72 @@ function SignUpFormPage() {
   };
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error) => (
-          <div key={error}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>First Name</label>
-        <input
-          type='text'
-          name='firstName'
-          onChange={(e) => setFirstName(e.target.value)}
-          value={firstName}
-          required
-        ></input>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <input
-          type='text'
-          name='lastName'
-          onChange={(e) => setLastName(e.target.value)}
-          value={lastName}
-          required
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          required
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={(e) => setRepeatPassword(e.target.value)}
-          value={repeatPassword}
-          required
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    <div className='auth-form-container'>
+      <h1>Sign Up</h1>
+      <form className='auth-form' onSubmit={onSignUp}>
+        <div>
+          {errors.map((error) => (
+            <div key={error}>{error}</div>
+          ))}
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='firstName'
+            type='text'
+            placeholder='First Name'
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+            required
+            className='auth-form__input'
+          ></input>
+          <input
+            name='lastName'
+            type='text'
+            placeholder='Last Name'
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+            required
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+            className='auth-form__input'
+          ></input>
+          <input
+            name='confirm_password'
+            type='password'
+            placeholder='Confirm Password'
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+            required
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <button className='button-primary' type='submit'>
+            Sign Up
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+// import { useHistory, Redirect } from 'react-router-dom';
 import { loginUser } from '../../store/session';
+
+// import css
+import './Auth.css';
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   // const history = useHistory()
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  if (sessionUser) {
+    return <Redirect to='/' />;
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await dispatch(loginUser(email, password));
 
     if (!user.errors) {
-      console.log('logged in!!!!');
+      console.log('logged in');
       // history.push('/')
     } else {
       setErrors(user.errors);
@@ -24,34 +33,41 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type='submit'>Login</button>
-    </form>
+    <div className='auth-form-container'>
+      <h1>Log In</h1>
+      <form className='auth-form' onSubmit={onLogin}>
+        <div>
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className='auth-form__input'
+          />
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className='auth-form__input'
+          />
+        </div>
+        <div className='auth-form__row'>
+          <button className='button-primary' type='submit'>
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

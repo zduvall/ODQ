@@ -1,0 +1,29 @@
+.auth-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32rem;
+}
+
+.auth-form__row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin: 0.75rem 0;
+  /* height: 3rem; */
+}
+
+.auth-form__input {
+  width: 100%;
+  margin: 0 0.75rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: whitesmoke solid;
+}

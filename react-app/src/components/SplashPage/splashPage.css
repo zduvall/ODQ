@@ -1,0 +1,19 @@
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash__primary-image {
+  width: 100%;
+}
+
+.splash__primary-title {
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.splash__secondary-title {
+  color: var(--tertiary-color);
+  text-align: center;
+}

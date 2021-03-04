@@ -22,6 +22,17 @@ function LoginForm() {
 
   const onLogin = async (e) => {
     e.preventDefault();
+
+    const allFields = [email, password];
+
+    allFields.forEach((field) => {
+      if (field === '') {
+        setErrors(['Please fill out all fields.']);
+      }
+    });
+
+    if (errors.length) return;
+
     const user = await dispatch(loginUser(email, password));
 
     if (!user.errors) {
@@ -47,6 +58,7 @@ function LoginForm() {
             type='text'
             placeholder='Email'
             value={email}
+            // required
             onChange={(e) => setEmail(e.target.value)}
             className='auth-form__input'
           />
@@ -57,6 +69,7 @@ function LoginForm() {
             type='password'
             placeholder='Password'
             value={password}
+            // required
             onChange={(e) => setPassword(e.target.value)}
             className='auth-form__input'
           />

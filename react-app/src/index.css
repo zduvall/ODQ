@@ -50,10 +50,10 @@ a {
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
 }
 
-.button-primary:focus {
+/* .button-primary:focus {
   background-color: var(--primary-color);
   box-shadow: none;
-}
+} */
 
 /* for app.js */
 .loading {

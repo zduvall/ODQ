@@ -33,7 +33,7 @@ function SignUpFormPage() {
 
     allFields.forEach((field) => {
       if (field === '') {
-        setErrors(['Please fill out all fields']);
+        setErrors(['Please fill out all fields.']);
       }
     });
 
@@ -41,16 +41,18 @@ function SignUpFormPage() {
     if (!validEmail.test(email)) {
       setErrors((prevErrors) => [
         ...prevErrors,
-        'Please ensure email is valid',
+        'Please ensure email is valid.',
       ]);
     }
 
     if (password !== confirmPassword || password === '') {
       setErrors((prevErrors) => [
         ...prevErrors,
-        'Please ensure the passowrd fields match',
+        'Please ensure passowrd fields match.',
       ]);
     }
+
+    if (errors.length) return;
 
     const user = await dispatch(
       signUpUser(firstName, lastName, email, password)
@@ -79,7 +81,7 @@ function SignUpFormPage() {
             placeholder='First Name'
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            required
+            // required
             className='auth-form__input'
           ></input>
           <input
@@ -88,7 +90,7 @@ function SignUpFormPage() {
             placeholder='Last Name'
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-            required
+            // required
             className='auth-form__input'
           ></input>
         </div>
@@ -99,7 +101,7 @@ function SignUpFormPage() {
             placeholder='Email'
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            required
+            // required
             className='auth-form__input'
           ></input>
         </div>
@@ -110,7 +112,7 @@ function SignUpFormPage() {
             placeholder='Password'
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            required
+            // required
             className='auth-form__input'
           ></input>
           <input
@@ -119,7 +121,7 @@ function SignUpFormPage() {
             placeholder='Confirm Password'
             onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
-            required
+            // required
             className='auth-form__input'
           ></input>
         </div>

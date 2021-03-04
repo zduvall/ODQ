@@ -1,0 +1,136 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+// import { useHistory, Redirect } from 'react-router-dom';
+
+// redux store
+import { signUpUser } from '../../store/session';
+
+// import css
+import './Auth.css';
+
+function SignUpFormPage() {
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  // const history = useHistory()
+
+  const [errors, setErrors] = useState([]);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  if (sessionUser) {
+    return <Redirect to='/' />;
+  }
+
+  const onSignUp = async (e) => {
+    e.preventDefault();
+    setErrors([]);
+
+    const allFields = [firstName, lastName, email, password, confirmPassword];
+
+    allFields.forEach((field) => {
+      if (field === '') {
+        setErrors(['Please fill out all fields']);
+      }
+    });
+
+    const validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w+/;
+    if (!validEmail.test(email)) {
+      setErrors((prevErrors) => [
+        ...prevErrors,
+        'Please ensure email is valid',
+      ]);
+    }
+
+    if (password !== confirmPassword || password === '') {
+      setErrors((prevErrors) => [
+        ...prevErrors,
+        'Please ensure the passowrd fields match',
+      ]);
+    }
+
+    const user = await dispatch(
+      signUpUser(firstName, lastName, email, password)
+    );
+    if (!user.errors) {
+      console.log('logged in');
+      // history.push('/')
+    } else {
+      setErrors(user.errors);
+    }
+  };
+
+  return (
+    <div className='auth-form-container'>
+      <h1>Sign Up</h1>
+      <form className='auth-form' onSubmit={onSignUp}>
+        <div>
+          {errors.map((error) => (
+            <div key={error}>{error}</div>
+          ))}
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='firstName'
+            type='text'
+            placeholder='First Name'
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+            required
+            className='auth-form__input'
+          ></input>
+          <input
+            name='lastName'
+            type='text'
+            placeholder='Last Name'
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+            required
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+            className='auth-form__input'
+          ></input>
+          <input
+            name='confirm_password'
+            type='password'
+            placeholder='Confirm Password'
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+            required
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <button className='button-primary auth-button' type='submit'>
+            Sign Up
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default SignUpFormPage;

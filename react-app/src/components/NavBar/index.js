@@ -1,72 +1,114 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 // import custom hook
 import { useWindowWidth } from '../../services/windowWidth';
 
 // import components
-import SignUpFormModal from '../auth/SignUpFormModal';
-import LoginFormModal from '../auth/LoginFormModal';
-import ProfileButton from './ProfileButton';
-import LoggedInDropdown from './LoggedInDropdown';
-import SessionLinksDropdown from './SessionLinksDropdown';
+import Dropdown from './Dropdown';
+
+// import thunk
+import { logoutUser } from '../../store/session';
 
 // import css
 import './navBar.css';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
 
-  let sessionLinks;
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleClick = () => {
+    setShowDropdown(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    setShowDropdown(false);
+  };
+
+  let navLinks;
+
+  let loggedInLinks = (
+    <>
+      <NavLink
+        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
+        to='/users'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
+      >
+        Users
+      </NavLink>
+      <button
+        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
+    </>
+  );
+
+  let loggedOutLinks = (
+    <>
+      <NavLink
+        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
+        to='/signup'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
+      >
+        Sign Up
+      </NavLink>
+      <NavLink
+        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
+        to='/login'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
+      >
+        Log In
+      </NavLink>
+    </>
+  );
 
   if (!!sessionUser) {
     if (width > 800) {
-      sessionLinks = (
-        <>
-          <li className='nav__item'>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
-            </NavLink>
-          </li>
-          <li className='nav__item'>
-            <ProfileButton user={sessionUser} />
-          </li>
-        </>
-      );
+      navLinks = loggedInLinks;
     } else {
-      sessionLinks = <LoggedInDropdown />;
+      navLinks = (
+        <Dropdown
+          dropdownLinks={loggedInLinks}
+          showDropdown={showDropdown}
+          setShowDropdown={setShowDropdown}
+        />
+      );
     }
   } else {
     if (width > 800) {
-      sessionLinks = (
-        <>
-          <li className='nav__item'>
-            <LoginFormModal />
-          </li>
-          <li className='nav__item'>
-            <SignUpFormModal />
-          </li>
-        </>
-      );
+      navLinks = loggedOutLinks;
     } else {
-      sessionLinks = <SessionLinksDropdown />;
+      navLinks = (
+        <Dropdown
+          dropdownLinks={loggedOutLinks}
+          showDropdown={showDropdown}
+          setShowDropdown={setShowDropdown}
+        />
+      );
     }
   }
 
   return (
-    <header
-      className='site-header'
-    >
-      <div className='site-header__wrapper'>
-        <a className='site-header__title' href='/'>
-          Home
-        </a>
-        <nav className='nav'>
-          <ul className='nav__wrapper'>{sessionLinks}</ul>
-        </nav>
-      </div>
+    <header className='site-header'>
+      <a className='site-header__title' href='/'>
+        Home
+      </a>
+      <nav className='nav'>
+        <ul className='nav__wrapper'>{navLinks}</ul>
+      </nav>
     </header>
   );
 };

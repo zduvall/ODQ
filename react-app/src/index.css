@@ -1,6 +1,42 @@
 /* TODO Add site wide styles */
 body {
   margin: 0;
-  /* background: url('./components/SplashPage/dog-silhouettes-vector.png') no-repeat center center fixed;
-  background-size: cover; */
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ev-after-nav {
+  padding: 0 10%;
+  margin-top: 2rem;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+*:focus {
+  outline: none;
+}
+
+.button-primary {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  background-color: rgb(138, 138, 138);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.button-primary:hover {
+  background-color: rgb(167, 167, 167);
 }

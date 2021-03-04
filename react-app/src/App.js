@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -8,8 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
-import LoginForm from './components/auth/LoginFormModal/LoginForm'
-import SignUpForm from './components/auth/SignUpFormModal/SignUpForm'
+import LoginForm from './components/auth/LoginForm';
+import SignUpForm from './components/auth/SignUpForm';
 
 // import thunk
 import { authenticateUser } from './store/session';
@@ -31,31 +31,33 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/signup' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute
-          path='/users'
-          exact={true}
-          authenticated={!!sessionUser}
-        >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path='/users/:userId'
-          exact={true}
-          authenticated={!!sessionUser}
-        >
-          <User />
-        </ProtectedRoute>
-        <Route path='/' exact={true}>
-          <SplashPage />
-        </Route>
-      </Switch>
+      <div className="ev-after-nav">
+        <Switch>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/signup' exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute
+            path='/users'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path='/users/:userId'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <User />
+          </ProtectedRoute>
+          <Route path='/' exact={true}>
+            <SplashPage />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

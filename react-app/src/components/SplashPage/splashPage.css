@@ -21,6 +21,12 @@
   flex-direction: row-reverse;
 }
 
+@media (max-width: 800px) {
+  .splash__secondary-content {
+    flex-direction: column-reverse;
+  }
+}
+
 .splash__secondary-image {
   width: 50%;
 }

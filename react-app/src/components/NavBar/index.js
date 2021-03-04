@@ -12,8 +12,9 @@ import Dropdown from './Dropdown';
 // import thunk
 import { logoutUser } from '../../store/session';
 
-// import css
+// import css and pic
 import './navBar.css';
+import dotLogo from './dot-logo.png';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -106,7 +107,7 @@ const NavBar = () => {
   return (
     <header className='site-header'>
       <div className='site-header__title' onClick={() => history.push('/')}>
-        <img className='logo' src='/images/dot-logo.png' alt='DOT logo' />
+        <img className='logo' src={dotLogo} alt='DOT logo' />
         Diagnostic & Outcome Testing
       </div>
       <nav className='nav'>

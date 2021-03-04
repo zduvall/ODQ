@@ -73,6 +73,11 @@ a {
   text-align: center;
 }
 
+.tertiary-title {
+  color: var(--tertiary-color);
+  text-align: center;
+}
+
 /* for app.js */
 .loading {
   color: rgb(122, 122, 122);

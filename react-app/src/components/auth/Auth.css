@@ -11,23 +11,39 @@
   width: 32rem;
 }
 
+@media (max-width: 800px) {
+  .auth-form {
+    width: 20rem;
+  }
+}
+
 .auth-form__row {
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
   width: 100%;
-  margin: 0.75rem 0;
-  /* height: 3rem; */
+}
+
+@media (max-width: 800px) {
+  .auth-form__row {
+    flex-wrap: wrap;
+  }
 }
 
 .auth-form__input {
   width: 100%;
-  margin: 0 0.75rem;
+  margin: 0.75rem;
   padding: 1rem;
   border-radius: 0.5rem;
   border: rgb(138, 138, 138) solid;
+  font-size: 1.1rem;
 }
 
 .auth-form__input:focus {
   background-color: rgb(240, 240, 240);
+}
+
+.auth-button {
+  margin-top: 0.75rem;
+  width: 50%;
 }

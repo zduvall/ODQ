@@ -62,7 +62,7 @@ function LoginForm() {
           />
         </div>
         <div className='auth-form__row'>
-          <button className='button-primary' type='submit'>
+          <button className='button-primary auth-button' type='submit'>
             Login
           </button>
         </div>

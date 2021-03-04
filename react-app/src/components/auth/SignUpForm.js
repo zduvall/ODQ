@@ -124,7 +124,7 @@ function SignUpFormPage() {
           ></input>
         </div>
         <div className='auth-form__row'>
-          <button className='button-primary' type='submit'>
+          <button className='button-primary auth-button' type='submit'>
             Sign Up
           </button>
         </div>

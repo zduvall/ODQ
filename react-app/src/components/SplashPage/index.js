@@ -26,21 +26,21 @@ export default function SplashPage() {
       <SplashPageSection
         image={takingNotes}
         alt={'Therapist taking notes'}
-        desc={'Choose from our database to create online tests for clients'}
+        desc={'Choose from our database of online tests for clients and therapists'}
         backwards={false}
       />
       <SplashPageSection
         image={mobileUser}
         alt={'Completing test on phone'}
         desc={
-          'You or clients can complete the test at a convenient time and place'
+          'Complete the tests at a convenient time and place on any screen'
         }
         backwards={true}
       />
       <SplashPageSection
         image={vistualData}
         alt={'Visualing test results on graph'}
-        desc={'See test results in convenient graphs and summaries'}
+        desc={'View results and progress in convenient summaries and graphs'}
         backwards={false}
       />
     </div>

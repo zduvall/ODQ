@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-// import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { loginUser } from '../../store/session';
 
 // import css
@@ -10,7 +9,7 @@ import './Auth.css';
 function LoginForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  // const history = useHistory()
+  const history = useHistory()
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -37,7 +36,7 @@ function LoginForm() {
 
     if (!user.errors) {
       console.log('logged in');
-      // history.push('/')
+      history.push('/dashboard')
     } else {
       setErrors(user.errors);
     }

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-// import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 // redux store
 import { signUpUser } from '../../store/session';
@@ -12,7 +11,7 @@ import './Auth.css';
 function SignUpFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  // const history = useHistory()
+  const history = useHistory()
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
@@ -62,7 +61,7 @@ function SignUpFormPage() {
     );
     if (!user.errors) {
       console.log('logged in');
-      // history.push('/')
+      history.push('/')
     } else {
       setErrors(user.errors);
     }

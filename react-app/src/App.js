@@ -5,11 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 // components
 import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/Users/UsersList';
-import User from './components/Users/User';
+// import UsersList from './components/Users/UsersList';
+// import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
+import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 
 // import thunk
@@ -40,7 +41,7 @@ function App() {
           <Route path='/signup' exact={true}>
             <SignUpForm />
           </Route>
-          <ProtectedRoute
+          {/* <ProtectedRoute
             path='/users'
             exact={true}
             authenticated={!!sessionUser}
@@ -53,10 +54,17 @@ function App() {
             authenticated={!!sessionUser}
           >
             <User />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
           <Route path='/' exact={true}>
             <SplashPage />
           </Route>
+          <ProtectedRoute
+            path='/dashboard'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <Dashboard />
+          </ProtectedRoute>
         </Switch>
       </div>
       <Footer />

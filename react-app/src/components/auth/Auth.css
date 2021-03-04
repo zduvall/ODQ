@@ -35,12 +35,13 @@
   margin: 0.75rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: rgb(138, 138, 138) solid;
+  border: var(--tertiary-color) solid 2px;
   font-size: 1.1rem;
 }
 
 .auth-form__input:focus {
-  background-color: rgb(240, 240, 240);
+  background-color: var(--tertiary-color-light);
+  border: var(--primary-color) solid 2px;
 }
 
 .auth-button {

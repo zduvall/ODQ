@@ -10,6 +10,7 @@ export default function SplashPage() {
       <img
         className='splash__primary-image'
         src='./images/woman-in-therapy.jpg'
+        title='Designed by pch.vector / Freepik'
         alt='woman in therapy, vector created by pch.vector - https://www.freepik.com/vectors/people'
       />
     </div>

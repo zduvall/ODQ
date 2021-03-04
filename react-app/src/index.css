@@ -8,6 +8,7 @@ body {
 :root {
   --primary-color: rgb(32, 156, 238);
   --primary-color-light: rgb(88, 181, 242);
+  --primary-color-dark: rgb(14, 119, 189);
   /* --primary-color: rgb(77, 111, 245); */
   --secondary-color: rgb(138, 138, 138);
   --secondary-color-light: rgb(245, 245, 245);
@@ -63,7 +64,7 @@ a {
 }
 
 .primary-title {
-  color: var(--primary-color);
+  color: var(--primary-color-dark);
   text-align: center;
 }
 

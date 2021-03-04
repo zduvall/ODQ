@@ -1,22 +1,30 @@
 .site-header {
-  position: relative;
+  position: sticky;
   z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
   z-index: 10;
   top: 0;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 6px -3px rgba(0, 0, 0, 0.5);
   padding: 0 10%;
   font-size: 1.2rem;
+  height: 4rem;
 }
 
 .site-header__title {
-  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
   font-weight: 1000;
-  color: var(--primary-color);
+  color: var(--primary-color-dark);
+  cursor: pointer;
+}
+
+.logo{
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .nav {
@@ -31,6 +39,11 @@
 
 .nav__item {
   margin-left: 2rem;
+  color: var(--secondary-color)
+}
+
+.nav__item:hover {
+  color: var(--primary-color)
 }
 
 .nav__item-active {
@@ -56,11 +69,11 @@
 }
 
 .nav__dropdown__button-closed {
-  color: black;
+  color: var(--primary-color-dark);
 }
 
 .nav__dropdown__button-open {
-  color: grey;
+  color: var(--secondary-color);
 }
 
 .nav__dropdown__item {

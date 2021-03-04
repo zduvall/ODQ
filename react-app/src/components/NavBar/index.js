@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 // import custom hook
@@ -16,6 +17,7 @@ import './navBar.css';
 
 const NavBar = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
 
@@ -103,9 +105,10 @@ const NavBar = () => {
 
   return (
     <header className='site-header'>
-      <a className='site-header__title' href='/'>
-        Home
-      </a>
+      <div className='site-header__title' onClick={() => history.push('/')}>
+        <img className='logo' src='/images/dot-logo.png' alt='DOT logo' />
+        Diagnostic & Outcome Testing
+      </div>
       <nav className='nav'>
         <ul className='nav__wrapper'>{navLinks}</ul>
       </nav>

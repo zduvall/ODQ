@@ -10,6 +10,7 @@ import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
+import Footer from './components/Footer';
 
 // import thunk
 import { authenticateUser } from './store/session';
@@ -31,7 +32,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <div className='ev-after-nav'>
+      <div className='btwn-nav-footer'>
         <Switch>
           <Route path='/login' exact={true}>
             <LoginForm />
@@ -58,6 +59,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

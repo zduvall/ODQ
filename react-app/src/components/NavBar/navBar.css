@@ -22,7 +22,18 @@
   cursor: pointer;
 }
 
-.logo{
+@media (max-width: 475px) {
+  .site-header__title {
+    font-size: 1rem;
+  }
+}
+/* @media (max-width: 390px) {
+  .site-header__title {
+    font-size: 0.9rem;
+  }
+} */
+
+.logo {
   height: 1.5rem;
   margin-right: 0.5rem;
 }
@@ -39,16 +50,16 @@
 
 .nav__item {
   margin-left: 2rem;
-  color: var(--tertiary-color)
+  color: var(--tertiary-color);
 }
 
 .nav__item:hover {
-  color: var(--primary-color-dark)
+  color: var(--primary-color-dark);
 }
 
 .nav__item-active {
   font-weight: 800;
-  color: var(--primary-color-dark)
+  color: var(--primary-color-dark);
 }
 
 /* dropdown styling */

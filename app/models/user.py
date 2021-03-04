@@ -1,7 +1,6 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from sqlalchemy_utils.types.phone_number import PhoneNumberType
 
 
 class User(db.Model, UserMixin):
@@ -14,7 +13,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     lic = db.Column(db.String(10))
     pxName = db.Column(db.String(100))
-    phone = db.Column(PhoneNumberType())
+    phone = db.Column(db.String(20))
 
     @property
     def password(self):

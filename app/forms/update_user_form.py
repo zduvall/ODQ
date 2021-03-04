@@ -6,19 +6,6 @@ from wtforms.validators import DataRequired, Email, ValidationError, Length
 from app.models import User
 
 
-def validate_phone(form, field):
-    if len(field.data) > 16:
-        raise ValidationError("Invalid phone number.")
-    try:
-        input_number = phonenumbers.parse(field.data)
-        if not (phonenumbers.is_valid_number(input_number)):
-            raise ValidationError("Invalid phone number.")
-    except:
-        input_number = phonenumbers.parse("+1" + field.data)
-        if not (phonenumbers.is_valid_number(input_number)):
-            raise ValidationError("Invalid phone number.")
-
-
 class UpdateUserForm(FlaskForm):
     firstName = StringField(
         "firstName",
@@ -43,7 +30,7 @@ class UpdateUserForm(FlaskForm):
         validators=[
             # DataRequired(message="Please ensure email is valid."),
             Email(message="Please ensure email is valid."),
-            user_exists,
+            # user_exists,
         ],
     )
     # password = StringField(
@@ -71,6 +58,14 @@ class UpdateUserForm(FlaskForm):
         ],
     )
     phone = StringField(
-        "pxName",
-        validators=[validate_phone],
+        "phone",
+        # validators=[],
     )
+
+    def validate_phone(self, phone):
+        try:
+            p = phonenumbers.parse(phone.data)
+            if not phonenumbers.is_valid_number(p):
+                raise ValueError()
+        except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
+            raise ValidationError('Invalid phone number')

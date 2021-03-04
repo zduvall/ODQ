@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "45583e458a152d096d4c3f9eb3e22d03f4e7bc6ad9d8ae7f96fcafd048815680"
+            "sha256": "bd5e4cef226d00a727fbfefe283c6ce825986f7e8fd524be8d5725ec4aa15ee9"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -201,6 +201,14 @@
             "index": "pypi",
             "version": "==1.1.1"
         },
+        "phonenumbers": {
+            "hashes": [
+                "sha256:0f597b602e64af90c06b14c8223e94fdb0ed20f203e1c9785a8bbe4de00c45e8",
+                "sha256:dadc72b81effefa499f2ee7f77fcad601fb725c024f444c9ea60500e4d79aa4e"
+            ],
+            "index": "pypi",
+            "version": "==8.12.19"
+        },
         "pyjwt": {
             "hashes": [
                 "sha256:5c6eca3c2940464d106b99ba83b00c6add741c9becaec087fb7ccdefea71350e",
@@ -302,11 +310,11 @@
     "develop": {
         "astroid": {
             "hashes": [
-                "sha256:87ae7f2398b8a0ae5638ddecf9987f081b756e0e9fc071aeebdca525671fc4dc",
-                "sha256:b31c92f545517dcc452f284bc9c044050862fbe6d93d2b3de4a215a6b384bf0d"
+                "sha256:21d735aab248253531bb0f1e1e6d068f0ee23533e18ae8a6171ff892b98297cf",
+                "sha256:cfc35498ee64017be059ceffab0a25bedf7548ab76f2bea691c5565896e7128d"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==2.5.0"
+            "version": "==2.5.1"
         },
         "autopep8": {
             "hashes": [
@@ -412,11 +420,11 @@
         },
         "pylint": {
             "hashes": [
-                "sha256:2e0c6749d809985e4f181c336a8f89b2b797340d8049160bf95f35a3f0ecf6fc",
-                "sha256:3ea3926700db399765db1faf53860f11e4e981a090646e9eacd01ca78e020579"
+                "sha256:0e21d3b80b96740909d77206d741aa3ce0b06b41be375d92e1f3244a274c1f8a",
+                "sha256:d09b0b07ba06bcdff463958f53f23df25e740ecd81895f7d2699ec04bbd8dc3b"
             ],
             "index": "pypi",
-            "version": "==2.7.0"
+            "version": "==2.7.2"
         },
         "toml": {
             "hashes": [

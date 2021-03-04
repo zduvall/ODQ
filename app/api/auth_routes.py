@@ -83,9 +83,9 @@ def sign_up():
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@auth_routes.route("/signup", methods=["PUT"])
-@login_required
-def update():
+@auth_routes.route("/signup/<userId>", methods=["PUT"])
+# @login_required
+def update(userId):
     """
     Updates User Info
     """

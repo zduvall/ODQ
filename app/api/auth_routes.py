@@ -1,7 +1,10 @@
 from flask import Blueprint, jsonify, session, request
+from flask_login import login_required
+
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
+from app.forms import UpdateUserForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint("auth", __name__)
@@ -75,6 +78,35 @@ def sign_up():
         db.session.commit()
         login_user(user)
         return user.to_dict()
+
+    print("-------errors-------", form.errors)
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@auth_routes.route("/signup", methods=["PUT"])
+@login_required
+def update():
+    """
+    Updates User Info
+    """
+    form = UpdateUserForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    user_to_update = User.query.get(userId)
+
+    user_to_update.firstName = form.data["firstName"],
+    user_to_update.lastName = form.data["lastName"],
+    user_to_update.email = form.data["email"],
+    # user_to_update.password = form.data["password"],
+    user_to_update.lic = form.data["lic"],
+    user_to_update.pxName = form.data["pxName"],
+    user_to_update.phone = form.data["phone"],
+
+    if form.validate_on_submit():
+        db.session.add(user_to_update)
+        db.session.commit()
+        # login_user(user)
+        return user_to_update.to_dict()
 
     print("-------errors-------", form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401

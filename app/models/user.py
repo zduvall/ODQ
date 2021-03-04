@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy_utils.types.phone_number import PhoneNumberType
 
 
 class User(db.Model, UserMixin):

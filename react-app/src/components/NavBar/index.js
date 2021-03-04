@@ -106,7 +106,7 @@ const NavBar = () => {
 
   return (
     <header className='site-header'>
-      <div className='site-header__title' onClick={() => history.push('/')}>
+      <div className='site-header__title primary-title' onClick={() => history.push('/')}>
         <img className='logo' src={dotLogo} alt='DOT logo' />
         Diagnostic & Outcome Testing
       </div>

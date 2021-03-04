@@ -39,16 +39,16 @@
 
 .nav__item {
   margin-left: 2rem;
-  color: var(--secondary-color)
+  color: var(--tertiary-color)
 }
 
 .nav__item:hover {
-  color: var(--primary-color)
+  color: var(--primary-color-dark)
 }
 
 .nav__item-active {
   font-weight: 800;
-  color: var(--primary-color)
+  color: var(--primary-color-dark)
 }
 
 /* dropdown styling */
@@ -87,9 +87,4 @@
   left: 0;
   bottom: 0;
   background-color: transparent;
-}
-
-.ev-after-nav {
-  padding: 0 10%;
-  margin-top: 2rem;
 }

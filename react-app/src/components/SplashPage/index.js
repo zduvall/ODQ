@@ -13,7 +13,7 @@ export default function SplashPage() {
     <div className='splash'>
       <div>
         <h1 className='primary-title'>Diagnostic and Outcome Testing</h1>
-        <h2 className='secondary-title'>
+        <h2 className='tertiary-title'>
           for therapists and other helping professionals
         </h2>
         <img
@@ -25,7 +25,7 @@ export default function SplashPage() {
       </div>
       <SplashPageSection
         image={takingNotes}
-        alt={'Therapist taking notes'}
+        alt={'Creating digital tests'}
         desc={'Choose from our database of online tests for clients and therapists'}
         backwards={false}
       />
@@ -39,7 +39,7 @@ export default function SplashPage() {
       />
       <SplashPageSection
         image={vistualData}
-        alt={'Visualing test results on graph'}
+        alt={'Visualing results on graph'}
         desc={'View results and progress in convenient summaries and graphs'}
         backwards={false}
       />

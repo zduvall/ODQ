@@ -25,13 +25,13 @@ function App() {
   }, [dispatch]);
 
   if (!loaded) {
-    return 'loading...';
+    return <h1 className='loading'>Loading DOT...</h1>;
   }
 
   return (
     <BrowserRouter>
       <NavBar />
-      <div className="ev-after-nav">
+      <div className='ev-after-nav'>
         <Switch>
           <Route path='/login' exact={true}>
             <LoginForm />

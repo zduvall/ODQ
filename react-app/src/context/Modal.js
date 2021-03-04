@@ -1,20 +1,13 @@
-import {
-  createContext,
-  useContext,
-  useRef,
-  useState,
-  useEffect,
-} from 'react';
+import { createContext, useContext, useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
-const ModalAndAuthContext = createContext();
-export const useModalAndAuthContext = () => useContext(ModalAndAuthContext);
+const ModalContext = createContext();
+export const useModalContext = () => useContext(ModalContext);
 
 export function ModalProvider({ children }) {
   const modalRef = useRef();
   const [value, setValue] = useState();
-  const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     setValue(modalRef.current);
@@ -22,18 +15,16 @@ export function ModalProvider({ children }) {
 
   return (
     <>
-      <ModalAndAuthContext.Provider
-        value={{ modalNode: value, authenticated, setAuthenticated }}
-      >
+      <ModalContext.Provider value={{ modalNode: value }}>
         {children}
-      </ModalAndAuthContext.Provider>
+      </ModalContext.Provider>
       <div ref={modalRef} />
     </>
   );
 }
 
 export function Modal({ onClose, children }) {
-  const { modalNode } = useModalAndAuthContext();
+  const { modalNode } = useModalContext();
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(

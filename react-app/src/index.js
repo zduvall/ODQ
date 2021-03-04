@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { ModalProvider } from './context/ModalAndAuth';
+import { ModalProvider } from './context/Modal';
 import configureStore from './store/index'
 import * as sessionActions from './store/session'
 import { Provider } from 'react-redux'

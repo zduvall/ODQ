@@ -40,3 +40,30 @@ a {
 .button-primary:hover {
   background-color: rgb(167, 167, 167);
 }
+
+.loading {
+  color: rgb(122, 122, 122);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}

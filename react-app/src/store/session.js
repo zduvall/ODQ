@@ -32,7 +32,7 @@ export const loginUser = (email, password) => async (dispatch) => {
   if (res.ok && !user.errors) {
     dispatch(setUser(user));
   }
-  return user
+  return user;
 };
 
 export const signUpUser = (firstName, lastName, email, password) => async (
@@ -48,6 +48,37 @@ export const signUpUser = (firstName, lastName, email, password) => async (
       lastName,
       email,
       password,
+    }),
+  });
+
+  const user = await res.json();
+
+  if (res.ok && !user.errors) {
+    dispatch(setUser(user));
+  }
+  return user;
+};
+
+export const updateUser = (
+  firstName,
+  lastName,
+  email,
+  lic,
+  pxName,
+  phone
+) => async (dispatch) => {
+  const res = await fetch('/api/auth/signup', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      email,
+      lic,
+      pxName,
+      phone,
     }),
   });
 

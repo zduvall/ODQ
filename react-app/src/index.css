@@ -39,6 +39,40 @@ a {
   outline: none;
 }
 
+/* for app.js */
+.btwn-nav-footer {
+  padding: 0 10%;
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.loading {
+  color: rgb(122, 122, 122);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}
+
 /* global classes */
 .button-primary {
   color: rgb(255, 255, 255);
@@ -81,36 +115,55 @@ a {
   text-align: center;
 }
 
-/* for app.js */
-.btwn-nav-footer {
-  padding: 0 10%;
-  margin-top: 2rem;
-  padding-bottom: 3rem;
+/* Form classes */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.loading {
-  color: rgb(122, 122, 122);
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32rem;
+}
+
+@media (max-width: 800px) {
+  .form {
+    width: 20rem;
+  }
+}
+
+.form__row {
   display: flex;
   justify-content: center;
-  align-items: center;
-  animation: pulse 2s infinite;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(0.9);
+@media (max-width: 800px) {
+  .form__row {
+    flex-wrap: wrap;
   }
+}
 
-  70% {
-    transform: scale(1.1);
-  }
+.form__input {
+  width: 100%;
+  margin: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: var(--tertiary-color) solid 1px;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+}
 
-  100% {
-    transform: scale(0.9);
-  }
+.form__input:focus {
+  background-color: var(--tertiary-color-light);
+  border: var(--primary-color) solid 2px;
+}
+
+.button {
+  margin-top: 0.75rem;
+  width: 50%;
 }

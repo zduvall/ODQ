@@ -84,7 +84,7 @@ def sign_up():
 
 
 @auth_routes.route("/signup/<userId>", methods=["PUT"])
-# @login_required
+@login_required
 def update(userId):
     """
     Updates User Info

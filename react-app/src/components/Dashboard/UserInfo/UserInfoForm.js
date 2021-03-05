@@ -32,11 +32,6 @@ export default function UserInfo({ setShowUpdateUser }) {
       ]);
     }
 
-    if (errors.length) {
-      setErrors([]); // this is because the set errors is too slow, so I have to reset it before clicking submit again
-      return;
-    }
-
     const user = await dispatch(
       updateUser(sessionUser.id, firstName, lastName, email, lic, pxName, phone)
     );
@@ -48,22 +43,22 @@ export default function UserInfo({ setShowUpdateUser }) {
   };
 
   return (
-    <div>
-      <form className='auth-form' onSubmit={onSubmit}>
-        Form!!
+    <div className='form-container'>
+      <form className='form' onSubmit={onSubmit}>
+        Update Info
         <div className='errors-container'>
           {errors.map((error) => (
             <div key={error}>{error}</div>
           ))}
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='firstName'
             type='text'
             placeholder='First Name'
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            className='auth-form__input'
+            className='form__input'
           ></input>
           <input
             name='lastName'
@@ -71,7 +66,7 @@ export default function UserInfo({ setShowUpdateUser }) {
             placeholder='Last Name'
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-            className='auth-form__input'
+            className='form__input'
           ></input>
           <input
             name='lic'
@@ -79,42 +74,42 @@ export default function UserInfo({ setShowUpdateUser }) {
             placeholder='License'
             onChange={(e) => setLic(e.target.value)}
             value={lic}
-            className='auth-form__input'
+            className='form__input'
           ></input>
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='email'
             type='text'
             placeholder='Email'
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            className='auth-form__input'
+            className='form__input'
           ></input>
           {/* </div>
-        <div className='auth-form__row'> */}
+        <div className='form__row'> */}
           <PhoneInput
             name='phone'
             // type='text'
             placeholder='Phone number'
             onChange={setPhone}
             value={phone}
-            className='auth-form__input'
+            className='form__input'
             defaultCountry='US'
           ></PhoneInput>
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='pxName'
             type='text'
             placeholder='PxName'
             onChange={(e) => setPxName(e.target.value)}
             value={pxName}
-            className='auth-form__input'
+            className='form__input'
           ></input>
         </div>
-        <div className='auth-form__row'>
-          <button className='button-primary auth-button' type='submit'>
+        <div className='form__row'>
+          <button className='button-primary button' type='submit'>
             Update Info
           </button>
         </div>

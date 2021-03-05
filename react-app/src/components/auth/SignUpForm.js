@@ -11,7 +11,7 @@ import './Auth.css';
 function SignUpFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const history = useHistory()
+  const history = useHistory();
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
@@ -61,22 +61,22 @@ function SignUpFormPage() {
     );
     if (!user.errors) {
       console.log('logged in');
-      history.push('/')
+      history.push('/');
     } else {
       setErrors(user.errors);
     }
   };
 
   return (
-    <div className='auth-form-container'>
+    <div className='form-container'>
       <h1 className='primary-title'>Sign Up</h1>
-      <form className='auth-form' onSubmit={onSignUp}>
+      <form className='form' onSubmit={onSignUp}>
         <div className='errors-container'>
           {errors.map((error) => (
             <div key={error}>{error}</div>
           ))}
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='firstName'
             type='text'
@@ -84,7 +84,7 @@ function SignUpFormPage() {
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
             // required
-            className='auth-form__input'
+            className='form__input'
           ></input>
           <input
             name='lastName'
@@ -93,10 +93,10 @@ function SignUpFormPage() {
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
             // required
-            className='auth-form__input'
+            className='form__input'
           ></input>
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='email'
             type='text'
@@ -104,10 +104,10 @@ function SignUpFormPage() {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             // required
-            className='auth-form__input'
+            className='form__input'
           ></input>
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='password'
             type='password'
@@ -115,7 +115,7 @@ function SignUpFormPage() {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             // required
-            className='auth-form__input'
+            className='form__input'
           ></input>
           <input
             name='confirm_password'
@@ -124,11 +124,11 @@ function SignUpFormPage() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
             // required
-            className='auth-form__input'
+            className='form__input'
           ></input>
         </div>
-        <div className='auth-form__row'>
-          <button className='button-primary auth-button' type='submit'>
+        <div className='form__row'>
+          <button className='button-primary button' type='submit'>
             Sign Up
           </button>
         </div>

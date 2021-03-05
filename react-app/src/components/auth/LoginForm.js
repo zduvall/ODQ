@@ -43,15 +43,15 @@ function LoginForm() {
   };
 
   return (
-    <div className='auth-form-container'>
+    <div className='form-container'>
       <h1 className='primary-title'>Log In</h1>
-      <form className='auth-form' onSubmit={onLogin}>
+      <form className='form' onSubmit={onLogin}>
         <div className='errors-container'>
           {errors.map((error) => (
             <div>{error}</div>
           ))}
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='email'
             type='text'
@@ -59,10 +59,10 @@ function LoginForm() {
             value={email}
             // required
             onChange={(e) => setEmail(e.target.value)}
-            className='auth-form__input'
+            className='form__input'
           />
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='password'
             type='password'
@@ -70,11 +70,11 @@ function LoginForm() {
             value={password}
             // required
             onChange={(e) => setPassword(e.target.value)}
-            className='auth-form__input'
+            className='form__input'
           />
         </div>
-        <div className='auth-form__row'>
-          <button className='button-primary auth-button' type='submit'>
+        <div className='form__row'>
+          <button className='button-primary button' type='submit'>
             Login
           </button>
         </div>

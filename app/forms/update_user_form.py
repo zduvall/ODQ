@@ -21,31 +21,31 @@ class UpdateUserForm(FlaskForm):
     firstName = StringField(
         "firstName",
         validators=[
-            DataRequired(message="Please provide a first name."),
+            DataRequired(message="Please provide a first name"),
             Length(
-                min=1, max=50, message="First name must be between 1 and 50 characters."
+                min=1, max=50, message="First name must be between 1 and 50 characters"
             ),
         ],
     )
     lastName = StringField(
         "lastName",
         validators=[
-            DataRequired(message="Please provide a last name."),
+            DataRequired(message="Please provide a last name"),
             Length(
-                min=1, max=50, message="Last name must be between 1 and 50 characters."
+                min=1, max=50, message="Last name must be between 1 and 50 characters"
             ),
         ],
     )
     email = StringField(
         "email",
         validators=[
-            DataRequired(message="Please ensure email is valid."),
-            Email(message="Please ensure email is valid."),
+            DataRequired(message="Please ensure email is valid"),
+            Email(message="Please ensure email is valid"),
         ],
     )
     # password = StringField(
     #     "password"
-    #     # "password", validators=[DataRequired(message="Please ensure passowrd fields match.")]
+    #     # "password", validators=[DataRequired(message="Please ensure passowrd fields match")]
     # )
     lic = StringField(
         "lic",
@@ -53,7 +53,7 @@ class UpdateUserForm(FlaskForm):
             Length(
                 # min=1,
                 max=20,
-                message="Please limit license to 20 characters.",
+                message="Please limit license to 20 characters",
             )
         ],
     )
@@ -63,7 +63,7 @@ class UpdateUserForm(FlaskForm):
             Length(
                 # min=1,
                 max=100,
-                message="Please limit practice name to 100 characters.",
+                message="Please limit practice name to 100 characters",
             )
         ],
     )

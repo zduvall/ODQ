@@ -9,14 +9,15 @@ body {
 
 /* custom css variables */
 :root {
-  --primary-color: rgb(32, 156, 238);
-  --primary-color-light: rgb(88, 181, 242);
-  --primary-color-dark: rgb(14, 119, 189);
-  /* --primary-color: rgb(77, 111, 245); */
+  --primary-color: rgb(14, 119, 189);
+  --primary-color-light: rgb(32, 156, 238);
+  /* --primary-color-light: rgb(88, 181, 242); */
   --secondary-color: rgb(238, 114, 32);
-  /* --secondary-color: rgb(245, 211, 77); */
   --tertiary-color: rgb(138, 138, 138);
   --tertiary-color-light: rgb(245, 245, 245);
+
+  --primary-border: var(--primary-color) solid 2px;
+  --pimrary-radius: 0.5rem;
 }
 
 /* reset css */
@@ -74,24 +75,42 @@ a {
 }
 
 /* global classes */
-.button-primary {
+.primary-button {
   color: rgb(255, 255, 255);
   font-weight: 700;
   background-color: var(--primary-color);
-  border-radius: 0.5rem;
+  border-radius: var(--pimrary-radius);
   padding: 1rem;
   font-size: 1.1rem;
 }
 
-.button-primary:hover {
+.primary-button:hover {
   background-color: var(--primary-color-light);
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
 }
 
-/* .button-primary:focus {
+/* .primary-button:focus {
   background-color: var(--primary-color);
   box-shadow: none;
 } */
+
+.secondary-button {
+  color: var(--primary-color);
+  font-weight: 700;
+  border: var(--primary-border);
+  background-color: rgb(255, 255, 255);
+  border-radius: var(--pimrary-radius);
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.secondary-button:hover {
+  color: var(--primary-color-light);
+  border-color: var(--primary-color-light);
+  /* background-color: var(--tertiary-color-light); */
+
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
 
 .errors-container {
   display: flex;
@@ -101,7 +120,7 @@ a {
 }
 
 .primary-title {
-  color: var(--primary-color-dark);
+  color: var(--primary-color);
   text-align: center;
 }
 
@@ -152,7 +171,7 @@ a {
   width: 100%;
   margin: 0.75rem;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: var(--pimrary-radius);
   border: var(--tertiary-color) solid 1px;
   font-size: 1.1rem;
   box-sizing: border-box;

@@ -5,6 +5,6 @@ export default function UserInfo({ showUpdateUser, setShowUpdateUser }) {
   if (showUpdateUser) {
     return <UserInfoForm setShowUpdateUser={setShowUpdateUser} />;
   } else {
-    return <UserInfoData />;
+    return <UserInfoData setShowUpdateUser={setShowUpdateUser} />;
   }
 }

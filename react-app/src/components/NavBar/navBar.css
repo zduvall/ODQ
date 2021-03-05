@@ -18,7 +18,7 @@
   align-items: center;
   font-size: 1.2rem;
   font-weight: 1000;
-  color: var(--primary-color-dark);
+  color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -54,12 +54,12 @@
 }
 
 .nav__item:hover {
-  color: var(--primary-color-dark);
+  color: var(--primary-color);
 }
 
 .nav__item-active {
   font-weight: 800;
-  color: var(--primary-color-dark);
+  color: var(--primary-color);
 }
 
 /* dropdown styling */
@@ -80,7 +80,7 @@
 }
 
 .nav__dropdown__button-closed {
-  color: var(--primary-color-dark);
+  color: var(--primary-color);
 }
 
 .nav__dropdown__button-open {

@@ -9,7 +9,7 @@ import PhoneInput from 'react-phone-number-input';
 import { updateUser } from '../../../store/session';
 
 // import css
-import '../Dashboard.css'
+import '../Dashboard.css';
 
 export default function UserInfo({ setShowUpdateUser }) {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ export default function UserInfo({ setShowUpdateUser }) {
     );
     if (!user.errors) {
       console.log('updated');
-      setShowUpdateUser(false)
+      setShowUpdateUser(false);
     } else {
       setErrors(user.errors);
     }
@@ -83,6 +83,16 @@ export default function UserInfo({ setShowUpdateUser }) {
         </div>
         <div className='form__row'>
           <input
+            name='pxName'
+            type='text'
+            placeholder='PxName'
+            onChange={(e) => setPxName(e.target.value)}
+            value={pxName}
+            className='form__input'
+          ></input>
+        </div>
+        <div className='form__row'>
+          <input
             name='email'
             type='text'
             placeholder='Email'
@@ -103,18 +113,14 @@ export default function UserInfo({ setShowUpdateUser }) {
           ></PhoneInput>
         </div>
         <div className='form__row'>
-          <input
-            name='pxName'
-            type='text'
-            placeholder='PxName'
-            onChange={(e) => setPxName(e.target.value)}
-            value={pxName}
-            className='form__input'
-          ></input>
-        </div>
-        <div className='form__row'>
-          <button className='button-primary button' type='submit'>
+          <button className='primary-button form__button' type='submit'>
             Update Info
+          </button>
+          <button
+            className='secondary-button form__button'
+            onClick={() => setShowUpdateUser(false)}
+          >
+            Cancel
           </button>
         </div>
       </form>

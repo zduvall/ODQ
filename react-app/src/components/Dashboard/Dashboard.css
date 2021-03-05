@@ -1,9 +1,33 @@
-/* .PhoneInput {
-  padding: 0 !important;
-} */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user_info {
+  display: flex;
+  align-items: center;
+  border: var(--primary-border);
+  border-radius: var(--pimrary-radius);
+  padding: 1rem;
+  width: 50%;
+  font-size: 1.1rem;
+}
+
+.user_info__data, .user_info__button {
+  width: 50%;
+}
+.user_info__button {
+  display: flex;
+  justify-content: center;
+}
 
 .PhoneInputInput {
   border-color: transparent;
   font-size: 1.1rem;
   width: 50%;
+}
+
+.PhoneInputInput:focus {
+  background-color: var(--tertiary-color-light);
 }

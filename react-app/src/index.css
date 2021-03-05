@@ -223,4 +223,5 @@ a {
   flex-direction: column;
   align-items: center;
   color: rgb(255, 83, 83);
+  text-shadow: none;
 }

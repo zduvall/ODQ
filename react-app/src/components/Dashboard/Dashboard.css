@@ -77,3 +77,10 @@
 .PhoneInputInput:focus {
   background-color: var(--tertiary-color-light);
 }
+
+.add-data-prompt {
+  text-shadow: none;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--tertiary-color);
+}

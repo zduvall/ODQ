@@ -12,6 +12,8 @@ export default function UserInfoData({ setShowUpdateUser }) {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
+  const { firstName, lastName, lic, pxName, phone, email } = sessionUser;
+
   const handleDelete = () => {
     const confirm = window.confirm(
       'Are you sure you want to deactivate your account? All associated data will be deleted.'
@@ -26,14 +28,17 @@ export default function UserInfoData({ setShowUpdateUser }) {
     <div className='user_info'>
       <div className='user_info__data'>
         <p>
-          {sessionUser.firstName} {sessionUser.lastName}
-          {sessionUser.lic ? `, ${sessionUser.lic}` : ''}
+          {firstName} {lastName}
+          {lic ? `, ${lic}` : ''}
         </p>
-        <p>
-          {sessionUser.pxName || '(update to add practice name and other info)'}
+        <p>{pxName}</p>
+        <p>{phone}</p>
+        <p>{email}</p>
+        <p className='add-data-prompt'>
+          {!pxName || !phone || !email
+            ? '(Incomplete profile, please update)'
+            : ''}
         </p>
-        <p>{sessionUser.phone}</p>
-        <p>{sessionUser.email}</p>
       </div>
       <div className='user_info__buttons'>
         <button

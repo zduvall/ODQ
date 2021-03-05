@@ -52,8 +52,8 @@ class UpdateUserForm(FlaskForm):
         validators=[
             Length(
                 # min=1,
-                max=10,
-                message="License abbreviation must be less than 10 characters.",
+                max=20,
+                message="Please limit license to 20 characters.",
             )
         ],
     )
@@ -63,7 +63,7 @@ class UpdateUserForm(FlaskForm):
             Length(
                 # min=1,
                 max=100,
-                message="Practice name must be between less than 100 characters.",
+                message="Please limit practice name to 100 characters.",
             )
         ],
     )

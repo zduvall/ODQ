@@ -26,10 +26,12 @@ export default function UserInfoData({ setShowUpdateUser }) {
     <div className='user_info'>
       <div className='user_info__data'>
         <p>
-          {sessionUser.firstName} {sessionUser.lastName}{' '}
+          {sessionUser.firstName} {sessionUser.lastName}
           {sessionUser.lic ? `, ${sessionUser.lic}` : ''}
         </p>
-        <p>{sessionUser.pxName}</p>
+        <p>
+          {sessionUser.pxName || '(update to add practice name and other info)'}
+        </p>
         <p>{sessionUser.phone}</p>
         <p>{sessionUser.email}</p>
       </div>

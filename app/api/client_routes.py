@@ -18,7 +18,7 @@ def getClients(userId):
 
 
 @client_routes.route("/", methods=["POST"])
-# @login_required
+@login_required
 def createClient():
     """
     Creates a new client
@@ -38,6 +38,48 @@ def createClient():
 
     print("-------errors-------", form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@client_routes.route("/<int:userId>", methods=["PUT"])
+# @login_required
+def updateClient(client):
+    """
+    Update a client
+    """
+    form = ClientForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    client_to_update = Client.query.get(clientId)
+
+    if form.validate_on_submit():
+        client = Client(
+            userId=form.data["userId"],
+            birthYear=form.data["birthYear"],
+            code=form.data["code"],
+            curClient=form.data["curClient"],
+        )
+        db.session.add(client)
+        db.session.commit()
+        return client.to_dict()
+
+    print("-------errors-------", form.errors)
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@client_routes.route("/<int:clientId>", methods=["DELETE"])
+@login_required
+def deleteClient(clientId):
+    """
+    Deletes a client
+    """
+    client_to_delete = Client.query.get(clientId)
+    if client_to_delete:
+        db.session.delete(client_to_delete)
+        db.session.commit()
+        return "deleted"
+    else:
+        print(f"-------- no client found with id {clientId} -------- ")
+        return {"errors": "No client found with given id"}
 
 
 # @client_routes.route('/<int:id>')

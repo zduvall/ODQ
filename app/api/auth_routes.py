@@ -92,17 +92,17 @@ def update(userId):
     form = UpdateUserForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    user_to_update = User.query.get(userId)
-
-    user_to_update.firstName = (form.data["firstName"],)
-    user_to_update.lastName = (form.data["lastName"],)
-    user_to_update.email = (form.data["email"],)
-    # user_to_update.password = form.data["password"],
-    user_to_update.lic = (form.data["lic"],)
-    user_to_update.pxName = (form.data["pxName"],)
-    user_to_update.phone = (form.data["phone"],)
-
     if form.validate_on_submit():
+        user_to_update = User.query.get(userId)
+
+        user_to_update.firstName = (form.data["firstName"],)
+        user_to_update.lastName = (form.data["lastName"],)
+        user_to_update.email = (form.data["email"],)
+        # user_to_update.password = form.data["password"],
+        user_to_update.lic = (form.data["lic"],)
+        user_to_update.pxName = (form.data["pxName"],)
+        user_to_update.phone = (form.data["phone"],)
+
         db.session.add(user_to_update)
         db.session.commit()
         return user_to_update.to_dict()

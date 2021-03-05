@@ -120,6 +120,7 @@ export default function UserInfo({ setShowUpdateUser }) {
           </button>
           <button
             className='secondary-button form__button user_info__button'
+            type='button'
             onClick={() => setShowUpdateUser(false)}
           >
             Cancel

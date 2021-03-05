@@ -6,6 +6,8 @@
 
 .splash__primary-image {
   width: 100%;
+  padding-top: 1rem;
+  transform: scale(0.9);
 }
 
 .splash__secondary-content {
@@ -25,6 +27,11 @@
   width: 50%;
 }
 
+.splash__secondary-text {
+  padding: 2rem;
+}
+
+
 @media (max-width: 800px) {
   .splash__secondary-content {
     flex-direction: column-reverse;
@@ -32,8 +39,7 @@
   .splash__secondary-image {
     width: 100%;
   }
-}
-
-.splash__secondary-text {
-  padding: 2rem;
+  .splash__primary-image {
+    transform: scale(1);
+  }
 }

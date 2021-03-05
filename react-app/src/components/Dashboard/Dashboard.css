@@ -28,6 +28,9 @@
   .user_info {
     flex-direction: column;
   }
+  .user_info__data {
+    text-align: center;
+  }
   .user_info__form {
     flex-direction: column !important;
   }

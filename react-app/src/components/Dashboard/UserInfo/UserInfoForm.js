@@ -12,9 +12,37 @@ export default function UserInfo({ setShowUpdateUser }) {
   const [pxName, setPxName] = useState(sessionUser.pxName);
   const [phone, setPhone] = useState(sessionUser.phone);
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setErrors([]);
+
+    const validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w+/;
+    if (!validEmail.test(email)) {
+      setErrors((prevErrors) => [
+        ...prevErrors,
+        'Please ensure email is valid.',
+      ]);
+    }
+
+    if (errors.length) {
+      setErrors([]); // this is because the set errors is too slow, so I have to reset it before clicking submit again
+      return;
+    }
+
+    const user = await dispatch(
+      signUpUser(firstName, lastName, email, )
+    );
+    if (!user.errors) {
+      console.log('logged in');
+      history.push('/');
+    } else {
+      setErrors(user.errors);
+    }
+  };
+
   return (
     <div>
-      <form className='auth-form'>
+      <form className='auth-form' onSubmit={onSubmit}>
         Form!!
         <div className='errors-container'>
           {errors.map((error) => (

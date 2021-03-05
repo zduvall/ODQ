@@ -7,6 +7,8 @@ from app.models import User
 
 
 def validate_phone(form, phone):
+    if not phone.data:
+        return
     try:
         p = phonenumbers.parse(phone.data)
         if not phonenumbers.is_valid_number(p):
@@ -19,7 +21,7 @@ class UpdateUserForm(FlaskForm):
     firstName = StringField(
         "firstName",
         validators=[
-            # DataRequired(message="First Name cannot be empty."),
+            DataRequired(message="First Name cannot be empty."),
             Length(
                 min=1, max=50, message="First name must be between 1 and 50 characters."
             ),
@@ -28,7 +30,7 @@ class UpdateUserForm(FlaskForm):
     lastName = StringField(
         "lastName",
         validators=[
-            # DataRequired(message="Last Name cannot be empty."),
+            DataRequired(message="Last Name cannot be empty."),
             Length(
                 min=1, max=50, message="Last name must be between 1 and 50 characters."
             ),
@@ -37,7 +39,7 @@ class UpdateUserForm(FlaskForm):
     email = StringField(
         "email",
         validators=[
-            # DataRequired(message="Please ensure email is valid."),
+            DataRequired(message="Please ensure email is valid."),
             Email(message="Please ensure email is valid."),
             # user_exists,
         ],
@@ -50,9 +52,9 @@ class UpdateUserForm(FlaskForm):
         "lic",
         validators=[
             Length(
-                min=1,
+                # min=1,
                 max=10,
-                message="License abbreviation must be between 1 and 10 characters.",
+                message="License abbreviation must be less than 10 characters.",
             )
         ],
     )
@@ -60,9 +62,9 @@ class UpdateUserForm(FlaskForm):
         "pxName",
         validators=[
             Length(
-                min=1,
+                # min=1,
                 max=100,
-                message="Practice name must be between 1 and 100 characters.",
+                message="Practice name must be between less than 100 characters.",
             )
         ],
     )

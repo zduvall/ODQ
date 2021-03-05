@@ -36,7 +36,7 @@ function SignUpFormPage() {
       }
     });
 
-    const validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w+/;
+    const validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w?/;
     if (!validEmail.test(email)) {
       setErrors((prevErrors) => [
         ...prevErrors,

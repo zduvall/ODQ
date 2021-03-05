@@ -22,7 +22,7 @@ export default function Dashboard() {
         <h1 className='primary-title'>Clients</h1>
       </div>
       <div>
-        <h1 className='primary-title'>User Information</h1>
+        <h1 className='primary-title'>Favorite Tests</h1>
       </div>
     </div>
   );

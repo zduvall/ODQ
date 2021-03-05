@@ -1,26 +1,34 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+// import telephone input packages
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+
+// import thunks
+import { updateUser } from '../../../store/session';
 
 export default function UserInfo({ setShowUpdateUser }) {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState(sessionUser.firstName);
   const [lastName, setLastName] = useState(sessionUser.lastName);
   const [email, setEmail] = useState(sessionUser.email);
-  const [lic, setLic] = useState(sessionUser.lic);
-  const [pxName, setPxName] = useState(sessionUser.pxName);
-  const [phone, setPhone] = useState(sessionUser.phone);
+  const [lic, setLic] = useState(sessionUser.lic || '');
+  const [pxName, setPxName] = useState(sessionUser.pxName || '');
+  const [phone, setPhone] = useState(sessionUser.phone || '');
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
-    const validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w+/;
+    const validEmail = /^[A-Za-z0-9_.]+@\w+.\w+.\w?/;
     if (!validEmail.test(email)) {
       setErrors((prevErrors) => [
         ...prevErrors,
-        'Please ensure email is valid.',
+        'Please ensure email is valid!!!!.',
       ]);
     }
 
@@ -30,11 +38,10 @@ export default function UserInfo({ setShowUpdateUser }) {
     }
 
     const user = await dispatch(
-      signUpUser(firstName, lastName, email, )
+      updateUser(sessionUser.id, firstName, lastName, email, lic, pxName, phone)
     );
     if (!user.errors) {
-      console.log('logged in');
-      history.push('/');
+      console.log('updated');
     } else {
       setErrors(user.errors);
     }
@@ -84,14 +91,17 @@ export default function UserInfo({ setShowUpdateUser }) {
             value={email}
             className='auth-form__input'
           ></input>
-          <input
+          {/* </div>
+        <div className='auth-form__row'> */}
+          <PhoneInput
             name='phone'
-            type='text'
-            placeholder='Phone'
-            onChange={(e) => setPhone(e.target.value)}
+            // type='text'
+            placeholder='Phone number'
+            onChange={setPhone}
             value={phone}
             className='auth-form__input'
-          ></input>
+            defaultCountry='US'
+          ></PhoneInput>
         </div>
         <div className='auth-form__row'>
           <input

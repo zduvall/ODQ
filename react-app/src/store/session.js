@@ -60,6 +60,7 @@ export const signUpUser = (firstName, lastName, email, password) => async (
 };
 
 export const updateUser = (
+  id,
   firstName,
   lastName,
   email,
@@ -67,7 +68,7 @@ export const updateUser = (
   pxName,
   phone
 ) => async (dispatch) => {
-  const res = await fetch('/api/auth/signup', {
+  const res = await fetch(`/api/auth/signup/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -106,7 +107,7 @@ export const authenticateUser = () => async (dispatch) => {
     },
   });
   const user = await res.json();
-  console.log(user);
+
   if (!user.errors) {
     dispatch(setUser(user));
   } else {

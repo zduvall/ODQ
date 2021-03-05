@@ -2,7 +2,7 @@ from datetime import date
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, BooleanField
-from wtforms.validators import DataRequired, ValidationError, Length
+from wtforms.validators import DataRequired, ValidationError, Length, NumberRange
 
 
 def validate_year(form, birthYear):

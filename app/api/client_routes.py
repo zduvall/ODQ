@@ -1,13 +1,15 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Client
 
-client_routes = Blueprint('clients', __name__)
+from app.models import db, Client
+from app.forms import ClientForm
+
+client_routes = Blueprint("clients", __name__)
 
 
-@client_routes.route('/<int:userId>')
+@client_routes.route("/<int:userId>")
 @login_required
-def clients(userId):
+def getClients(userId):
     """
     Gets all clients of the identified user
     """
@@ -16,12 +18,12 @@ def clients(userId):
 
 
 @client_routes.route("/", methods=["POST"])
-@login_required
-def clients(userId):
+# @login_required
+def createClient():
     """
     Creates a new client
     """
-    form = SignUpForm()
+    form = ClientForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         client = Client(
@@ -32,7 +34,6 @@ def clients(userId):
         )
         db.session.add(client)
         db.session.commit()
-        login_client(client)
         return client.to_dict()
 
     print("-------errors-------", form.errors)

@@ -9,14 +9,14 @@ import './Auth.css';
 function LoginForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const history = useHistory()
+  const history = useHistory();
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   if (sessionUser) {
-    return <Redirect to='/' />;
+    return <Redirect to='/dashboard' />;
   }
 
   const onLogin = async (e) => {
@@ -36,7 +36,7 @@ function LoginForm() {
 
     if (!user.errors) {
       console.log('logged in');
-      history.push('/dashboard')
+      history.push('/dashboard');
     } else {
       setErrors(user.errors);
     }

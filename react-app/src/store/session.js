@@ -112,7 +112,7 @@ export const authenticateUser = () => async (dispatch) => {
 };
 
 // Reducer
-const sessionReducer = (state = { user: null }, action) => {
+const sessionReducer = (state = { user: 'do not load' }, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOGIN_USER:

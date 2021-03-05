@@ -11,7 +11,9 @@
   border: var(--primary-border);
   border-radius: var(--pimrary-radius);
   padding: 1rem;
-  width: 45rem;
+  box-sizing: border-box;
+  width: 47rem;
+  max-width: 100%;
   font-size: 1.1rem;
   min-height: 12rem;
 }
@@ -20,6 +22,18 @@
   flex-direction: row !important;
   width: 100% !important;
   justify-content: space-around;
+}
+
+@media (max-width: 800px) {
+  .user_info {
+    flex-direction: column;
+  }
+  .user_info__form {
+    flex-direction: column !important;
+  }
+  .user_info__button {
+    width: 100% !important;
+  }
 }
 
 .user_info__input {
@@ -31,19 +45,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 42% !important;
 }
 
 .user_info__data,
 .user_info__button {
-  width: 50%;
   font-size: 1.1rem;
-  font-weight: 1000;
+  font-weight: bolder;
 }
+.user_info__data {
+  padding: 0 1rem;
+  width: 70%;
+}
+
 .user_info__button {
   display: flex;
   justify-content: center;
   margin: 0.5rem !important;
   padding: 0.5rem !important;
+  width: 90%;
+  max-width: 11rem;
   /* box-sizing: border-box; */
 }
 

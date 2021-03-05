@@ -92,14 +92,6 @@ export default function UserInfo({ setShowUpdateUser }) {
             ></input>
           </div>
           <div className='form__row'>
-            <input
-              name='email'
-              type='text'
-              placeholder='Email'
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              className='form__input user_info__input'
-            ></input>
             <PhoneInput
               name='phone'
               // type='text'
@@ -109,10 +101,21 @@ export default function UserInfo({ setShowUpdateUser }) {
               className='form__input user_info__input'
               defaultCountry='US'
             ></PhoneInput>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              className='form__input user_info__input'
+            ></input>
           </div>
         </div>
         <div className='form__row user_info__buttons'>
-          <button className='primary-button form__button user_info__button' type='submit'>
+          <button
+            className='primary-button form__button user_info__button'
+            type='submit'
+          >
             Update
           </button>
           <button

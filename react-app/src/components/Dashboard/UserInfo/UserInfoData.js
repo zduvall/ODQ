@@ -15,8 +15,8 @@ export default function UserInfoData({ setShowUpdateUser }) {
         <p>{sessionUser.email}</p>
       </div>
       <div className='user_info__button'>
-        <button className='primary-button' onClick={() => setShowUpdateUser((prev) => !prev)}>
-          Update Info
+        <button className='primary-button user_info__button' onClick={() => setShowUpdateUser((prev) => !prev)}>
+          Update
         </button>
       </div>
     </div>

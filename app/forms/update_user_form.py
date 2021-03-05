@@ -14,14 +14,14 @@ def validate_phone(form, phone):
         if not phonenumbers.is_valid_number(p):
             raise ValueError()
     except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
-        raise ValidationError("Invalid phone number")
+        raise ValidationError("Please ensure phone number is valid")
 
 
 class UpdateUserForm(FlaskForm):
     firstName = StringField(
         "firstName",
         validators=[
-            DataRequired(message="First Name cannot be empty."),
+            DataRequired(message="Please provide a first name."),
             Length(
                 min=1, max=50, message="First name must be between 1 and 50 characters."
             ),
@@ -30,7 +30,7 @@ class UpdateUserForm(FlaskForm):
     lastName = StringField(
         "lastName",
         validators=[
-            DataRequired(message="Last Name cannot be empty."),
+            DataRequired(message="Please provide a last name."),
             Length(
                 min=1, max=50, message="Last name must be between 1 and 50 characters."
             ),

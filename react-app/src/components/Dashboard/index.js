@@ -10,6 +10,9 @@ export default function Dashboard() {
     <div>
       <div>
         <h1 className='primary-title'>User Information</h1>
+        <button onClick={() => setShowUpdateUser((prev) => !prev)}>
+          Toggle
+        </button>
         <UserInfo
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}

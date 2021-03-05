@@ -14,7 +14,73 @@ export default function UserInfo({ setShowUpdateUser }) {
 
   return (
     <div>
-      <form>Form!!</form>
+      <form className='auth-form'>
+        Form!!
+        <div className='errors-container'>
+          {errors.map((error) => (
+            <div key={error}>{error}</div>
+          ))}
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='firstName'
+            type='text'
+            placeholder='First Name'
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+            className='auth-form__input'
+          ></input>
+          <input
+            name='lastName'
+            type='text'
+            placeholder='Last Name'
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+            className='auth-form__input'
+          ></input>
+          <input
+            name='lic'
+            type='text'
+            placeholder='License'
+            onChange={(e) => setLic(e.target.value)}
+            value={lic}
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            className='auth-form__input'
+          ></input>
+          <input
+            name='phone'
+            type='text'
+            placeholder='Phone'
+            onChange={(e) => setPhone(e.target.value)}
+            value={phone}
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <input
+            name='pxName'
+            type='text'
+            placeholder='PxName'
+            onChange={(e) => setPxName(e.target.value)}
+            value={pxName}
+            className='auth-form__input'
+          ></input>
+        </div>
+        <div className='auth-form__row'>
+          <button className='button-primary auth-button' type='submit'>
+            Update Info
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

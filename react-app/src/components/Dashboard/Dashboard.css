@@ -15,7 +15,7 @@
   width: 47rem;
   max-width: 100%;
   font-size: 1.1rem;
-  min-height: 12rem;
+  min-height: 14rem;
 }
 
 .user_info__form {
@@ -54,11 +54,12 @@
 .user_info__data,
 .user_info__button {
   font-size: 1.1rem;
-  font-weight: bolder;
+  font-weight: 1000;
 }
 .user_info__data {
   padding: 0 1rem;
   width: 70%;
+  text-shadow: .5px 0 #000
 }
 
 .user_info__button {

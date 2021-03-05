@@ -41,7 +41,6 @@ class UpdateUserForm(FlaskForm):
         validators=[
             DataRequired(message="Please ensure email is valid."),
             Email(message="Please ensure email is valid."),
-            # user_exists,
         ],
     )
     # password = StringField(

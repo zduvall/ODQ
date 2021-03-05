@@ -83,7 +83,7 @@ def sign_up():
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@auth_routes.route("/signup/<userId>", methods=["PUT"])
+@auth_routes.route("/signup/<int:userId>", methods=["PUT"])
 @login_required
 def update(userId):
     """
@@ -94,13 +94,13 @@ def update(userId):
 
     user_to_update = User.query.get(userId)
 
-    user_to_update.firstName = form.data["firstName"],
-    user_to_update.lastName = form.data["lastName"],
-    user_to_update.email = form.data["email"],
+    user_to_update.firstName = (form.data["firstName"],)
+    user_to_update.lastName = (form.data["lastName"],)
+    user_to_update.email = (form.data["email"],)
     # user_to_update.password = form.data["password"],
-    user_to_update.lic = form.data["lic"],
-    user_to_update.pxName = form.data["pxName"],
-    user_to_update.phone = form.data["phone"],
+    user_to_update.lic = (form.data["lic"],)
+    user_to_update.pxName = (form.data["pxName"],)
+    user_to_update.phone = (form.data["phone"],)
 
     if form.validate_on_submit():
         db.session.add(user_to_update)
@@ -119,7 +119,7 @@ def unauthorized():
     return {"errors": ["Unauthorized"]}, 401
 
 
-@auth_routes.route("/<userId>", methods=["DELETE"])
+@auth_routes.route("/<int:userId>", methods=["DELETE"])
 @login_required
 def delete_user(userId):
     """

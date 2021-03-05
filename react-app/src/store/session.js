@@ -1,5 +1,5 @@
 // Action Types
-const LOGIN_USER = 'session/loginUser';
+const LOGIN_USER = 'session/LOGIN_USER';
 const REMOVE_USER = 'session/removeUser';
 
 // Action Creators
@@ -112,6 +112,15 @@ export const authenticateUser = () => async (dispatch) => {
     dispatch(setUser(user));
   } else {
     dispatch(setUser(null));
+  }
+};
+
+export const deleteUser = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/auth/${userId}`, {
+    method: 'DELETE',
+  });
+  if (res.ok) {
+    dispatch(removeUser());
   }
 };
 

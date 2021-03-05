@@ -61,7 +61,7 @@ function SignUpFormPage() {
     );
     if (!user.errors) {
       console.log('logged in');
-      history.push('/');
+      history.push('/dashboard');
     } else {
       setErrors(user.errors);
     }

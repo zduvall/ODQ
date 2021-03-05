@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: var(--primary-border);
+  border: var(--tertiary-border);
   border-radius: var(--pimrary-radius);
   padding: 1rem;
   box-sizing: border-box;
@@ -34,9 +34,6 @@
   .user_info__form {
     flex-direction: column !important;
   }
-  .user_info__button {
-    width: 100% !important;
-  }
 }
 
 .user_info__input {
@@ -48,7 +45,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 42% !important;
+  width: 50% !important;
 }
 
 .user_info__data,
@@ -58,8 +55,8 @@
 }
 .user_info__data {
   padding: 0 1rem;
-  width: 70%;
-  text-shadow: .5px 0 #000
+  width: 100%;
+  text-shadow: 0.5px 0 #000;
 }
 
 .user_info__button {
@@ -67,9 +64,8 @@
   justify-content: center;
   margin: 0.5rem !important;
   padding: 0.5rem !important;
-  width: 90%;
+  width: 100% !important;
   max-width: 11rem;
-  /* box-sizing: border-box; */
 }
 
 .PhoneInputInput {

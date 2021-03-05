@@ -117,3 +117,19 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {"errors": ["Unauthorized"]}, 401
+
+
+@auth_routes.route("/<userId>", methods=["DELETE"])
+@login_required
+def delete_user(userId):
+    """
+    Delete user
+    """
+    user_to_delete = User.query.get(userId)
+    if user_to_delete:
+        db.session.delete(user_to_delete)
+        db.session.commit()
+        return "Deleted"
+    else:
+        print(f"-------- no user found with id {userId} -------- ")
+        return {"errors": "No user found with given id"}

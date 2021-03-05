@@ -49,7 +49,7 @@ export default function UserInfo({ setShowUpdateUser }) {
   return (
     <div className='form-container user_info'>
       <form className='form user_info__form' onSubmit={onSubmit}>
-        <div>
+        <div className='user_info__data'>
           <div className='errors-container'>
             {errors.map((error) => (
               <div key={error}>{error}</div>

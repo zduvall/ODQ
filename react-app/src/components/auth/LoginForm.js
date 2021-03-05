@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-// import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { loginUser } from '../../store/session';
 
 // import css
@@ -10,14 +9,14 @@ import './Auth.css';
 function LoginForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  // const history = useHistory()
+  const history = useHistory();
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   if (sessionUser) {
-    return <Redirect to='/' />;
+    return <Redirect to='/dashboard' />;
   }
 
   const onLogin = async (e) => {
@@ -37,22 +36,22 @@ function LoginForm() {
 
     if (!user.errors) {
       console.log('logged in');
-      // history.push('/')
+      history.push('/dashboard');
     } else {
       setErrors(user.errors);
     }
   };
 
   return (
-    <div className='auth-form-container'>
+    <div className='form-container'>
       <h1 className='primary-title'>Log In</h1>
-      <form className='auth-form' onSubmit={onLogin}>
-        <div>
+      <form className='form' onSubmit={onLogin}>
+        <div className='errors-container'>
           {errors.map((error) => (
             <div>{error}</div>
           ))}
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='email'
             type='text'
@@ -60,10 +59,10 @@ function LoginForm() {
             value={email}
             // required
             onChange={(e) => setEmail(e.target.value)}
-            className='auth-form__input'
+            className='form__input'
           />
         </div>
-        <div className='auth-form__row'>
+        <div className='form__row'>
           <input
             name='password'
             type='password'
@@ -71,11 +70,11 @@ function LoginForm() {
             value={password}
             // required
             onChange={(e) => setPassword(e.target.value)}
-            className='auth-form__input'
+            className='form__input'
           />
         </div>
-        <div className='auth-form__row'>
-          <button className='button-primary auth-button' type='submit'>
+        <div className='form__row'>
+          <button className='primary-button form__button' type='submit'>
             Login
           </button>
         </div>

@@ -11,8 +11,14 @@
   height: 3rem;
 }
 
+@media (max-width: 800px) {
+  .footer__text {
+    font-size: 0.8rem;
+  }
+}
+
 .footer__icon {
-  color: var(--primary-color-dark);
+  color: var(--primary-color);
   padding: 0 0.25rem;
   cursor: pointer;
 }

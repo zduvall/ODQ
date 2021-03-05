@@ -1,5 +1,5 @@
 // Action Types
-const LOGIN_USER = 'session/loginUser';
+const LOGIN_USER = 'session/LOGIN_USER';
 const REMOVE_USER = 'session/removeUser';
 
 // Action Creators
@@ -32,7 +32,7 @@ export const loginUser = (email, password) => async (dispatch) => {
   if (res.ok && !user.errors) {
     dispatch(setUser(user));
   }
-  return user
+  return user;
 };
 
 export const signUpUser = (firstName, lastName, email, password) => async (
@@ -48,6 +48,38 @@ export const signUpUser = (firstName, lastName, email, password) => async (
       lastName,
       email,
       password,
+    }),
+  });
+
+  const user = await res.json();
+
+  if (res.ok && !user.errors) {
+    dispatch(setUser(user));
+  }
+  return user;
+};
+
+export const updateUser = (
+  id,
+  firstName,
+  lastName,
+  email,
+  lic,
+  pxName,
+  phone
+) => async (dispatch) => {
+  const res = await fetch(`/api/auth/signup/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      email,
+      lic,
+      pxName,
+      phone,
     }),
   });
 
@@ -75,13 +107,25 @@ export const authenticateUser = () => async (dispatch) => {
     },
   });
   const user = await res.json();
+
   if (!user.errors) {
     dispatch(setUser(user));
+  } else {
+    dispatch(setUser(null));
+  }
+};
+
+export const deleteUser = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/auth/${userId}`, {
+    method: 'DELETE',
+  });
+  if (res.ok) {
+    dispatch(removeUser());
   }
 };
 
 // Reducer
-const sessionReducer = (state = { user: null }, action) => {
+const sessionReducer = (state = { user: 'do not load' }, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOGIN_USER:

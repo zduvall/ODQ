@@ -21,14 +21,17 @@
   flex-direction: row-reverse;
 }
 
+.splash__secondary-image {
+  width: 50%;
+}
+
 @media (max-width: 800px) {
   .splash__secondary-content {
     flex-direction: column-reverse;
   }
-}
-
-.splash__secondary-image {
-  width: 50%;
+  .splash__secondary-image {
+    width: 100%;
+  }
 }
 
 .splash__secondary-text {

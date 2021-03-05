@@ -9,14 +9,21 @@ body {
 
 /* custom css variables */
 :root {
-  --primary-color: rgb(32, 156, 238);
-  --primary-color-light: rgb(88, 181, 242);
-  --primary-color-dark: rgb(14, 119, 189);
-  /* --primary-color: rgb(77, 111, 245); */
+  /* ----- colors ----- */
+  --primary-color: rgb(14, 119, 189);
+  --primary-color-light: rgb(32, 156, 238);
   --secondary-color: rgb(238, 114, 32);
-  /* --secondary-color: rgb(245, 211, 77); */
+  --secondary-color-light: rgb(242, 150, 88);
   --tertiary-color: rgb(138, 138, 138);
   --tertiary-color-light: rgb(245, 245, 245);
+  --delete-color:rgb(173, 0, 0);
+  --delete-color-light: rgb(255, 61, 61);
+  
+  /* ----- borders ----- */
+  --primary-border: var(--primary-color) solid 1px;
+  --pimrary-radius: 0.5rem;
+  --tertiary-border: var(--tertiary-color) solid 1px;
+  --delete-border: var(--delete-color) solid 1px
 }
 
 /* reset css */
@@ -37,48 +44,6 @@ a {
 
 *:focus {
   outline: none;
-}
-
-/* global classes */
-.button-primary {
-  color: rgb(255, 255, 255);
-  font-weight: 700;
-  background-color: var(--primary-color);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  font-size: 1.1rem;
-}
-
-.button-primary:hover {
-  background-color: var(--primary-color-light);
-  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-}
-
-/* .button-primary:focus {
-  background-color: var(--primary-color);
-  box-shadow: none;
-} */
-
-.errors-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: rgb(255, 83, 83);
-}
-
-.primary-title {
-  color: var(--primary-color-dark);
-  text-align: center;
-}
-
-.secondary-title {
-  color: var(--secondary-color);
-  text-align: center;
-}
-
-.tertiary-title {
-  color: var(--tertiary-color);
-  text-align: center;
 }
 
 /* for app.js */
@@ -113,4 +78,149 @@ a {
   100% {
     transform: scale(0.9);
   }
+}
+
+/* GLOBAL CLASSES */
+/* --------------- buttons --------------- */
+.primary-button {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  background-color: var(--primary-color);
+  border: var(--primary-color) 2px solid;
+  border-radius: var(--pimrary-radius);
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.primary-button:hover {
+  background-color: var(--primary-color-light);
+  border-color: var(--primary-color-light);
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
+
+.primary-button:focus {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: none;
+}
+
+.secondary-button {
+  color: var(--primary-color);
+  font-weight: 700;
+  border: var(--primary-border);
+  background-color: rgb(255, 255, 255);
+  border-radius: var(--pimrary-radius);
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.secondary-button:hover {
+  color: var(--primary-color-light);
+  border-color: var(--primary-color-light);
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
+
+.secondary-button:focus {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: none;
+}
+
+.delete-button {
+  color: var(--delete-color);
+  font-weight: 700;
+  border: var(--delete-border);
+  background-color: rgb(255, 255, 255);
+  border-radius: var(--pimrary-radius);
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.delete-button:hover {
+  color: var(--delete-color-light);
+  border-color: var(--delete-color-light);
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
+
+.delete-button:focus {
+  color: var(--delete-color);
+  border-color: var(--delete-color);
+  box-shadow: none;
+}
+
+
+/* --------------- titles --------------- */
+.primary-title {
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.secondary-title {
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.tertiary-title {
+  color: var(--tertiary-color);
+  text-align: center;
+}
+
+/* --------------- Forms --------------- */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32rem;
+}
+
+@media (max-width: 800px) {
+  .form {
+    width: 20rem;
+  }
+}
+
+.form__row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .form__row {
+    flex-wrap: wrap;
+  }
+}
+
+.form__input {
+  width: 100%;
+  margin: 0.75rem;
+  padding: 1rem;
+  border-radius: var(--pimrary-radius);
+  border: var(--tertiary-border);
+  font-size: 1.1rem;
+  box-sizing: border-box;
+}
+
+.form__input:focus, .form__input:focus-within {
+  background-color: var(--tertiary-color-light);
+  border: var(--primary-color) solid 1px;
+}
+
+.form__button {
+  margin-top: 0.75rem;
+  width: 50%;
+}
+
+.errors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(255, 83, 83);
 }

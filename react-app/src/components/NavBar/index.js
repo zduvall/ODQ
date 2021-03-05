@@ -35,21 +35,29 @@ const NavBar = () => {
 
   let navLinks;
 
+  let navItemClass = width > 800 ? 'nav__item' : 'nav__dropdown__item';
+
   let loggedInLinks = (
     <>
-      <NavLink
-        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
+      {/* <NavLink
+        className={navItemClass}
         to='/users'
         exact
         activeClassName='nav__item-active'
         onClick={handleClick}
       >
         Users
-      </NavLink>
-      <button
-        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
-        onClick={handleLogout}
+      </NavLink> */}
+      <NavLink
+        className={navItemClass}
+        to='/dashboard'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
       >
+        Dashboard
+      </NavLink>
+      <button className={navItemClass} onClick={handleLogout}>
         Logout
       </button>
     </>
@@ -58,7 +66,7 @@ const NavBar = () => {
   let loggedOutLinks = (
     <>
       <NavLink
-        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
+        className={navItemClass}
         to='/signup'
         exact
         activeClassName='nav__item-active'
@@ -67,7 +75,7 @@ const NavBar = () => {
         Sign Up
       </NavLink>
       <NavLink
-        className={width > 800 ? 'nav__item' : 'nav__dropdown__item'}
+        className={navItemClass}
         to='/login'
         exact
         activeClassName='nav__item-active'
@@ -106,7 +114,10 @@ const NavBar = () => {
 
   return (
     <header className='site-header'>
-      <div className='site-header__title primary-title' onClick={() => history.push('/')}>
+      <div
+        className='site-header__title primary-title'
+        onClick={() => history.push('/')}
+      >
         <img className='logo' src={dotLogo} alt='DOT logo' />
         Diagnostic & Outcome Testing
       </div>

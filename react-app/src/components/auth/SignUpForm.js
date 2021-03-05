@@ -52,7 +52,7 @@ function SignUpFormPage() {
     }
 
     if (errors.length) {
-      setErrors([]); // this is because the set errors is too slow, so I have to reset it before clicking submit again
+      // setErrors([]); // this is because the set errors is too slow, so I have to reset it before clicking submit again
       return;
     }
 

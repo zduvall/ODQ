@@ -8,6 +8,9 @@ import PhoneInput from 'react-phone-number-input';
 // import thunks
 import { updateUser } from '../../../store/session';
 
+// import css
+import '../Dashboard.css'
+
 export default function UserInfo({ setShowUpdateUser }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -37,6 +40,7 @@ export default function UserInfo({ setShowUpdateUser }) {
     );
     if (!user.errors) {
       console.log('updated');
+      setShowUpdateUser(false)
     } else {
       setErrors(user.errors);
     }

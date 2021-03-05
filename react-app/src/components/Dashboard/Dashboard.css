@@ -1,0 +1,9 @@
+/* .PhoneInput {
+  padding: 0 !important;
+} */
+
+.PhoneInputInput {
+  border-color: transparent;
+  font-size: 1.1rem;
+  width: 50%;
+}

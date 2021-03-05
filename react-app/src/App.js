@@ -18,7 +18,7 @@ import { authenticateUser } from './store/session';
 
 function App() {
   const dispatch = useDispatch();
-  const session = useSelector((state) => state.session);
+  const sessionUser = useSelector((state) => state.session.user);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -26,9 +26,7 @@ function App() {
     setLoaded(true);
   }, [dispatch]);
 
-  console.log('session in app.js:', session);
-
-  if (!loaded || session.user === 'do not load') {
+  if (!loaded || sessionUser === 'do not load') {
     return <h1 className='loading'>Loading DOT...</h1>;
   }
 
@@ -63,7 +61,7 @@ function App() {
           <ProtectedRoute
             path='/dashboard'
             exact={true}
-            authenticated={!!session.user}
+            authenticated={!!sessionUser}
           >
             <Dashboard />
           </ProtectedRoute>

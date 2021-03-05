@@ -7,19 +7,44 @@
 .user_info {
   display: flex;
   align-items: center;
+  justify-content: center;
   border: var(--primary-border);
   border-radius: var(--pimrary-radius);
   padding: 1rem;
-  width: 50%;
+  width: 45rem;
   font-size: 1.1rem;
+  min-height: 12rem;
 }
 
-.user_info__data, .user_info__button {
+.user_info__form {
+  flex-direction: row !important;
+  width: 100% !important;
+  justify-content: space-around;
+}
+
+.user_info__input {
+  margin: 0.5rem !important;
+  padding: 0.5rem !important;
+}
+
+.user_info__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user_info__data,
+.user_info__button {
   width: 50%;
+  font-size: 1.1rem;
+  font-weight: 1000;
 }
 .user_info__button {
   display: flex;
   justify-content: center;
+  margin: 0.5rem !important;
+  padding: 0.5rem !important;
+  /* box-sizing: border-box; */
 }
 
 .PhoneInputInput {

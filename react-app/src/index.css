@@ -79,6 +79,7 @@ a {
   color: rgb(255, 255, 255);
   font-weight: 700;
   background-color: var(--primary-color);
+  border: var(--primary-color) 2px solid;
   border-radius: var(--pimrary-radius);
   padding: 1rem;
   font-size: 1.1rem;
@@ -86,6 +87,7 @@ a {
 
 .primary-button:hover {
   background-color: var(--primary-color-light);
+  border-color: var(--primary-color-light);
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
 }
 
@@ -177,7 +179,7 @@ a {
   box-sizing: border-box;
 }
 
-.form__input:focus {
+.form__input:focus, .form__input:focus-within {
   background-color: var(--tertiary-color-light);
   border: var(--primary-color) solid 2px;
 }

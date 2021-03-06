@@ -31,28 +31,14 @@ export default function Clients() {
       if (birthYear === 'no') {
         return;
       } else if (birthYear) {
-        setFxClients(
-          clients.slice().sort((a, b) => a.birthYear - b.birthYear)
-        );
+        setFxClients(clients.slice().sort((a, b) => a.birthYear - b.birthYear));
       } else {
-        setFxClients(
-          clients.slice().sort((a, b) => b.birthYear - a.birthYear)
-        );
+        setFxClients(clients.slice().sort((a, b) => b.birthYear - a.birthYear));
       }
     }
-    function toggleStatus() {
-      if (status === 1) {
-        setFxClients(clients.slice());
-      } else if (status === 2) {
-        setFxClients(clients.slice().filter((client) => client.curClient));
-      } else {
-        setFxClients(clients.slice().filter((client) => !client.curClient));
-      }
-    }
-    toggleStatus(); // right now, either only this one works when on bottom, or only the other two
     sortClientCode();
     sortBirthYear();
-  }, [clientCode, birthYear, status, clients]);
+  }, [clientCode, birthYear, clients]);
 
   return (
     <>
@@ -74,10 +60,10 @@ export default function Clients() {
             />
             {filterClients.length
               ? filterClients.map((client) => (
-                  <ClientRow key={client.id} client={client} />
+                  <ClientRow key={client.id} status={status} client={client} />
                 ))
               : clients.map((client) => (
-                  <ClientRow key={client.id} client={client} />
+                  <ClientRow key={client.id} status={status} client={client} />
                 ))}
           </div>
         </div>

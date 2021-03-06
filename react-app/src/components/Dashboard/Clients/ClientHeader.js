@@ -13,15 +13,12 @@ export default function ClientHeader({
 
   function sort(attr) {
     const sortBy = attr === 'birthYear' ? sortYear : sortCode;
-    if (sortBy) {
-      setFxClients(
-        clients.slice().sort((a, b) => (a[attr] < b[attr] ? 1 : -1))
-      );
-    } else {
-      setFxClients(
-        clients.slice().sort((a, b) => (b[attr] < a[attr] ? 1 : -1))
-      );
-    }
+    setFxClients(
+      clients.slice().sort((a, b) => {
+        if (sortBy) return a[attr] < b[attr] ? 1 : -1;
+        return a[attr] < b[attr] ? -1 : 1;
+      })
+    );
   }
 
   function handleSortCodeClick() {

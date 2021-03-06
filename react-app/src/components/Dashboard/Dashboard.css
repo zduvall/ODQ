@@ -88,8 +88,25 @@
 }
 
 /* clients */
-.client-container {
+.client-buttons-container {
+  min-height: auto;
+  margin-bottom: 1rem;
+}
+
+.clients-container {
   flex-direction: column;
+  min-height: auto;
+}
+
+.client-header {
+  background: var(--tertiary-color-light);
+  width: 100%;
+  text-align: center;
+  padding: 0.25rem;
+  font-weight: 1000;
+  border-radius: var(--pimrary-radius);
+  margin: 0 !important;
+  cursor: pointer;
 }
 
 .client-row {
@@ -97,4 +114,8 @@
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
   justify-items: center;
+}
+
+.client-row > p {
+  margin: 0.5rem 0 0 0;
 }

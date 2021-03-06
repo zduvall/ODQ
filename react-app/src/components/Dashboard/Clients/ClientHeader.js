@@ -23,11 +23,13 @@ export default function ClientHeader({
 
   function handleSortCodeClick() {
     setSortCode((prev) => !prev);
+    setSortYear(false);
     sort('code');
   }
 
   function handleSortYearClick() {
     setSortYear((prev) => !prev);
+    setSortCode(false);
     sort('birthYear');
   }
 

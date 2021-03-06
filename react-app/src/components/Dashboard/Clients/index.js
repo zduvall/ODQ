@@ -1,15 +1,16 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useState } from 'react';
+// import { useSelector } from 'react-redux';
 
 // imoprt components
-import ClientHeader from './ClientHeader';
-import ClientRow from './ClientRow';
+// import ClientHeader from './ClientHeader';
+// import ClientRow from './ClientRow';
+import AllClients from './AllClients.js';
 
 export default function Clients() {
-  let clients = useSelector((state) => Object.values(state.clients));
+  // let clients = useSelector((state) => Object.values(state.clients));
 
-  const [filterClients, setFxClients] = useState(clients);
-  const [status, setStatus] = useState(1);
+  // const [filterClients, setFxClients] = useState(clients);
+  // const [status, setStatus] = useState(1);
 
   return (
     <>
@@ -18,9 +19,9 @@ export default function Clients() {
         <button>Test</button>
         <button>Test</button>
       </div> */}
-      {!!clients && (
-        <div className='dashboard__sub-section clients-container'>
-          <div className='client-row'>
+      {/* {!!clients && ( */}
+      <div className='dashboard__sub-section clients-container'>
+        {/* <div className='client-row'>
             <ClientHeader
               status={status}
               setStatus={setStatus}
@@ -33,9 +34,10 @@ export default function Clients() {
               : clients.map((client) => (
                   <ClientRow key={client.id} status={status} client={client} />
                 ))}
-          </div>
-        </div>
-      )}
+          </div> */}
+        <AllClients />
+      </div>
+      {/* )} */}
     </>
   );
 }

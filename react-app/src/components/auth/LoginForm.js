@@ -23,17 +23,20 @@ function LoginForm() {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setErrors([]);
 
-    const allFields = [email, password];
+    // const allFields = [email, password];
 
-    allFields.forEach((field) => {
-      if (field === '') {
-        setErrors(['Please fill out all fields.']);
-      }
-    });
+    // allFields.forEach((field) => {
+    //   if (field === '') {
+    //     setErrors(['Please fill out all fields.']);
+    //   }
+    // });
 
-    if (errors.length) return;
-
+    // if (errors.length) {
+    //   // setErrors([]); // this is because the set errors is too slow, so I have to reset it before clicking submit again
+    //   return;
+    // }
     const user = await dispatch(loginUser(email, password));
 
     if (!user.errors) {
@@ -59,7 +62,7 @@ function LoginForm() {
             type='text'
             placeholder='Email'
             value={email}
-            // required
+            required
             onChange={(e) => setEmail(e.target.value)}
             className='form__input'
           />
@@ -70,7 +73,7 @@ function LoginForm() {
             type='password'
             placeholder='Password'
             value={password}
-            // required
+            required
             onChange={(e) => setPassword(e.target.value)}
             className='form__input'
           />

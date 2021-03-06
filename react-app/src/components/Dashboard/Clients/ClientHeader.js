@@ -1,21 +1,40 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 export default function ClientHeader({
-  setClientCode,
-  clientCode,
-  setBirthYear,
-  birthYear,
   setStatus,
-  status,
+  // status,
+  setFxClients,
 }) {
+  let clients = useSelector((state) => Object.values(state.clients));
+
+  const [clientCode, setClientCode] = useState(false);
+  const [birthYear, setBirthYear] = useState(false);
+
+  function sortClientCode() {
+    if (clientCode) {
+      setFxClients(clients.slice().sort((a, b) => (a.code < b.code ? -1 : 1)));
+    } else {
+      setFxClients(clients.slice().sort((a, b) => (b.code < a.code ? -1 : 1)));
+    }
+  }
+
+  function sortBirthYear() {
+    if (birthYear) {
+      setFxClients(clients.slice().sort((a, b) => a.birthYear - b.birthYear));
+    } else {
+      setFxClients(clients.slice().sort((a, b) => b.birthYear - a.birthYear));
+    }
+  }
+
   function handleClientCodeClick() {
-    setBirthYear('no');
-    if (clientCode === 'no') setClientCode(true);
-    else setClientCode((prev) => !prev);
+    setClientCode((prev) => !prev);
+    sortClientCode();
   }
 
   function handleBirthYearClick() {
-    setClientCode('no');
-    if (birthYear === 'no') setBirthYear(true);
-    else setBirthYear((prev) => !prev);
+    setBirthYear((prev) => !prev);
+    sortBirthYear();
   }
 
   function handleStatusClick() {

@@ -20,7 +20,7 @@ export default function Dashboard() {
   return (
     <div>
       <div className='dashboard'>
-        <h1 className='primary-title'>User Information</h1>
+        <h1 className='primary-title'>Dashboard</h1>
         <UserInfo
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}

@@ -12,14 +12,14 @@ client_routes = Blueprint("clients", __name__)
 @login_required
 def getClients(userId):
     """
-    Gets all clients of the identified user
+    Gets all clients of the identified (logged-in) user
     """
     clients = Client.query.filter_by(userId=userId).all()
     return {"clients": [client.to_dict() for client in clients]}
 
 
 @client_routes.route("/", methods=["POST"])
-# @login_required
+@login_required
 def createClient():
     """
     Creates a new client
@@ -42,7 +42,7 @@ def createClient():
 
 
 @client_routes.route("/<int:clientId>", methods=["PUT"])
-# @login_required
+@login_required
 def updateClient(clientId):
     """
     Update a client
@@ -80,10 +80,3 @@ def deleteClient(clientId):
     else:
         print(f"-------- no client found with id {clientId} -------- ")
         return {"errors": "No client found with given id"}
-
-
-# @client_routes.route('/<int:id>')
-# @login_required
-# def client(id):
-#     client = Client.query.get(id)
-#     return client.to_dict()

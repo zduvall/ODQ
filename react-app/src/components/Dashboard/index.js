@@ -1,10 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+// import thunks
+import { getClients } from '../../store/clients';
 
 // import components
 import UserInfo from './UserInfo/index.js';
 
 export default function Dashboard() {
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const [showUpdateUser, setShowUpdateUser] = useState(false);
+
+  useEffect(() => {
+    dispatch(getClients(sessionUser.id));
+  }, [dispatch, sessionUser]);
 
   return (
     <div>

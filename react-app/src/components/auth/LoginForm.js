@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
+
+// import thunks
 import { loginUser } from '../../store/session';
 
 // import css

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 
-// redux store
+// import thunks
 import { signUpUser } from '../../store/session';
 
 // import css

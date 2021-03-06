@@ -17,7 +17,7 @@ body {
   --tertiary-color: rgb(138, 138, 138);
   --tertiary-color-light: rgb(245, 245, 245);
   --delete-color:rgb(173, 0, 0);
-  --delete-color-light: rgb(255, 61, 61);
+  --delete-color-light: rgb(230, 0, 0);
   
   /* ----- borders ----- */
   --primary-border: var(--primary-color) solid 1px;
@@ -223,4 +223,5 @@ a {
   flex-direction: column;
   align-items: center;
   color: rgb(255, 83, 83);
+  text-shadow: none;
 }

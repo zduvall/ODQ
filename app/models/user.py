@@ -11,9 +11,11 @@ class User(db.Model, UserMixin):
     lastName = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    lic = db.Column(db.String(10))
+    lic = db.Column(db.String(20))
     pxName = db.Column(db.String(100))
     phone = db.Column(db.String(20))
+
+    clients = db.relationship("Client", back_populates="pro")
 
     @property
     def password(self):

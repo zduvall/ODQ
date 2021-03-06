@@ -1,19 +1,28 @@
 from werkzeug.security import generate_password_hash
 from app.models import db, User
 
+
 # Adds a demo user
 def seed_users():
 
-    users = [
-        User(
-            firstName="Demo",
-            lastName="User",
-            email="demo@aa.io",
-            password="password",
-        ),
-    ]
+    demo = User(
+        firstName="Demo",
+        lastName="Pro",
+        email="demo@dot.com",
+        password="2345",
+        lic="LCSW",
+        pxName="Pro Counseling Demo LLC",
+        phone="801-240-1234",
+    )
+    demo2 = User(
+        firstName="Demo2",
+        lastName="Pro",
+        email="demo2@dot.com",
+        password="2345",
+    )
 
-    db.session.bulk_save_objects(users)
+    db.session.add(demo)
+    db.session.add(demo2)
     db.session.commit()
 
 

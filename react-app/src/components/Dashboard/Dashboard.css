@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.user_info {
+.dashboard__sub-section {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,6 +17,8 @@
   font-size: 1.1rem;
   min-height: 14rem;
 }
+
+/* user info */
 
 .user_info__form {
   flex-direction: row !important;
@@ -76,4 +78,44 @@
 
 .PhoneInputInput:focus {
   background-color: var(--tertiary-color-light);
+}
+
+.add-data-prompt {
+  text-shadow: none;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--tertiary-color);
+}
+
+/* clients */
+.client-buttons-container {
+  min-height: auto;
+  margin-bottom: 1rem;
+}
+
+.clients-container {
+  flex-direction: column;
+  min-height: auto;
+}
+
+.client-header {
+  background: var(--tertiary-color-light);
+  width: 100%;
+  text-align: center;
+  padding: 0.25rem;
+  font-weight: 1000;
+  border-radius: var(--pimrary-radius);
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+.client-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  justify-items: center;
+}
+
+.client-row > p {
+  margin: 0.5rem 0 0 0;
 }

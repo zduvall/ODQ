@@ -8,33 +8,30 @@ export default function ClientHeader({
 }) {
   let clients = useSelector((state) => Object.values(state.clients));
 
-  const [clientCode, setClientCode] = useState(false);
-  const [birthYear, setBirthYear] = useState(false);
+  const [sortCode, setSortCode] = useState(false);
+  const [sortYear, setSortYear] = useState(false);
 
-  function sortClientCode() {
-    if (clientCode) {
-      setFxClients(clients.slice().sort((a, b) => (a.code < b.code ? -1 : 1)));
+  function sort(attr) {
+    const sortBy = attr === 'birthYear' ? sortYear : sortCode;
+    if (sortBy) {
+      setFxClients(
+        clients.slice().sort((a, b) => (a[attr] < b[attr] ? 1 : -1))
+      );
     } else {
-      setFxClients(clients.slice().sort((a, b) => (b.code < a.code ? -1 : 1)));
+      setFxClients(
+        clients.slice().sort((a, b) => (b[attr] < a[attr] ? 1 : -1))
+      );
     }
   }
 
-  function sortBirthYear() {
-    if (birthYear) {
-      setFxClients(clients.slice().sort((a, b) => a.birthYear - b.birthYear));
-    } else {
-      setFxClients(clients.slice().sort((a, b) => b.birthYear - a.birthYear));
-    }
+  function handleSortCodeClick() {
+    setSortCode((prev) => !prev);
+    sort('code');
   }
 
-  function handleClientCodeClick() {
-    setClientCode((prev) => !prev);
-    sortClientCode();
-  }
-
-  function handleBirthYearClick() {
-    setBirthYear((prev) => !prev);
-    sortBirthYear();
+  function handleSortYearClick() {
+    setSortYear((prev) => !prev);
+    sort('birthYear');
   }
 
   function handleStatusClick() {
@@ -46,14 +43,14 @@ export default function ClientHeader({
       <p
         title='sort by client code'
         className='client-header'
-        onClick={handleClientCodeClick}
+        onClick={handleSortCodeClick}
       >
         Client Code
       </p>
       <p
         title='sort by birth year'
         className='client-header'
-        onClick={handleBirthYearClick}
+        onClick={handleSortYearClick}
       >
         Birth Year
       </p>

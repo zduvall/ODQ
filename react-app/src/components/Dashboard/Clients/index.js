@@ -8,7 +8,7 @@ import ClientRow from './ClientRow';
 export default function Clients() {
   let clients = useSelector((state) => Object.values(state.clients));
 
-  const [curClients, setCurClients] = useState(clients);
+  const [filterClients, setFxClients] = useState(clients);
   const [clientCode, setClientCode] = useState('no');
   const [birthYear, setBirthYear] = useState('no');
   const [status, setStatus] = useState(1);
@@ -18,11 +18,11 @@ export default function Clients() {
       if (clientCode === 'no') {
         return;
       } else if (clientCode) {
-        setCurClients(
+        setFxClients(
           clients.slice().sort((a, b) => (a.code < b.code ? -1 : 1))
         );
       } else {
-        setCurClients(
+        setFxClients(
           clients.slice().sort((a, b) => (b.code < a.code ? -1 : 1))
         );
       }
@@ -31,27 +31,27 @@ export default function Clients() {
       if (birthYear === 'no') {
         return;
       } else if (birthYear) {
-        setCurClients(
+        setFxClients(
           clients.slice().sort((a, b) => a.birthYear - b.birthYear)
         );
       } else {
-        setCurClients(
+        setFxClients(
           clients.slice().sort((a, b) => b.birthYear - a.birthYear)
         );
       }
     }
     function toggleStatus() {
       if (status === 1) {
-        setCurClients(clients.slice());
+        setFxClients(clients.slice());
       } else if (status === 2) {
-        setCurClients(clients.slice().filter((client) => client.curClient));
+        setFxClients(clients.slice().filter((client) => client.curClient));
       } else {
-        setCurClients(clients.slice().filter((client) => !client.curClient));
+        setFxClients(clients.slice().filter((client) => !client.curClient));
       }
     }
+    toggleStatus(); // right now, either only this one works when on bottom, or only the other two
     sortClientCode();
     sortBirthYear();
-    toggleStatus();
   }, [clientCode, birthYear, status, clients]);
 
   return (
@@ -72,8 +72,8 @@ export default function Clients() {
               status={status}
               setStatus={setStatus}
             />
-            {curClients.length
-              ? curClients.map((client) => (
+            {filterClients.length
+              ? filterClients.map((client) => (
                   <ClientRow key={client.id} client={client} />
                 ))
               : clients.map((client) => (

@@ -6,6 +6,7 @@ import { getClients } from '../../store/clients';
 
 // import components
 import UserInfo from './UserInfo/index.js';
+import Clients from './Clients';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -24,9 +25,8 @@ export default function Dashboard() {
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
         />
-      </div>
-      <div>
         <h1 className='primary-title'>Clients</h1>
+        <Clients />
       </div>
       <div>
         <h1 className='primary-title'>Favorite Tests</h1>

@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.user_info {
+.dashboard__sub-section {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,6 +17,8 @@
   font-size: 1.1rem;
   min-height: 14rem;
 }
+
+/* user info */
 
 .user_info__form {
   flex-direction: row !important;
@@ -83,4 +85,16 @@
   font-weight: 500;
   font-size: 1rem;
   color: var(--tertiary-color);
+}
+
+/* clients */
+.client-container {
+  flex-direction: column;
+}
+
+.client-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  justify-items: center;
 }

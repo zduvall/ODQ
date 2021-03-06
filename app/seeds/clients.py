@@ -37,7 +37,7 @@ def seed_clients():
             userId=user1.id,
             birthYear="2002",
             code="MckA030621",
-            curClient=True,
+            curClient=False,
         ),
         Client(
             userId=user2.id,

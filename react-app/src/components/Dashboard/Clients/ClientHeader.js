@@ -4,7 +4,6 @@ export default function ClientHeader({
   setBirthYear,
   birthYear,
   setStatus,
-  status,
 }) {
   function handleClientCodeClick() {
     setBirthYear('no');
@@ -24,13 +23,25 @@ export default function ClientHeader({
 
   return (
     <>
-      <p className='client-header' onClick={handleClientCodeClick}>
+      <p
+        title='sort by client code'
+        className='client-header'
+        onClick={handleClientCodeClick}
+      >
         Client Code
       </p>
-      <p className='client-header' onClick={handleBirthYearClick}>
+      <p
+        title='sort by birth year'
+        className='client-header'
+        onClick={handleBirthYearClick}
+      >
         Birth Year
       </p>
-      <p className='client-header' onClick={handleStatusClick}>
+      <p
+        title='toggle clients shown by status'
+        className='client-header'
+        onClick={handleStatusClick}
+      >
         Status
       </p>
     </>

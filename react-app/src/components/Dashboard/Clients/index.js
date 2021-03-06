@@ -6,21 +6,53 @@ import ClientHeader from './ClientHeader';
 import ClientRow from './ClientRow';
 
 export default function Clients() {
-  const clients = useSelector((state) => Object.values(state.clients));
+  let clients = useSelector((state) => Object.values(state.clients));
 
+  const [curClients, setCurClients] = useState(clients);
   const [clientCode, setClientCode] = useState('no');
   const [birthYear, setBirthYear] = useState('no');
   const [status, setStatus] = useState(1);
 
-  function sortClientCode() {
-    if (clientCode) clients.sort((a, b) => (a.code < b.code ? -1 : 1));
-  }
-
   useEffect(() => {
-    console.log('client code:', clientCode);
-    console.log('birth year:', birthYear);
-    console.log('status:', status);
-  }, [clientCode, birthYear, status]);
+    function sortClientCode() {
+      if (clientCode === 'no') {
+        return;
+      } else if (clientCode) {
+        setCurClients(
+          clients.slice().sort((a, b) => (a.code < b.code ? -1 : 1))
+        );
+      } else {
+        setCurClients(
+          clients.slice().sort((a, b) => (b.code < a.code ? -1 : 1))
+        );
+      }
+    }
+    function sortBirthYear() {
+      if (birthYear === 'no') {
+        return;
+      } else if (birthYear) {
+        setCurClients(
+          clients.slice().sort((a, b) => a.birthYear - b.birthYear)
+        );
+      } else {
+        setCurClients(
+          clients.slice().sort((a, b) => b.birthYear - a.birthYear)
+        );
+      }
+    }
+    function toggleStatus() {
+      if (status === 1) {
+        return;
+      } else if (status === 2) {
+        setCurClients(clients.slice().filter((client) => client.status));
+      } else {
+        setCurClients(clients.slice().filter((client) => !client.status));
+      }
+    }
+    sortClientCode();
+    sortBirthYear();
+    toggleStatus();
+  }, [clientCode, birthYear, status, clients]);
 
   return (
     <>
@@ -37,12 +69,15 @@ export default function Clients() {
               setClientCode={setClientCode}
               birthYear={birthYear}
               setBirthYear={setBirthYear}
-              status={status}
               setStatus={setStatus}
             />
-            {clients.map((client) => (
-              <ClientRow key={client.id} client={client} />
-            ))}
+            {curClients.length
+              ? curClients.map((client) => (
+                  <ClientRow key={client.id} client={client} />
+                ))
+              : clients.map((client) => (
+                  <ClientRow key={client.id} client={client} />
+                ))}
           </div>
         </div>
       )}

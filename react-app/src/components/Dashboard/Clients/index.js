@@ -42,11 +42,11 @@ export default function Clients() {
     }
     function toggleStatus() {
       if (status === 1) {
-        return;
+        setCurClients(clients.slice());
       } else if (status === 2) {
-        setCurClients(clients.slice().filter((client) => client.status));
+        setCurClients(clients.slice().filter((client) => client.curClient));
       } else {
-        setCurClients(clients.slice().filter((client) => !client.status));
+        setCurClients(clients.slice().filter((client) => !client.curClient));
       }
     }
     sortClientCode();
@@ -56,11 +56,11 @@ export default function Clients() {
 
   return (
     <>
-      <div className='dashboard__sub-section client-buttons-container'>
+      {/* <div className='dashboard__sub-section client-buttons-container'>
         <button>Test</button>
         <button>Test</button>
         <button>Test</button>
-      </div>
+      </div> */}
       {!!clients && (
         <div className='dashboard__sub-section clients-container'>
           <div className='client-row'>
@@ -69,6 +69,7 @@ export default function Clients() {
               setClientCode={setClientCode}
               birthYear={birthYear}
               setBirthYear={setBirthYear}
+              status={status}
               setStatus={setStatus}
             />
             {curClients.length

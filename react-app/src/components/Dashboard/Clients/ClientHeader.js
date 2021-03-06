@@ -4,6 +4,7 @@ export default function ClientHeader({
   setBirthYear,
   birthYear,
   setStatus,
+  status,
 }) {
   function handleClientCodeClick() {
     setBirthYear('no');
@@ -43,6 +44,11 @@ export default function ClientHeader({
         onClick={handleStatusClick}
       >
         Status
+        {/* {status === 1
+          ? 'All Clients'
+          : status === 2
+          ? 'Active Clients'
+          : 'Terminated Clients'} */}
       </p>
     </>
   );

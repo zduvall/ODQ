@@ -95,7 +95,7 @@
 
 .clients-container {
   flex-direction: column;
-  min-height: auto;
+  justify-content: flex-start;
 }
 
 .client-header {

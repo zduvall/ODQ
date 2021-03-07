@@ -26,18 +26,6 @@
   justify-content: space-around;
 }
 
-@media (max-width: 800px) {
-  .user_info {
-    flex-direction: column;
-  }
-  .dashboard__data {
-    text-align: center;
-  }
-  .dashboard__form {
-    flex-direction: column !important;
-  }
-}
-
 .dashboard__input {
   margin: 0.5rem !important;
   padding: 0.5rem !important;
@@ -122,4 +110,22 @@
 
 .client-row > p {
   margin: 0.5rem 0 0 0;
+}
+
+@media (max-width: 800px) {
+  .user__info {
+    flex-direction: column !important;
+  }
+  .dashboard__data {
+    text-align: center;
+  }
+  .dashboard__form {
+    flex-direction: column !important;
+  }
+  .dashboard__buttons {
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    justify-content: center;
+  }
 }

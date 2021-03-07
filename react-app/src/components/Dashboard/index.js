@@ -25,7 +25,7 @@ export default function Dashboard() {
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
         />
-        <h1 className='primary-title'>Clients</h1>
+        {/* <h1 className='primary-title'>Clients</h1> */}
         <Clients />
       </div>
       <div>

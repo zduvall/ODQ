@@ -25,7 +25,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
   };
 
   return (
-    <div className='dashboard__sub-section'>
+    <div className='dashboard__sub-section user__info'>
       <div className='dashboard__data'>
         <p>
           {firstName} {lastName}

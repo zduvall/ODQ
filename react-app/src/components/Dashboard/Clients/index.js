@@ -1,16 +1,30 @@
+import { useState } from 'react';
+
+// import components
 import AllClients from './AllClients.js';
+import ClientFrom from './ClientForm';
 
 export default function Clients() {
+  const [showForm, setShowForm] = useState(false);
+
+  function toggleShowForm() {
+    setShowForm((prev) => !prev);
+  }
+
   return (
     <>
-      {/* <div className='dashboard__sub-section client-buttons-container'>
-        <button>Test</button>
-        <button>Test</button>
-        <button>Test</button>
-      </div> */}
+      {/* <div className='dashboard__sub-section client-buttons-container'> */}
+      <button
+        className='primary-button user_info__button'
+        onClick={toggleShowForm}
+      >
+        Add Client
+      </button>
+      {/* </div> */}
 
       <div className='dashboard__sub-section clients-container'>
-        <AllClients />
+        {!showForm && <AllClients />}
+        {showForm && <ClientFrom setShowForm={setShowForm} />}
       </div>
     </>
   );

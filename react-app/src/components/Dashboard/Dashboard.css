@@ -109,6 +109,10 @@
   cursor: pointer;
 }
 
+.client-header:hover {
+  text-shadow: 0.5px 0 #000;
+}
+
 .client-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

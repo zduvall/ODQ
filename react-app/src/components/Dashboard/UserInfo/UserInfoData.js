@@ -26,7 +26,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
 
   return (
     <div className='dashboard__sub-section'>
-      <div className='user_info__data'>
+      <div className='dashboard__data'>
         <p>
           {firstName} {lastName}
           {lic ? `, ${lic}` : ''}
@@ -40,15 +40,15 @@ export default function UserInfoData({ setShowUpdateUser }) {
             : ''}
         </p>
       </div>
-      <div className='user_info__buttons'>
+      <div className='dashboard__buttons'>
         <button
-          className='primary-button user_info__button'
+          className='primary-button dashboard__button'
           onClick={() => setShowUpdateUser((prev) => !prev)}
         >
           Update
         </button>
         <button
-          className='delete-button user_info__button'
+          className='delete-button dashboard__button'
           onClick={handleDelete}
         >
           Deactivate

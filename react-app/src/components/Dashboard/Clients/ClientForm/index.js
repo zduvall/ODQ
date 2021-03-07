@@ -24,11 +24,11 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
     setErrors([]);
 
     const date = new Date();
-    const month = ('0' + (date.getMonth() + 1)).slice(-2)
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
-    const year = date.getYear().toString().slice(-2)
-    const dateCode = `${month}${day}${year}`;
-    const code = firstName.slice(0, 3) + lastName.slice(0, 1) + '.' + dateCode;
+    const year = date.getYear().toString().slice(-2);
+    const dateCode = month + '.' + day + '.' + year;
+    const code = firstName.slice(0, 3) + lastName.slice(0, 1) + '-' + dateCode;
 
     const client = { code, birthYear, curClient };
     console.log(client);
@@ -95,7 +95,7 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
           className='primary-button form__button dashboard__button'
           type='submit'
         >
-          Update
+          Create
         </button>
         <button
           className='secondary-button form__button dashboard__button'

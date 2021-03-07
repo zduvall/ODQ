@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('birthYear', sa.Integer(), nullable=False),
-    sa.Column('code', sa.String(length=10), nullable=False),
+    sa.Column('code', sa.String(length=15), nullable=False),
     sa.Column('curClient', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

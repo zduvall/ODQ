@@ -7,6 +7,7 @@ import ClientRow from './ClientRow';
 
 export default function Clients() {
   let clients = useSelector((state) => Object.values(state.clients));
+  clients = clients.reverse();
 
   const [filterClients, setFxClients] = useState(clients);
   const [status, setStatus] = useState(1);

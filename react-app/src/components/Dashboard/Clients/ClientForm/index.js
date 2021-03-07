@@ -10,6 +10,7 @@ import { useClientsContext } from '../index';
 export default function ClientForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const clients = useSelector((state) => Object.values(state.clients));
 
   const {
     setShowForm,
@@ -25,29 +26,41 @@ export default function ClientForm() {
 
   useEffect(() => {
     if (!!clientToUpdate) {
-      setBirthYear(clientToUpdate.birthYear);
-      setCurClient(clientToUpdate.curClient);
+      let { code, birthYear, curClient } = clientToUpdate;
+      setFirstName(code.slice(0, 3));
+      setLastName(code.slice(3, code.indexOf('-')));
+      setBirthYear(birthYear);
+      setCurClient(curClient);
     }
   }, [clientToUpdate]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    let errorHit = false;
 
-    if (!firstName) {
-      setErrors(...errors, 'Please provide a first name');
+    if (!firstName || !lastName || !birthYear) {
+      setErrors([...errors, 'Please fill out all fields']);
+      errorHit = true;
     }
 
-    if (!lastName) {
-      setErrors(...errors, 'Please provide a last name');
-    }
+    if (errorHit) return;
 
     const date = new Date();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
     const year = date.getYear().toString().slice(-2);
     const dateCode = month + '.' + day + '.' + year;
-    const code = firstName.slice(0, 3) + lastName.slice(0, 1) + '-' + dateCode;
+    let fn = (firstName + '__').slice(0, 3);
+    const code = fn + lastName.slice(0, 1) + '-' + dateCode;
+
+    function checkDuplicateCode(code) {
+      clients.forEach((client) => {
+        if (code === client.code && clientToUpdate.id !== client.id) {
+          // then add a one-digit number after the last name
+        }
+      });
+    }
 
     const client = { userId: sessionUser.id, code, birthYear, curClient };
 

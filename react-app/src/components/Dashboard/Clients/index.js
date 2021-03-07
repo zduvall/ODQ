@@ -21,7 +21,7 @@ export default function Clients() {
         onClick={() => setShowForm(true)}
         disabled={showForm}
       >
-        Add Client
+        New Client
       </button>
       {/* </div> */}
       <div className='dashboard__sub-section clients-container'>

@@ -42,8 +42,8 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
     // }
   };
   return (
-    <form className='form user_info__form' onSubmit={onSubmit}>
-      <div className='user_info__data'>
+    <form className='form dashboard__form' onSubmit={onSubmit}>
+      <div className='dashboard__data'>
         <div className='errors-container'>
           {errors.map((error) => (
             <div key={error}>{error}</div>
@@ -56,7 +56,7 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
             placeholder='First Name'
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            className='form__input user_info__input'
+            className='form__input dashboard__input'
           ></input>
           <input
             name='lastName'
@@ -64,7 +64,7 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
             placeholder='Last Name'
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-            className='form__input user_info__input'
+            className='form__input dashboard__input'
           ></input>
         </div>
         <div className='form__row'>
@@ -74,13 +74,13 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
             placeholder='Birth Year'
             onChange={(e) => setBirthYear(e.target.value)}
             value={birthYear}
-            className='form__input user_info__input'
+            className='form__input dashboard__input'
           ></input>
           <select
             name='curClient'
             onChange={(e) => setCurClient(e.target.value)}
             value={curClient}
-            className='form__input user_info__input'
+            className='form__input dashboard__input'
           >
             <option disabled selected value=''>
               Status
@@ -90,15 +90,15 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
           </select>
         </div>
       </div>
-      <div className='form__row user_info__buttons'>
+      <div className='form__row dashboard__buttons'>
         <button
-          className='primary-button form__button user_info__button'
+          className='primary-button form__button dashboard__button'
           type='submit'
         >
           Update
         </button>
         <button
-          className='secondary-button form__button user_info__button'
+          className='secondary-button form__button dashboard__button'
           type='button'
           onClick={() => setShowForm(false)}
         >

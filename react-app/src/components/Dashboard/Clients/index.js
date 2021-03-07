@@ -15,7 +15,7 @@ export default function Clients() {
     <>
       {/* <div className='dashboard__sub-section client-buttons-container'> */}
       <button
-        className='primary-button user_info__button'
+        className='primary-button dashboard__button'
         onClick={toggleShowForm}
       >
         Add Client

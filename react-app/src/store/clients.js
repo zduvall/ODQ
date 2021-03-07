@@ -31,42 +31,19 @@ export const getClients = (userId) => async (dispatch) => {
 };
 
 // create is also used to update if clientId is passed in as second argument
-export const createClient = (client, clientIDtoUpdate = null) => async (dispatch) => {
-  const {
-    userId,
-    name,
-    age,
-    imageURL,
-    image,
-    clientType,
-    energy,
-    social,
-    behaved,
-    size,
-    env,
-    description,
-  } = client;
-
-  const formData = new FormData();
-  formData.append('userId', userId);
-  formData.append('name', name);
-  formData.append('age', age);
-  formData.append('imageURL', imageURL);
-  formData.append('clientType', clientType);
-  formData.append('energy', energy);
-  formData.append('social', social);
-  formData.append('behaved', behaved);
-  formData.append('size', size);
-  formData.append('env', env);
-  formData.append('description', description);
-
-  if (image) formData.append('image', image);
+export const createClient = (client, clientIDtoUpdate = null) => async (
+  dispatch
+) => {
+  // const { userId, birthYear, code, curClient } = client;
 
   if (clientIDtoUpdate) {
     // for updating client
     const res = await fetch(`/api/clients/${clientIDtoUpdate}`, {
       method: 'PUT',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(client),
     });
 
     const updatedClient = await res.json();
@@ -82,15 +59,18 @@ export const createClient = (client, clientIDtoUpdate = null) => async (dispatch
     // for creating client
     const res = await fetch(`/api/clients`, {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(client),
     });
-    const client = await res.json();
+    const resClient = await res.json();
 
-    if (!client.errors) {
-      dispatch(create(client));
-      return client;
+    if (!resClient.errors) {
+      dispatch(create(resClient));
+      return resClient;
     } else {
-      const errors = client;
+      const errors = resClient;
       return errors;
     }
   }

@@ -1,32 +1,42 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-export default function ClientForm({ setShowForm }) {
+import { createClient } from '../../../../store/clients';
+
+export default function ClientForm({ setShowForm, clientToUpdate = null }) {
   const dispatch = useDispatch();
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [birthYear, setBirthYear] = useState();
+  const [curClient, setCurClient] = useState();
+
+  useEffect(() => {
+    if (!!clientToUpdate) {
+      setBirthYear(clientToUpdate.birthYear);
+      setCurClient(clientToUpdate.curClient);
+    }
+  }, [clientToUpdate]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
-    // const user = await dispatch(
-    //   updateUser(
-    //     sessionUser.id,
-    //     firstName,
-    //     lastName,
-    //     birthYear,
-    //     lic,
-    //     pxName,
-    //     phone
-    //   )
-    // );
+    const date = new Date();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2)
+    const day = ('0' + date.getDate()).slice(-2);
+    const year = date.getYear().toString().slice(-2)
+    const dateCode = `${month}${day}${year}`;
+    const code = firstName.slice(0, 3) + lastName.slice(0, 1) + '.' + dateCode;
+
+    const client = { code, birthYear, curClient };
+    console.log(client);
+
+    // const user = await dispatch(createClient(client));
     // if (!user.errors) {
     //   console.log('updated');
-    //   setShowUpdateUser(false);
+    //   setShowForm(false);
     // } else {
     //   setErrors(user.errors);
     // }
@@ -56,6 +66,8 @@ export default function ClientForm({ setShowForm }) {
             value={lastName}
             className='form__input user_info__input'
           ></input>
+        </div>
+        <div className='form__row'>
           <input
             name='birthYear'
             type='text'
@@ -64,6 +76,18 @@ export default function ClientForm({ setShowForm }) {
             value={birthYear}
             className='form__input user_info__input'
           ></input>
+          <select
+            name='curClient'
+            onChange={(e) => setCurClient(e.target.value)}
+            value={curClient}
+            className='form__input user_info__input'
+          >
+            <option disabled selected value=''>
+              Status
+            </option>
+            <option value={true}>Active</option>
+            <option vaoue={false}>Terminated</option>
+          </select>
         </div>
       </div>
       <div className='form__row user_info__buttons'>

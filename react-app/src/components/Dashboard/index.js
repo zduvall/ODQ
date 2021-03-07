@@ -25,12 +25,9 @@ export default function Dashboard() {
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
         />
-        {/* <h1 className='primary-title'>Clients</h1> */}
         <Clients />
       </div>
-      <div>
-        <h1 className='primary-title'>Favorite Tests</h1>
-      </div>
+      <div className='One1rem-height'></div>
     </div>
   );
 }

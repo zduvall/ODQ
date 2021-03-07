@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// import thunk
 import { createClient } from '../../../../store/clients';
 
-export default function ClientForm({ setShowForm, clientToUpdate = null }) {
+//import context
+import { useClientsContext } from '../index';
+
+export default function ClientForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+
+  const { setShowForm, clientToUpdate } = useClientsContext();
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState();
@@ -32,15 +38,19 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
     const code = firstName.slice(0, 3) + lastName.slice(0, 1) + '-' + dateCode;
 
     const client = { userId: sessionUser.id, code, birthYear, curClient };
-    console.log(client);
 
-    // const user = await dispatch(createClient(client));
-    // if (!user.errors) {
-    //   console.log('updated');
-    //   setShowForm(false);
-    // } else {
-    //   setErrors(user.errors);
-    // }
+    const user = await dispatch(
+      !!clientToUpdate
+        ? createClient(client, clientToUpdate.id) // if you pass in a client id, it updates instead
+        : createClient(client)
+    );
+
+    if (!user.errors) {
+      console.log('updated');
+      setShowForm(false);
+    } else {
+      setErrors(user.errors);
+    }
   };
   return (
     <form className='form dashboard__form' onSubmit={onSubmit}>

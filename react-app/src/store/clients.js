@@ -57,7 +57,7 @@ export const createClient = (client, clientIDtoUpdate = null) => async (
     }
   } else {
     // for creating client
-    const res = await fetch(`/api/clients`, {
+    const res = await fetch(`/api/clients/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,6 +65,8 @@ export const createClient = (client, clientIDtoUpdate = null) => async (
       body: JSON.stringify(client),
     });
     const resClient = await res.json();
+
+    console.log('returned', resClient);
 
     if (!resClient.errors) {
       dispatch(create(resClient));

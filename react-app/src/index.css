@@ -49,7 +49,7 @@ a {
 /* for app.js */
 .btwn-nav-footer {
   padding: 0 10%;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   padding-bottom: 3rem;
 }
 
@@ -92,17 +92,24 @@ a {
   font-size: 1.1rem;
 }
 
-.primary-button:hover {
+.primary-button:hover:enabled {
   background-color: var(--primary-color-light);
   border-color: var(--primary-color-light);
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
   transform: translateY(-0.5px);
 }
 
-.primary-button:active {
+.primary-button:active:enabled {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
   box-shadow: none;
+}
+
+.primary-button:disabled {
+  cursor: default !important;
+  background-color: var(--tertiary-color-light);
+  border: var(--tertiary-color) 1px solid;
+  color: var(--tertiary-color);
 }
 
 .secondary-button {
@@ -227,4 +234,8 @@ a {
   align-items: center;
   color: rgb(255, 83, 83);
   text-shadow: none;
+}
+
+.One1rem-height {
+  height: 1rem;
 }

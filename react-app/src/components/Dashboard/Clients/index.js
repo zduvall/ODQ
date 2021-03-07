@@ -1,31 +1,33 @@
-import { useState } from 'react';
+import { useState, createContext, useContext } from 'react';
 
 // import components
 import AllClients from './AllClients.js';
 import ClientFrom from './ClientForm';
 
+const ClientsContext = createContext();
+export const useClientsContext = () => useContext(ClientsContext);
+
 export default function Clients() {
   const [showForm, setShowForm] = useState(false);
-
-  function toggleShowForm() {
-    setShowForm((prev) => !prev);
-  }
+  const [clientToUpdate, setClientToUpdate] = useState(null);
 
   return (
-    <>
+    <ClientsContext.Provider
+      value={{ setShowForm, setClientToUpdate, clientToUpdate }}
+    >
       {/* <div className='dashboard__sub-section client-buttons-container'> */}
       <button
         className='primary-button dashboard__button'
-        onClick={toggleShowForm}
+        onClick={() => setShowForm(true)}
+        disabled={showForm}
       >
         Add Client
       </button>
       {/* </div> */}
-
       <div className='dashboard__sub-section clients-container'>
         {!showForm && <AllClients />}
-        {showForm && <ClientFrom setShowForm={setShowForm} />}
+        {showForm && <ClientFrom />}
       </div>
-    </>
+    </ClientsContext.Provider>
   );
 }

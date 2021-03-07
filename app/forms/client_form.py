@@ -7,8 +7,6 @@ from wtforms.validators import DataRequired, ValidationError, Length, NumberRang
 
 def validate_year(form, birthYear):
     year = date.today().year
-    print("birthYear -----------", birthYear.data)
-    print("year -----------", year)
     if birthYear.data > year:
         raise ValidationError("Please provide a valid birth year")
 

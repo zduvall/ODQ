@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { createClient } from '../../../../store/clients';
 
 export default function ClientForm({ setShowForm, clientToUpdate = null }) {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState();
@@ -30,7 +31,7 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
     const dateCode = month + '.' + day + '.' + year;
     const code = firstName.slice(0, 3) + lastName.slice(0, 1) + '-' + dateCode;
 
-    const client = { code, birthYear, curClient };
+    const client = { userId: sessionUser.id, code, birthYear, curClient };
     console.log(client);
 
     // const user = await dispatch(createClient(client));
@@ -80,13 +81,14 @@ export default function ClientForm({ setShowForm, clientToUpdate = null }) {
             name='curClient'
             onChange={(e) => setCurClient(e.target.value)}
             value={curClient}
+            defaultValue=''
             className='form__input dashboard__input'
           >
-            <option disabled selected value=''>
-              Status
+            <option disabled value=''>
+              - Status -
             </option>
             <option value={true}>Active</option>
-            <option vaoue={false}>Terminated</option>
+            <option value={false}>Terminated</option>
           </select>
         </div>
       </div>

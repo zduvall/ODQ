@@ -21,7 +21,7 @@ export default function ClientRow({ status, client }) {
 
   return (
     <>
-      <p onClick={handleClickClient} style={toggleDisp}>
+      <p className='client-name' onClick={handleClickClient} style={toggleDisp}>
         {client.code}
       </p>
       <p style={toggleDisp}>{client.birthYear}</p>

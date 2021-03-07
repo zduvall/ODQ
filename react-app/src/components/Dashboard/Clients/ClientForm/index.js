@@ -11,7 +11,11 @@ export default function ClientForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const { setShowForm, clientToUpdate } = useClientsContext();
+  const {
+    setShowForm,
+    setClientToUpdate,
+    clientToUpdate,
+  } = useClientsContext();
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState();
@@ -29,6 +33,14 @@ export default function ClientForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+
+    if (!firstName) {
+      setErrors(...errors, 'Please provide a first name');
+    }
+
+    if (!lastName) {
+      setErrors(...errors, 'Please provide a last name');
+    }
 
     const date = new Date();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -48,6 +60,7 @@ export default function ClientForm() {
     if (!user.errors) {
       console.log('updated');
       setShowForm(false);
+      setClientToUpdate(null);
     } else {
       setErrors(user.errors);
     }
@@ -107,12 +120,15 @@ export default function ClientForm() {
           className='primary-button form__button dashboard__button'
           type='submit'
         >
-          Create
+          {clientToUpdate ? 'Update' : 'Create'}
         </button>
         <button
           className='secondary-button form__button dashboard__button'
           type='button'
-          onClick={() => setShowForm(false)}
+          onClick={() => {
+            setShowForm(false);
+            setClientToUpdate(null);
+          }}
         >
           Cancel
         </button>

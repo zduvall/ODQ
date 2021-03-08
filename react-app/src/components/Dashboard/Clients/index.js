@@ -9,7 +9,7 @@ const ClientsContext = createContext();
 export const useClientsContext = () => useContext(ClientsContext);
 
 export default function Clients() {
-  const [searchClients, setSearchClients] = useState();
+  const [searchClients, setSearchClients] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [clientToUpdate, setClientToUpdate] = useState(null);
 

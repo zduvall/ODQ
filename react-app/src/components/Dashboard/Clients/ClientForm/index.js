@@ -22,27 +22,10 @@ export default function ClientForm() {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [birthYear, setBirthYear] = useState();
-  const [curClient, setCurClient] = useState();
+  const [curClient, setCurClient] = useState('');
   const [createDate, setCreateDate] = useState();
 
-  useEffect(() => {
-    const date = clientToUpdate
-      ? new Date(
-          clientToUpdate.code.slice(clientToUpdate.code.indexOf('-') + 1)
-        )
-      : new Date();
-
-    const yr = date.getFullYear();
-    let mth = date.getMonth() + 1;
-    if (mth.toString().length < 2) mth = '0' + mth;
-    let dy = date.getDate();
-    if (dy.toString().length < 2) dy = '0' + dy;
-
-    const dateToSet = yr + '-' + mth + '-' + dy;
-
-    setCreateDate(dateToSet);
-  }, [clientToUpdate]);
-
+  // set all fields if clientToUpdate
   useEffect(() => {
     if (!!clientToUpdate) {
       let { code, birthYear, curClient } = clientToUpdate;
@@ -51,6 +34,23 @@ export default function ClientForm() {
       setBirthYear(birthYear);
       setCurClient(curClient);
     }
+  }, [clientToUpdate]);
+
+  // set create date based on clientToUpdate or today
+  useEffect(() => {
+    const date = clientToUpdate
+      ? new Date(
+          clientToUpdate.code.slice(clientToUpdate.code.indexOf('-') + 1)
+        )
+      : new Date();
+
+    const yr = date.getFullYear();
+    let mth = ('0' + (date.getMonth() + 1)).slice(-2);
+    let dy = ('0' + date.getDate()).slice(-2);
+
+    const dateToSet = yr + '-' + mth + '-' + dy;
+
+    setCreateDate(dateToSet);
   }, [clientToUpdate]);
 
   const onSubmit = async (e) => {
@@ -66,13 +66,11 @@ export default function ClientForm() {
     if (errorHit) return;
 
     // create date part of code based on today (or original creation date when updating)
-    const date = new Date();
+    const date = new Date(createDate);
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
-    const day = ('0' + date.getDate()).slice(-2);
+    const day = ('0' + (date.getDate() + 1)).slice(-2);
     const year = date.getYear().toString().slice(-2);
-    const dateCode =
-      clientToUpdate.code.slice(clientToUpdate.code.indexOf('-') + 1) ||
-      month + '.' + day + '.' + year;
+    const dateCode = month + '.' + day + '.' + year;
     // create fn part of code, capitalize first letter, add _ for every letter under length 3
     const fnInputUpper = firstName.charAt(0).toUpperCase() + firstName.slice(1);
     const fn = (fnInputUpper + '__').slice(0, 3);
@@ -167,7 +165,6 @@ export default function ClientForm() {
             name='curClient'
             onChange={(e) => setCurClient(e.target.value)}
             value={curClient}
-            defaultValue=''
             className='form__input dashboard__input'
           >
             <option disabled value=''>
@@ -183,6 +180,8 @@ export default function ClientForm() {
             className='form__input dashboard__input'
             type='date'
             value={createDate}
+            onChange={(e) => setCreateDate(e.target.value)}
+            required
           ></input>
         </div>
       </div>

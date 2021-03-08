@@ -51,15 +51,24 @@ export default function ClientForm() {
     const day = ('0' + date.getDate()).slice(-2);
     const year = date.getYear().toString().slice(-2);
     const dateCode = month + '.' + day + '.' + year;
-    let fn = (firstName + '__').slice(0, 3);
-    const code = fn + lastName.slice(0, 1) + '-' + dateCode;
+    const fn = (firstName + '__').slice(0, 3);
+    const ln = lastName.slice(0, 1).toUpperCase();
+    let code = fn + ln + '-' + dateCode;
 
-    function checkDuplicateCode(code) {
+    let dup = true;
+
+    while (dup) {
+      dup = false;
       clients.forEach((client) => {
-        if (code === client.code && clientToUpdate.id !== client.id) {
-          // then add a one-digit number after the last name
-        }
+        if (code === client.code) dup = true;
+        if (clientToUpdate && clientToUpdate.id === client.id) dup = false;
       });
+      if (dup) {
+        let numToInc = code[code.indexOf('-') - 1];
+        if (Number(numToInc)) numToInc++;
+        else numToInc = 2;
+        code = fn + ln + numToInc.toString() + '-' + dateCode;
+      }
     }
 
     const client = { userId: sessionUser.id, code, birthYear, curClient };

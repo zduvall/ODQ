@@ -1,6 +1,6 @@
 import GAD7 from './assets/GAD7.json';
 
-export default function template() {
+export default function TestTemplate() {
   return (
     <div>
       <h1>{GAD7.name}</h1>

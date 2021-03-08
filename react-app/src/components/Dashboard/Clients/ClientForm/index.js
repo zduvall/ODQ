@@ -23,6 +23,25 @@ export default function ClientForm() {
   const [lastName, setLastName] = useState();
   const [birthYear, setBirthYear] = useState();
   const [curClient, setCurClient] = useState();
+  const [createDate, setCreateDate] = useState();
+
+  useEffect(() => {
+    const date = clientToUpdate
+      ? new Date(
+          clientToUpdate.code.slice(clientToUpdate.code.indexOf('-') + 1)
+        )
+      : new Date();
+
+    const yr = date.getFullYear();
+    let mth = date.getMonth() + 1;
+    if (mth.toString().length < 2) mth = '0' + mth;
+    let dy = date.getDate();
+    if (dy.toString().length < 2) dy = '0' + dy;
+
+    const dateToSet = yr + '-' + mth + '-' + dy;
+
+    setCreateDate(dateToSet);
+  }, [clientToUpdate]);
 
   useEffect(() => {
     if (!!clientToUpdate) {
@@ -103,8 +122,10 @@ export default function ClientForm() {
     const remove = window.confirm(
       `Are you sure you want to delete ${clientToUpdate.code} and all associated data?`
     );
-    if (remove) await dispatch(deleteClient(clientToUpdate.id));
-    setShowForm(false);
+    if (remove) {
+      await dispatch(deleteClient(clientToUpdate.id));
+      setShowForm(false);
+    }
   };
 
   return (
@@ -155,6 +176,14 @@ export default function ClientForm() {
             <option value={true}>Active</option>
             <option value={false}>Terminated</option>
           </select>
+        </div>
+        <div className='form__row'>
+          <label>Creation Date</label>
+          <input
+            className='form__input dashboard__input'
+            type='date'
+            value={createDate}
+          ></input>
         </div>
       </div>
       <div className='form__row dashboard__buttons'>

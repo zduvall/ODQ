@@ -27,6 +27,8 @@ def createClient():
 
     form = ClientForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+        
+    print("--------client status-------", form.data)
 
     if form.validate_on_submit():
         new_client = Client(

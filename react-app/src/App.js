@@ -41,20 +41,6 @@ function App() {
           <Route path='/signup' exact={true}>
             <SignUpForm />
           </Route>
-          {/* <ProtectedRoute
-            path='/users'
-            exact={true}
-            authenticated={!!sessionUser}
-          >
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute
-            path='/users/:userId'
-            exact={true}
-            authenticated={!!sessionUser}
-          >
-            <User />
-          </ProtectedRoute> */}
           <Route path='/' exact={true}>
             <SplashPage />
           </Route>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // import thunk
-import { createClient } from '../../../../store/clients';
+import { createClient, deleteClient } from '../../../../store/clients';
 
 //import context
 import { useClientsContext } from '../index';
@@ -87,6 +87,15 @@ export default function ClientForm() {
       setErrors(user.errors);
     }
   };
+
+  const onDelete = () => {
+    const remove = window.confirm(
+      `Are you sure you want to delete ${clientToUpdate.code} and all associated data?`
+    );
+    if (remove) dispatch(deleteClient(clientToUpdate.id));
+    setShowForm(false);
+  };
+
   return (
     <form className='form dashboard__form' onSubmit={onSubmit}>
       <div className='dashboard__data'>
@@ -154,6 +163,15 @@ export default function ClientForm() {
         >
           Cancel
         </button>
+        {clientToUpdate && (
+          <button
+            className='delete-button form__button dashboard__button'
+            type='button'
+            onClick={onDelete}
+          >
+            Delete
+          </button>
+        )}
       </div>
     </form>
   );

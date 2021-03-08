@@ -46,6 +46,7 @@ export default function ClientForm() {
 
     if (errorHit) return;
 
+    // create date part of code based on today
     const date = new Date();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
@@ -58,6 +59,7 @@ export default function ClientForm() {
     const ln = lastName.slice(0, 1).toUpperCase();
     let code = fn + ln + '-' + dateCode;
 
+    // make sure the name part of client code isn't already taken
     let dup = true;
 
     while (dup) {

@@ -74,9 +74,30 @@
 }
 
 /* clients */
-.client-buttons-container {
-  min-height: auto;
-  margin-bottom: 1rem;
+
+.dashboard__client-controls {
+  display: flex;
+  width: 47rem;
+  max-width: 100%;
+  flex-wrap: nowrap;
+  min-height: 3.75rem;
+  padding: 0.25rem 0;
+}
+
+.dashboard__client-controls > input {
+  margin-left: 0 !important;
+}
+
+.client-controls__button {
+  margin-right: 0 !important;
+}
+
+@media (max-width: 475px) {
+  .client-controls__button {
+    max-width: 6.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 .clients-container {

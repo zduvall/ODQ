@@ -10,11 +10,11 @@ def password_matches_and_user_exists(form, field):
     email = form.data["email"]
     user = User.query.filter(User.email == email).first()
     if not user or not user.check_password(password):
-        raise ValidationError("Invalid credentials. Please try again")
+        raise ValidationError("Invalid credentials, please try again")
 
 
 class LoginForm(FlaskForm):
-    email = StringField("email", validators=[DataRequired()])
+    email = StringField("email", validators=[DataRequired('Please provide an email')])
     password = StringField(
-        "password", validators=[DataRequired(), password_matches_and_user_exists]
+        "password", validators=[DataRequired('Please provide a password'), password_matches_and_user_exists]
     )

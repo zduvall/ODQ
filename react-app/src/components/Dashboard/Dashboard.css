@@ -18,50 +18,36 @@
   min-height: 14rem;
 }
 
-/* user info */
-
-.user_info__form {
+.dashboard__form {
   flex-direction: row !important;
   width: 100% !important;
   justify-content: space-around;
 }
 
-@media (max-width: 800px) {
-  .user_info {
-    flex-direction: column;
-  }
-  .user_info__data {
-    text-align: center;
-  }
-  .user_info__form {
-    flex-direction: column !important;
-  }
-}
-
-.user_info__input {
+.dashboard__input {
   margin: 0.5rem !important;
   padding: 0.5rem !important;
 }
 
-.user_info__buttons {
+.dashboard__buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50% !important;
 }
 
-.user_info__data,
-.user_info__button {
+.dashboard__data,
+.dashboard__button {
   font-size: 1.1rem;
   font-weight: 1000;
 }
-.user_info__data {
+.dashboard__data {
   padding: 0 1rem;
   width: 100%;
   text-shadow: 0.5px 0 #000;
 }
 
-.user_info__button {
+.dashboard__button {
   display: flex;
   justify-content: center;
   margin: 0.5rem !important;
@@ -88,14 +74,35 @@
 }
 
 /* clients */
-.client-buttons-container {
-  min-height: auto;
-  margin-bottom: 1rem;
+
+.dashboard__client-controls {
+  display: flex;
+  width: 47rem;
+  max-width: 100%;
+  flex-wrap: nowrap;
+  min-height: 3.75rem;
+  padding: 0.25rem 0;
+}
+
+.dashboard__client-controls > input {
+  margin-left: 0 !important;
+}
+
+.client-controls__button {
+  margin-right: 0 !important;
+}
+
+@media (max-width: 475px) {
+  .client-controls__button {
+    max-width: 6.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 .clients-container {
   flex-direction: column;
-  min-height: auto;
+  justify-content: flex-start;
 }
 
 .client-header {
@@ -109,6 +116,10 @@
   cursor: pointer;
 }
 
+.client-header:hover {
+  text-shadow: 0.5px 0 #000;
+}
+
 .client-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -118,4 +129,32 @@
 
 .client-row > p {
   margin: 0.5rem 0 0 0;
+}
+
+.client-name {
+  cursor: pointer;
+}
+
+.client-name:hover {
+  text-shadow: 0.5px 0 #000;
+}
+
+/* Mobile view */
+
+@media (max-width: 800px) {
+  .user__info {
+    flex-direction: column !important;
+  }
+  .dashboard__data {
+    text-align: center;
+  }
+  .dashboard__form {
+    flex-direction: column !important;
+  }
+  .dashboard__buttons {
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    justify-content: center;
+  }
 }

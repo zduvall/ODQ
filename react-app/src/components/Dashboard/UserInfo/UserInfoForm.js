@@ -48,8 +48,8 @@ export default function UserInfo({ setShowUpdateUser }) {
 
   return (
     <div className='form-container dashboard__sub-section'>
-      <form className='form user_info__form' onSubmit={onSubmit}>
-        <div className='user_info__data'>
+      <form className='form dashboard__form' onSubmit={onSubmit}>
+        <div className='dashboard__data'>
           <div className='errors-container'>
             {errors.map((error) => (
               <div key={error}>{error}</div>
@@ -62,7 +62,7 @@ export default function UserInfo({ setShowUpdateUser }) {
               placeholder='First Name'
               onChange={(e) => setFirstName(e.target.value)}
               value={firstName}
-              className='form__input user_info__input'
+              className='form__input dashboard__input'
             ></input>
             <input
               name='lastName'
@@ -70,7 +70,7 @@ export default function UserInfo({ setShowUpdateUser }) {
               placeholder='Last Name'
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
-              className='form__input user_info__input'
+              className='form__input dashboard__input'
             ></input>
             <input
               name='lic'
@@ -78,7 +78,7 @@ export default function UserInfo({ setShowUpdateUser }) {
               placeholder='License'
               onChange={(e) => setLic(e.target.value)}
               value={lic}
-              className='form__input user_info__input'
+              className='form__input dashboard__input'
             ></input>
           </div>
           <div className='form__row'>
@@ -88,7 +88,7 @@ export default function UserInfo({ setShowUpdateUser }) {
               placeholder='PxName'
               onChange={(e) => setPxName(e.target.value)}
               value={pxName}
-              className='form__input user_info__input'
+              className='form__input dashboard__input'
             ></input>
           </div>
           <div className='form__row'>
@@ -98,7 +98,7 @@ export default function UserInfo({ setShowUpdateUser }) {
               placeholder='Phone number'
               onChange={setPhone}
               value={phone}
-              className='form__input user_info__input'
+              className='form__input dashboard__input'
               defaultCountry='US'
             ></PhoneInput>
             <input
@@ -107,19 +107,19 @@ export default function UserInfo({ setShowUpdateUser }) {
               placeholder='Email'
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              className='form__input user_info__input'
+              className='form__input dashboard__input'
             ></input>
           </div>
         </div>
-        <div className='form__row user_info__buttons'>
+        <div className='form__row dashboard__buttons'>
           <button
-            className='primary-button form__button user_info__button'
+            className='primary-button form__button dashboard__button'
             type='submit'
           >
             Update
           </button>
           <button
-            className='secondary-button form__button user_info__button'
+            className='secondary-button form__button dashboard__button'
             type='button'
             onClick={() => setShowUpdateUser(false)}
           >

@@ -7,8 +7,6 @@ from wtforms.validators import DataRequired, ValidationError, Length, NumberRang
 
 def validate_year(form, birthYear):
     year = date.today().year
-    print("birthYear -----------", birthYear.data)
-    print("year -----------", year)
     if birthYear.data > year:
         raise ValidationError("Please provide a valid birth year")
 
@@ -29,7 +27,7 @@ class ClientForm(FlaskForm):
         "code",
         validators=[
             DataRequired(message="Please provide a client code"),
-            Length(max=10, message="Please limit client code to 10 characters"),
+            Length(max=15, message="Please limit client code to 10 characters"),
         ],
     )
     curClient = BooleanField("curClient", default=True)

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 
-from app.models import db, Client
+from app.models import Client, db
 from app.forms import ClientForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -24,18 +24,20 @@ def createClient():
     """
     Creates a new client
     """
+
     form = ClientForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+
     if form.validate_on_submit():
-        client = Client(
+        new_client = Client(
             userId=form.data["userId"],
             birthYear=form.data["birthYear"],
             code=form.data["code"],
             curClient=form.data["curClient"],
         )
-        db.session.add(client)
+        db.session.add(new_client)
         db.session.commit()
-        return client.to_dict()
+        return new_client.to_dict()
 
     print("-------errors-------", form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
@@ -51,6 +53,7 @@ def updateClient(clientId):
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
+
         client_to_update = Client.query.get(clientId)
 
         client_to_update.userId = form.data["userId"]

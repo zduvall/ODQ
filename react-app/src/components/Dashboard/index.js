@@ -20,17 +20,14 @@ export default function Dashboard() {
   return (
     <div>
       <div className='dashboard'>
-        <h1 className='primary-title'>User Information</h1>
+        <h1 className='primary-title'>Dashboard</h1>
         <UserInfo
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
         />
-        <h1 className='primary-title'>Clients</h1>
         <Clients />
       </div>
-      <div>
-        <h1 className='primary-title'>Favorite Tests</h1>
-      </div>
+      <div className='One1rem-height'></div>
     </div>
   );
 }

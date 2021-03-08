@@ -7,7 +7,7 @@ class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     birthYear = db.Column(db.Integer, nullable=False)
-    code = db.Column(db.String(10), nullable=False)
+    code = db.Column(db.String(15), nullable=False)
     curClient = db.Column(db.Boolean, nullable=False, default=True)
 
     pro = db.relationship("User", back_populates="clients")
@@ -19,5 +19,5 @@ class Client(db.Model):
             "birthYear": self.birthYear,
             "code": self.code,
             "curClient": self.curClient,
-            "pro": self.pro.to_dict(),
+            # "pro": self.pro.to_dict(),
         }

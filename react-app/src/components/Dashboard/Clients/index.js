@@ -1,73 +1,34 @@
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, createContext, useContext } from 'react';
 
-// imoprt components
-import ClientHeader from './ClientHeader';
-import ClientRow from './ClientRow';
+// import components
+import ClientContorls from './ClientControls';
+import AllClients from './AllClients.js';
+import ClientFrom from './ClientForm';
+
+const ClientsContext = createContext();
+export const useClientsContext = () => useContext(ClientsContext);
 
 export default function Clients() {
-  let clients = useSelector((state) => Object.values(state.clients));
-
-  const [filterClients, setFxClients] = useState(clients);
-  const [clientCode, setClientCode] = useState('no');
-  const [birthYear, setBirthYear] = useState('no');
-  const [status, setStatus] = useState(1);
-
-  useEffect(() => {
-    function sortClientCode() {
-      if (clientCode === 'no') {
-        return;
-      } else if (clientCode) {
-        setFxClients(
-          clients.slice().sort((a, b) => (a.code < b.code ? -1 : 1))
-        );
-      } else {
-        setFxClients(
-          clients.slice().sort((a, b) => (b.code < a.code ? -1 : 1))
-        );
-      }
-    }
-    function sortBirthYear() {
-      if (birthYear === 'no') {
-        return;
-      } else if (birthYear) {
-        setFxClients(clients.slice().sort((a, b) => a.birthYear - b.birthYear));
-      } else {
-        setFxClients(clients.slice().sort((a, b) => b.birthYear - a.birthYear));
-      }
-    }
-    sortClientCode();
-    sortBirthYear();
-  }, [clientCode, birthYear, clients]);
+  const [searchClients, setSearchClients] = useState('');
+  const [showForm, setShowForm] = useState(false);
+  const [clientToUpdate, setClientToUpdate] = useState(null);
 
   return (
-    <>
-      {/* <div className='dashboard__sub-section client-buttons-container'>
-        <button>Test</button>
-        <button>Test</button>
-        <button>Test</button>
-      </div> */}
-      {!!clients && (
-        <div className='dashboard__sub-section clients-container'>
-          <div className='client-row'>
-            <ClientHeader
-              clientCode={clientCode}
-              setClientCode={setClientCode}
-              birthYear={birthYear}
-              setBirthYear={setBirthYear}
-              status={status}
-              setStatus={setStatus}
-            />
-            {filterClients.length
-              ? filterClients.map((client) => (
-                  <ClientRow key={client.id} status={status} client={client} />
-                ))
-              : clients.map((client) => (
-                  <ClientRow key={client.id} status={status} client={client} />
-                ))}
-          </div>
-        </div>
-      )}
-    </>
+    <ClientsContext.Provider
+      value={{
+        searchClients,
+        setSearchClients,
+        showForm,
+        setShowForm,
+        clientToUpdate,
+        setClientToUpdate,
+      }}
+    >
+      <ClientContorls />
+      <div className='dashboard__sub-section clients-container'>
+        {!showForm && <AllClients />}
+        {showForm && <ClientFrom />}
+      </div>
+    </ClientsContext.Provider>
   );
 }

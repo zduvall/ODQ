@@ -51,7 +51,7 @@ function App() {
             <Dashboard />
           </ProtectedRoute>
           <ProtectedRoute
-            path='/test'
+            path='/test/:testCode'
             exact={true}
             authenticated={!!sessionUser}
           >

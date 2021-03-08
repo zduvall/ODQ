@@ -1,6 +1,6 @@
 {
   "id": 2,
-  "code": "GAD7",
+  "abbr": "GAD-7",
   "name": "Generalized Anxiety Disorder 7",
   "description": "The Generalised Anxiety Disorder Assessment (GAD-7) is a seven-item instrument that is used to measure or assess the severity of generalised anxiety disorder (GAD). Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include \"not at all\", \"several days\", \"more than half the days\" and \"nearly every day\".",
   "link": "https://www.phqscreeners.com/",
@@ -14,7 +14,7 @@
   "sections": [
     {
       "section": 1,
-      "instructions": "Over the last 2 weeks, how often have you been bothered by the following problems?.",
+      "instructions": "Over the last 2 weeks, how often have you been bothered by the following problems?",
       "scale": [
         { "value": 0, "label": "not at all" },
         { "value": 1, "label": "several days" },
@@ -24,44 +24,44 @@
       "questions": [
         {
           "num": 1,
-          "type": "likert",
+          "type": "radio",
           "stem": "Feeling nervous, anxious or on edge",
           "scale": true
         },
         {
           "num": 2,
-          "type": "likert",
+          "type": "radio",
           "stem": "Not being able to stop or control worrying",
           "scale": true
         },
         {
           "num": 3,
-          "type": "likert",
+          "type": "radio",
           "stem": "Worrying too much about different things",
           "scale": true,
           "pagebreak": true
         },
         {
           "num": 4,
-          "type": "likert",
+          "type": "radio",
           "stem": "Trouble relaxing",
           "scale": true
         },
         {
           "num": 5,
-          "type": "likert",
+          "type": "radio",
           "stem": "Being so restless that it is hard to sit still",
           "scale": true
         },
         {
           "num": 6,
-          "type": "likert",
+          "type": "radio",
           "stem": "Becoming easily annoyed or irritable",
           "scale": true
         },
         {
           "num": 7,
-          "type": "likert",
+          "type": "radio",
           "stem": "Feeling afraid as if something awful might happen ",
           "scale": true,
           "pagebreak": true

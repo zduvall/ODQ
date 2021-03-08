@@ -7,7 +7,12 @@ import ClientRow from './ClientRow';
 
 export default function Clients() {
   let clients = useSelector((state) => Object.values(state.clients));
-  clients = clients.reverse();
+  clients = clients.sort((a, b) => {
+    const aCodeDate = new Date(a.code.slice(a.code.indexOf('-')));
+    const bCodeDate = new Date(b.code.slice(a.code.indexOf('-')));
+    return bCodeDate - aCodeDate;
+  });
+  // clients = clients.reverse();
 
   const [filterClients, setFxClients] = useState(clients);
   const [status, setStatus] = useState(1);

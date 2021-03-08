@@ -51,7 +51,10 @@ export default function ClientForm() {
     const day = ('0' + date.getDate()).slice(-2);
     const year = date.getYear().toString().slice(-2);
     const dateCode = month + '.' + day + '.' + year;
-    const fn = (firstName + '__').slice(0, 3);
+    // create fn part of code, capitalize first letter, add _ for every letter under length 3
+    const fnInputUpper = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+    const fn = (fnInputUpper + '__').slice(0, 3);
+    // create ln part of code
     const ln = lastName.slice(0, 1).toUpperCase();
     let code = fn + ln + '-' + dateCode;
 

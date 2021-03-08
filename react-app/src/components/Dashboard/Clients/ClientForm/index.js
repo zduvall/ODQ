@@ -59,10 +59,14 @@ export default function ClientForm() {
 
     while (dup) {
       dup = false;
+      /* eslint-disable no-loop-func */
       clients.forEach((client) => {
-        if (code === client.code) dup = true;
-        if (clientToUpdate && clientToUpdate.id === client.id) dup = false;
+        if (clientToUpdate && clientToUpdate.id === client.id) return;
+        if (client.code.startsWith(code.slice(0, code.indexOf('-')))) {
+          dup = true;
+        }
       });
+      /* eslint-enable */
       if (dup) {
         let numToInc = code[code.indexOf('-') - 1];
         if (Number(numToInc)) numToInc++;
@@ -88,11 +92,11 @@ export default function ClientForm() {
     }
   };
 
-  const onDelete = () => {
+  const onDelete = async () => {
     const remove = window.confirm(
       `Are you sure you want to delete ${clientToUpdate.code} and all associated data?`
     );
-    if (remove) dispatch(deleteClient(clientToUpdate.id));
+    if (remove) await dispatch(deleteClient(clientToUpdate.id));
     setShowForm(false);
   };
 

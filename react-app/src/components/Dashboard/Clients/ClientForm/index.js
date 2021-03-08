@@ -46,12 +46,14 @@ export default function ClientForm() {
 
     if (errorHit) return;
 
-    // create date part of code based on today
+    // create date part of code based on today (or original creation date when updating)
     const date = new Date();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
     const year = date.getYear().toString().slice(-2);
-    const dateCode = month + '.' + day + '.' + year;
+    const dateCode =
+      clientToUpdate.code.slice(clientToUpdate.code.indexOf('-') + 1) ||
+      month + '.' + day + '.' + year;
     // create fn part of code, capitalize first letter, add _ for every letter under length 3
     const fnInputUpper = firstName.charAt(0).toUpperCase() + firstName.slice(1);
     const fn = (fnInputUpper + '__').slice(0, 3);
@@ -134,7 +136,7 @@ export default function ClientForm() {
         <div className='form__row'>
           <input
             name='birthYear'
-            type='text'
+            type='number'
             placeholder='Birth Year'
             onChange={(e) => setBirthYear(e.target.value)}
             value={birthYear}

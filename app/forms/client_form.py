@@ -30,4 +30,7 @@ class ClientForm(FlaskForm):
             Length(max=15, message="Please limit client code to 10 characters"),
         ],
     )
-    curClient = BooleanField("curClient", default=True)
+    curClient = BooleanField(
+        "curClient",
+        validators=[DataRequired(message="Please provide a client status")],
+    )

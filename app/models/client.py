@@ -19,5 +19,5 @@ class Client(db.Model):
             "birthYear": self.birthYear,
             "code": self.code,
             "curClient": self.curClient,
-            # "pro": self.pro.to_dict(),
+            "pro": self.pro.to_dict(),
         }

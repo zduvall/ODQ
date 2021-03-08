@@ -86,6 +86,7 @@
 
 .dashboard__client-controls > input {
   margin-left: 0 !important;
+  /* text-justify:  */
 }
 
 .client-controls__button {

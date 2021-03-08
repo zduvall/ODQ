@@ -24,13 +24,13 @@ def seed_clients():
         Client(
             userId=user1.id,
             birthYear="1992",
-            code="PauS-01.27.21",
+            code="PauS-01.27.20",
             curClient=True,
         ),
         Client(
             userId=user1.id,
             birthYear="1987",
-            code="ZacD-02.05.21",
+            code="ZacD-02.05.20",
             curClient=True,
         ),
         Client(
@@ -43,6 +43,12 @@ def seed_clients():
             userId=user1.id,
             birthYear="2012",
             code="AnnT-02.16.21",
+            curClient=False,
+        ),
+        Client(
+            userId=user1.id,
+            birthYear="2007",
+            code="BraM-02.19.21",
             curClient=True,
         ),
         Client(
@@ -58,9 +64,15 @@ def seed_clients():
             curClient=True,
         ),
         Client(
-            userId=user2.id,
-            birthYear="1900",
+            userId=user1.id,
+            birthYear="1939",
             code="DonT-03.06.21",
+            curClient=True,
+        ),
+        Client(
+            userId=user1.id,
+            birthYear="2010",
+            code="JosS-03.08.21",
             curClient=True,
         ),
     ]

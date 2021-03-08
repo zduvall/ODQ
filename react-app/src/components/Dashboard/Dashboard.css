@@ -73,6 +73,18 @@
   color: var(--tertiary-color);
 }
 
+.creation-date-label {
+  display: flex;
+  margin-left: 0.5rem;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.creation-date-input {
+  font-family: 'Open Sans', sans-serif !important;
+  text-shadow: 0.5px 0 #000;
+}
+
 /* clients */
 
 .dashboard__client-controls {

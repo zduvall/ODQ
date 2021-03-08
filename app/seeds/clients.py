@@ -24,13 +24,13 @@ def seed_clients():
         Client(
             userId=user1.id,
             birthYear="1992",
-            code="PauS-01.27.20",
+            code="PauS-11.27.20",
             curClient=True,
         ),
         Client(
             userId=user1.id,
             birthYear="1987",
-            code="ZacD-02.05.20",
+            code="ZacD-11.29.20",
             curClient=True,
         ),
         Client(

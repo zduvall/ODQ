@@ -15,6 +15,7 @@ export default function ClientControls() {
         placeholder='Search code / year'
         value={searchClients}
         onChange={(e) => setSearchClients(e.target.value)}
+        disabled={showForm}
       ></input>
       <button
         className='primary-button dashboard__button client-controls__button'

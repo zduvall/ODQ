@@ -175,12 +175,15 @@ export default function ClientForm() {
           </select>
         </div>
         <div className='form__row'>
-          <label>Creation Date</label>
+          <label for='creation-date' className='creation-date-label'>
+            Creation:
+          </label>
           <input
-            className='form__input dashboard__input'
+            name='creation-date'
+            className='form__input dashboard__input creation-date-input'
             type='date'
-            value={createDate}
             onChange={(e) => setCreateDate(e.target.value)}
+            value={createDate}
             required
           ></input>
         </div>

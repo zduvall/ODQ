@@ -16,10 +16,10 @@ export default function ClientTests() {
 
   function onSubmit(e) {
     e.preventDefault();
-    const userUrlPart = `${sessionUser.pxName.replace(/\s+/g, '')}_${
-      sessionUser.id
-    }`;
-    const clientUrlPart = `${clientToUpdate.code}_${clientToUpdate.id}`;
+    const userUrlPart = `${
+      sessionUser.firstName.slice(0, 1) + '-' + sessionUser.lastName.slice(0, 1)
+    }_${sessionUser.id}`;
+    const clientUrlPart = clientToUpdate.code + '_' + clientToUpdate.id;
     const url = `${window.location.host}/test/${test}/${userUrlPart}/${clientUrlPart}`;
     console.log(url);
   }

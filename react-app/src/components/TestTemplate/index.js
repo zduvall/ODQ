@@ -34,6 +34,7 @@ export default function TestTemplate() {
             </div>
           );
         })}
+        <button type='submit'></button>
       </form>
     </div>
   );

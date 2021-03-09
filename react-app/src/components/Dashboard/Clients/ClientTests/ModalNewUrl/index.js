@@ -1,15 +1,15 @@
 // import component
-import NewLink from './NewLink';
+import NewUrl from './NewUrl';
 
 // import context
 import { Modal } from '../../../../../context/Modal';
 
-export default function ModalNewLink({ showModal, setShowModal }) {
+export default function ModalNewUrl({ showModal, setShowModal, newUrl }) {
   return (
     <>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <NewLink setShowModal={setShowModal} />
+          <NewUrl newUrl={newUrl} setShowModal={setShowModal} />
         </Modal>
       )}
     </>

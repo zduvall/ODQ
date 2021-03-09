@@ -107,17 +107,14 @@
 
 .generate-test-url__form {
   display: flex;
-  width: 50%;
+  width: 100%;
+  max-width: 24rem;
   padding: 0 1rem;
 }
 
 @media (max-width: 800px) {
   .dashboard__single-client {
     flex-direction: column !important;
-  }
-  .generate-test-url__form {
-    width: 100% !important;
-    max-width: 24rem;
   }
 }
 

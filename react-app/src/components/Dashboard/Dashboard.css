@@ -92,16 +92,36 @@
 
 /* clients */
 
-.dashboard__client-tests {
+/* single client */
+.dashboard__single-client {
   min-height: auto !important;
+  justify-content: space-between;
 }
 
-.dashboard__single-client {
+.dashboard__single-client-p {
   text-shadow: var(--text-shadow);
   margin: 0;
   font-weight: 1000;
+  padding: 0 1rem;
 }
 
+.generate-test-url__form {
+  display: flex;
+  width: 50%;
+  padding: 0 1rem;
+}
+
+@media (max-width: 800px) {
+  .dashboard__single-client {
+    flex-direction: column !important;
+  }
+  .generate-test-url__form {
+    width: 100% !important;
+    max-width: 24rem;
+  }
+}
+
+/* clients other */
 .dashboard__client-controls {
   display: flex;
   width: 47rem;

@@ -1,7 +1,7 @@
 // import context
 import { useClientsContext } from '../../index';
 
-export default function NewTest() {
+export default function NewLink() {
   const { clientToUpdate } = useClientsContext();
 
   return (

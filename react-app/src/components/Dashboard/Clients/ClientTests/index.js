@@ -9,6 +9,7 @@ import tests from '../../../TestTemplate/assets/index';
 
 export default function ClientTests() {
   const [test, setTest] = useState('');
+  const [showModal, setShowModal] = useState(false)
   const sessionUser = useSelector((state) => state.session.user);
 
   const { clientToUpdate } = useClientsContext();
@@ -25,13 +26,17 @@ export default function ClientTests() {
   }
 
   return (
-    <div className='dashboard__sub-section dashboard__client-tests'>
-      <p className='dashboard__single-client'>{clientToUpdate.code}</p>
-      <form onSubmit={onSubmit}>
+    <div className='dashboard__sub-section dashboard__single-client'>
+      <p className='dashboard__single-client-p'>{clientToUpdate.code}</p>
+      <form className='generate-test-url__form' onSubmit={onSubmit}>
+        <button type='submit' className='primary-button dashboard__button'>
+          New Test Link
+        </button>
         <select
           value={test}
           onChange={(e) => setTest(e.target.value)}
           className='form__input dashboard__input'
+          required
         >
           <option disabled value=''>
             - Test Code -
@@ -40,9 +45,6 @@ export default function ClientTests() {
             <option key={test}>{test}</option>
           ))}
         </select>
-        <button type='submit' className='primary-button dashboard__button'>
-          New Test Link
-        </button>
       </form>
     </div>
   );

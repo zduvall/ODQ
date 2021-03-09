@@ -1,3 +1,5 @@
+import json
+
 from .db import db
 from datetime import datetime
 
@@ -23,10 +25,10 @@ class Test(db.Model):
             "userId": self.userId,
             "clientId": self.clientId,
             "testCode": self.testCode,
-            "res": json.loads(self.res),
+            "res": json.dumps(self.res),
             "timeSent": self.timeSent,
             "timeComp": self.timeComp,
             "userSeen": self.userSeen,
-            "pro": self.pro.to_dict(),
-            "client": self.client.to_dict(),
+            # "pro": self.pro.to_dict(),
+            # "client": self.client.to_dict(),
         }

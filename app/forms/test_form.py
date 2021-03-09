@@ -54,22 +54,4 @@ class TestForm(FlaskForm):
         ],
     )
     res = JSONField("res")
-    timeSent = DateTimeField(
-        "timeSent", validators=[DataRequired(message="Please provide time sent")]
-    )
     timeComp = DateTimeField("timeComp")
-    code = StringField(
-        "code",
-        validators=[
-            DataRequired(message="Please provide a client code"),
-            Length(max=15, message="Please limit client code to 10 characters"),
-        ],
-    )
-    userSeen = BooleanField(
-        "userSeen",
-        validators=[
-            InputRequired(
-                message="Please indicate if test has been seen by professional"
-            )
-        ],
-    )

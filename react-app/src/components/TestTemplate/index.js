@@ -19,16 +19,21 @@ export default function TestTemplate() {
   async function onSubmit(e) {
     e.preventDefault();
 
-    const testInfo = { userId, clientId, testCode, inputs };
+    const testInfo = {
+      userId,
+      clientId,
+      testCode,
+      res: JSON.stringify(inputs),
+    };
     console.log('results', testInfo);
 
-    // await fetch(`/api/clients/`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(testInfo),
-    // });
+    await fetch(`/api/tests/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(testInfo),
+    });
   }
 
   return (

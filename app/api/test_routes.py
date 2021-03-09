@@ -28,6 +28,8 @@ def createTest():
     form = TestForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
+    print("------ form data --------", form.data)
+
     if form.validate_on_submit():
         new_test = Test(
             userId=form.data["userId"],
@@ -35,13 +37,14 @@ def createTest():
             testCode=form.data["testCode"],
             res=form.data["res"],
         )
-        print(new_test)
+        print("------ new test --------", new_test.to_dict())
+        return "done"
     #     db.session.add(new_test)
     #     db.session.commit()
     #     return new_test.to_dict()
 
-    # print("-------errors-------", form.errors)
-    # return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+    print("-------errors-------", form.errors)
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
 # @test_routes.route("/<int:clientId>", methods=["PUT"])

@@ -8,11 +8,11 @@ def seed_users():
     demo = User(
         firstName="Demo",
         lastName="Pro",
-        email="demo@dot.com",
+        email="demo@dot-21.com",
         password="2345",
         lic="LCSW",
         pxName="Pro Counseling Demo LLC",
-        phone="801-240-1234",
+        phone="+18012401234",
     )
     demo2 = User(
         firstName="Demo2",

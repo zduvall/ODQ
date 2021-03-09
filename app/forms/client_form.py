@@ -2,7 +2,13 @@ from datetime import date
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, BooleanField
-from wtforms.validators import DataRequired, ValidationError, Length, NumberRange
+from wtforms.validators import (
+    DataRequired,
+    ValidationError,
+    Length,
+    NumberRange,
+    InputRequired,
+)
 
 
 def validate_year(form, birthYear):
@@ -32,5 +38,5 @@ class ClientForm(FlaskForm):
     )
     curClient = BooleanField(
         "curClient",
-        validators=[DataRequired(message="Please provide a client status")],
+        validators=[InputRequired(message="Please provide a client status")],
     )

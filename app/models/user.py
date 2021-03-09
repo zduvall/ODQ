@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(20))
 
     clients = db.relationship("Client", back_populates="pro")
+    tests = db.relationship("Test", back_populates="pro")
 
     @property
     def password(self):

@@ -5,11 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 // components
 import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-// import UsersList from './components/Users/UsersList';
-// import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
+import TestTemplate from './components/TestTemplate';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 
@@ -41,20 +40,6 @@ function App() {
           <Route path='/signup' exact={true}>
             <SignUpForm />
           </Route>
-          {/* <ProtectedRoute
-            path='/users'
-            exact={true}
-            authenticated={!!sessionUser}
-          >
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute
-            path='/users/:userId'
-            exact={true}
-            authenticated={!!sessionUser}
-          >
-            <User />
-          </ProtectedRoute> */}
           <Route path='/' exact={true}>
             <SplashPage />
           </Route>
@@ -65,6 +50,12 @@ function App() {
           >
             <Dashboard />
           </ProtectedRoute>
+          <Route path='/test/:testCode/:userId/:clientId' exact={true}>
+            <TestTemplate />
+          </Route>
+          <Route path='/'>
+            <h1 className='loading'>Page Not Found...</h1>
+          </Route>
         </Switch>
       </div>
       <Footer />

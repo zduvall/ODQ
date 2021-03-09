@@ -12,6 +12,7 @@ body {
   /* ----- colors ----- */
   --primary-color: rgb(14, 119, 189);
   --primary-color-light: rgb(32, 156, 238);
+  --primary-color-xlight: rgb(249, 252, 255);
   --secondary-color: rgb(238, 114, 32);
   --secondary-color-light: rgb(242, 150, 88);
   --tertiary-color: rgb(138, 138, 138);
@@ -24,6 +25,9 @@ body {
   --pimrary-radius: 0.5rem;
   --tertiary-border: var(--tertiary-color) solid 1px;
   --delete-border: var(--delete-color) solid 1px;
+
+  /* text shadow for bold */
+  --text-shadow: 0.5px 0 #000;
 }
 
 /* reset css */

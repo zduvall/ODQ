@@ -4,7 +4,7 @@ export default function ClientControls() {
   const {
     searchClients,
     setSearchClients,
-    showForm,
+    selectedClient,
     setShowForm,
   } = useClientsContext();
 
@@ -15,12 +15,12 @@ export default function ClientControls() {
         placeholder='Search code / year'
         value={searchClients}
         onChange={(e) => setSearchClients(e.target.value)}
-        disabled={showForm}
+        disabled={selectedClient}
       ></input>
       <button
         className='primary-button dashboard__button client-controls__button'
         onClick={() => setShowForm(true)}
-        disabled={showForm}
+        disabled={selectedClient}
       >
         New Client
       </button>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import thunk
 import { createClient, deleteClient } from '../../../../store/clients';
 
-//import context
+// import context
 import { useClientsContext } from '../index';
 
 export default function ClientForm() {
@@ -14,33 +14,33 @@ export default function ClientForm() {
 
   const {
     setShowForm,
-    setClientToUpdate,
-    clientToUpdate,
+    setSelectedClient,
+    selectedClient,
   } = useClientsContext();
 
   const [errors, setErrors] = useState([]);
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [birthYear, setBirthYear] = useState();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [birthYear, setBirthYear] = useState('');
   const [curClient, setCurClient] = useState('');
-  const [createDate, setCreateDate] = useState();
+  const [createDate, setCreateDate] = useState('');
 
-  // set all fields if clientToUpdate
+  // set all fields if selectedClient
   useEffect(() => {
-    if (!!clientToUpdate) {
-      let { code, birthYear, curClient } = clientToUpdate;
+    if (!!selectedClient) {
+      let { code, birthYear, curClient } = selectedClient;
       setFirstName(code.slice(0, 3));
       setLastName(code.slice(3, code.indexOf('-')));
       setBirthYear(birthYear);
       setCurClient(curClient);
     }
-  }, [clientToUpdate]);
+  }, [selectedClient]);
 
-  // set create date based on clientToUpdate or today
+  // set create date based on selectedClient or today
   useEffect(() => {
-    const date = clientToUpdate
+    const date = selectedClient
       ? new Date(
-          clientToUpdate.code.slice(clientToUpdate.code.indexOf('-') + 1)
+          selectedClient.code.slice(selectedClient.code.indexOf('-') + 1)
         )
       : new Date();
 
@@ -51,7 +51,7 @@ export default function ClientForm() {
     const dateToSet = yr + '-' + mth + '-' + dy;
 
     setCreateDate(dateToSet);
-  }, [clientToUpdate]);
+  }, [selectedClient]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +85,7 @@ export default function ClientForm() {
       dup = false;
       /* eslint-disable no-loop-func */
       clients.forEach((client) => {
-        if (clientToUpdate && clientToUpdate.id === client.id) return;
+        if (selectedClient && selectedClient.id === client.id) return;
         if (client.code.startsWith(code.slice(0, code.indexOf('-')))) {
           dup = true;
         }
@@ -102,15 +102,15 @@ export default function ClientForm() {
     const client = { userId: sessionUser.id, code, birthYear, curClient };
 
     const user = await dispatch(
-      !!clientToUpdate
-        ? createClient(client, clientToUpdate.id) // if you pass in a client id, it updates instead
+      !!selectedClient
+        ? createClient(client, selectedClient.id) // if you pass in a client id, it updates instead
         : createClient(client)
     );
 
     if (!user.errors) {
       console.log('updated');
       setShowForm(false);
-      setClientToUpdate(null);
+      setSelectedClient(null);
     } else {
       setErrors(user.errors);
     }
@@ -118,103 +118,102 @@ export default function ClientForm() {
 
   const onDelete = async () => {
     const remove = window.confirm(
-      `Are you sure you want to delete ${clientToUpdate.code} and all associated data?`
+      `Are you sure you want to delete ${selectedClient.code} and all associated data?`
     );
     if (remove) {
-      await dispatch(deleteClient(clientToUpdate.id));
+      await dispatch(deleteClient(selectedClient.id));
       setShowForm(false);
     }
   };
 
   return (
-    <form className='form dashboard__form' onSubmit={onSubmit}>
-      <div className='dashboard__data'>
-        <div className='errors-container'>
-          {errors.map((error) => (
-            <div key={error}>{error}</div>
-          ))}
+    <>
+      <form className='form dashboard__form' onSubmit={onSubmit}>
+        <div className='dashboard__data'>
+          <div className='errors-container'>
+            {errors.map((error) => (
+              <div key={error}>{error}</div>
+            ))}
+          </div>
+          <div className='form__row'>
+            <input
+              name='firstName'
+              type='text'
+              placeholder='First Name'
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
+              className='form__input dashboard__input'
+            ></input>
+            <input
+              name='lastName'
+              type='text'
+              placeholder='Last Name'
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
+              className='form__input dashboard__input'
+            ></input>
+          </div>
+          <div className='form__row'>
+            <input
+              name='birthYear'
+              type='number'
+              placeholder='Birth Year'
+              onChange={(e) => setBirthYear(e.target.value)}
+              value={birthYear}
+              className='form__input dashboard__input'
+            ></input>
+            <select
+              name='curClient'
+              onChange={(e) => setCurClient(e.target.value)}
+              value={curClient}
+              className='form__input dashboard__input'
+            >
+              <option disabled value=''>
+                - Status -
+              </option>
+              <option value={true}>Active</option>
+              <option value={false}>Terminated</option>
+            </select>
+          </div>
+          <div className='form__row'>
+            <label className='creation-date-label'>Creation:</label>
+            <input
+              name='creation-date'
+              className='form__input dashboard__input creation-date-input'
+              type='date'
+              onChange={(e) => setCreateDate(e.target.value)}
+              value={createDate}
+              required
+            ></input>
+          </div>
         </div>
-        <div className='form__row'>
-          <input
-            name='firstName'
-            type='text'
-            placeholder='First Name'
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstName}
-            className='form__input dashboard__input'
-          ></input>
-          <input
-            name='lastName'
-            type='text'
-            placeholder='Last Name'
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
-            className='form__input dashboard__input'
-          ></input>
-        </div>
-        <div className='form__row'>
-          <input
-            name='birthYear'
-            type='number'
-            placeholder='Birth Year'
-            onChange={(e) => setBirthYear(e.target.value)}
-            value={birthYear}
-            className='form__input dashboard__input'
-          ></input>
-          <select
-            name='curClient'
-            onChange={(e) => setCurClient(e.target.value)}
-            value={curClient}
-            className='form__input dashboard__input'
-          >
-            <option disabled value=''>
-              - Status -
-            </option>
-            <option value={true}>Active</option>
-            <option value={false}>Terminated</option>
-          </select>
-        </div>
-        <div className='form__row'>
-          <label for='creation-date' className='creation-date-label'>
-            Creation:
-          </label>
-          <input
-            name='creation-date'
-            className='form__input dashboard__input creation-date-input'
-            type='date'
-            onChange={(e) => setCreateDate(e.target.value)}
-            value={createDate}
-            required
-          ></input>
-        </div>
-      </div>
-      <div className='form__row dashboard__buttons'>
-        <button
-          className='primary-button form__button dashboard__button'
-          type='submit'
-        >
-          {clientToUpdate ? 'Update' : 'Create'}
-        </button>
-        <button
-          className='secondary-button form__button dashboard__button'
-          type='button'
-          onClick={() => {
-            setShowForm(false);
-            setClientToUpdate(null);
-          }}
-        >
-          Cancel
-        </button>
-        {clientToUpdate && (
+        <div className='form__row dashboard__buttons'>
           <button
-            className='delete-button form__button dashboard__button'
-            type='button'
-            onClick={onDelete}
+            className='primary-button form__button dashboard__button'
+            type='submit'
           >
-            Delete
+            {selectedClient ? 'Update' : 'Create'}
           </button>
-        )}
-      </div>
-    </form>
+          <button
+            className='secondary-button form__button dashboard__button'
+            type='button'
+            onClick={() => {
+              setShowForm(false);
+            }}
+          >
+            Cancel
+          </button>
+          {selectedClient && (
+            <button
+              className='delete-button form__button dashboard__button'
+              type='button'
+              onClick={onDelete}
+            >
+              Delete
+            </button>
+          )}
+        </div>
+      </form>
+    </>
   );
 }

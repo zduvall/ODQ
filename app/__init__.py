@@ -10,6 +10,7 @@ from .models import db, User
 # import routes
 from .api.auth_routes import auth_routes
 from .api.client_routes import client_routes
+from .api.test_routes import test_routes
 
 from .seeds import seed_commands
 
@@ -31,8 +32,12 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
+
+# Register blueprints
 app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(client_routes, url_prefix="/api/clients")
+app.register_blueprint(test_routes, url_prefix="/api/tests")
+
 db.init_app(app)
 Migrate(app, db)
 
@@ -43,7 +48,6 @@ CORS(app)
 # we won't be using a buildpack when we deploy to Heroku.
 # Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
-# Well.........
 
 
 @app.before_request

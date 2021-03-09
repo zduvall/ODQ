@@ -15,7 +15,8 @@
   width: 47rem;
   max-width: 100%;
   font-size: 1.1rem;
-  min-height: 14rem;
+  min-height: 13rem;
+  background-color: var(--primary-color-xlight);
 }
 
 .dashboard__form {
@@ -44,7 +45,7 @@
 .dashboard__data {
   padding: 0 1rem;
   width: 100%;
-  text-shadow: 0.5px 0 #000;
+  text-shadow: var(--text-shadow);
 }
 
 .dashboard__button {
@@ -54,6 +55,10 @@
   padding: 0.5rem !important;
   width: 100% !important;
   max-width: 11rem;
+}
+
+.PhoneInput {
+  background-color: rgb(255, 255, 255);
 }
 
 .PhoneInputInput {
@@ -82,11 +87,35 @@
 
 .creation-date-input {
   font-family: 'Open Sans', sans-serif !important;
-  text-shadow: 0.5px 0 #000;
+  text-shadow: var(--text-shadow);
 }
 
 /* clients */
 
+/* single client */
+.dashboard__single-client {
+  min-height: auto !important;
+}
+
+.generate-test-url__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50% !important;
+  margin: 0 1rem;
+}
+
+.gnerate-test-url__dropdown {
+  max-width: 11rem;
+}
+
+@media (max-width: 800px) {
+  .dashboard__single-client {
+    flex-direction: column !important;
+  }
+}
+
+/* clients other */
 .dashboard__client-controls {
   display: flex;
   width: 47rem;
@@ -130,7 +159,7 @@
 }
 
 .client-header:hover {
-  text-shadow: 0.5px 0 #000;
+  text-shadow: var(--text-shadow);
 }
 
 .client-row {
@@ -149,7 +178,7 @@
 }
 
 .client-name:hover {
-  text-shadow: 0.5px 0 #000;
+  text-shadow: var(--text-shadow);
 }
 
 /* Mobile view */

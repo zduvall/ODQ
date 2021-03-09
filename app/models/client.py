@@ -8,9 +8,11 @@ class Client(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     birthYear = db.Column(db.Integer, nullable=False)
     code = db.Column(db.String(15), unique=True, nullable=False)
-    curClient = db.Column(db.Boolean, nullable=False, default=True)
+    curClient = db.Column(db.Boolean, nullable=False)
 
     pro = db.relationship("User", back_populates="clients")
+    tests = db.relationship("Test", back_populates="client")
+
 
     def to_dict(self):
         return {

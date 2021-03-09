@@ -4,14 +4,16 @@ import { useState, createContext, useContext } from 'react';
 import ClientContorls from './ClientControls';
 import AllClients from './AllClients.js';
 import ClientFrom from './ClientForm';
+import ClientSingle from './ClientSingle';
 
 const ClientsContext = createContext();
 export const useClientsContext = () => useContext(ClientsContext);
 
 export default function Clients() {
   const [searchClients, setSearchClients] = useState('');
+  // const [showSingleClient, setShowSingleClient] = useState();
   const [showForm, setShowForm] = useState(false);
-  const [clientToUpdate, setClientToUpdate] = useState(null);
+  const [selectedClient, setSelectedClient] = useState(null);
 
   return (
     <ClientsContext.Provider
@@ -20,15 +22,27 @@ export default function Clients() {
         setSearchClients,
         showForm,
         setShowForm,
-        clientToUpdate,
-        setClientToUpdate,
+        selectedClient,
+        setSelectedClient,
       }}
     >
       <ClientContorls />
-      <div className='dashboard__sub-section clients-container'>
-        {!showForm && <AllClients />}
-        {showForm && <ClientFrom />}
-      </div>
+      {selectedClient && (
+        <>
+          <ClientSingle />
+          <div className='One1rem-height'></div>
+        </>
+      )}
+      {!selectedClient && !showForm && (
+        <div className='dashboard__sub-section clients-container'>
+          <AllClients />
+        </div>
+      )}
+      {showForm && (
+        <div className='dashboard__sub-section clients-container'>
+          <ClientFrom />
+        </div>
+      )}
     </ClientsContext.Provider>
   );
 }

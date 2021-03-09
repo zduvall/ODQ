@@ -10,15 +10,15 @@ import ModalNewUrl from './ModalNewUrl';
 // import tests
 import tests from '../../../TestTemplate/assets/index';
 
-export default function ClientTests() {
+export default function NewUrlControls() {
   // store and context
   const sessionUser = useSelector((state) => state.session.user);
-  const { clientToUpdate } = useClientsContext();
+  const { selectedClient } = useClientsContext();
 
   // state
   const [test, setTest] = useState('');
-  const [showModal, setShowModal] = useState(false);
   const [newUrl, setNewUrl] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   // tests
   const testCodes = Object.keys(tests);
@@ -28,7 +28,7 @@ export default function ClientTests() {
     const userUrl = `${
       sessionUser.firstName.slice(0, 1) + '-' + sessionUser.lastName.slice(0, 1)
     }_${sessionUser.id}`;
-    const clientUrl = clientToUpdate.code + '_' + clientToUpdate.id;
+    const clientUrl = selectedClient.code + '_' + selectedClient.id;
     const url = `${window.location.host}/test/${test}/${userUrl}/${clientUrl}`;
     setNewUrl(url);
     setShowModal(true);
@@ -43,27 +43,25 @@ export default function ClientTests() {
           newUrl={newUrl}
         />
       )}
-      <div className='dashboard__sub-section dashboard__single-client'>
-        <p className='dashboard__single-client-p'>{clientToUpdate.code}</p>
-        <form className='generate-test-url__form' onSubmit={onSubmit}>
-          <button type='submit' className='primary-button dashboard__button'>
-            New Test Link
-          </button>
-          <select
-            value={test}
-            onChange={(e) => setTest(e.target.value)}
-            className='form__input dashboard__input'
-            required
-          >
-            <option disabled value=''>
-              - Test Code -
-            </option>
-            {testCodes.map((test) => (
-              <option key={test}>{test}</option>
-            ))}
-          </select>
-        </form>
-      </div>
+
+      <form className='generate-test-url__form' onSubmit={onSubmit}>
+        <button type='submit' className='primary-button dashboard__button'>
+          New Test Link
+        </button>
+        <select
+          value={test}
+          onChange={(e) => setTest(e.target.value)}
+          className='form__input dashboard__input'
+          required
+        >
+          <option disabled value=''>
+            - Test Code -
+          </option>
+          {testCodes.map((test) => (
+            <option key={test}>{test}</option>
+          ))}
+        </select>
+      </form>
     </>
   );
 }

@@ -2,11 +2,15 @@
 import { useClientsContext } from '../index';
 
 export default function ClientRow({ status, client }) {
-  const { searchClients, setShowForm, setClientToUpdate } = useClientsContext();
+  const {
+    searchClients,
+    setShowForm,
+    setSelectedClient,
+  } = useClientsContext();
   const { code, birthYear, curClient } = client;
 
   function handleClickClient() {
-    setClientToUpdate(client);
+    setSelectedClient(client);
     setShowForm(true);
   }
 

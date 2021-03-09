@@ -2,11 +2,11 @@
 import { useClientsContext } from '../../index';
 
 export default function NewUrl({ newUrl }) {
-  const { clientToUpdate } = useClientsContext();
+  const { selectedClient } = useClientsContext();
 
   return (
     <>
-      <h1>Send test to {clientToUpdate.code}</h1>
+      <h1>Send test to {selectedClient.code}</h1>
       <p>{newUrl}</p>
     </>
   );

@@ -95,21 +95,13 @@
 /* single client */
 .dashboard__single-client {
   min-height: auto !important;
-  justify-content: space-between;
-}
-
-.dashboard__single-client-p {
-  text-shadow: var(--text-shadow);
-  margin: 0;
-  font-weight: 1000;
-  padding: 0 1rem;
 }
 
 .generate-test-url__form {
   display: flex;
-  width: 100%;
-  max-width: 24rem;
-  padding: 0 1rem;
+  flex-direction: column;
+  align-items: center;
+  width: 50% !important;
 }
 
 @media (max-width: 800px) {

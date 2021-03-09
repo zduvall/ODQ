@@ -14,8 +14,8 @@ export default function ClientForm() {
 
   const {
     setShowForm,
-    setClientToUpdate,
-    clientToUpdate,
+    setSelectedClient,
+    selectedClient,
   } = useClientsContext();
 
   const [errors, setErrors] = useState([]);
@@ -25,22 +25,22 @@ export default function ClientForm() {
   const [curClient, setCurClient] = useState('');
   const [createDate, setCreateDate] = useState('');
 
-  // set all fields if clientToUpdate
+  // set all fields if selectedClient
   useEffect(() => {
-    if (!!clientToUpdate) {
-      let { code, birthYear, curClient } = clientToUpdate;
+    if (!!selectedClient) {
+      let { code, birthYear, curClient } = selectedClient;
       setFirstName(code.slice(0, 3));
       setLastName(code.slice(3, code.indexOf('-')));
       setBirthYear(birthYear);
       setCurClient(curClient);
     }
-  }, [clientToUpdate]);
+  }, [selectedClient]);
 
-  // set create date based on clientToUpdate or today
+  // set create date based on selectedClient or today
   useEffect(() => {
-    const date = clientToUpdate
+    const date = selectedClient
       ? new Date(
-          clientToUpdate.code.slice(clientToUpdate.code.indexOf('-') + 1)
+          selectedClient.code.slice(selectedClient.code.indexOf('-') + 1)
         )
       : new Date();
 
@@ -51,7 +51,7 @@ export default function ClientForm() {
     const dateToSet = yr + '-' + mth + '-' + dy;
 
     setCreateDate(dateToSet);
-  }, [clientToUpdate]);
+  }, [selectedClient]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +85,7 @@ export default function ClientForm() {
       dup = false;
       /* eslint-disable no-loop-func */
       clients.forEach((client) => {
-        if (clientToUpdate && clientToUpdate.id === client.id) return;
+        if (selectedClient && selectedClient.id === client.id) return;
         if (client.code.startsWith(code.slice(0, code.indexOf('-')))) {
           dup = true;
         }
@@ -102,15 +102,15 @@ export default function ClientForm() {
     const client = { userId: sessionUser.id, code, birthYear, curClient };
 
     const user = await dispatch(
-      !!clientToUpdate
-        ? createClient(client, clientToUpdate.id) // if you pass in a client id, it updates instead
+      !!selectedClient
+        ? createClient(client, selectedClient.id) // if you pass in a client id, it updates instead
         : createClient(client)
     );
 
     if (!user.errors) {
       console.log('updated');
       setShowForm(false);
-      setClientToUpdate(null);
+      setSelectedClient(null);
     } else {
       setErrors(user.errors);
     }
@@ -118,10 +118,10 @@ export default function ClientForm() {
 
   const onDelete = async () => {
     const remove = window.confirm(
-      `Are you sure you want to delete ${clientToUpdate.code} and all associated data?`
+      `Are you sure you want to delete ${selectedClient.code} and all associated data?`
     );
     if (remove) {
-      await dispatch(deleteClient(clientToUpdate.id));
+      await dispatch(deleteClient(selectedClient.id));
       setShowForm(false);
     }
   };
@@ -192,19 +192,19 @@ export default function ClientForm() {
             className='primary-button form__button dashboard__button'
             type='submit'
           >
-            {clientToUpdate ? 'Update' : 'Create'}
+            {selectedClient ? 'Update' : 'Create'}
           </button>
           <button
             className='secondary-button form__button dashboard__button'
             type='button'
             onClick={() => {
               setShowForm(false);
-              setClientToUpdate(null);
+              setSelectedClient(null);
             }}
           >
             Cancel
           </button>
-          {clientToUpdate && (
+          {selectedClient && (
             <button
               className='delete-button form__button dashboard__button'
               type='button'

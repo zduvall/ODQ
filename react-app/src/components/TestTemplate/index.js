@@ -40,10 +40,9 @@ export default function TestTemplate() {
                       {question.scale.map((input) => {
                         return (
                           <Radio
-                            keyBegin={`${section.id}-${question.id}`}
+                            key={`${section.id}-${question.id}-${input.value}`}
                             question={question}
                             input={input}
-                            inputs={inputs}
                             setInputs={setInputs}
                           />
                         );

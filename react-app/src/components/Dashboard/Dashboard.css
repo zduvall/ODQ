@@ -16,6 +16,7 @@
   max-width: 100%;
   font-size: 1.1rem;
   min-height: 14rem;
+  background-color: var(--primary-color-xlight);
 }
 
 .dashboard__form {
@@ -56,6 +57,10 @@
   max-width: 11rem;
 }
 
+.PhoneInput {
+  background-color: rgb(255, 255, 255);
+}
+
 .PhoneInputInput {
   border-color: transparent;
   font-size: 1.1rem;
@@ -82,10 +87,18 @@
 
 .creation-date-input {
   font-family: 'Open Sans', sans-serif !important;
-  text-shadow: 0.5px 0 #000;
+  text-shadow: var(--text-shadow);
 }
 
 /* clients */
+
+.dashboard__client-tests {
+  min-height: auto !important;
+}
+
+.dashboard__single-client {
+  text-shadow: var(--text-shadow);
+}
 
 .dashboard__client-controls {
   display: flex;

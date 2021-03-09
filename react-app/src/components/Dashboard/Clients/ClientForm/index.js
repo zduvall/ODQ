@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import thunk
 import { createClient, deleteClient } from '../../../../store/clients';
 
-//import context
+// import context
 import { useClientsContext } from '../index';
 
 export default function ClientForm() {
@@ -127,92 +127,94 @@ export default function ClientForm() {
   };
 
   return (
-    <form className='form dashboard__form' onSubmit={onSubmit}>
-      <div className='dashboard__data'>
-        <div className='errors-container'>
-          {errors.map((error) => (
-            <div key={error}>{error}</div>
-          ))}
+    <>
+      <form className='form dashboard__form' onSubmit={onSubmit}>
+        <div className='dashboard__data'>
+          <div className='errors-container'>
+            {errors.map((error) => (
+              <div key={error}>{error}</div>
+            ))}
+          </div>
+          <div className='form__row'>
+            <input
+              name='firstName'
+              type='text'
+              placeholder='First Name'
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
+              className='form__input dashboard__input'
+            ></input>
+            <input
+              name='lastName'
+              type='text'
+              placeholder='Last Name'
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
+              className='form__input dashboard__input'
+            ></input>
+          </div>
+          <div className='form__row'>
+            <input
+              name='birthYear'
+              type='number'
+              placeholder='Birth Year'
+              onChange={(e) => setBirthYear(e.target.value)}
+              value={birthYear}
+              className='form__input dashboard__input'
+            ></input>
+            <select
+              name='curClient'
+              onChange={(e) => setCurClient(e.target.value)}
+              value={curClient}
+              className='form__input dashboard__input'
+            >
+              <option disabled value=''>
+                - Status -
+              </option>
+              <option value={true}>Active</option>
+              <option value={false}>Terminated</option>
+            </select>
+          </div>
+          <div className='form__row'>
+            <label className='creation-date-label'>Creation:</label>
+            <input
+              name='creation-date'
+              className='form__input dashboard__input creation-date-input'
+              type='date'
+              onChange={(e) => setCreateDate(e.target.value)}
+              value={createDate}
+              required
+            ></input>
+          </div>
         </div>
-        <div className='form__row'>
-          <input
-            name='firstName'
-            type='text'
-            placeholder='First Name'
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstName}
-            className='form__input dashboard__input'
-          ></input>
-          <input
-            name='lastName'
-            type='text'
-            placeholder='Last Name'
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
-            className='form__input dashboard__input'
-          ></input>
-        </div>
-        <div className='form__row'>
-          <input
-            name='birthYear'
-            type='number'
-            placeholder='Birth Year'
-            onChange={(e) => setBirthYear(e.target.value)}
-            value={birthYear}
-            className='form__input dashboard__input'
-          ></input>
-          <select
-            name='curClient'
-            onChange={(e) => setCurClient(e.target.value)}
-            value={curClient}
-            className='form__input dashboard__input'
-          >
-            <option disabled value=''>
-              - Status -
-            </option>
-            <option value={true}>Active</option>
-            <option value={false}>Terminated</option>
-          </select>
-        </div>
-        <div className='form__row'>
-          <label className='creation-date-label'>Creation:</label>
-          <input
-            name='creation-date'
-            className='form__input dashboard__input creation-date-input'
-            type='date'
-            onChange={(e) => setCreateDate(e.target.value)}
-            value={createDate}
-            required
-          ></input>
-        </div>
-      </div>
-      <div className='form__row dashboard__buttons'>
-        <button
-          className='primary-button form__button dashboard__button'
-          type='submit'
-        >
-          {clientToUpdate ? 'Update' : 'Create'}
-        </button>
-        <button
-          className='secondary-button form__button dashboard__button'
-          type='button'
-          onClick={() => {
-            setShowForm(false);
-            setClientToUpdate(null);
-          }}
-        >
-          Cancel
-        </button>
-        {clientToUpdate && (
+        <div className='form__row dashboard__buttons'>
           <button
-            className='delete-button form__button dashboard__button'
-            type='button'
-            onClick={onDelete}
+            className='primary-button form__button dashboard__button'
+            type='submit'
           >
-            Delete
+            {clientToUpdate ? 'Update' : 'Create'}
           </button>
-        )}
-      </div>
-    </form>
+          <button
+            className='secondary-button form__button dashboard__button'
+            type='button'
+            onClick={() => {
+              setShowForm(false);
+              setClientToUpdate(null);
+            }}
+          >
+            Cancel
+          </button>
+          {clientToUpdate && (
+            <button
+              className='delete-button form__button dashboard__button'
+              type='button'
+              onClick={onDelete}
+            >
+              Delete
+            </button>
+          )}
+        </div>
+      </form>
+    </>
   );
 }

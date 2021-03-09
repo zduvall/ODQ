@@ -4,6 +4,7 @@ import { useState, createContext, useContext } from 'react';
 import ClientContorls from './ClientControls';
 import AllClients from './AllClients.js';
 import ClientFrom from './ClientForm';
+import ClientTests from './ClientTests';
 
 const ClientsContext = createContext();
 export const useClientsContext = () => useContext(ClientsContext);
@@ -25,6 +26,14 @@ export default function Clients() {
       }}
     >
       <ClientContorls />
+      {showForm && clientToUpdate && (
+        <>
+          <div className='dashboard__sub-section dashboard__client-tests'>
+            <ClientTests />
+          </div>
+          <div className='One1rem-height'></div>
+        </>
+      )}
       <div className='dashboard__sub-section clients-container'>
         {!showForm && <AllClients />}
         {showForm && <ClientFrom />}

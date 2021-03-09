@@ -34,21 +34,11 @@ export default function TestTemplate() {
               <h3>{section.instructions}</h3>
               {section.questions.map((question) => {
                 return (
-                  <div key={`${section.id}-${question.id}`}>
-                    <label>{question.stem}</label>
-                    <ul>
-                      {question.scale.map((input) => {
-                        return (
-                          <Radio
-                            key={`${section.id}-${question.id}-${input.value}`}
-                            question={question}
-                            input={input}
-                            setInputs={setInputs}
-                          />
-                        );
-                      })}
-                    </ul>
-                  </div>
+                  <Radio
+                    setInputs={setInputs}
+                    section={section}
+                    question={question}
+                  />
                 );
               })}
             </div>

@@ -50,13 +50,9 @@ function App() {
           >
             <Dashboard />
           </ProtectedRoute>
-          <ProtectedRoute
-            path='/test/:testCode'
-            exact={true}
-            authenticated={!!sessionUser}
-          >
+          <Route path='/test/:testCode/:userId/:clientId' exact={true}>
             <TestTemplate />
-          </ProtectedRoute>
+          </Route>
           <Route path='/'>
             <h1 className='loading'>Page Not Found...</h1>
           </Route>

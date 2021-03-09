@@ -1,31 +1,50 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 // import tests object
 import tests from './assets';
 
+// import components
+import TestHeader from './TestHeader';
+
 // import question types
 import { Radio } from './QuestionTypes';
 
 export default function TestTemplate() {
-  const { testCode } = useParams();
+  const { testCode, userId, clientId } = useParams();
   const test = tests[testCode];
+
+  const [inputs, setInputs] = useState({});
+
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log('results', inputs);
+  }
 
   return (
     <div>
-      <h1>{test.abbr}</h1>
-      <p>{test.instructions}</p>
-      <form>
+      <TestHeader test={test} />
+      <h2>
+        User: {userId}, Client: {clientId}
+      </h2>
+      <form onSubmit={onSubmit}>
         {test.sections.map((section) => {
           return (
             <div key={section.id}>
-              <h2>{section.instructions}</h2>
+              <h3>{section.instructions}</h3>
               {section.questions.map((question) => {
                 return (
                   <div key={question.id}>
                     <label>{question.stem}</label>
                     <ul>
                       {question.scale.map((input) => {
-                        return <Radio question={question} input={input} />;
+                        return (
+                          <Radio
+                            question={question}
+                            input={input}
+                            setInputs={setInputs}
+                          />
+                        );
                       })}
                     </ul>
                   </div>
@@ -34,7 +53,9 @@ export default function TestTemplate() {
             </div>
           );
         })}
-        <button type='submit'></button>
+        <button className='primary-button' type='submit'>
+          Submit
+        </button>
       </form>
     </div>
   );

@@ -37,11 +37,10 @@ def createTest():
             testCode=form.data["testCode"],
             res=form.data["res"],
         )
+        db.session.add(new_test)
+        db.session.commit()
         print("------ new test --------", new_test.to_dict())
-        return "done"
-    #     db.session.add(new_test)
-    #     db.session.commit()
-    #     return new_test.to_dict()
+        return new_test.to_dict()
 
     print("-------errors-------", form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401

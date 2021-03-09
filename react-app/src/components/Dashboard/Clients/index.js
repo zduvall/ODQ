@@ -28,9 +28,7 @@ export default function Clients() {
       <ClientContorls />
       {showForm && clientToUpdate && (
         <>
-          <div className='dashboard__sub-section dashboard__client-tests'>
-            <ClientTests />
-          </div>
+          <ClientTests />
           <div className='One1rem-height'></div>
         </>
       )}

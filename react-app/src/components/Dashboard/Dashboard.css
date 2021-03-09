@@ -15,7 +15,7 @@
   width: 47rem;
   max-width: 100%;
   font-size: 1.1rem;
-  min-height: 14rem;
+  min-height: 13rem;
   background-color: var(--primary-color-xlight);
 }
 
@@ -45,7 +45,7 @@
 .dashboard__data {
   padding: 0 1rem;
   width: 100%;
-  text-shadow: 0.5px 0 #000;
+  text-shadow: var(--text-shadow);
 }
 
 .dashboard__button {
@@ -98,6 +98,8 @@
 
 .dashboard__single-client {
   text-shadow: var(--text-shadow);
+  margin: 0;
+  font-weight: 1000;
 }
 
 .dashboard__client-controls {
@@ -143,7 +145,7 @@
 }
 
 .client-header:hover {
-  text-shadow: 0.5px 0 #000;
+  text-shadow: var(--text-shadow);
 }
 
 .client-row {
@@ -162,7 +164,7 @@
 }
 
 .client-name:hover {
-  text-shadow: 0.5px 0 #000;
+  text-shadow: var(--text-shadow);
 }
 
 /* Mobile view */

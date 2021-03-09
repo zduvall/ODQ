@@ -20,15 +20,22 @@
 }
 
 #modal-content {
-  /* width: min-content; */
-  color: rgb(202, 202, 202);
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--tertiary-border);
+  border-radius: var(--pimrary-radius);
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 40rem;
+  max-width: 85%;
+  font-size: 1.1rem;
+  min-height: 13rem;
+  background-color: var(--primary-color-xlight);
 }
 
 #modal-content ul {
-  list-style-type: none;
   padding-inline-start: 0;
   margin-block-end: 0;
   padding: 0;

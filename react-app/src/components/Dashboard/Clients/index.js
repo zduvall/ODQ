@@ -7,11 +7,11 @@ import ClientFrom from './ClientForm';
 import ClientSingle from './ClientSingle';
 
 const ClientsContext = createContext();
+
 export const useClientsContext = () => useContext(ClientsContext);
 
 export default function Clients() {
   const [searchClients, setSearchClients] = useState('');
-  // const [showSingleClient, setShowSingleClient] = useState();
   const [showForm, setShowForm] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
 

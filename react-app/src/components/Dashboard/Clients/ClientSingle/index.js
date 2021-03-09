@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 // import components
 import NewUrlControls from './NewUrlControls';
 
@@ -5,6 +7,7 @@ import NewUrlControls from './NewUrlControls';
 import { useClientsContext } from '../index';
 
 export default function ClientSingle() {
+  const history = useHistory();
   const {
     selectedClient,
     setSelectedClient,
@@ -21,7 +24,10 @@ export default function ClientSingle() {
         </div>
         <NewUrlControls />
         <div className='dashboard__buttons'>
-          <button className='primary-button dashboard__button'>
+          <button
+            className='primary-button dashboard__button'
+            onClick={() => history.push(`/clients/${selectedClient.id}`)}
+          >
             Sent Tests
           </button>
           <button

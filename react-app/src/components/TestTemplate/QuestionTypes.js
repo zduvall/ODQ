@@ -1,5 +1,4 @@
 export function Radio({ section, question, setInputs }) {
-  
   function handleChange(e) {
     const input = {};
     input[question.id] = e.target.value;
@@ -9,7 +8,7 @@ export function Radio({ section, question, setInputs }) {
   }
 
   return (
-    <div key={`${section.id}-${question.id}`}>
+    <div>
       <label>{question.stem}</label>
       <ul>
         {question.scale.map((input) => {

@@ -19,11 +19,11 @@ export default function ClientForm() {
   } = useClientsContext();
 
   const [errors, setErrors] = useState([]);
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [birthYear, setBirthYear] = useState();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [birthYear, setBirthYear] = useState('');
   const [curClient, setCurClient] = useState('');
-  const [createDate, setCreateDate] = useState();
+  const [createDate, setCreateDate] = useState('');
 
   // set all fields if clientToUpdate
   useEffect(() => {
@@ -175,9 +175,7 @@ export default function ClientForm() {
           </select>
         </div>
         <div className='form__row'>
-          <label for='creation-date' className='creation-date-label'>
-            Creation:
-          </label>
+          <label className='creation-date-label'>Creation:</label>
           <input
             name='creation-date'
             className='form__input dashboard__input creation-date-input'

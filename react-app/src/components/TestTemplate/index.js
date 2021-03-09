@@ -50,6 +50,7 @@ export default function TestTemplate() {
               {section.questions.map((question) => {
                 return (
                   <Radio
+                    key={`${section.id}-${question.id}`}
                     setInputs={setInputs}
                     section={section}
                     question={question}

@@ -19,8 +19,9 @@ export default function ClientSingle() {
           <p>Born: {selectedClient.birthYear}</p>
           <p>Status: {selectedClient.curClient ? 'Active' : 'Terminated'}</p>
         </div>
+        <NewUrlControls />
         <div className='dashboard__buttons'>
-          <button className='secondary-button dashboard__button'>
+          <button className='primary-button dashboard__button'>
             Sent Tests
           </button>
           <button
@@ -39,7 +40,6 @@ export default function ClientSingle() {
             Back
           </button>
         </div>
-        <NewUrlControls />
       </div>
     </>
   );

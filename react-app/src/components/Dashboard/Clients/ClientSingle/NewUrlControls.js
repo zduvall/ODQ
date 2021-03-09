@@ -45,7 +45,7 @@ export default function NewUrlControls() {
       )}
 
       <form className='generate-test-url__form' onSubmit={onSubmit}>
-        <button type='submit' className='secondary-button dashboard__button'>
+        <button type='submit' className='primary-button dashboard__button'>
           New Test Link
         </button>
         <select
@@ -55,7 +55,7 @@ export default function NewUrlControls() {
           required
         >
           <option disabled value=''>
-            - Test Code -
+            - New Test -
           </option>
           {testCodes.map((test) => (
             <option key={test}>{test}</option>

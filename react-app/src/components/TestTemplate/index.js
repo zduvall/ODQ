@@ -16,9 +16,19 @@ export default function TestTemplate() {
 
   const [inputs, setInputs] = useState({});
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
-    console.log('results', inputs);
+
+    const testInfo = { userId, clientId, testCode, inputs };
+    console.log('results', testInfo);
+
+    // await fetch(`/api/clients/`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(testInfo),
+    // });
   }
 
   return (

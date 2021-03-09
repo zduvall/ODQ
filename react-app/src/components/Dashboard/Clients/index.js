@@ -11,6 +11,7 @@ export const useClientsContext = () => useContext(ClientsContext);
 
 export default function Clients() {
   const [searchClients, setSearchClients] = useState('');
+  // const [showSingleClient, setShowSingleClient] = useState();
   const [showForm, setShowForm] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
 
@@ -26,16 +27,22 @@ export default function Clients() {
       }}
     >
       <ClientContorls />
-      {showForm && selectedClient && (
+      {selectedClient && (
         <>
           <ClientSingle />
           <div className='One1rem-height'></div>
         </>
       )}
-      <div className='dashboard__sub-section clients-container'>
-        {!showForm && <AllClients />}
-        {showForm && <ClientFrom />}
-      </div>
+      {!selectedClient && !showForm && (
+        <div className='dashboard__sub-section clients-container'>
+          <AllClients />
+        </div>
+      )}
+      {showForm && (
+        <div className='dashboard__sub-section clients-container'>
+          <ClientFrom />
+        </div>
+      )}
     </ClientsContext.Provider>
   );
 }

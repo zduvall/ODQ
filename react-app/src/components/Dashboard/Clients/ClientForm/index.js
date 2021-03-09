@@ -199,7 +199,6 @@ export default function ClientForm() {
             type='button'
             onClick={() => {
               setShowForm(false);
-              setSelectedClient(null);
             }}
           >
             Cancel

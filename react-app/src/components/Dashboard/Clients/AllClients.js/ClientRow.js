@@ -2,12 +2,11 @@
 import { useClientsContext } from '../index';
 
 export default function ClientRow({ status, client }) {
-  const { searchClients, setShowForm, setSelectedClient } = useClientsContext();
+  const { searchClients, setSelectedClient } = useClientsContext();
   const { code, birthYear, curClient } = client;
 
   function handleClickClient() {
     setSelectedClient(client);
-    setShowForm(true);
   }
 
   // logic to toggle if this row is shown or not

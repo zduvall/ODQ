@@ -9,7 +9,7 @@ class Test(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     clientId = db.Column(db.Integer, db.ForeignKey("clients.id"), nullable=False)
     testCode = db.Column(db.String(20), nullable=False)
-    res = db.Column(db.JSONType)
+    res = db.Column(db.JSON)
     timeSent = db.Column(db.DateTime, default=datetime.utcnow)
     timeComp = db.Column(db.DateTime)
     userSeen = db.Column(db.Boolean, default=False)

@@ -5,7 +5,7 @@ export function Radio({ keyBegin, question, input, setInputs, inputs }) {
     console.log(input);
     console.log(inputs); // delete this prop when deleting this console.log()
     setInputs((prev) => {
-      return { ...prev, input };
+      return { ...prev, ...input };
     });
   }
 

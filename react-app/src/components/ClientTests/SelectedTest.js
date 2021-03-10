@@ -23,10 +23,21 @@ export default function SelectedTest() {
     ],
   };
 
+  const options = {
+    // maintainAspectRatio: false,
+    title: {
+      display: true,
+      text: `This chart`,
+      // padding: 15,
+      fontSize: 23,
+      fontColor: '#1A77A3',
+    },
+  };
+
   return (
     <div className='site__sub-section chart-container'>
       <h3>{selectedTest.name}</h3>
-      <Line data={data} />
+      <Line data={data} options={options} />
     </div>
   );
 }

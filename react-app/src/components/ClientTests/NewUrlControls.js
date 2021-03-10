@@ -41,14 +41,14 @@ export default function NewUrlControls({ client }) {
         />
       )}
 
-      <form className='generate-test-url__form' onSubmit={onSubmit}>
-        <button type='submit' className='primary-button dashboard__button'>
+      <form className='form' onSubmit={onSubmit}>
+        <button type='submit' className='primary-button'>
           New Test Link
         </button>
         <select
           value={test}
           onChange={(e) => setTest(e.target.value)}
-          className='form__input gnerate-test-url__dropdown'
+          className='form__input'
           required
         >
           <option disabled value=''>

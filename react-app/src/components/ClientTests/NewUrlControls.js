@@ -48,7 +48,7 @@ export default function NewUrlControls({ client }) {
         <select
           value={test}
           onChange={(e) => setTest(e.target.value)}
-          className='form__input dashboard__input gnerate-test-url__dropdown'
+          className='form__input gnerate-test-url__dropdown'
           required
         >
           <option disabled value=''>

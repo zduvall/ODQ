@@ -70,7 +70,7 @@ function SignUpFormPage() {
   return (
     <div className='form-container'>
       <h1 className='primary-title'>Sign Up</h1>
-      <form className='form' onSubmit={onSignUp}>
+      <form className='form auth__form' onSubmit={onSignUp}>
         <div className='errors-container'>
           {errors.map((error) => (
             <div key={error}>{error}</div>

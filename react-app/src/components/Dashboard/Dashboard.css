@@ -19,17 +19,6 @@
   background-color: var(--primary-color-xlight);
 }
 
-.dashboard__form {
-  flex-direction: row !important;
-  width: 100% !important;
-  justify-content: space-around;
-}
-
-.dashboard__input {
-  margin: 0.5rem !important;
-  padding: 0.5rem !important;
-}
-
 .dashboard__buttons {
   display: flex;
   flex-direction: column;
@@ -188,9 +177,6 @@
   }
   .dashboard__data {
     text-align: center;
-  }
-  .dashboard__form {
-    flex-direction: column !important;
   }
   .dashboard__buttons {
     flex-direction: row;

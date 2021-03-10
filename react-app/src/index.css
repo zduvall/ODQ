@@ -87,20 +87,24 @@ a {
 /* GLOBAL CLASSES */
 /* --------------- buttons --------------- */
 
-button {
+button:not(.nav__item) {
   font-weight: 1000;
   padding: 0.5rem;
   font-size: 1.1rem;
 }
 
-button:hover:enabled {
+button:hover:enabled:not(.nav__item) {
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
   transform: translateY(-0.75px);
 }
 
-button:active:enabled {
+button:active:enabled:not(.nav__item) {
   box-shadow: none;
   transform: translateY(0.75px);
+}
+
+button:disabled:not(.nav__item) {
+  cursor: default !important;
 }
 
 .primary-button {
@@ -121,7 +125,6 @@ button:active:enabled {
 }
 
 .primary-button:disabled {
-  cursor: default !important;
   background-color: var(--tertiary-color-light);
   border: var(--tertiary-color) 1px solid;
   color: var(--tertiary-color);
@@ -186,14 +189,16 @@ button:active:enabled {
 
 .form {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 32rem;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  /* width: 32rem; */
 }
 
 @media (max-width: 800px) {
   .form {
-    width: 20rem;
+    flex-direction: column !important;
   }
 }
 
@@ -212,8 +217,8 @@ button:active:enabled {
 
 .form__input {
   width: 100%;
-  margin: 0.75rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   border-radius: var(--pimrary-radius);
   border: var(--tertiary-border);
   font-size: 1.1rem;

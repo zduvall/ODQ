@@ -1,1 +1,11 @@
+.auth__form {
+  max-width: 32rem;
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+}
 
+.auth__form__input {
+  margin: 0.75rem;
+  padding: 1rem;
+}

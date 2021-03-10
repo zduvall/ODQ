@@ -11,7 +11,7 @@ export default function ClientControls() {
   return (
     <div className='dashboard__client-controls'>
       <input
-        className='form__input dashboard__input'
+        className='form__input'
         placeholder='Search code / year'
         value={searchClients}
         onChange={(e) => setSearchClients(e.target.value)}

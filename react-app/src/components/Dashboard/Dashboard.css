@@ -37,8 +37,7 @@
   width: 50% !important;
 }
 
-.dashboard__data,
-.dashboard__button {
+.dashboard__data {
   font-size: 1.1rem;
   font-weight: 1000;
 }

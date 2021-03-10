@@ -28,8 +28,8 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getClients(sessionUser.id));
-  });
+    if (sessionUser) dispatch(getClients(sessionUser.id));
+  }, [dispatch, sessionUser]);
 
   if (!loaded || sessionUser === 'do not load') {
     return <h1 className='loading'>Loading DOT...</h1>;

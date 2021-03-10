@@ -86,27 +86,38 @@ a {
 
 /* GLOBAL CLASSES */
 /* --------------- buttons --------------- */
+
+button {
+  font-weight: 1000;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+}
+
+button:hover:enabled {
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+  transform: translateY(-0.75px);
+}
+
+button:active:enabled {
+  box-shadow: none;
+  transform: translateY(0.75px);
+}
+
 .primary-button {
   color: rgb(255, 255, 255);
-  font-weight: 700;
   background-color: var(--primary-color);
   border: var(--primary-color) 2px solid;
   border-radius: var(--pimrary-radius);
-  padding: 1rem;
-  font-size: 1.1rem;
 }
 
 .primary-button:hover:enabled {
   background-color: var(--primary-color-light);
   border-color: var(--primary-color-light);
-  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  transform: translateY(-0.5px);
 }
 
 .primary-button:active:enabled {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: none;
 }
 
 .primary-button:disabled {
@@ -118,48 +129,36 @@ a {
 
 .secondary-button {
   color: var(--primary-color);
-  font-weight: 700;
   border: var(--primary-border);
   background-color: rgb(255, 255, 255);
   border-radius: var(--pimrary-radius);
-  padding: 1rem;
-  font-size: 1.1rem;
 }
 
 .secondary-button:hover {
   color: var(--primary-color-light);
   border-color: var(--primary-color-light);
-  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  transform: translateY(-0.5px);
 }
 
 .secondary-button:active {
   color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: none;
 }
 
 .delete-button {
   color: var(--delete-color);
-  font-weight: 700;
   border: var(--delete-border);
   background-color: rgb(255, 255, 255);
   border-radius: var(--pimrary-radius);
-  padding: 1rem;
-  font-size: 1.1rem;
 }
 
 .delete-button:hover {
   color: var(--delete-color-light);
   border-color: var(--delete-color-light);
-  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  transform: translateY(-0.5px);
 }
 
 .delete-button:focus {
   color: var(--delete-color);
   border-color: var(--delete-color);
-  box-shadow: none;
 }
 
 /* --------------- titles --------------- */

@@ -17,8 +17,8 @@ export default function SelectedTest() {
         label: 'Score History',
         data: selectedTest.chartData.dataPoints(allTestsOfType),
         fill: false,
-        backgroundColor: 'rgba(75,192,192,0.2)',
-        borderColor: 'rgba(75,192,192,1)',
+        backgroundColor: 'rgb(242, 150, 88)',
+        borderColor: 'rgb(238, 114, 32)',
       },
     ],
   };

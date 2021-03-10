@@ -2,7 +2,6 @@ import { useClientTestsContext } from './index';
 
 export default function ClientAllTests() {
   const {
-    compTestCodes,
     compTestObjs,
     setSelectedTest,
   } = useClientTestsContext();

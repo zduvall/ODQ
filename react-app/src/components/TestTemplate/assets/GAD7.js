@@ -37,7 +37,7 @@ const GAD7 = {
   chartData: {
     labels: (tests) => {
       const dates = [];
-      tests.forEach((test) => dates.push(test.timeSent));
+      tests.forEach((test) => dates.push(test.timeComp));
       return dates;
     },
     dataPoints: (tests) => {

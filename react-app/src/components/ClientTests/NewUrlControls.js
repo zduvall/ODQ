@@ -23,9 +23,6 @@ export default function NewUrlControls() {
   const [newUrl, setNewUrl] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  // tests
-  const testCodes = Object.keys(tests);
-
   function onSubmit(e) {
     e.preventDefault();
     const userUrl = `${
@@ -61,8 +58,8 @@ export default function NewUrlControls() {
             <option disabled value=''>
               - Tests -
             </option>
-            {testCodes.map((test) => (
-              <option key={test}>{test}</option>
+            {Object.values(tests).map((test) => (
+              <option key={test.code}>{test.abbr}</option>
             ))}
           </select>
         </form>

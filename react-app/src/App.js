@@ -28,7 +28,7 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (sessionUser) dispatch(getClients(sessionUser.id));
+    if (sessionUser !== 'do not load') dispatch(getClients(sessionUser.id));
   }, [dispatch, sessionUser]);
 
   if (!loaded || sessionUser === 'do not load') {

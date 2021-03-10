@@ -25,10 +25,13 @@ export default function ClientTests() {
     (test) => test.clientId === Number(clientId)
   );
 
-  // tests this client has completed
+  // tests this client has completed (as an of codes (str) and array of objects)
   let compTestCodes = new Set();
   clientTests.forEach((test) => compTestCodes.add(test.testCode));
   compTestCodes = Array.from(compTestCodes);
+  const compTestObjs = Object.values(tests).filter((test) =>
+    compTestCodes.includes(test.code)
+  );
 
   if (!client) return <h1 className='loading'>Loading DOT...</h1>;
 
@@ -37,6 +40,7 @@ export default function ClientTests() {
       value={{
         client,
         compTestCodes,
+        compTestObjs,
         selectedTest,
         setSelectedTest,
         clientTests,

@@ -20,3 +20,11 @@
 .comp-tests__list {
   padding-inline-start: 0;
 }
+
+.comp-tests__option {
+  cursor: pointer;
+}
+
+.chart-container {
+  flex-direction: column;
+}

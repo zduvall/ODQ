@@ -15,6 +15,7 @@ const scale2 = [
 const PHQ9 = {
   id: 2,
   abbr: 'PHQ-9',
+  code: 'PHQ9',
   name: 'Patient Health Questionnaire-9',
   description:
     'The Patient Health Questionnaire (PHQ) is a self-administered version of the PRIME-MD diagnostic instrument for common mental disorders. The PHQ-9 is the depression module, which scores each of the 9 DSM-IV criteria as “0” (not at all) to “3” (nearly every day)',
@@ -23,6 +24,8 @@ const PHQ9 = {
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',
   audience:
     'PHQ-9 has good reliability and validity, and high adaptability for patients with MDD in psychiatric hospital. It is a simple, rapid, effective, and reliable tool for screening and evaluation of the severity of depression.',
+  score: '',
+  interpretation: '',
   selfAdmin: true,
   minMinutes: 1,
   maxMinutes: 2,
@@ -108,8 +111,8 @@ const PHQ9 = {
         {
           id: 's2q1',
           type: 'Radio',
-          stem: '',
-          scale: scale1,
+          stem: 'Please select the most accurate respose',
+          scale: scale2,
         },
       ],
     },

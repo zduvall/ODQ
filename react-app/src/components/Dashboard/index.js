@@ -9,7 +9,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div className='dashboard'>
+      <div className='site__page'>
         <h1 className='primary-title'>Dashboard</h1>
         <UserInfo
           showUpdateUser={showUpdateUser}

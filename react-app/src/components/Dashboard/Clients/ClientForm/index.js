@@ -129,7 +129,7 @@ export default function ClientForm() {
   return (
     <div className='site__sub-section'>
       <form className='form' onSubmit={onSubmit}>
-        <div className='dashboard__data'>
+        <div className='site__sub-section__data'>
           <div className='errors-container'>
             {errors.map((error) => (
               <div key={error}>{error}</div>

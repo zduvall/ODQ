@@ -1,21 +1,8 @@
-.dashboard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .dashboard__buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50% !important;
-}
-
-.dashboard__data {
-  font-weight: 1000;
-  padding: 0 1rem;
-  width: 100%;
-  text-shadow: var(--text-shadow);
 }
 
 .PhoneInput {
@@ -118,9 +105,6 @@
 /* Mobile view */
 
 @media (max-width: 800px) {
-  .dashboard__data {
-    text-align: center;
-  }
   .dashboard__buttons {
     flex-direction: row;
     flex-wrap: nowrap !important;

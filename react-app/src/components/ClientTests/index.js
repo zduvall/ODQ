@@ -17,16 +17,14 @@ export default function ClientTests() {
 
   // all tests
   const testCodes = Object.keys(tests);
-  // tests this clinet has completed
-  
+  // tests this client has completed
 
   if (!client) return <h1 className='loading'>Loading DOT...</h1>;
 
   return (
-    <>
-      <h1>{client.code}</h1>
-      <p>test</p>
+    <div className='site__page'>
+      <h1 className='primary-title'>{client.code} Tests</h1>
       <NewUrlControls client={client} />
-    </>
+    </div>
   );
 }

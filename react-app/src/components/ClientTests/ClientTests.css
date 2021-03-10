@@ -1,0 +1,21 @@
+.new-url-controls {
+  min-height: auto !important;
+}
+
+.new-url-controls__form {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+
+@media (max-width: 750px) {
+  .new-url-controls__form {
+    min-width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .new-url-controls__form {
+    min-width: 100%;
+  }
+}

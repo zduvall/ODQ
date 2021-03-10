@@ -14,7 +14,7 @@ export default function ClientSingle() {
   return (
     <>
       <div className='site__sub-section'>
-        <div className='dashboard__data'>
+        <div className='site__sub-section__data'>
           <p>{selectedClient.code}</p>
           <p>Born: {selectedClient.birthYear}</p>
           <p>Status: {selectedClient.curClient ? 'Active' : 'Terminated'}</p>

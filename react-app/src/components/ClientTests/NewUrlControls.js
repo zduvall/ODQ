@@ -1,19 +1,15 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-// import context
-import { useClientsContext } from '../index';
-
 // import components
 import ModalNewUrl from './ModalNewUrl';
 
 // import tests
-import tests from '../../../TestTemplate/assets/index';
+import tests from '../TestTemplate/assets';
 
-export default function NewUrlControls() {
+export default function NewUrlControls({ client }) {
   // store and context
   const sessionUser = useSelector((state) => state.session.user);
-  const { selectedClient } = useClientsContext();
 
   // state
   const [test, setTest] = useState('');
@@ -28,7 +24,7 @@ export default function NewUrlControls() {
     const userUrl = `${
       sessionUser.firstName.slice(0, 1) + '-' + sessionUser.lastName.slice(0, 1)
     }_${sessionUser.id}`;
-    const clientUrl = selectedClient.code + '_' + selectedClient.id;
+    const clientUrl = client.code + '_' + client.id;
     const url = `${window.location.host}/test/${test}/${userUrl}/${clientUrl}`;
     setNewUrl(url);
     setShowModal(true);
@@ -41,6 +37,7 @@ export default function NewUrlControls() {
           showModal={showModal}
           setShowModal={setShowModal}
           newUrl={newUrl}
+          client={client}
         />
       )}
 

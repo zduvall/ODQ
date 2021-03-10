@@ -1,8 +1,5 @@
 import { useHistory } from 'react-router-dom';
 
-// import components
-import NewUrlControls from './NewUrlControls';
-
 // import context
 import { useClientsContext } from '../index';
 
@@ -22,13 +19,12 @@ export default function ClientSingle() {
           <p>Born: {selectedClient.birthYear}</p>
           <p>Status: {selectedClient.curClient ? 'Active' : 'Terminated'}</p>
         </div>
-        <NewUrlControls />
         <div className='dashboard__buttons'>
           <button
             className='primary-button dashboard__button'
             onClick={() => history.push(`/clients/${selectedClient.id}`)}
           >
-            Sent Tests
+            Tests
           </button>
           <button
             className='primary-button dashboard__button'

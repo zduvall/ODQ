@@ -4,15 +4,21 @@ import { useParams } from 'react-router-dom';
 // import components
 import NewUrlControls from './NewUrlControls';
 
+// import tests
+import tests from '../TestTemplate/assets';
+
 export default function ClientTests() {
   const { clientId } = useParams();
   const client = useSelector((state) => state.clients[clientId]);
-  const allTests = useSelector((state) => Object.values(state.tests));
-  const clientTests = allTests.filter(
+  const allClientsTests = useSelector((state) => Object.values(state.tests));
+  const clientTests = allClientsTests.filter(
     (test) => test.clientId === Number(clientId)
   );
 
-  console.log(clientTests);
+  // all tests
+  const testCodes = Object.keys(tests);
+  // tests this clinet has completed
+  
 
   if (!client) return <h1 className='loading'>Loading DOT...</h1>;
 

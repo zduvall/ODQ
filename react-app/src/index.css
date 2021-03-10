@@ -51,6 +51,10 @@ a {
   outline: none;
 }
 
+li {
+  list-style: none;
+}
+
 /* for app.js */
 .btwn-nav-footer {
   padding: 0 10%;

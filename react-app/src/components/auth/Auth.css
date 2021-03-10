@@ -6,6 +6,5 @@
 }
 
 .auth__form__input {
-  margin: 0.75rem;
-  padding: 1rem;
+  padding: 1rem !important;
 }

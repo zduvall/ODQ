@@ -27,22 +27,10 @@ export default function Clients() {
       }}
     >
       <ClientContorls />
-      {selectedClient && (
-        <>
-          <ClientSingle />
-          <div className='One1rem-height'></div>
-        </>
-      )}
-      {!selectedClient && !showForm && (
-        <div className='dashboard__sub-section clients-container'>
-          <AllClients />
-        </div>
-      )}
-      {showForm && (
-        <div className='dashboard__sub-section clients-container'>
-          <ClientFrom />
-        </div>
-      )}
+      {selectedClient && !showForm && <ClientSingle />}
+      {!selectedClient && !showForm && <AllClients />}
+      {showForm && <ClientFrom />}
+      <div className='One1rem-height'></div>
     </ClientsContext.Provider>
   );
 }

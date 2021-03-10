@@ -127,7 +127,7 @@ export default function ClientForm() {
   };
 
   return (
-    <>
+    <div className='dashboard__sub-section clients-container'>
       <form className='form dashboard__form' onSubmit={onSubmit}>
         <div className='dashboard__data'>
           <div className='errors-container'>
@@ -214,6 +214,6 @@ export default function ClientForm() {
           )}
         </div>
       </form>
-    </>
+    </div>
   );
 }

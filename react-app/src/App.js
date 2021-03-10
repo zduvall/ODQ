@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 // import thunks
 import { authenticateUser } from './store/session';
 import { getClients } from './store/clients';
+import { getTests } from './store/tests';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,10 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (sessionUser !== 'do not load') dispatch(getClients(sessionUser.id));
+    if (sessionUser !== 'do not load') {
+      dispatch(getClients(sessionUser.id));
+      dispatch(getTests(sessionUser.id));
+    }
   }, [dispatch, sessionUser]);
 
   if (!loaded || sessionUser === 'do not load') {

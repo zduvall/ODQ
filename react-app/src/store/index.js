@@ -4,10 +4,12 @@ import thunk from 'redux-thunk';
 // import reducers
 import sessionReducer from './session';
 import clientReducer from './clients';
+import testReducer from './tests';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   clients: clientReducer,
+  tests: testReducer,
 });
 
 let enhancer;

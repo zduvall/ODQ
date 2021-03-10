@@ -51,6 +51,11 @@ a {
   outline: none;
 }
 
+/* ul {
+  margin-block-start: 0;
+  padding-inline-start: 0;
+} */
+
 li {
   list-style: none;
 }
@@ -292,6 +297,6 @@ button:disabled:not(.nav__item) {
 
 /* other */
 
-.One1rem-height {
+.one1rem-ht {
   height: 1rem;
 }

@@ -1,21 +1,22 @@
-.new-url-controls {
+.client-tests__sub-section {
   min-height: auto !important;
 }
 
 .new-url-controls__form {
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 100%;
+  max-width: 24rem;
 }
 
-@media (max-width: 750px) {
-  .new-url-controls__form {
-    min-width: 70%;
-  }
+.comp-tests {
+  flex-direction: column;
 }
 
-@media (max-width: 500px) {
-  .new-url-controls__form {
-    min-width: 100%;
-  }
+.comp-tests__title {
+  margin: 0;
+}
+
+.comp-tests__list {
+  padding-inline-start: 0;
 }

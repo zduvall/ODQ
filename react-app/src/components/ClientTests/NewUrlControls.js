@@ -4,15 +4,19 @@ import { useSelector } from 'react-redux';
 // import components
 import ModalNewUrl from './ModalNewUrl';
 
+// import context
+import { useClientTestsContext } from './index';
+
 // import tests
 import tests from '../TestTemplate/assets';
 
 // import css
 import './ClientTests.css';
 
-export default function NewUrlControls({ client }) {
+export default function NewUrlControls() {
   // store and context
   const sessionUser = useSelector((state) => state.session.user);
+  const { client } = useClientTestsContext();
 
   // state
   const [test, setTest] = useState('');
@@ -43,7 +47,7 @@ export default function NewUrlControls({ client }) {
           client={client}
         />
       )}
-      <div className='site__sub-section new-url-controls'>
+      <div className='site__sub-section client-tests__sub-section'>
         <form className='new-url-controls__form' onSubmit={onSubmit}>
           <button type='submit' className='primary-button'>
             New Link

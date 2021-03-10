@@ -64,7 +64,7 @@ def seed_clients():
         Client(
             userId=user_1.id,
             birthYear="1979",
-            code="SarD-01.06.21",
+            code="SarD-01.05.21",
             curClient=True,
         ),
         Client(

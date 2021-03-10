@@ -59,7 +59,9 @@ export default function NewUrlControls() {
               - Tests -
             </option>
             {Object.values(tests).map((test) => (
-              <option key={test.code}>{test.abbr}</option>
+              <option value={test.code} key={test.code}>
+                {test.abbr}
+              </option>
             ))}
           </select>
         </form>

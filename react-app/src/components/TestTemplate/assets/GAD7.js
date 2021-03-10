@@ -37,14 +37,16 @@ const GAD7 = {
   chartData: {
     labels: (tests) => {
       const dates = [];
-      tests.forEach((test) => dates.push(test.timeComp));
+      tests.forEach((test) => {
+        const date = new Date(test.timeComp);
+        dates.push(date.toDateString());
+      });
       return dates;
     },
     dataPoints: (tests) => {
       const points = [];
       tests.forEach((test) => {
         const res = JSON.parse(test.res);
-        console.log('res here!', res);
         const sumRes =
           Number(res.s1q1) +
           Number(res.s1q2) +
@@ -55,7 +57,6 @@ const GAD7 = {
           Number(res.s1q7);
         points.push(sumRes);
       });
-      console.log('points here!', points);
       return points;
     },
   },

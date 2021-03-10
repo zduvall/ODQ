@@ -30,7 +30,7 @@ export default function SelectedTest() {
       text: `This chart`,
       // padding: 15,
       fontSize: 23,
-      fontColor: '#1A77A3',
+      fontColor: 'rgb(242, 150, 88)',
     },
   };
 

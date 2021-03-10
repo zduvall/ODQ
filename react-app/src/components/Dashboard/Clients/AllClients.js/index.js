@@ -18,7 +18,7 @@ export default function Clients() {
   const [status, setStatus] = useState(1);
 
   return (
-    <div className='dashboard__sub-section clients-container'>
+    <div className='site__sub-section clients-container'>
       {!!clients && (
         <div className='client-row'>
           <ClientHeader

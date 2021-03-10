@@ -5,6 +5,7 @@ body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   min-height: 100vh;
+  font-size: 1.1rem;
 }
 
 /* custom css variables */
@@ -88,9 +89,14 @@ a {
 /* --------------- buttons --------------- */
 
 button:not(.nav__item) {
+  display: flex;
+  justify-content: center;
   font-weight: 1000;
   padding: 0.5rem;
   font-size: 1.1rem;
+  margin: 0.5rem;
+  width: 100%;
+  max-width: 11rem;
 }
 
 button:hover:enabled:not(.nav__item) {
@@ -242,6 +248,28 @@ button:disabled:not(.nav__item) {
   align-items: center;
   color: rgb(255, 83, 83);
   text-shadow: none;
+}
+
+/* other */
+
+.site__sub-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--tertiary-border);
+  border-radius: var(--pimrary-radius);
+  background-color: var(--primary-color-xlight);
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 47rem;
+  max-width: 100%;
+  min-height: 14rem;
+}
+
+@media (max-width: 800px) {
+  .site__sub-section {
+    flex-direction: column;
+  }
 }
 
 .One1rem-height {

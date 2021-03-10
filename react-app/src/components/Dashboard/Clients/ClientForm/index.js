@@ -127,7 +127,7 @@ export default function ClientForm() {
   };
 
   return (
-    <div className='dashboard__sub-section clients-container'>
+    <div className='site__sub-section'>
       <form className='form' onSubmit={onSubmit}>
         <div className='dashboard__data'>
           <div className='errors-container'>

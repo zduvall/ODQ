@@ -4,21 +4,6 @@
   align-items: center;
 }
 
-.dashboard__sub-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: var(--tertiary-border);
-  border-radius: var(--pimrary-radius);
-  padding: 1rem;
-  box-sizing: border-box;
-  width: 47rem;
-  max-width: 100%;
-  font-size: 1.1rem;
-  min-height: 13rem;
-  background-color: var(--primary-color-xlight);
-}
-
 .dashboard__buttons {
   display: flex;
   flex-direction: column;
@@ -27,22 +12,12 @@
 }
 
 .dashboard__data {
-  font-size: 1.1rem;
   font-weight: 1000;
 }
 .dashboard__data {
   padding: 0 1rem;
   width: 100%;
   text-shadow: var(--text-shadow);
-}
-
-.dashboard__button {
-  display: flex;
-  justify-content: center;
-  margin: 0.5rem !important;
-  padding: 0.5rem !important;
-  width: 100% !important;
-  max-width: 11rem;
 }
 
 .PhoneInput {
@@ -70,7 +45,6 @@
   display: flex;
   margin-left: 0.5rem;
   align-items: center;
-  font-size: 1.1rem;
 }
 
 .creation-date-input {
@@ -81,9 +55,6 @@
 /* clients */
 
 /* single client */
-.dashboard__single-client {
-  min-height: auto !important;
-}
 
 .generate-test-url__form {
   display: flex;
@@ -172,9 +143,6 @@
 /* Mobile view */
 
 @media (max-width: 800px) {
-  .user__info {
-    flex-direction: column !important;
-  }
   .dashboard__data {
     text-align: center;
   }

@@ -47,7 +47,7 @@ export default function UserInfo({ setShowUpdateUser }) {
   };
 
   return (
-    <div className='form-container dashboard__sub-section'>
+    <div className='site__sub-section form-container'>
       <form className='form' onSubmit={onSubmit}>
         <div className='dashboard__data'>
           <div className='errors-container'>

@@ -13,7 +13,7 @@ export default function ClientSingle() {
 
   return (
     <>
-      <div className='dashboard__sub-section dashboard__single-client'>
+      <div className='site__sub-section'>
         <div className='dashboard__data'>
           <p>{selectedClient.code}</p>
           <p>Born: {selectedClient.birthYear}</p>

@@ -3,14 +3,10 @@ import { useState } from 'react';
 export default function BirthYearValidator({ setShowTest, clientId }) {
   const [year, setYear] = useState();
 
-  async function handleClick() {
-    const validated = await fetch(`/api/clients/check-year/${clientId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: year,
-    });
+  async function handleClick(e) {
+    e.preventDefault();
+    const res = await fetch(`/api/clients/check-year/${clientId}/${year}`);
+    const validated = await res.json();
     if (validated) setShowTest(true);
   }
 
@@ -25,7 +21,7 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
           value={year}
           onChange={(e) => setYear(e.target.value)}
         ></input>
-        <button className='primary-button' onClick={() => setShowTest(true)}>
+        <button type='submit' className='primary-button' onClick={handleClick}>
           Validate
         </button>
       </form>

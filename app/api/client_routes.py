@@ -1,3 +1,5 @@
+import json
+
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 
@@ -83,3 +85,15 @@ def deleteClient(clientId):
     else:
         print(f"-------- no client found with id {clientId} -------- ")
         return {"errors": "No client found with given id"}
+
+
+@client_routes.route("/check-year/<int:clientId>/<int:yearToCheck>")
+def checkBirthYear(clientId, yearToCheck):
+    """
+    Checks if birth year sent in body matches birth year of client
+    """
+
+    client = Client.query.get(clientId)
+
+    validated = client.birthYear == yearToCheck
+    return json.dumps(validated)

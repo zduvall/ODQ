@@ -48,7 +48,7 @@ export default function ClientTests() {
       }}
     >
       <div className='site__page'>
-        <h1 className='primary-title'>{client.code} Tests</h1>
+        <h1 className='primary-title'>{client.code}</h1>
         <NewUrlControls />
         <div className='one1rem-ht' />
         <ClientAllTests />

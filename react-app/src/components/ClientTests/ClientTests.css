@@ -9,6 +9,10 @@
   max-width: 24rem;
 }
 
+.new-url-modal__item {
+  margin: 0.5rem 0;
+}
+
 .comp-tests {
   flex-direction: column;
 }

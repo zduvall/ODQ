@@ -10,28 +10,32 @@ export default function SelectedTest() {
     (test) => test.testCode === selectedTest.code
   );
 
+  function dateLabels(tests) {
+    const dates = [];
+    tests.forEach((test) => {
+      const date = new Date(test.timeComp);
+      dates.push(date.toDateString());
+    });
+    return dates;
+  }
+
   const data = {
-    labels: selectedTest.chartData.labels(allTestsOfType),
+    labels: dateLabels(allTestsOfType),
     datasets: [
       {
-        label: 'Score History',
+        label: 'Test Scores',
         data: selectedTest.chartData.dataPoints(allTestsOfType),
         fill: false,
-        backgroundColor: 'rgb(242, 150, 88)',
-        borderColor: 'rgb(238, 114, 32)',
+        backgroundColor: 'rgb(238, 114, 32)',
+        borderColor: 'rgb(242, 150, 88)',
+        pointRadius: 4,
+        pointHitRadius: 15,
       },
     ],
   };
 
   const options = {
-    // maintainAspectRatio: false,
-    title: {
-      display: true,
-      text: `This chart`,
-      // padding: 15,
-      fontSize: 23,
-      fontColor: 'rgb(242, 150, 88)',
-    },
+    scales: selectedTest.chartOptions.scales,
   };
 
   return (

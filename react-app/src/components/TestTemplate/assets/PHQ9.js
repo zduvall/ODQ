@@ -25,13 +25,47 @@ const PHQ9 = {
   audience:
     'PHQ-9 has good reliability and validity, and high adaptability for patients with MDD in psychiatric hospital. It is a simple, rapid, effective, and reliable tool for screening and evaluation of the severity of depression.',
   score: '',
-  interpretation: '',
+  interpretation:
+    '0-4: minimal depression, 5-9: mild depression, 10-14: moderate depression, 15-19: moderately severe depression, 20-27: severe depression',
   selfAdmin: true,
   minMinutes: 1,
-  maxMinutes: 2,
+  maxMinutes: 3,
   attribution:
     'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
   thankYou: 'Thank you for completing the PHQ-9.',
+  chartData: {
+    dataPoints: (tests) => {
+      const points = [];
+      tests.forEach((test) => {
+        const res = JSON.parse(test.res);
+        const sumRes =
+          Number(res.s1q1) +
+          Number(res.s1q2) +
+          Number(res.s1q3) +
+          Number(res.s1q4) +
+          Number(res.s1q5) +
+          Number(res.s1q6) +
+          Number(res.s1q7) +
+          Number(res.s1q8) +
+          Number(res.s1q9);
+        points.push(sumRes);
+      });
+      return points;
+    },
+  },
+  chartOptions: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            max: 27,
+            min: 0,
+            stepSize: 3,
+          },
+        },
+      ],
+    },
+  },
   sections: [
     {
       id: 1,

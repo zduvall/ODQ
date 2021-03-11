@@ -35,14 +35,6 @@ const GAD7 = {
     'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
   thankYou: 'Thank you for completing the GAD-7.',
   chartData: {
-    labels: (tests) => {
-      const dates = [];
-      tests.forEach((test) => {
-        const date = new Date(test.timeComp);
-        dates.push(date.toDateString());
-      });
-      return dates;
-    },
     dataPoints: (tests) => {
       const points = [];
       tests.forEach((test) => {
@@ -58,6 +50,19 @@ const GAD7 = {
         points.push(sumRes);
       });
       return points;
+    },
+  },
+  chartOptions: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            max: 21,
+            min: 0,
+            stepSize: 3,
+          },
+        },
+      ],
     },
   },
   sections: [

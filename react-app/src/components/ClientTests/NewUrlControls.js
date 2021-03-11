@@ -8,7 +8,8 @@ import ModalNewUrl from './ModalNewUrl';
 import { useClientTestsContext } from './index';
 
 // import tests
-import tests from '../TestTemplate/assets';
+import tests from '../../assets';
+// import tests from '../TestTemplate/assets';
 
 // import css
 import './ClientTests.css';

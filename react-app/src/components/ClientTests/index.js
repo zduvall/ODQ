@@ -8,7 +8,8 @@ import ClientAllTests from './ClientAllTests';
 import SelectedTest from './SelectedTest';
 
 // import tests
-import tests from '../TestTemplate/assets';
+import tests from '../../assets';
+// import tests from '../TestTemplate/assets';
 
 const ClientTestsContext = createContext();
 export const useClientTestsContext = () => useContext(ClientTestsContext);

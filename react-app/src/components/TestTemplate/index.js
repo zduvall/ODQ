@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 // import tests object
-import tests from './assets';
+import tests from '../../assets';
+// import tests from './assets';
 
 // import components
 import TestHeader from './TestHeader';

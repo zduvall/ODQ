@@ -26,11 +26,14 @@ export default function NewUrlControls() {
 
   function onSubmit(e) {
     e.preventDefault();
+
     const userUrl = `${
       sessionUser.firstName.slice(0, 1) + '-' + sessionUser.lastName.slice(0, 1)
     }_${sessionUser.id}`;
     const clientUrl = client.code + '_' + client.id;
-    const url = `${window.location.host}/test/${test}/${userUrl}/${clientUrl}`;
+
+    const url = `${window.location.host}/test/${test.code}/${userUrl}/${clientUrl}`;
+
     setNewUrl(url);
     setShowModal(true);
   }
@@ -43,6 +46,7 @@ export default function NewUrlControls() {
           setShowModal={setShowModal}
           newUrl={newUrl}
           client={client}
+          test={test}
         />
       )}
       <div className='site__sub-section client-tests__sub-section'>
@@ -52,7 +56,9 @@ export default function NewUrlControls() {
           </button>
           <select
             value={test}
-            onChange={(e) => setTest(e.target.value)}
+            onChange={(e) => {
+              setTest(tests[e.target.value]);
+            }}
             className='form__input'
             required
           >

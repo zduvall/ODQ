@@ -1,8 +1,10 @@
-export default function NewUrl({ client, newUrl }) {
+export default function NewUrl({ client, newUrl, test }) {
   return (
-    <>
-      <h1>Send test to {client.code}</h1>
+    <div>
+      <h2>
+        {test.abbr} link for {client.code}
+      </h2>
       <p>{newUrl}</p>
-    </>
+    </div>
   );
 }

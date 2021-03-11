@@ -12,8 +12,9 @@ This is the backend for the Flask React project.
 
 2. Install dependencies
 
-      ```bash
-      ```
+   ```bash
+
+   ```
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
@@ -39,19 +40,21 @@ This is the backend for the Flask React project.
 
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+---
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+_IMPORTANT!_
+If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
+You can do this by running:
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+```bash
+pipenv lock -r > requirements.txt
+```
+
+_ALSO IMPORTANT!_
+psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
+There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
+
+---
 
 ## Deploy to Heroku
 
@@ -80,26 +83,22 @@ This is the backend for the Flask React project.
 
 ```bash
 heroku container:push web -a dot-21
-# heroku container:push web -a dot-therapy-tools
 ```
 
 8. Release your docker container to heroku
 
 ```bash
 heroku container:release web -a dot-21
-# heroku container:release web -a dot-therapy-tools
 ```
 
 9. set up your database:
 
 ```bash
+heroku run -a dot-21 flask seed undo # if needed
 heroku run -a dot-21 flask db upgrade
-# heroku run -a dot-therapy-tools flask db upgrade
 heroku run -a dot-21 flask seed all
-# heroku run -a dot-therapy-tools flask seed all
 ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 11. profit
-

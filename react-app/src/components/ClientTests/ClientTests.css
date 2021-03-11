@@ -1,0 +1,38 @@
+.client-tests__sub-section {
+  min-height: auto !important;
+}
+
+.new-url-controls__form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.comp-tests {
+  flex-direction: column;
+}
+
+.comp-tests__title {
+  margin: 0;
+}
+
+.comp-tests__list {
+  padding-inline-start: 0;
+}
+
+.comp-tests__option {
+  cursor: pointer;
+}
+
+.chart-container {
+  flex-direction: column;
+  overflow-x: scroll;
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+}

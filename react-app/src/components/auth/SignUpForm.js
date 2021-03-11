@@ -70,7 +70,7 @@ function SignUpFormPage() {
   return (
     <div className='form-container'>
       <h1 className='primary-title'>Sign Up</h1>
-      <form className='form' onSubmit={onSignUp}>
+      <form className='form auth__form' onSubmit={onSignUp}>
         <div className='errors-container'>
           {errors.map((error) => (
             <div key={error}>{error}</div>
@@ -84,7 +84,7 @@ function SignUpFormPage() {
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
             required
-            className='form__input'
+            className='form__input auth__form__input'
           ></input>
           <input
             name='lastName'
@@ -93,7 +93,7 @@ function SignUpFormPage() {
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
             required
-            className='form__input'
+            className='form__input auth__form__input'
           ></input>
         </div>
         <div className='form__row'>
@@ -104,7 +104,7 @@ function SignUpFormPage() {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             required
-            className='form__input'
+            className='form__input auth__form__input'
           ></input>
         </div>
         <div className='form__row'>
@@ -115,7 +115,7 @@ function SignUpFormPage() {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             required
-            className='form__input'
+            className='form__input auth__form__input'
           ></input>
           <input
             name='confirm_password'
@@ -124,7 +124,7 @@ function SignUpFormPage() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
             required
-            className='form__input'
+            className='form__input auth__form__input'
           ></input>
         </div>
         <div className='form__row'>

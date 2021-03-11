@@ -45,8 +45,8 @@ export default function ClientForm() {
       : new Date();
 
     const yr = date.getFullYear();
-    let mth = ('0' + (date.getMonth() + 1)).slice(-2);
-    let dy = ('0' + date.getDate()).slice(-2);
+    const mth = ('0' + (date.getMonth() + 1)).slice(-2);
+    const dy = ('0' + date.getDate()).slice(-2);
 
     const dateToSet = yr + '-' + mth + '-' + dy;
 
@@ -127,9 +127,9 @@ export default function ClientForm() {
   };
 
   return (
-    <>
-      <form className='form dashboard__form' onSubmit={onSubmit}>
-        <div className='dashboard__data'>
+    <div className='site__sub-section'>
+      <form className='form' onSubmit={onSubmit}>
+        <div className='site__sub-section__data'>
           <div className='errors-container'>
             {errors.map((error) => (
               <div key={error}>{error}</div>
@@ -142,7 +142,7 @@ export default function ClientForm() {
               placeholder='First Name'
               onChange={(e) => setFirstName(e.target.value)}
               value={firstName}
-              className='form__input dashboard__input'
+              className='form__input'
             ></input>
             <input
               name='lastName'
@@ -150,7 +150,7 @@ export default function ClientForm() {
               placeholder='Last Name'
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
-              className='form__input dashboard__input'
+              className='form__input'
             ></input>
           </div>
           <div className='form__row'>
@@ -160,13 +160,13 @@ export default function ClientForm() {
               placeholder='Birth Year'
               onChange={(e) => setBirthYear(e.target.value)}
               value={birthYear}
-              className='form__input dashboard__input'
+              className='form__input'
             ></input>
             <select
               name='curClient'
               onChange={(e) => setCurClient(e.target.value)}
               value={curClient}
-              className='form__input dashboard__input'
+              className='form__input'
             >
               <option disabled value=''>
                 - Status -
@@ -179,7 +179,7 @@ export default function ClientForm() {
             <label className='creation-date-label'>Creation:</label>
             <input
               name='creation-date'
-              className='form__input dashboard__input creation-date-input'
+              className='form__input creation-date-input'
               type='date'
               onChange={(e) => setCreateDate(e.target.value)}
               value={createDate}
@@ -214,6 +214,6 @@ export default function ClientForm() {
           )}
         </div>
       </form>
-    </>
+    </div>
   );
 }

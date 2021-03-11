@@ -8,14 +8,14 @@ from .auth_routes import validation_errors_to_error_messages
 test_routes = Blueprint("tests", __name__)
 
 
-# @test_routes.route("/<int:userId>")
-# @login_required
-# def getClients(userId):
-#     """
-#     Gets all clients of the identified (logged-in) user
-#     """
-#     clients = Client.query.filter_by(userId=userId).all()
-#     return {"clients": [client.to_dict() for client in clients]}
+@test_routes.route("/<int:userId>")
+@login_required
+def getTests(userId):
+    """
+    Gets all tests associated with the identified (logged-in) user
+    """
+    tests = Test.query.filter_by(userId=userId).all()
+    return {"tests": [test.to_dict() for test in tests]}
 
 
 @test_routes.route("/", methods=["POST"])
@@ -28,8 +28,6 @@ def createTest():
     form = TestForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    print("------ form data --------", form.data)
-
     if form.validate_on_submit():
         new_test = Test(
             userId=form.data["userId"],
@@ -39,7 +37,6 @@ def createTest():
         )
         db.session.add(new_test)
         db.session.commit()
-        print("------ new test --------", new_test.to_dict())
         return new_test.to_dict()
 
     print("-------errors-------", form.errors)

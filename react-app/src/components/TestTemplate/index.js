@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 // import tests object
-import tests from './assets';
+import tests from '../../assets';
+// import tests from './assets';
 
 // import components
 import TestHeader from './TestHeader';
@@ -11,7 +12,9 @@ import TestHeader from './TestHeader';
 import { Radio } from './QuestionTypes';
 
 export default function TestTemplate() {
-  const { testCode, userId, clientId } = useParams();
+  let { testCode, userId, clientId } = useParams();
+  userId = userId.slice(userId.indexOf('_') + 1);
+  clientId = clientId.slice(clientId.indexOf('_') + 1);
   const test = tests[testCode];
 
   const [inputs, setInputs] = useState({});

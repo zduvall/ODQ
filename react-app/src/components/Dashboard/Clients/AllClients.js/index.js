@@ -17,24 +17,24 @@ export default function Clients() {
   const [filterClients, setFxClients] = useState(clients);
   const [status, setStatus] = useState(1);
 
+  if (!clients) return <h1 className='loading'>Loading DOT...</h1>;
+
   return (
-    <>
-      {!!clients && (
-        <div className='client-row'>
-          <ClientHeader
-            status={status}
-            setStatus={setStatus}
-            setFxClients={setFxClients}
-          />
-          {filterClients.length
-            ? filterClients.map((client) => (
-                <ClientRow key={client.id} status={status} client={client} />
-              ))
-            : clients.map((client) => (
-                <ClientRow key={client.id} status={status} client={client} />
-              ))}
-        </div>
-      )}
-    </>
+    <div className='site__sub-section clients-container'>
+      <div className='clients-table'>
+        <ClientHeader
+          status={status}
+          setStatus={setStatus}
+          setFxClients={setFxClients}
+        />
+        {filterClients.length
+          ? filterClients.map((client) => (
+              <ClientRow key={client.id} status={status} client={client} />
+            ))
+          : clients.map((client) => (
+              <ClientRow key={client.id} status={status} client={client} />
+            ))}
+      </div>
+    </div>
   );
 }

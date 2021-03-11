@@ -25,8 +25,8 @@ export default function UserInfoData({ setShowUpdateUser }) {
   };
 
   return (
-    <div className='dashboard__sub-section user__info'>
-      <div className='dashboard__data'>
+    <div className='site__sub-section user__info'>
+      <div className='site__sub-section__data'>
         <p>
           {firstName} {lastName}
           {lic ? `, ${lic}` : ''}

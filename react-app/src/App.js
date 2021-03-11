@@ -8,12 +8,15 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import SplashPage from './components/SplashPage';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import TestTemplate from './components/TestTemplate';
 import Dashboard from './components/Dashboard';
+import ClientTests from './components/ClientTests';
+import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
 
-// import thunk
+// import thunks
 import { authenticateUser } from './store/session';
+import { getClients } from './store/clients';
+import { getTests } from './store/tests';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +27,13 @@ function App() {
     dispatch(authenticateUser());
     setLoaded(true);
   }, [dispatch]);
+
+  useEffect(() => {
+    if (sessionUser !== 'do not load') {
+      dispatch(getClients(sessionUser.id));
+      dispatch(getTests(sessionUser.id));
+    }
+  }, [dispatch, sessionUser]);
 
   if (!loaded || sessionUser === 'do not load') {
     return <h1 className='loading'>Loading DOT...</h1>;
@@ -49,6 +59,13 @@ function App() {
             authenticated={!!sessionUser}
           >
             <Dashboard />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path='/clients/:clientId'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <ClientTests />
           </ProtectedRoute>
           <Route path='/test/:testCode/:userId/:clientId' exact={true}>
             <TestTemplate />

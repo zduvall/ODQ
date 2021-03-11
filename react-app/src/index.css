@@ -5,6 +5,7 @@ body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   min-height: 100vh;
+  font-size: 1.1rem;
 }
 
 /* custom css variables */
@@ -50,6 +51,15 @@ a {
   outline: none;
 }
 
+/* ul {
+  margin-block-start: 0;
+  padding-inline-start: 0;
+} */
+
+li {
+  list-style: none;
+}
+
 /* for app.js */
 .btwn-nav-footer {
   padding: 0 10%;
@@ -85,32 +95,88 @@ a {
 }
 
 /* GLOBAL CLASSES */
+
+.site__page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.site__sub-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--tertiary-border);
+  border-radius: var(--pimrary-radius);
+  background-color: var(--primary-color-xlight);
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 47rem;
+  max-width: 100%;
+  min-height: 14rem;
+}
+
+.site__sub-section__data {
+  font-weight: 1000;
+  padding: 0 1rem;
+  width: 100%;
+  text-shadow: var(--text-shadow);
+}
+
+@media (max-width: 800px) {
+  .site__sub-section {
+    flex-direction: column;
+  }
+  .site__sub-section__data {
+    text-align: center;
+  }
+}
+
 /* --------------- buttons --------------- */
+
+button:not(.nav__item) {
+  display: flex;
+  justify-content: center;
+  font-weight: 1000;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  margin: 0.5rem;
+  width: 100%;
+  max-width: 11rem;
+}
+
+button:hover:enabled:not(.nav__item) {
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+  transform: translateY(-0.75px);
+}
+
+button:active:enabled:not(.nav__item) {
+  box-shadow: none;
+  transform: translateY(0.75px);
+}
+
+button:disabled:not(.nav__item) {
+  cursor: default !important;
+}
+
 .primary-button {
   color: rgb(255, 255, 255);
-  font-weight: 700;
   background-color: var(--primary-color);
   border: var(--primary-color) 2px solid;
   border-radius: var(--pimrary-radius);
-  padding: 1rem;
-  font-size: 1.1rem;
 }
 
 .primary-button:hover:enabled {
   background-color: var(--primary-color-light);
   border-color: var(--primary-color-light);
-  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  transform: translateY(-0.5px);
 }
 
 .primary-button:active:enabled {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: none;
 }
 
 .primary-button:disabled {
-  cursor: default !important;
   background-color: var(--tertiary-color-light);
   border: var(--tertiary-color) 1px solid;
   color: var(--tertiary-color);
@@ -118,48 +184,36 @@ a {
 
 .secondary-button {
   color: var(--primary-color);
-  font-weight: 700;
   border: var(--primary-border);
   background-color: rgb(255, 255, 255);
   border-radius: var(--pimrary-radius);
-  padding: 1rem;
-  font-size: 1.1rem;
 }
 
 .secondary-button:hover {
   color: var(--primary-color-light);
   border-color: var(--primary-color-light);
-  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  transform: translateY(-0.5px);
 }
 
 .secondary-button:active {
   color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: none;
 }
 
 .delete-button {
   color: var(--delete-color);
-  font-weight: 700;
   border: var(--delete-border);
   background-color: rgb(255, 255, 255);
   border-radius: var(--pimrary-radius);
-  padding: 1rem;
-  font-size: 1.1rem;
 }
 
 .delete-button:hover {
   color: var(--delete-color-light);
   border-color: var(--delete-color-light);
-  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  transform: translateY(-0.5px);
 }
 
 .delete-button:focus {
   color: var(--delete-color);
   border-color: var(--delete-color);
-  box-shadow: none;
 }
 
 /* --------------- titles --------------- */
@@ -187,14 +241,15 @@ a {
 
 .form {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 32rem;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
 }
 
 @media (max-width: 800px) {
   .form {
-    width: 20rem;
+    flex-direction: column !important;
   }
 }
 
@@ -213,8 +268,8 @@ a {
 
 .form__input {
   width: 100%;
-  margin: 0.75rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   border-radius: var(--pimrary-radius);
   border: var(--tertiary-border);
   font-size: 1.1rem;
@@ -240,6 +295,8 @@ a {
   text-shadow: none;
 }
 
-.One1rem-height {
+/* other */
+
+.one1rem-ht {
   height: 1rem;
 }

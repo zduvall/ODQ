@@ -50,7 +50,7 @@ function LoginForm() {
   return (
     <div className='form-container'>
       <h1 className='primary-title'>Log In</h1>
-      <form className='form' onSubmit={onLogin}>
+      <form className='form auth__form' onSubmit={onLogin}>
         <div className='errors-container'>
           {errors.map((error) => (
             <div>{error}</div>
@@ -64,7 +64,7 @@ function LoginForm() {
             value={email}
             required
             onChange={(e) => setEmail(e.target.value)}
-            className='form__input'
+            className='form__input auth__form__input'
           />
         </div>
         <div className='form__row'>
@@ -75,7 +75,7 @@ function LoginForm() {
             value={password}
             required
             onChange={(e) => setPassword(e.target.value)}
-            className='form__input'
+            className='form__input auth__form__input'
           />
         </div>
         <div className='form__row'>

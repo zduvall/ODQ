@@ -1,78 +1,82 @@
-from werkzeug.security import generate_password_hash
 from app.models import db, Client, User
 
 
 # Adds a demo user
 def seed_clients():
 
-    user1 = User.query.filter_by(firstName="Demo").first()
-    user2 = User.query.filter_by(firstName="Demo2").first()
+    user_1 = User.query.filter_by(firstName="Demo").first()
 
     clients = [
         Client(
-            userId=user1.id,
-            birthYear="1980",
-            code="JonD-12.13.20",
-            curClient=False,
-        ),
-        Client(
-            userId=user1.id,
-            birthYear="1996",
-            code="SuzQ-12.15.20",
-            curClient=True,
-        ),
-        Client(
-            userId=user1.id,
+            userId=user_1.id,
             birthYear="1992",
-            code="PauS-11.27.20",
+            code="JilX-11.27.19",
             curClient=True,
         ),
         Client(
-            userId=user1.id,
+            userId=user_1.id,
+            birthYear="1992",
+            code="PauS-06.23.20",
+            curClient=True,
+        ),
+        Client(
+            userId=user_1.id,
             birthYear="1987",
-            code="ZacD-11.29.20",
+            code="ZacD-08.01.20",
             curClient=True,
         ),
         Client(
-            userId=user1.id,
+            userId=user_1.id,
+            birthYear="1980",
+            code="JonD-10.13.20",
+            curClient=False,
+        ),
+        Client(
+            userId=user_1.id,
+            birthYear="1996",
+            code="SuzQ-10.15.20",
+            curClient=True,
+        ),
+        Client(
+            userId=user_1.id,
             birthYear="2002",
-            code="MckA-02.06.21",
+            code="MckA-12.06.20",
             curClient=False,
         ),
         Client(
-            userId=user1.id,
+            userId=user_1.id,
             birthYear="2012",
-            code="AnnT-02.16.21",
+            code="AnnT-12.16.20",
             curClient=False,
         ),
         Client(
-            userId=user1.id,
+            userId=user_1.id,
             birthYear="2007",
-            code="BraM-02.19.21",
+            code="BraM-12.19.20",
             curClient=True,
         ),
         Client(
-            userId=user1.id,
+            userId=user_1.id,
             birthYear="1968",
-            code="ChaE-03.01.21",
+            code="ChaE-01.01.21",
             curClient=True,
         ),
         Client(
-            userId=user1.id,
+            userId=user_1.id,
             birthYear="1979",
-            code="SarD-03.06.21",
+            code="SarD-01.05.21",
             curClient=True,
         ),
         Client(
-            userId=user1.id,
+            userId=user_1.id,
             birthYear="1939",
-            code="DonT-03.06.21",
+            code="DonT-01.06.21",
             curClient=True,
         ),
         Client(
-            userId=user1.id,
+            userId=user_1.id,
             birthYear="2010",
-            code="JosS-03.08.21",
+            code="JosS-01.08.21",
             curClient=True,
         ),
     ]

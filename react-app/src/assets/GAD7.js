@@ -69,7 +69,7 @@ const GAD7 = {
     annotation: {
       drawTime: 'beforeDatasetsDraw',
       annotations: [
-        horizontalAnnotation('0', 'minimal anxiety'),
+        horizontalAnnotation('0', 'minimal anxiety', 'transparent'),
         horizontalAnnotation('5', 'mild anxiety'),
         horizontalAnnotation('10', 'moderate anxiety'),
         horizontalAnnotation('15', 'severe anxiety'),

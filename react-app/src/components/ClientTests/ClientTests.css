@@ -62,3 +62,8 @@
     padding-right: 0.25rem !important;
   }
 }
+
+/* client test view */
+.birth-year-validator__container {
+  flex-direction: column;
+}

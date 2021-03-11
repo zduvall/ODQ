@@ -27,4 +27,12 @@
 
 .chart-container {
   flex-direction: column;
+  overflow-x: scroll;
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
 }

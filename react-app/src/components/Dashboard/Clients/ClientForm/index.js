@@ -45,8 +45,8 @@ export default function ClientForm() {
       : new Date();
 
     const yr = date.getFullYear();
-    let mth = ('0' + (date.getMonth() + 1)).slice(-2);
-    let dy = ('0' + date.getDate()).slice(-2);
+    const mth = ('0' + (date.getMonth() + 1)).slice(-2);
+    const dy = ('0' + date.getDate()).slice(-2);
 
     const dateToSet = yr + '-' + mth + '-' + dy;
 

@@ -1,7 +1,10 @@
 import { useClientTestsContext } from './index';
 
-// import chart
+// import chart and annotator
 import { Line } from 'react-chartjs-2';
+import Chart from 'chart.js';
+import * as ChartAnnotation from 'chartjs-plugin-annotation';
+Chart.plugins.register([ChartAnnotation]); // Global
 
 export default function SelectedTest() {
   const { selectedTest, clientTests } = useClientTestsContext();
@@ -13,8 +16,13 @@ export default function SelectedTest() {
   function dateLabels(tests) {
     const dates = [];
     tests.forEach((test) => {
-      const date = new Date(test.timeComp);
-      dates.push(date.toDateString());
+      let date = new Date(test.timeComp);
+      const yr = ('' + date.getFullYear()).slice(-2);
+      const mth = ('' + (date.getMonth() + 1)).slice(-2);
+      const dy = ('' + date.getDate()).slice(-2);
+
+      date = mth + '/' + dy + '/' + yr;
+      dates.push(date);
     });
     return dates;
   }
@@ -34,9 +42,7 @@ export default function SelectedTest() {
     ],
   };
 
-  const options = {
-    scales: selectedTest.chartOptions.scales,
-  };
+  const options = selectedTest.chartOptions;
 
   return (
     <div className='site__sub-section chart-container'>

@@ -32,7 +32,9 @@ export default function NewUrlControls() {
     }_${sessionUser.id}`;
     const clientUrl = client.code + '_' + client.id;
 
-    const url = `${window.location.host}/test/${test.code}/${userUrl}/${clientUrl}`;
+    const url = `${process.env.NODE_ENV === 'production' ? 'https://' : ''}${
+      window.location.host
+    }/test/${test.code}/${userUrl}/${clientUrl}`;
 
     setNewUrl(url);
     setShowModal(true);

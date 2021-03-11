@@ -70,7 +70,7 @@ const PHQ9 = {
     annotation: {
       drawTime: 'beforeDatasetsDraw',
       annotations: [
-        horizontalAnnotation('0.5', 'minimal depression'),
+        horizontalAnnotation('0', 'minimal depression'),
         horizontalAnnotation('5', 'mild depression'),
         horizontalAnnotation('10', 'moderate depression'),
         horizontalAnnotation('15', 'moderately severe depression'),

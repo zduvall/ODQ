@@ -14,7 +14,7 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
 
   return (
     <div className='site__sub-section birth-year-validator__container'>
-      <p>Please confirm your birth year</p>
+      <h3 className='primary-title'>Please confirm your birth year</h3>
       <form className='form'>
         <input
           className='form__input'
@@ -26,15 +26,15 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
         <button type='submit' className='primary-button' onClick={handleClick}>
           Validate
         </button>
-        {wrongYear && (
-          <div className='errors-container'>
-            <p>
-              Invalid year entered. If you believe this is a mistake, please
-              contact your provider.
-            </p>
-          </div>
-        )}
       </form>
+      {wrongYear && (
+        <div className='errors-container'>
+          <p>
+            Invalid year entered. If you believe there is a mistake, please
+            contact your provider.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

@@ -65,7 +65,7 @@ export default function TestTemplate() {
       if (res.ok) setValidUrl(validUCCombo);
     }
     checkValidUserClientCombo();
-  }, [userId, clientId]);
+  }, [userId, clientId, encURL, testCode]);
 
   if (!validUrl && validUrl !== 'do not show')
     return <LoadingNotFoundInvalid message={'Invalid URL...'} />;

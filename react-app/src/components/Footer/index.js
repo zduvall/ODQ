@@ -1,6 +1,7 @@
 import './Footer.css';
 
 export default function Footer() {
+  if (window.location.pathname.startsWith('/test')) return null;
   return (
     <div className='footer'>
       <p className='footer__text'>Designed & created by Zachary Duvall, LCSW</p>

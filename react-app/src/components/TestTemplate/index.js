@@ -32,7 +32,6 @@ export default function TestTemplate() {
       testCode,
       res: JSON.stringify(inputs),
     };
-    console.log('results', testInfo);
 
     await fetch(`/api/tests/`, {
       method: 'POST',

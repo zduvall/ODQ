@@ -9,12 +9,13 @@ export default function ModalNewUrl({
   setShowModal,
   client,
   newUrl,
+  test,
 }) {
   return (
     <>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <NewUrl newUrl={newUrl} client={client} />
+          <NewUrl newUrl={newUrl} client={client} test={test} />
         </Modal>
       )}
     </>

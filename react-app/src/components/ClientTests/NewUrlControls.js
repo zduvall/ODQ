@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+// import cryptojs
+import CryptoJS from 'crypto-js';
+
 // import components
 import ModalNewUrl from './ModalNewUrl';
 
@@ -9,7 +12,6 @@ import { useClientTestsContext } from './index';
 
 // import tests
 import tests from '../../assets';
-// import tests from '../TestTemplate/assets';
 
 // import css
 import './ClientTests.css';
@@ -20,17 +22,24 @@ export default function NewUrlControls() {
   const { client } = useClientTestsContext();
 
   // state
-  const [test, setTest] = useState('');
+  const [test, setTest] = useState({ code: '' });
   const [newUrl, setNewUrl] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   function onSubmit(e) {
     e.preventDefault();
-    const userUrl = `${
-      sessionUser.firstName.slice(0, 1) + '-' + sessionUser.lastName.slice(0, 1)
-    }_${sessionUser.id}`;
-    const clientUrl = client.code + '_' + client.id;
-    const url = `${window.location.host}/test/${test}/${userUrl}/${clientUrl}`;
+
+    const userId = sessionUser.id;
+    const clientId = client.id;
+
+    const encURL = CryptoJS.SHA3(`${clientId}x$${test.code}%-${userId}5z`)
+      .toString()
+      .slice(0, 15);
+
+    const url = `${process.env.NODE_ENV === 'production' ? 'https://' : ''}${
+      window.location.host
+    }/test/${test.code}/${userId}/${clientId}/${encURL}`;
+
     setNewUrl(url);
     setShowModal(true);
   }
@@ -43,6 +52,7 @@ export default function NewUrlControls() {
           setShowModal={setShowModal}
           newUrl={newUrl}
           client={client}
+          test={test}
         />
       )}
       <div className='site__sub-section client-tests__sub-section'>
@@ -51,8 +61,10 @@ export default function NewUrlControls() {
             New Link
           </button>
           <select
-            value={test}
-            onChange={(e) => setTest(e.target.value)}
+            value={test.code}
+            onChange={(e) => {
+              setTest(tests[e.target.value]);
+            }}
             className='form__input'
             required
           >

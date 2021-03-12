@@ -1,6 +1,6 @@
 // Action Types
 const LOGIN_USER = 'session/LOGIN_USER';
-const REMOVE_USER = 'session/removeUser';
+const REMOVE_USER = 'session/REMOVE_USER';
 
 // Action Creators
 export const setUser = (user) => {

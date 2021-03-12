@@ -1,3 +1,5 @@
+import json
+
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 
@@ -83,3 +85,29 @@ def deleteClient(clientId):
     else:
         print(f"-------- no client found with id {clientId} -------- ")
         return {"errors": "No client found with given id"}
+
+
+@client_routes.route("/check-year/<int:clientId>/<int:yearToCheck>")
+def checkBirthYear(clientId, yearToCheck):
+    """
+    Checks if birth year sent in body matches birth year of client
+    """
+
+    client = Client.query.get(clientId)
+
+    validated = client.birthYear == yearToCheck
+    return json.dumps(validated)
+
+
+@client_routes.route("/check-test-link/<int:userId>/<int:clientId>")
+def checkClientAndPro(userId, clientId):
+    """
+    Used to confirm that a test link is valid (url for connected client and professional)
+    """
+
+    client = Client.query.get(clientId)
+
+    if client:
+        validUrl = client.pro.id == userId
+        return json.dumps(validUrl)
+    return json.dumps(False)

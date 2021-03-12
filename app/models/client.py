@@ -11,8 +11,9 @@ class Client(db.Model):
     curClient = db.Column(db.Boolean, nullable=False)
 
     pro = db.relationship("User", back_populates="clients")
-    tests = db.relationship("Test", back_populates="client")
-
+    tests = db.relationship(
+        "Test", back_populates="client", cascade="all, delete-orphan"
+    )
 
     def to_dict(self):
         return {

@@ -1,6 +1,8 @@
 import './Footer.css';
 
 export default function Footer() {
+  // don't render footer if just on page for client to take test
+  if (window.location.pathname.startsWith('/test')) return null;
   return (
     <div className='footer'>
       <p className='footer__text'>Designed & created by Zachary Duvall, LCSW</p>

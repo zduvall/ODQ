@@ -9,6 +9,32 @@
   max-width: 24rem;
 }
 
+/* new url modal */
+
+.new-url-modal__text {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.new-url-modal__emph {
+  color: var(--primary-color);
+}
+
+.new-url-modal__link {
+  text-decoration: underline;
+  color: var(--primary-color-light);
+  cursor: pointer;
+}
+
+.new-url-modal__sml {
+  color: var(--tertiary-color);
+  font-size: 0.85rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+/* completed tests */
+
 .comp-tests {
   flex-direction: column;
 }
@@ -35,4 +61,20 @@
     padding-left: 0.25rem !important;
     padding-right: 0.25rem !important;
   }
+}
+
+/* client test view */
+.birth-year-validator__container {
+  flex-direction: column;
+}
+
+.birth-year-validator__form__row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  max-width: 24rem;
+}
+
+.birth-year-validator__error {
+  text-align: center;
 }

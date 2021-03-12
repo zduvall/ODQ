@@ -67,7 +67,7 @@ li {
   padding-bottom: 3rem;
 }
 
-.loading {
+.load-not-found-invalid {
   color: rgb(122, 122, 122);
   position: fixed;
   top: 0;

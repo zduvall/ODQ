@@ -17,14 +17,16 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
 }
 
 #modal-content {
   position: absolute;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: var(--tertiary-border);
+  border: var(--primary-color) solid 2px;
   border-radius: var(--pimrary-radius);
   padding: 1rem;
   box-sizing: border-box;

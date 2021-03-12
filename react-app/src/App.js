@@ -12,6 +12,7 @@ import Dashboard from './components/Dashboard';
 import ClientTests from './components/ClientTests';
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
+import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';
 
 // import thunks
 import { authenticateUser } from './store/session';
@@ -29,14 +30,14 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (sessionUser !== 'do not load') {
+    if (sessionUser && sessionUser !== 'do not load') {
       dispatch(getClients(sessionUser.id));
       dispatch(getTests(sessionUser.id));
     }
   }, [dispatch, sessionUser]);
 
   if (!loaded || sessionUser === 'do not load') {
-    return <h1 className='loading'>Loading DOT...</h1>;
+    return <LoadingNotFoundInvalid message={'Loading DOT...'} />;
   }
 
   return (
@@ -67,11 +68,11 @@ function App() {
           >
             <ClientTests />
           </ProtectedRoute>
-          <Route path='/test/:testCode/:userId/:clientId' exact={true}>
+          <Route path='/test/:testCode/:userId/:clientId/:encURL' exact={true}>
             <TestTemplate />
           </Route>
           <Route path='/'>
-            <h1 className='loading'>Page Not Found...</h1>
+            <LoadingNotFoundInvalid message={'Page not found...'} />
           </Route>
         </Switch>
       </div>

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "chart.js": "^2.9.4",
     "chartjs-plugin-annotation": "^0.5.7",
+    "crypto-js": "^4.0.0",
     "http-proxy-middleware": "^1.0.5",
     "react": "^17.0.1",
     "react-chartjs-2": "^2.11.1",

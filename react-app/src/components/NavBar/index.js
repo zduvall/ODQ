@@ -39,15 +39,6 @@ const NavBar = () => {
 
   let loggedInLinks = (
     <>
-      {/* <NavLink
-        className={navItemClass}
-        to='/users'
-        exact
-        activeClassName='nav__item-active'
-        onClick={handleClick}
-      >
-        Users
-      </NavLink> */}
       <NavLink
         className={navItemClass}
         to='/dashboard'
@@ -86,7 +77,11 @@ const NavBar = () => {
     </>
   );
 
-  if (!!sessionUser) {
+  // links when a client is taking a test = none
+  if (window.location.pathname.startsWith('/test')) {
+    navLinks = null;
+  } else if (!!sessionUser) {
+    // links for logged in user
     if (width > 800) {
       navLinks = loggedInLinks;
     } else {
@@ -99,6 +94,7 @@ const NavBar = () => {
       );
     }
   } else {
+    // links for logged out user
     if (width > 800) {
       navLinks = loggedOutLinks;
     } else {

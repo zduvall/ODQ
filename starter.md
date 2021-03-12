@@ -95,6 +95,7 @@ heroku container:release web -a dot-21
 
 ```bash
 heroku run -a dot-21 flask seed undo # if needed
+heroku run -a dot-21 flask db downgrade base # if needed
 heroku run -a dot-21 flask db upgrade
 heroku run -a dot-21 flask seed all
 ```

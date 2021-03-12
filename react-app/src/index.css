@@ -162,7 +162,7 @@ button:disabled:not(.nav__item) {
 .primary-button {
   color: rgb(255, 255, 255);
   background-color: var(--primary-color);
-  border: var(--primary-color) 2px solid;
+  border: var(--primary-color) 1px solid;
   border-radius: var(--pimrary-radius);
 }
 

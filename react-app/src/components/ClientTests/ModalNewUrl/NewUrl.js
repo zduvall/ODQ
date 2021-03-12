@@ -1,7 +1,11 @@
+import { useState } from 'react';
+
 export default function NewUrl({ client, newUrl, test }) {
+  const [copied, setCopied] = useState(false);
+
   function copy() {
     navigator.clipboard.writeText(newUrl);
-    console.log('copied!');
+    setCopied(true);
   }
 
   return (
@@ -16,8 +20,8 @@ export default function NewUrl({ client, newUrl, test }) {
       >
         {newUrl}
       </p>
-      <button className='primary-button' onClick={copy}>
-        Copy to Clipboard
+      <button className='primary-button' onClick={copy} disabled={copied}>
+        {copied ? 'Copied': 'Copy to Clipboard'}
       </button>
       <p className='new-url-modal__text new-url-modal__sml'>
         This is a{' '}

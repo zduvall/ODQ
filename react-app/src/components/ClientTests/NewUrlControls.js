@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+// import cryptojs
+import CryptoJS from 'crypto-js';
+
 // import components
 import ModalNewUrl from './ModalNewUrl';
 
@@ -9,7 +12,6 @@ import { useClientTestsContext } from './index';
 
 // import tests
 import tests from '../../assets';
-// import tests from '../TestTemplate/assets';
 
 // import css
 import './ClientTests.css';
@@ -27,14 +29,20 @@ export default function NewUrlControls() {
   function onSubmit(e) {
     e.preventDefault();
 
-    const userUrl = `${
-      sessionUser.firstName.slice(0, 1) + '-' + sessionUser.lastName.slice(0, 1)
-    }_${sessionUser.id}`;
-    const clientUrl = client.code + '_' + client.id;
+    const userInfo = sessionUser.id;
+    const clientInfo = client.id;
+    // const userInfo = `${
+    //   sessionUser.firstName.slice(0, 1) + '-' + sessionUser.lastName.slice(0, 1)
+    // }_${sessionUser.id}`;
+    // const clientInfo = client.code + '_' + client.id;
+
+    let encURL = CryptoJS.SHA3(`${test.code}x$${userInfo}%-${clientInfo}5z`)
+      .toString()
+      .slice(0, 15);
 
     const url = `${process.env.NODE_ENV === 'production' ? 'https://' : ''}${
       window.location.host
-    }/test/${test.code}/${userUrl}/${clientUrl}`;
+    }/test/${test.code}/${userInfo}/${clientInfo}/${encURL}`;
 
     setNewUrl(url);
     setShowModal(true);

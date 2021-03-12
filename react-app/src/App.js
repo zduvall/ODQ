@@ -68,7 +68,7 @@ function App() {
           >
             <ClientTests />
           </ProtectedRoute>
-          <Route path='/test/:testCode/:userInfo/:clientInfo' exact={true}>
+          <Route path='/test/:testCode/:userInfo/:clientInfo/:encURL' exact={true}>
             <TestTemplate />
           </Route>
           <Route path='/'>

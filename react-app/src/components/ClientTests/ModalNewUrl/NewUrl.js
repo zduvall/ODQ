@@ -19,7 +19,14 @@ export default function NewUrl({ client, newUrl, test }) {
       <button className='primary-button' onClick={copy}>
         Copy to Clipboard
       </button>
-      <p className='new-url-modal__text new-url-modal__sml'>{`This is a custom link for ${client.code} to use the ${test.abbr} repeatedly as long as needed. You can always regenerate the link here.`}</p>
+      <p className='new-url-modal__text new-url-modal__sml'>
+        This is a{' '}
+        <span style={{ textDecoration: 'underline' }}>
+          unique link only for {client.code}
+        </span>{' '}
+        to complete the {test.abbr} repeatedly as long as needed. You can always
+        regenerate the link here.
+      </p>
     </>
   );
 }

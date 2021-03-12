@@ -29,20 +29,16 @@ export default function NewUrlControls() {
   function onSubmit(e) {
     e.preventDefault();
 
-    const userInfo = sessionUser.id;
-    const clientInfo = client.id;
-    // const userInfo = `${
-    //   sessionUser.firstName.slice(0, 1) + '-' + sessionUser.lastName.slice(0, 1)
-    // }_${sessionUser.id}`;
-    // const clientInfo = client.code + '_' + client.id;
+    const userId = sessionUser.id;
+    const clientId = client.id;
 
-    let encURL = CryptoJS.SHA3(`${test.code}x$${userInfo}%-${clientInfo}5z`)
+    const encURL = CryptoJS.SHA3(`${test.code}x$${userId}%-${clientId}5z`)
       .toString()
       .slice(0, 15);
 
     const url = `${process.env.NODE_ENV === 'production' ? 'https://' : ''}${
       window.location.host
-    }/test/${test.code}/${userInfo}/${clientInfo}/${encURL}`;
+    }/test/${test.code}/${userId}/${clientId}/${encURL}`;
 
     setNewUrl(url);
     setShowModal(true);

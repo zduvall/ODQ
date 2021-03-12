@@ -17,11 +17,8 @@ import { Radio } from './QuestionTypes';
 
 export default function TestTemplate() {
   // grab info from params
-  const { testCode, userInfo, clientInfo, encURL } = useParams();
-  const userId = userInfo;
-  const clientId = clientInfo;
-  // const userId = userInfo.slice(userInfo.indexOf('_') + 1);
-  // const clientId = clientInfo.slice(clientInfo.lastIndexOf('_') + 1);
+  const { testCode, userId, clientId, encURL } = useParams();
+
   const test = tests[testCode];
 
   // state
@@ -49,8 +46,8 @@ export default function TestTemplate() {
   }
 
   useEffect(() => {
-    let expectedEncURL = CryptoJS.SHA3(
-      `${testCode}x$${userInfo}%-${clientInfo}5z`
+    const expectedEncURL = CryptoJS.SHA3(
+      `${testCode}x$${userId}%-${clientId}5z`
     )
       .toString()
       .slice(0, 15);
@@ -60,14 +57,14 @@ export default function TestTemplate() {
       return;
     }
 
-    async function checkValidUrl() {
+    async function checkValidUserClientCombo() {
       const res = await fetch(
         `/api/clients/check-test-link/${userId}/${clientId}`
       );
-      const validUrl = await res.json();
-      if (res.ok) setValidUrl(validUrl);
+      const validUCCombo = await res.json();
+      if (res.ok) setValidUrl(validUCCombo);
     }
-    checkValidUrl();
+    checkValidUserClientCombo();
   }, [userId, clientId]);
 
   if (!validUrl && validUrl !== 'do not show')

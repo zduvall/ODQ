@@ -123,6 +123,7 @@ export default function ClientForm() {
     if (remove) {
       await dispatch(deleteClient(selectedClient.id));
       setShowForm(false);
+      setSelectedClient(null);
     }
   };
 

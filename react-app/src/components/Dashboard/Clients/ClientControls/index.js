@@ -11,7 +11,6 @@ export default function ClientControls() {
   } = useClientsContext();
 
   const numClients = useSelector((state) => Object.keys(state.clients).length);
-  console.log(numClients);
 
   return (
     <div className='dashboard__client-controls'>

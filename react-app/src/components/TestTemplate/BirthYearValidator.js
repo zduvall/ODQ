@@ -3,17 +3,23 @@ import { useState } from 'react';
 export default function BirthYearValidator({ setShowTest, clientId }) {
   const [year, setYear] = useState();
   const [wrongYear, setWrongYear] = useState(false);
+  const [attempts, setAttempts] = useState(5);
 
   async function handleClick(e) {
     e.preventDefault();
     if (!year) {
       setWrongYear(true);
+      setAttempts((prev) => prev - 1);
       return;
     }
     const res = await fetch(`/api/clients/check-year/${clientId}/${year}`);
     const validated = await res.json();
-    if (validated) setShowTest(true);
-    else setWrongYear(true);
+    if (validated) {
+      setShowTest(true);
+    } else {
+      setAttempts((prev) => prev - 1);
+      setWrongYear(true);
+    }
   }
 
   return (
@@ -32,6 +38,7 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
             type='submit'
             className='primary-button'
             onClick={handleClick}
+            disabled={attempts <= 0}
           >
             Validate
           </button>
@@ -40,8 +47,8 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
       {wrongYear && (
         <div className='errors-container'>
           <p className='birth-year-validator__error'>
-            The year provided was invalid. If you believe that is a mistake,
-            please contact your provider.
+            {`The year provided was invalid. ${attempts} attempts remaining. If you believe this is a mistake,
+            please contact your provider.`}
           </p>
         </div>
       )}

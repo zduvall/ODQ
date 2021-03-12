@@ -14,9 +14,9 @@ import { Radio } from './QuestionTypes';
 
 export default function TestTemplate() {
   // grab info from params
-  let { testCode, userId, clientId } = useParams();
-  userId = userId.slice(userId.indexOf('_') + 1);
-  clientId = clientId.slice(clientId.lastIndexOf('_') + 1);
+  const { testCode, userInfo, clientInfo } = useParams();
+  const userId = userInfo.slice(userInfo.indexOf('_') + 1);
+  const clientId = clientInfo.slice(clientInfo.lastIndexOf('_') + 1);
   const test = tests[testCode];
 
   // state

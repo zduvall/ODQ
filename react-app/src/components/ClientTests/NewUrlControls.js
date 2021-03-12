@@ -22,7 +22,7 @@ export default function NewUrlControls() {
   const { client } = useClientTestsContext();
 
   // state
-  const [test, setTest] = useState('');
+  const [test, setTest] = useState({ code: '' });
   const [newUrl, setNewUrl] = useState('');
   const [showModal, setShowModal] = useState(false);
 

@@ -67,3 +67,14 @@
 .birth-year-validator__container {
   flex-direction: column;
 }
+
+.birth-year-validator__form__row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  max-width: 24rem;
+}
+
+.birth-year-validator__error {
+  text-align: center;
+}

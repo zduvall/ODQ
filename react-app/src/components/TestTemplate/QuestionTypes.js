@@ -19,6 +19,7 @@ export function Radio({ section, question, setInputs }) {
                 type={question.type}
                 name={question.id}
                 value={input.value}
+                required
               ></input>
               <label>{input.label}</label>
             </li>

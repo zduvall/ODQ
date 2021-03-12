@@ -33,6 +33,8 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
             placeholder='birth year'
             value={year}
             onChange={(e) => setYear(e.target.value)}
+            // min={1900}
+            max={new Date().getFullYear()}
           ></input>
           <button
             type='submit'

@@ -78,3 +78,16 @@
 .birth-year-validator__error {
   text-align: center;
 }
+
+.test-complete-container {
+  flex-direction: column;
+}
+
+.test-complete__title {
+  margin: 0;
+}
+
+.test-complete__thank-you {
+  margin: 0.5rem 0;
+  text-align: center;
+}

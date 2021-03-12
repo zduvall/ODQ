@@ -11,6 +11,7 @@ import tests from '../../assets';
 import TestHeader from './TestHeader';
 import BirthYearValidator from './BirthYearValidator';
 import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
+import TestComplete from './TestComplete';
 
 // import question types
 import { Radio } from './QuestionTypes';
@@ -25,9 +26,11 @@ export default function TestTemplate() {
   const [inputs, setInputs] = useState({});
   const [showTest, setShowTest] = useState(false);
   const [validUrl, setValidUrl] = useState('do not show');
+  const [testComplete, setTestComplete] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
+    console.log('submitted!!!');
 
     const testInfo = {
       userId,
@@ -36,13 +39,17 @@ export default function TestTemplate() {
       res: JSON.stringify(inputs),
     };
 
-    await fetch(`/api/tests/`, {
+    const res = await fetch(`/api/tests/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(testInfo),
     });
+
+    console.log(res);
+
+    if (res.ok) setTestComplete(true);
   }
 
   useEffect(() => {
@@ -69,6 +76,13 @@ export default function TestTemplate() {
 
   if (!validUrl && validUrl !== 'do not show')
     return <LoadingNotFoundInvalid message={'Invalid URL...'} />;
+
+  if (testComplete)
+    return (
+      <div className='site__page'>
+        <TestComplete />
+      </div>
+    );
 
   return (
     <div className='site__page'>

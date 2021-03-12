@@ -47,7 +47,7 @@ export default function TestTemplate() {
 
   useEffect(() => {
     const expectedEncURL = CryptoJS.SHA3(
-      `${testCode}x$${userId}%-${clientId}5z`
+      `${clientId}x$${testCode}%-${userId}5z`
     )
       .toString()
       .slice(0, 15);

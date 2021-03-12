@@ -32,7 +32,7 @@ export default function NewUrlControls() {
     const userId = sessionUser.id;
     const clientId = client.id;
 
-    const encURL = CryptoJS.SHA3(`${test.code}x$${userId}%-${clientId}5z`)
+    const encURL = CryptoJS.SHA3(`${clientId}x$${test.code}%-${userId}5z`)
       .toString()
       .slice(0, 15);
 
@@ -61,7 +61,7 @@ export default function NewUrlControls() {
             New Link
           </button>
           <select
-            value={test}
+            value={test.code}
             onChange={(e) => {
               setTest(tests[e.target.value]);
             }}

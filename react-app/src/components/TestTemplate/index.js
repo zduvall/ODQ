@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // import tests object
 import tests from '../../assets';
-// import tests from './assets';
 
 // import components
 import TestHeader from './TestHeader';
 import BirthYearValidator from './BirthYearValidator';
+import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
 
 // import question types
 import { Radio } from './QuestionTypes';
@@ -22,6 +22,7 @@ export default function TestTemplate() {
   // state
   const [inputs, setInputs] = useState({});
   const [showTest, setShowTest] = useState(false);
+  const [validUrl, setValidUrl] = useState('do not show');
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -41,6 +42,20 @@ export default function TestTemplate() {
       body: JSON.stringify(testInfo),
     });
   }
+
+  useEffect(() => {
+    async function checkValidUrl() {
+      const res = await fetch(
+        `/api/clients/check-test-link/${userId}/${clientId}`
+      );
+      const validUrl = await res.json();
+      if (res.ok) setValidUrl(validUrl);
+    }
+    checkValidUrl();
+  }, [userId, clientId]);
+
+  if (!validUrl && validUrl !== 'do not show')
+    return <LoadingNotFoundInvalid message={'Invalid URL...'} />;
 
   return (
     <div className='site__page'>

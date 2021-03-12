@@ -107,5 +107,7 @@ def checkClientAndPro(userId, clientId):
 
     client = Client.query.get(clientId)
 
-    validUrl = client.pro.id == userId
-    return json.dumps(validUrl)
+    if client:
+        validUrl = client.pro.id == userId
+        return json.dumps(validUrl)
+    return json.dumps(False)

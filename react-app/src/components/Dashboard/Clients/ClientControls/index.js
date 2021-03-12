@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 import { useClientsContext } from '../index';
 
 export default function ClientControls() {
@@ -8,6 +10,9 @@ export default function ClientControls() {
     setShowForm,
   } = useClientsContext();
 
+  const numClients = useSelector((state) => Object.keys(state.clients).length);
+  console.log(numClients);
+
   return (
     <div className='dashboard__client-controls'>
       <input
@@ -15,7 +20,9 @@ export default function ClientControls() {
         placeholder='Search code / year'
         value={searchClients}
         onChange={(e) => setSearchClients(e.target.value)}
-        disabled={selectedClient}
+        disabled={selectedClient || numClients < 1}
+        title={numClients < 1 ? 'Add clients to enable search' : ''}
+        style={numClients < 1 ? { cursor: 'no-drop' } : {}}
       ></input>
       <button
         className='primary-button dashboard__button client-controls__button'

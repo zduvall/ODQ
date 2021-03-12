@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 // imoprt components
 import ClientHeader from './ClientHeader';
 import ClientRow from './ClientRow';
+import LoadingNotFoundInvalid from '../../../LoadingNotFoundInvalid';
 
 export default function Clients() {
   let clients = useSelector((state) => Object.values(state.clients));
@@ -17,7 +18,7 @@ export default function Clients() {
   const [filterClients, setFxClients] = useState(clients);
   const [status, setStatus] = useState(1);
 
-  if (!clients) return <h1 className='loading'>Loading DOT...</h1>;
+  if (!clients) return <LoadingNotFoundInvalid message={'Loading DOT...'} />;
 
   return (
     <div className='site__sub-section clients-container'>

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import NewUrlControls from './NewUrlControls';
 import ClientAllTests from './ClientAllTests';
 import SelectedTest from './SelectedTest';
+import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
 
 // import tests
 import tests from '../../assets';
@@ -34,7 +35,7 @@ export default function ClientTests() {
     compTestCodes.includes(test.code)
   );
 
-  if (!client) return <h1 className='loading'>Loading DOT...</h1>;
+  if (!client) return <LoadingNotFoundInvalid message={'Loading DOT...'} />;
 
   return (
     <ClientTestsContext.Provider

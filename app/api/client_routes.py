@@ -97,3 +97,15 @@ def checkBirthYear(clientId, yearToCheck):
 
     validated = client.birthYear == yearToCheck
     return json.dumps(validated)
+
+
+@client_routes.route("/check-test-link/<int:userId>/<int:clientId>")
+def checkClientAndPro(userId, clientId):
+    """
+    Used to confirm that a test link is valid (url for connected client and professional)
+    """
+
+    client = Client.query.get(clientId)
+
+    validUrl = client.pro.id == userId
+    return json.dumps(validUrl)

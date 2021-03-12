@@ -50,9 +50,6 @@ export default function TestTemplate() {
       {showTest && (
         <div>
           <TestHeader test={test} />
-          <h2>
-            User: {userId}, Client: {clientId}
-          </h2>
           <form onSubmit={onSubmit}>
             {test.sections.map((section) => {
               return (

@@ -134,7 +134,7 @@ li {
 
 /* --------------- buttons --------------- */
 
-button:not(.nav__item) {
+button:not(.nav__item):not(.nav__dropdown__item) {
   display: flex;
   justify-content: center;
   font-weight: 1000;
@@ -145,17 +145,17 @@ button:not(.nav__item) {
   max-width: 11rem;
 }
 
-button:hover:enabled:not(.nav__item) {
+button:hover:enabled:not(.nav__item):not(.nav__dropdown__item) {
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
   transform: translateY(-0.75px);
 }
 
-button:active:enabled:not(.nav__item) {
+button:active:enabled:not(.nav__item):not(.nav__dropdown__item) {
   box-shadow: none;
   transform: translateY(0.75px);
 }
 
-button:disabled:not(.nav__item) {
+button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   cursor: default !important;
 }
 

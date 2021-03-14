@@ -102,6 +102,15 @@
   text-shadow: var(--text-shadow);
 }
 
+/* form info button */
+.fa-info-circle {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  cursor: pointer;
+  color: var(--tertiary-color);
+}
+
 /* Mobile view */
 
 @media (max-width: 800px) {
@@ -110,5 +119,9 @@
     flex-wrap: nowrap !important;
     width: 100% !important;
     justify-content: center;
+  }
+  .fa-info-circle {
+    top: 0.5rem;
+    right: 0.5rem;
   }
 }

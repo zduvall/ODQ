@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// import component
+import ModalClientFormInfo from './ModalClientFormInfo';
+
 // import thunk
 import { createClient, deleteClient } from '../../../../store/clients';
 
@@ -17,6 +20,8 @@ export default function ClientForm() {
     setSelectedClient,
     selectedClient,
   } = useClientsContext();
+
+  const [showModal, setShowModal] = useState();
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
@@ -128,93 +133,97 @@ export default function ClientForm() {
   };
 
   return (
-    <div className='site__sub-section'>
-      <form className='form' onSubmit={onSubmit}>
-        <div className='site__sub-section__data'>
-          <div className='errors-container'>
-            {errors.map((error) => (
-              <div key={error}>{error}</div>
-            ))}
+    <>
+      <ModalClientFormInfo showModal={showModal} setShowModal={setShowModal} />
+      <div className='site__sub-section'>
+        <i class='fas fa-info-circle' onClick={() => setShowModal(true)}></i>
+        <form className='form' onSubmit={onSubmit}>
+          <div className='site__sub-section__data'>
+            <div className='errors-container'>
+              {errors.map((error) => (
+                <div key={error}>{error}</div>
+              ))}
+            </div>
+            <div className='form__row'>
+              <input
+                name='firstName'
+                type='text'
+                placeholder='First Name'
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+                className='form__input'
+              ></input>
+              <input
+                name='lastName'
+                type='text'
+                placeholder='Last Name'
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                className='form__input'
+              ></input>
+            </div>
+            <div className='form__row'>
+              <input
+                name='birthYear'
+                type='number'
+                placeholder='Birth Year'
+                onChange={(e) => setBirthYear(e.target.value)}
+                value={birthYear}
+                className='form__input'
+              ></input>
+              <select
+                name='curClient'
+                onChange={(e) => setCurClient(e.target.value)}
+                value={curClient}
+                className='form__input'
+              >
+                <option disabled value=''>
+                  - Status -
+                </option>
+                <option value={true}>Active</option>
+                <option value={false}>Terminated</option>
+              </select>
+            </div>
+            <div className='form__row'>
+              <label className='creation-date-label'>Creation:</label>
+              <input
+                name='creation-date'
+                className='form__input creation-date-input'
+                type='date'
+                onChange={(e) => setCreateDate(e.target.value)}
+                value={createDate}
+                required
+              ></input>
+            </div>
           </div>
-          <div className='form__row'>
-            <input
-              name='firstName'
-              type='text'
-              placeholder='First Name'
-              onChange={(e) => setFirstName(e.target.value)}
-              value={firstName}
-              className='form__input'
-            ></input>
-            <input
-              name='lastName'
-              type='text'
-              placeholder='Last Name'
-              onChange={(e) => setLastName(e.target.value)}
-              value={lastName}
-              className='form__input'
-            ></input>
-          </div>
-          <div className='form__row'>
-            <input
-              name='birthYear'
-              type='number'
-              placeholder='Birth Year'
-              onChange={(e) => setBirthYear(e.target.value)}
-              value={birthYear}
-              className='form__input'
-            ></input>
-            <select
-              name='curClient'
-              onChange={(e) => setCurClient(e.target.value)}
-              value={curClient}
-              className='form__input'
-            >
-              <option disabled value=''>
-                - Status -
-              </option>
-              <option value={true}>Active</option>
-              <option value={false}>Terminated</option>
-            </select>
-          </div>
-          <div className='form__row'>
-            <label className='creation-date-label'>Creation:</label>
-            <input
-              name='creation-date'
-              className='form__input creation-date-input'
-              type='date'
-              onChange={(e) => setCreateDate(e.target.value)}
-              value={createDate}
-              required
-            ></input>
-          </div>
-        </div>
-        <div className='form__row dashboard__buttons'>
-          <button
-            className='primary-button form__button dashboard__button'
-            type='submit'
-          >
-            {selectedClient ? 'Update' : 'Create'}
-          </button>
-          <button
-            className='secondary-button form__button dashboard__button'
-            type='button'
-            onClick={() => {
-              setShowForm(false);
-            }}
-          >
-            Cancel
-          </button>
-          {selectedClient && (
+          <div className='form__row dashboard__buttons'>
             <button
-              className='delete-button form__button dashboard__button'
-              type='button'
-              onClick={onDelete}
+              className='primary-button form__button dashboard__button'
+              type='submit'
             >
-              Delete
+              {selectedClient ? 'Update' : 'Create'}
             </button>
-          )}
-        </div>
-      </form>
-    </div>
+            <button
+              className='secondary-button form__button dashboard__button'
+              type='button'
+              onClick={() => {
+                setShowForm(false);
+              }}
+            >
+              Cancel
+            </button>
+            {selectedClient && (
+              <button
+                className='delete-button form__button dashboard__button'
+                type='button'
+                onClick={onDelete}
+              >
+                Delete
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
+    </>
   );
 }

@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+// import component
+import SelectedDataPoint from './SelectedDataPoint';
+
+// import context
 import { useClientTestsContext } from './index';
 
 // import chart and annotator
@@ -10,14 +14,17 @@ Chart.plugins.register([ChartAnnotation]); // Global
 
 export default function SelectedTest() {
   const { selectedTest, clientTests } = useClientTestsContext();
-  const [dataPoint, setDataPoint] = useState();
+  const [datapoint, setDatapoint] = useState();
+  const [datapointDate, setDatapointDate] = useState();
 
   const allTestsOfType = clientTests.filter(
     (test) => test.testCode === selectedTest.code
   );
 
+  const dates = [];
+
   function dateLabels(tests) {
-    const dates = [];
+    // const dates = [];
     tests.forEach((test) => {
       let date = new Date(test.timeComp);
       const yr = ('' + date.getFullYear()).slice(-2);
@@ -35,7 +42,7 @@ export default function SelectedTest() {
     datasets: [
       {
         label: 'Test Scores',
-        data: selectedTest.chartData.dataPoints(allTestsOfType),
+        data: selectedTest.chartData.datapoints(allTestsOfType),
         fill: false,
         backgroundColor: 'rgb(238, 114, 32)',
         borderColor: 'rgb(242, 150, 88)',
@@ -46,15 +53,24 @@ export default function SelectedTest() {
   };
 
   selectedTest.chartOptions.onClick = (e, element) => {
-    setDataPoint(allTestsOfType[element[0]._index]);
+    setDatapoint(allTestsOfType[element[0]._index]);
+    setDatapointDate(dates[element[0]._index]);
   };
 
   const options = selectedTest.chartOptions;
 
   return (
-    <div className='site__sub-section chart-container'>
-      <h3>{selectedTest.name}</h3>
-      <Line data={data} options={options} />
-    </div>
+    <>
+      <div className='site__sub-section chart-container'>
+        <h3>{selectedTest.name}</h3>
+        <Line data={data} options={options} />
+      </div>
+      {datapoint && (
+        <>
+          <div className='one1rem-ht' />
+          <SelectedDataPoint datapoint={datapoint} date={datapointDate} />
+        </>
+      )}
+    </>
   );
 }

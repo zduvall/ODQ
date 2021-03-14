@@ -36,7 +36,7 @@ const PHQ9 = {
     'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
   thankYou: 'Thank you for completing the PHQ-9.',
   chartData: {
-    dataPoints: (tests) => {
+    datapoints: (tests) => {
       const points = [];
       tests.forEach((test) => {
         const res = JSON.parse(test.res);

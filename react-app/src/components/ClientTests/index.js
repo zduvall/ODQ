@@ -7,6 +7,7 @@ import NewUrlControls from './NewUrlControls';
 import ClientAllTests from './ClientAllTests';
 import SelectedTest from './SelectedTest';
 import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
+import DropdownTestInfo from './DropdownTestInfo';
 
 // import tests
 import tests from '../../assets';
@@ -18,6 +19,7 @@ export const useClientTestsContext = () => useContext(ClientTestsContext);
 export default function ClientTests() {
   // state
   const [selectedTest, setSelectedTest] = useState();
+  const [dropdownTest, setDropdownTest] = useState({ code: '' });
 
   // params and store
   const { clientId } = useParams();
@@ -43,6 +45,8 @@ export default function ClientTests() {
         client,
         compTestCodes,
         compTestObjs,
+        dropdownTest,
+        setDropdownTest,
         selectedTest,
         setSelectedTest,
         clientTests,
@@ -52,7 +56,8 @@ export default function ClientTests() {
         <h1 className='primary-title'>{client.code}</h1>
         <NewUrlControls />
         <div className='one1rem-ht' />
-        <ClientAllTests />
+        {!dropdownTest.code && <ClientAllTests />}
+        {dropdownTest.code && <DropdownTestInfo />}
         {selectedTest && (
           <>
             <div className='one1rem-ht' />

@@ -19,10 +19,9 @@ import './ClientTests.css';
 export default function NewUrlControls() {
   // store and context
   const sessionUser = useSelector((state) => state.session.user);
-  const { client } = useClientTestsContext();
+  const { client, dropdownTest, setDropdownTest } = useClientTestsContext();
 
   // state
-  const [test, setTest] = useState({ code: '' });
   const [newUrl, setNewUrl] = useState('');
   const [showModal, setShowModal] = useState(false);
 
@@ -32,17 +31,24 @@ export default function NewUrlControls() {
     const userId = sessionUser.id;
     const clientId = client.id;
 
-    const encURL = CryptoJS.SHA3(`${clientId}x$${test.code}%-${userId}5z`)
+    const encURL = CryptoJS.SHA3(
+      `${clientId}x$${dropdownTest.code}%-${userId}5z`
+    )
       .toString()
       .slice(0, 15);
 
     const url = `${process.env.NODE_ENV === 'production' ? 'https://' : ''}${
       window.location.host
-    }/test/${test.code}/${userId}/${clientId}/${encURL}`;
+    }/test/${dropdownTest.code}/${userId}/${clientId}/${encURL}`;
 
     setNewUrl(url);
     setShowModal(true);
   }
+
+  // const options = [
+  //   Object.values(tests).map((t) => ({ label: t.abbr, value: t.code })),
+  // ];
+  // console.log(options);
 
   return (
     <>
@@ -52,7 +58,7 @@ export default function NewUrlControls() {
           setShowModal={setShowModal}
           newUrl={newUrl}
           client={client}
-          test={test}
+          test={dropdownTest}
         />
       )}
       <div className='site__sub-section client-tests__sub-section'>
@@ -61,9 +67,10 @@ export default function NewUrlControls() {
             New Link
           </button>
           <select
-            value={test.code}
+            // options={options}
+            value={dropdownTest.code}
             onChange={(e) => {
-              setTest(tests[e.target.value]);
+              setDropdownTest(tests[e.target.value]);
             }}
             className='form__input'
             required
@@ -71,9 +78,9 @@ export default function NewUrlControls() {
             <option disabled value=''>
               - Tests -
             </option>
-            {Object.values(tests).map((test) => (
-              <option value={test.code} key={test.code}>
-                {test.abbr}
+            {Object.values(tests).map((t) => (
+              <option value={t.code} key={t.code}>
+                {t.abbr}
               </option>
             ))}
           </select>

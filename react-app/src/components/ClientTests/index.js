@@ -20,6 +20,7 @@ export default function ClientTests() {
   // state
   const [selectedTest, setSelectedTest] = useState();
   const [dropdownTest, setDropdownTest] = useState({ code: '' });
+  const [datapoint, setDatapoint] = useState(null);
 
   // params and store
   const { clientId } = useParams();
@@ -47,6 +48,8 @@ export default function ClientTests() {
         compTestObjs,
         dropdownTest,
         setDropdownTest,
+        datapoint,
+        setDatapoint,
         selectedTest,
         setSelectedTest,
         clientTests,

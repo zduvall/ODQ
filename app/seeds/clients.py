@@ -11,7 +11,7 @@ def seed_clients():
             userId=user_1.id,
             birthYear="1992",
             code="JilX-11.27.19",
-            curClient=True,
+            curClient=False,
         ),
         Client(
             userId=user_1.id,
@@ -75,7 +75,13 @@ def seed_clients():
         ),
         Client(
             userId=user_1.id,
-            birthYear="2010",
+            birthYear="1989",
+            code="BosO-01.02.21",
+            curClient=True,
+        ),
+        Client(
+            userId=user_1.id,
+            birthYear="1995",
             code="JosS-01.08.21",
             curClient=True,
         ),

@@ -93,3 +93,14 @@
   margin: 0.5rem 0;
   text-align: center;
 }
+
+/* selected data point details */
+.selected-data-point {
+  flex-direction: column;
+}
+
+.selected-data-point__q-and-a {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

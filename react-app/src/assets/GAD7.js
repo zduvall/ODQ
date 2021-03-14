@@ -124,20 +124,19 @@ const GAD7 = {
           type: 'Radio',
           stem: 'Feeling afraid as if something awful might happen',
           scale: scale1,
-          pagebreak: true,
         },
       ],
     },
     {
       id: 2,
-      instructions:
-        'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
+      instructions: 'Impact',
       scale: scale2,
       questions: [
         {
           id: 's2q1',
           type: 'Radio',
-          stem: 'Please select the most accurate respose',
+          stem:
+            'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
           scale: scale2,
         },
       ],

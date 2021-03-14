@@ -13,8 +13,13 @@ import * as ChartAnnotation from 'chartjs-plugin-annotation';
 Chart.plugins.register([ChartAnnotation]); // Global
 
 export default function SelectedTest() {
-  const { selectedTest, clientTests } = useClientTestsContext();
-  const [datapoint, setDatapoint] = useState();
+  const {
+    selectedTest,
+    clientTests,
+    datapoint,
+    setDatapoint,
+  } = useClientTestsContext();
+  // const [datapoint, setDatapoint] = useState();
   const [datapointDate, setDatapointDate] = useState();
 
   const allTestsOfType = clientTests.filter(
@@ -53,8 +58,14 @@ export default function SelectedTest() {
   };
 
   selectedTest.chartOptions.onClick = (e, element) => {
-    setDatapoint(allTestsOfType[element[0]._index]);
-    setDatapointDate(dates[element[0]._index]);
+    if (element[0]) {
+      setDatapoint(allTestsOfType[element[0]._index]);
+      setDatapointDate(dates[element[0]._index]);
+    }
+  };
+  selectedTest.onHover = (e, element) => {
+    console.log(element[0]);
+    e.target.style.cursor = element[0] ? 'pointer' : 'default';
   };
 
   const options = selectedTest.chartOptions;
@@ -62,7 +73,7 @@ export default function SelectedTest() {
   return (
     <>
       <div className='site__sub-section chart-container'>
-        <h3>{selectedTest.name}</h3>
+        <h3 className='cntr-txt-sml-margin'>{selectedTest.name}</h3>
         <Line data={data} options={options} />
       </div>
       {datapoint && (

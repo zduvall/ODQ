@@ -11,20 +11,8 @@
 
 /* new url modal */
 
-.new-url-modal__text {
-  margin: 0.5rem 0;
-  text-align: center;
-}
-
 .new-url-modal__emph {
   color: var(--primary-color);
-}
-
-.new-url-modal__link {
-  text-decoration: underline;
-  color: var(--primary-color-light);
-  cursor: pointer;
-  word-break: break-all;
 }
 
 .new-url-modal__sml {
@@ -51,6 +39,11 @@
   cursor: pointer;
 }
 
+.comp-tests__option:hover {
+  text-shadow: var(--text-shadow);
+  font-weight: 1000;
+}
+
 .chart-container {
   flex-direction: column;
   overflow-x: scroll;
@@ -63,7 +56,16 @@
   }
 }
 
-/* client test view */
+/* test descriptive view when selected in dropdown */
+.test-descriptions-container {
+  flex-direction: column;
+}
+
+.test-descriptions-text {
+  justify-content: flex-start;
+}
+
+/* client complete test view */
 .birth-year-validator__container {
   flex-direction: column;
 }
@@ -90,4 +92,15 @@
 .test-complete__thank-you {
   margin: 0.5rem 0;
   text-align: center;
+}
+
+/* selected data point details */
+.selected-data-point {
+  flex-direction: column;
+}
+
+.selected-data-point__q-and-a {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }

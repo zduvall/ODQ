@@ -1,3 +1,9 @@
+import { useState } from 'react';
+
+// import component
+import SelectedDataPoint from './SelectedDataPoint';
+
+// import context
 import { useClientTestsContext } from './index';
 
 // import chart and annotator
@@ -7,14 +13,23 @@ import * as ChartAnnotation from 'chartjs-plugin-annotation';
 Chart.plugins.register([ChartAnnotation]); // Global
 
 export default function SelectedTest() {
-  const { selectedTest, clientTests } = useClientTestsContext();
+  const {
+    selectedTest,
+    clientTests,
+    datapoint,
+    setDatapoint,
+  } = useClientTestsContext();
+  // const [datapoint, setDatapoint] = useState();
+  const [datapointDate, setDatapointDate] = useState();
 
   const allTestsOfType = clientTests.filter(
     (test) => test.testCode === selectedTest.code
   );
 
+  const dates = [];
+
   function dateLabels(tests) {
-    const dates = [];
+    // const dates = [];
     tests.forEach((test) => {
       let date = new Date(test.timeComp);
       const yr = ('' + date.getFullYear()).slice(-2);
@@ -32,7 +47,7 @@ export default function SelectedTest() {
     datasets: [
       {
         label: 'Test Scores',
-        data: selectedTest.chartData.dataPoints(allTestsOfType),
+        data: selectedTest.chartData.datapoints(allTestsOfType),
         fill: false,
         backgroundColor: 'rgb(238, 114, 32)',
         borderColor: 'rgb(242, 150, 88)',
@@ -42,12 +57,31 @@ export default function SelectedTest() {
     ],
   };
 
+  selectedTest.chartOptions.onClick = (e, element) => {
+    if (element[0]) {
+      setDatapoint(allTestsOfType[element[0]._index]);
+      setDatapointDate(dates[element[0]._index]);
+    }
+  };
+  selectedTest.onHover = (e, element) => {
+    console.log(element[0]);
+    e.target.style.cursor = element[0] ? 'pointer' : 'default';
+  };
+
   const options = selectedTest.chartOptions;
 
   return (
-    <div className='site__sub-section chart-container'>
-      <h3>{selectedTest.name}</h3>
-      <Line data={data} options={options} />
-    </div>
+    <>
+      <div className='site__sub-section chart-container'>
+        <h3 className='cntr-txt-sml-margin'>{selectedTest.name}</h3>
+        <Line data={data} options={options} />
+      </div>
+      {datapoint && (
+        <>
+          <div className='one1rem-ht' />
+          <SelectedDataPoint datapoint={datapoint} date={datapointDate} />
+        </>
+      )}
+    </>
   );
 }

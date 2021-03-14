@@ -20,8 +20,8 @@ const PHQ9 = {
   code: 'PHQ9',
   name: 'Patient Health Questionnaire-9',
   description:
-    'The Patient Health Questionnaire (PHQ) is a self-administered version of the PRIME-MD diagnostic instrument for common mental disorders. The PHQ-9 is the depression module, which scores each of the 9 DSM-IV criteria as “0” (not at all) to “3” (nearly every day)',
-  link: 'https://www.phqscreeners.com/',
+    'A 9-item self-administered test used to assess the severity of major depressive disorder. Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include "not at all", "several days", "more than half the days" and "nearly every day".',
+  link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1495268/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',
   audience:
@@ -36,7 +36,7 @@ const PHQ9 = {
     'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
   thankYou: 'Thank you for completing the PHQ-9.',
   chartData: {
-    dataPoints: (tests) => {
+    datapoints: (tests) => {
       const points = [];
       tests.forEach((test) => {
         const res = JSON.parse(test.res);
@@ -128,7 +128,6 @@ const PHQ9 = {
           stem:
             'Trouble concentrating on things, such as reading the newspaper or watching television',
           scale: scale1,
-          pagebreak: true,
         },
         {
           id: 's1q8',
@@ -136,7 +135,6 @@ const PHQ9 = {
           stem:
             'Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual',
           scale: scale1,
-          pagebreak: true,
         },
         {
           id: 's1q9',
@@ -144,20 +142,19 @@ const PHQ9 = {
           stem:
             'Thoughts that you would be better off dead or of hurting yourself in some way',
           scale: scale1,
-          pagebreak: true,
         },
       ],
     },
     {
       id: 2,
-      instructions:
-        'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
+      instructions: 'Impact',
       scale: scale2,
       questions: [
         {
           id: 's2q1',
           type: 'Radio',
-          stem: 'Please select the most accurate respose',
+          stem:
+            'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
           scale: scale2,
         },
       ],

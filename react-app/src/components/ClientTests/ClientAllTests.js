@@ -4,11 +4,12 @@ export default function ClientAllTests() {
   const {
     compTestObjs,
     setSelectedTest,
+    setDatapoint,
   } = useClientTestsContext();
 
   return (
     <div className='site__sub-section client-tests__sub-section comp-tests'>
-      <h2 className='comp-tests__title'>Completed Tests</h2>
+      <h2 className='comp-tests__title cntr-txt-sml-margin'>Completed Tests</h2>
       <ul className='comp-tests__list'>
         {compTestObjs.map((testObj) => {
           return (
@@ -17,6 +18,7 @@ export default function ClientAllTests() {
               className='comp-tests__option'
               onClick={() => {
                 setSelectedTest(testObj);
+                setDatapoint(null);
               }}
             >
               {testObj.abbr}

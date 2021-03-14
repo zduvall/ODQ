@@ -20,8 +20,8 @@ const GAD7 = {
   code: 'GAD7',
   name: 'Generalized Anxiety Disorder-7',
   description:
-    'The Generalized Anxiety Disorder Assessment (GAD-7) is a seven-item instrument that is used to measure or assess the severity of generalised anxiety disorder (GAD). Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include "not at all", "several days", "more than half the days" and "nearly every day".',
-  link: 'https://www.phqscreeners.com/',
+    'A 7-item self-administered test used to assess the severity of generalized anxiety disorder. Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include "not at all", "several days", "more than half the days" and "nearly every day".',
+  link: 'https://pubmed.ncbi.nlm.nih.gov/16717171/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',
   audience:
@@ -37,7 +37,7 @@ const GAD7 = {
     'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
   thankYou: 'Thank you for completing the GAD-7.',
   chartData: {
-    dataPoints: (tests) => {
+    datapoints: (tests) => {
       const points = [];
       tests.forEach((test) => {
         const res = JSON.parse(test.res);
@@ -124,20 +124,19 @@ const GAD7 = {
           type: 'Radio',
           stem: 'Feeling afraid as if something awful might happen',
           scale: scale1,
-          pagebreak: true,
         },
       ],
     },
     {
       id: 2,
-      instructions:
-        'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
+      instructions: 'Impact',
       scale: scale2,
       questions: [
         {
           id: 's2q1',
           type: 'Radio',
-          stem: 'Please select the most accurate respose',
+          stem:
+            'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
           scale: scale2,
         },
       ],

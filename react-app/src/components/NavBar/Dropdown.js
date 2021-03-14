@@ -9,13 +9,16 @@ export default function Dropdown({
 
   return (
     <>
-      <button onClick={toggleDropdown}>
+      {/* <button onClick={toggleDropdown}> */}
         <i
+          onClick={toggleDropdown}
           className={`fas fa-bars fa-lg ${
-            showDropdown ? 'nav__dropdown__button-open' : 'nav__dropdown__button-closed'
+            showDropdown
+              ? 'nav__dropdown__button-open'
+              : 'nav__dropdown__button-closed'
           }`}
         ></i>
-      </button>
+      {/* </button> */}
       {showDropdown && (
         <>
           <ul className='nav__dropdown'>{dropdownLinks}</ul>

@@ -16,14 +16,11 @@ export default function DropdownTestInfo() {
           <span className='underline'>Duration</span>: {dropdownTest.minMinutes}{' '}
           - {dropdownTest.maxMinutes} minutes
         </p>
-        <p>
-          <span className='underline'>More Information</span>:{' '}
-          <span
-            className='clickable-link'
-            onClick={() => window.open(dropdownTest.link)}
-          >
-            {dropdownTest.link}
-          </span>
+        <p
+          className='clickable-link'
+          onClick={() => window.open(dropdownTest.link)}
+        >
+          More Information
         </p>
       </div>
       <button

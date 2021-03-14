@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useClientTestsContext } from './index';
 
 // import chart and annotator
@@ -8,6 +10,7 @@ Chart.plugins.register([ChartAnnotation]); // Global
 
 export default function SelectedTest() {
   const { selectedTest, clientTests } = useClientTestsContext();
+  const [dataPoint, setDataPoint] = useState();
 
   const allTestsOfType = clientTests.filter(
     (test) => test.testCode === selectedTest.code
@@ -40,6 +43,10 @@ export default function SelectedTest() {
         pointHitRadius: 15,
       },
     ],
+  };
+
+  selectedTest.chartOptions.onClick = (e, element) => {
+    setDataPoint(allTestsOfType[element[0]._index]);
   };
 
   const options = selectedTest.chartOptions;

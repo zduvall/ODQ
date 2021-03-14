@@ -39,6 +39,11 @@
   cursor: pointer;
 }
 
+.comp-tests__option:hover {
+  text-shadow: var(--text-shadow);
+  font-weight: 1000;
+}
+
 .chart-container {
   flex-direction: column;
   overflow-x: scroll;

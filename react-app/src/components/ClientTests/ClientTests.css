@@ -11,11 +11,6 @@
 
 /* new url modal */
 
-.new-url-modal__text {
-  margin: 0.5rem 0;
-  text-align: center;
-}
-
 .new-url-modal__emph {
   color: var(--primary-color);
 }

@@ -15,13 +15,6 @@
   color: var(--primary-color);
 }
 
-.new-url-modal__link {
-  text-decoration: underline;
-  color: var(--primary-color-light);
-  cursor: pointer;
-  word-break: break-all;
-}
-
 .new-url-modal__sml {
   color: var(--tertiary-color);
   font-size: 0.85rem;
@@ -58,7 +51,16 @@
   }
 }
 
-/* client test view */
+/* test descriptive view when selected in dropdown */
+.test-descriptions-container {
+  flex-direction: column;
+}
+
+.test-descriptions-text {
+  justify-content: flex-start;
+}
+
+/* client complete test view */
 .birth-year-validator__container {
   flex-direction: column;
 }

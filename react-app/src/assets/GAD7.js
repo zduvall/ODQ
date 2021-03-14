@@ -20,7 +20,7 @@ const GAD7 = {
   code: 'GAD7',
   name: 'Generalized Anxiety Disorder-7',
   description:
-    'The Generalized Anxiety Disorder Assessment (GAD-7) is a seven-item instrument that is used to measure or assess the severity of generalised anxiety disorder (GAD). Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include "not at all", "several days", "more than half the days" and "nearly every day".',
+    'A 7-item self-administered test used to assess the severity of generalized anxiety disorder. Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include "not at all", "several days", "more than half the days" and "nearly every day".',
   link: 'https://www.phqscreeners.com/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',

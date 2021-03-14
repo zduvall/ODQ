@@ -15,13 +15,13 @@ export default function NewUrl({ client, newUrl, test }) {
         <span className='new-url-modal__emph'>{client.code}</span>
       </h2>
       <p
-        className='cntr-txt-sml-margin new-url-modal__link'
+        className='cntr-txt-sml-margin clickable-link'
         onClick={() => window.open(newUrl, '_blank')}
       >
         {newUrl}
       </p>
       <button className='primary-button' onClick={copy} disabled={copied}>
-        {copied ? 'Copied': 'Copy to Clipboard'}
+        {copied ? 'Copied' : 'Copy to Clipboard'}
       </button>
       <p className='cntr-txt-sml-margin new-url-modal__sml'>
         This is a{' '}

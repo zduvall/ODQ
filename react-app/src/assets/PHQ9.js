@@ -20,7 +20,7 @@ const PHQ9 = {
   code: 'PHQ9',
   name: 'Patient Health Questionnaire-9',
   description:
-    'The Patient Health Questionnaire (PHQ) is a self-administered version of the PRIME-MD diagnostic instrument for common mental disorders. The PHQ-9 is the depression module, which scores each of the 9 DSM-IV criteria as “0” (not at all) to “3” (nearly every day)',
+    'A 9-item self-administered test used to assess the severity of major depressive disorder. . Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include "not at all", "several days", "more than half the days" and "nearly every day".',
   link: 'https://www.phqscreeners.com/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',

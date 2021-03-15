@@ -1,3 +1,21 @@
+export default function Section({ setInputs, section }) {
+  return (
+    <div key={section.id}>
+      <h3>{section.instructions}</h3>
+      {section.questions.map((question) => {
+        return (
+          <Radio
+            key={`${section.id}-${question.id}`}
+            setInputs={setInputs}
+            section={section}
+            question={question}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
 export function Radio({ section, question, setInputs }) {
   function handleChange(e) {
     const input = {};

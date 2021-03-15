@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 // import component
-import SelectedDataPoint from './SelectedDataPoint'
+import SelectedDataPoint from './SelectedDataPoint';
 
 // import context
-import {useClientTestsContext} from './index'
+import { useClientTestsContext } from './index';
 
 // import chart and annotator
 import { Line } from 'react-chartjs-2';
@@ -55,18 +55,19 @@ export default function SelectedTest() {
     ],
   };
 
+  const options = selectedTest.chartOptions;
+
+  // add chart options that exist on all charts
   selectedTest.chartOptions.onClick = (e, element) => {
     if (element[0]) {
       setDatapoint(allTestsOfType[element[0]._index]);
       setDatapointDate(dates[element[0]._index]);
     }
   };
-  selectedTest.onHover = (e, element) => {
+  selectedTest.chartOptions.onHover = (e, element) => {
     console.log(element[0]);
     e.target.style.cursor = element[0] ? 'pointer' : 'default';
   };
-
-  const options = selectedTest.chartOptions;
 
   return (
     <>

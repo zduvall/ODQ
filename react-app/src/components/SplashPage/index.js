@@ -12,7 +12,7 @@ export default function SplashPage() {
   return (
     <div className='splash'>
       <div>
-        <h1 className='primary-title'>Diagnostic and Outcome Testing</h1>
+        <h1 className='primary-title'>Diagnostic and Outcome Testing - 21</h1>
         <h2 className='tertiary-title'>
           for therapists and other helping professionals
         </h2>

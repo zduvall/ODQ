@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
 // import component
-import SelectedDataPoint from './SelectedDataPoint';
+import SelectedDataPoint from './SelectedDataPoint'
 
 // import context
-import { useClientTestsContext } from './index';
+import {useClientTestsContext} from './index'
 
 // import chart and annotator
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js';
 import * as ChartAnnotation from 'chartjs-plugin-annotation';
-Chart.plugins.register([ChartAnnotation]); // Global
+Chart.plugins.register([ChartAnnotation]); // Global registering of plugin
 
 export default function SelectedTest() {
   const {
@@ -19,7 +19,6 @@ export default function SelectedTest() {
     datapoint,
     setDatapoint,
   } = useClientTestsContext();
-  // const [datapoint, setDatapoint] = useState();
   const [datapointDate, setDatapointDate] = useState();
 
   const allTestsOfType = clientTests.filter(
@@ -29,7 +28,6 @@ export default function SelectedTest() {
   const dates = [];
 
   function dateLabels(tests) {
-    // const dates = [];
     tests.forEach((test) => {
       let date = new Date(test.timeComp);
       const yr = ('' + date.getFullYear()).slice(-2);

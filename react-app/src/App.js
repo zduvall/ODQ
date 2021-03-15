@@ -13,6 +13,7 @@ import ClientTests from './components/ClientTests';
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
 import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';
+import TermsOfUse from './components/auth/TermsOfUse';
 
 // import thunks
 import { authenticateUser } from './store/session';
@@ -70,6 +71,9 @@ function App() {
           </ProtectedRoute>
           <Route path='/test/:testCode/:userId/:clientId/:encURL' exact={true}>
             <TestTemplate />
+          </Route>
+          <Route path='/terms-of-use'>
+            <TermsOfUse />
           </Route>
           <Route path='/'>
             <LoadingNotFoundInvalid message={'Page not found...'} />

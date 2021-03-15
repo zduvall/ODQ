@@ -61,7 +61,7 @@ export default function ClientTests() {
         <div className='one1rem-ht' />
         {!dropdownTest.code && <ClientAllTests />}
         {dropdownTest.code && <DropdownTestInfo />}
-        {selectedTest && (
+        {!dropdownTest.code && selectedTest && (
           <>
             <div className='one1rem-ht' />
             <SelectedTest />

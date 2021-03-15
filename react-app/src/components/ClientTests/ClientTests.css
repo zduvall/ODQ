@@ -99,8 +99,20 @@
   flex-direction: column;
 }
 
-.selected-data-point__q-and-a {
+.selected-data-point__details {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.selected-dp__section {
+  margin: 0.5rem 0;
+}
+
+.selected-dp__question {
+  margin: 0.25rem 0 0.25rem 1rem;
+}
+
+.selected-dp__question-stem {
+  color: var(--secondary-color);
 }

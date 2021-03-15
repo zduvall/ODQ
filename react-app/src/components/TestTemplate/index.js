@@ -12,9 +12,8 @@ import TestHeader from './TestHeader';
 import BirthYearValidator from './BirthYearValidator';
 import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
 import TestComplete from './TestComplete';
-
-// import question types
-import { Radio } from './QuestionTypes';
+// import section
+import Section from './SectionAndQuestionTypes';
 
 export default function TestTemplate() {
   // grab info from params
@@ -94,21 +93,7 @@ export default function TestTemplate() {
           <TestHeader test={test} />
           <form onSubmit={onSubmit}>
             {test.sections.map((section) => {
-              return (
-                <div key={section.id}>
-                  <h3>{section.instructions}</h3>
-                  {section.questions.map((question) => {
-                    return (
-                      <Radio
-                        key={`${section.id}-${question.id}`}
-                        setInputs={setInputs}
-                        section={section}
-                        question={question}
-                      />
-                    );
-                  })}
-                </div>
-              );
+              return <Section setInputs={setInputs} section={section} />;
             })}
             <button className='primary-button' type='submit'>
               Submit

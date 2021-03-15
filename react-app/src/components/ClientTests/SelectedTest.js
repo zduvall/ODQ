@@ -10,7 +10,7 @@ import { useClientTestsContext } from './index';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js';
 import * as ChartAnnotation from 'chartjs-plugin-annotation';
-Chart.plugins.register([ChartAnnotation]); // Global
+Chart.plugins.register([ChartAnnotation]); // Global registering of plugin
 
 export default function SelectedTest() {
   const {
@@ -19,7 +19,6 @@ export default function SelectedTest() {
     datapoint,
     setDatapoint,
   } = useClientTestsContext();
-  // const [datapoint, setDatapoint] = useState();
   const [datapointDate, setDatapointDate] = useState();
 
   const allTestsOfType = clientTests.filter(
@@ -29,7 +28,6 @@ export default function SelectedTest() {
   const dates = [];
 
   function dateLabels(tests) {
-    // const dates = [];
     tests.forEach((test) => {
       let date = new Date(test.timeComp);
       const yr = ('' + date.getFullYear()).slice(-2);
@@ -57,18 +55,19 @@ export default function SelectedTest() {
     ],
   };
 
+  const options = selectedTest.chartOptions;
+
+  // add chart options that exist on all charts
   selectedTest.chartOptions.onClick = (e, element) => {
     if (element[0]) {
       setDatapoint(allTestsOfType[element[0]._index]);
       setDatapointDate(dates[element[0]._index]);
     }
   };
-  selectedTest.onHover = (e, element) => {
+  selectedTest.chartOptions.onHover = (e, element) => {
     console.log(element[0]);
     e.target.style.cursor = element[0] ? 'pointer' : 'default';
   };
-
-  const options = selectedTest.chartOptions;
 
   return (
     <>

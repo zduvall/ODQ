@@ -242,6 +242,10 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   text-decoration: underline;
 }
 
+.bold {
+  text-shadow: var(--text-shadow);
+}
+
 /* --------------- Forms --------------- */
 .form-container {
   display: flex;

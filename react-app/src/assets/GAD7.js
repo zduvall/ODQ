@@ -86,50 +86,50 @@ const GAD7 = {
         {
           id: 's1q1',
           type: 'Radio',
-          stem: 'Feeling nervous, anxious or on edge',
+          stem: 'Feeling nervous, anxious or on edge?',
           scale: scale1,
         },
         {
           id: 's1q2',
           type: 'Radio',
-          stem: 'Not being able to stop or control worrying',
+          stem: 'Not being able to stop or control worrying?',
           scale: scale1,
         },
         {
           id: 's1q3',
           type: 'Radio',
-          stem: 'Worrying too much about different things',
+          stem: 'Worrying too much about different things?',
           scale: scale1,
         },
         {
           id: 's1q4',
           type: 'Radio',
-          stem: 'Trouble relaxing',
+          stem: 'Trouble relaxing?',
           scale: scale1,
         },
         {
           id: 's1q5',
           type: 'Radio',
-          stem: 'Being so restless that it is hard to sit still',
+          stem: 'Being so restless that it is hard to sit still?',
           scale: scale1,
         },
         {
           id: 's1q6',
           type: 'Radio',
-          stem: 'Becoming easily annoyed or irritable',
+          stem: 'Becoming easily annoyed or irritable?',
           scale: scale1,
         },
         {
           id: 's1q7',
           type: 'Radio',
-          stem: 'Feeling afraid as if something awful might happen',
+          stem: 'Feeling afraid as if something awful might happen?',
           scale: scale1,
         },
       ],
     },
     {
       id: 2,
-      instructions: 'Impact',
+      instructions: 'Social impact:',
       scale: scale2,
       questions: [
         {

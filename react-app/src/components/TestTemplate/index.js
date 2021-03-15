@@ -13,7 +13,7 @@ import BirthYearValidator from './BirthYearValidator';
 import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
 import TestComplete from './TestComplete';
 // import section
-import Section from './QuestionTypes';
+import Section from './SectionAndQuestionTypes';
 
 export default function TestTemplate() {
   // grab info from params

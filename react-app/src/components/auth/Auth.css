@@ -8,3 +8,11 @@
 .auth__form__input {
   padding: 1rem !important;
 }
+
+.terms-of-use__reference {
+  font-size: 0.9rem;
+}
+
+.terms-of-use {
+  flex-direction: column;
+}

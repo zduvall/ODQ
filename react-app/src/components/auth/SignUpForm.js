@@ -132,6 +132,15 @@ function SignUpFormPage() {
             Sign Up
           </button>
         </div>
+        <p className='terms-of-use__reference'>
+          By using this website, you agree to the{' '}
+          <span
+            className='clickable-link'
+            onClick={() => window.open('/terms-of-use', '_blank')}
+          >
+            Terms of Use Agreement
+          </span>
+        </p>
       </form>
     </div>
   );

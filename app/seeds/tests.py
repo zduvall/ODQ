@@ -285,6 +285,42 @@ def seed_tests():
             },
             timeComp=datetime(2021, 2, 26, 10, 45, 0, 0),
         ),
+        Test(
+            userId=user.id,
+            clientId=client1.id,
+            testCode="PHQ9",
+            res={
+                "s1q1": "1",
+                "s1q2": "2",
+                "s1q3": "1",
+                "s1q4": "2",
+                "s1q5": "0",
+                "s1q6": "1",
+                "s1q7": "2",
+                "s1q8": "1",
+                "s1q9": "1",
+                "s2q1": "1",
+            },
+            timeComp=datetime(2021, 3, 5, 10, 11, 0, 0),
+        ),
+        Test(
+            userId=user.id,
+            clientId=client1.id,
+            testCode="PHQ9",
+            res={
+                "s1q1": "1",
+                "s1q2": "2",
+                "s1q3": "1",
+                "s1q4": "2",
+                "s1q5": "0",
+                "s1q6": "1",
+                "s1q7": "2",
+                "s1q8": "1",
+                "s1q9": "1",
+                "s2q1": "1",
+            },
+            timeComp=datetime(2021, 3, 12, 11, 34, 0, 0),
+        ),
     ]
 
     db.session.bulk_save_objects(tests)

@@ -47,6 +47,7 @@
   display: flex;
   list-style: none;
   box-sizing: border-box;
+  padding: 0;
 }
 
 .nav__item {

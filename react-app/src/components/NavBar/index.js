@@ -115,7 +115,7 @@ const NavBar = () => {
         onClick={() => history.push('/')}
       >
         <img className='logo' src={dotLogo} alt='DOT logo' />
-        Diagnostic & Outcome Testing
+        Diagnostic & Outcome Testing - 21
       </div>
       <nav className='nav'>
         <ul className='nav__wrapper'>{navLinks}</ul>

@@ -140,6 +140,7 @@ function SignUpFormPage() {
           >
             Terms of Use Agreement
           </span>
+          .
         </p>
       </form>
     </div>

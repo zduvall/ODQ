@@ -26,20 +26,22 @@ export default function TermsOfUse() {
         </p>
         <p>
           Many questionnaires on this website are based on patient self-report.
-          As such, all responses should be reviewed and interpreted by the a
-          qualified mental health or other health care professional. Any
-          definitive diagnosis should be made on clinical grounds, factoring in
-          the patient's understanding of the questionaire and any other relevant
-          biopsychosocial information from the patient.
+          As such, all responses should be reviewed and interpreted by a
+          qualified mental health or other health care professional. Although
+          information gathered from tests on this website (factoring in the
+          patient's understanding of the questionaire) can inform treatment and
+          diagnoses, any definitive diagnosis and treatment plan should be based
+          on clinical grounds, including all other relevant biopsychosocial
+          information from the patient.
         </p>
         <p>
-          Questionnaires on this website are from third-party resources. Your
-          use of all questionnaires will be governed by such third party's terms
-          and policies (including its privacy policy) and is at your own risk.
+          Your use of any questionnaires on this website from third-party
+          resources will be governed by such third party's terms and policies
+          (including its privacy policy) and is at your own risk.
         </p>
         <h3>Third-party Materials, Websites, and Links</h3>
         <p>
-          Merely as a convenience, this website may contain linnks or references
+          Merely as a convenience, this website may contain links or references
           to materials and other websites maintained by third parties over whom
           DOT-21 has no control. There may also be thir-party links over whom
           DOT-21 has no control that access this website. DOT-21 makes no

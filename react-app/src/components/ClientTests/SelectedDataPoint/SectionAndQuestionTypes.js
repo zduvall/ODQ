@@ -4,7 +4,9 @@ export default function Section({ section, resObj }) {
       <h4 className='selected-dp__section bold'>{section.instructions}</h4>
       <ol>
         {section.questions.map((question) => {
-          return <Radio question={question} resObj={resObj} />;
+          return (
+            <Radio key={question.id} question={question} resObj={resObj} />
+          );
         })}
       </ol>
     </>

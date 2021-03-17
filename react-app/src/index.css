@@ -34,6 +34,7 @@ body {
   --text-shadow-prm-clr: 0.5px 0 var(--primary-color);
   --text-shadow-prm-clr-light: 0.5px 0 var(--primary-color-light);
   --text-shadow-scd-clr: 0.5px 0 var(--secondary-color);
+  --text-shadow-ter-clr-drk: 0.5px 0 var(--tertiary-color-dark);
 }
 
 /* reset css */
@@ -127,7 +128,7 @@ ul > li {
   color: var(--tertiary-color-dark);
   padding: 0 1rem;
   width: 100%;
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--text-shadow-ter-clr-drk);
 }
 
 @media (max-width: 800px) {

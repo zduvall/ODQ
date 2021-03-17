@@ -120,7 +120,8 @@ li {
 }
 
 .site__sub-section__data {
-  font-weight: 1000;
+  /* font-weight: 1000; */
+  color: var(--tertiary-color-dark);
   padding: 0 1rem;
   width: 100%;
   text-shadow: var(--text-shadow);

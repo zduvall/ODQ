@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // import component
 import SelectedDataPoint from './SelectedDataPoint';
@@ -21,7 +21,7 @@ export default function SelectedTest() {
   } = useClientTestsContext();
   const [datapointDate, setDatapointDate] = useState();
 
-  const allTestsOfType = clientTests.filter(
+  const allTestResOfType = clientTests.filter(
     (test) => test.testCode === selectedTest.code
   );
 
@@ -41,11 +41,11 @@ export default function SelectedTest() {
   }
 
   const data = {
-    labels: dateLabels(allTestsOfType),
+    labels: dateLabels(allTestResOfType),
     datasets: [
       {
         label: 'Test Scores',
-        data: selectedTest.chartData.datapoints(allTestsOfType),
+        data: selectedTest.chartData.datapoints(allTestResOfType),
         fill: false,
         backgroundColor: 'rgb(238, 114, 32)',
         borderColor: 'rgb(242, 150, 88)',
@@ -60,7 +60,7 @@ export default function SelectedTest() {
   // add chart options that exist on all charts
   selectedTest.chartOptions.onClick = (e, element) => {
     if (element[0]) {
-      setDatapoint(allTestsOfType[element[0]._index]);
+      setDatapoint(allTestResOfType[element[0]._index]);
       setDatapointDate(dates[element[0]._index]);
     }
   };
@@ -68,6 +68,14 @@ export default function SelectedTest() {
     console.log(element[0]);
     e.target.style.cursor = element[0] ? 'pointer' : 'default';
   };
+
+  // make most recent data point (test res) default to being selected
+  useEffect(() => {
+    if (!datapoint) {
+      setDatapoint(allTestResOfType[allTestResOfType.length - 1]);
+      setDatapointDate(dates[dates.length - 1]);
+    }
+  }, [datapoint, setDatapoint, allTestResOfType, dates]);
 
   return (
     <>

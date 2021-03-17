@@ -18,7 +18,7 @@
   align-items: center;
   font-size: 1.2rem;
   font-weight: 1000;
-  color: var(--primary-color);
+  white-space: pre-wrap;
   cursor: pointer;
 }
 
@@ -55,7 +55,8 @@
   color: var(--tertiary-color);
 }
 
-.nav__item:hover, .nav__dropdown__item:hover {
+.nav__item:hover,
+.nav__dropdown__item:hover {
   color: var(--primary-color);
 }
 

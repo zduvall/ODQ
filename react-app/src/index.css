@@ -17,6 +17,7 @@ body {
   --secondary-color: rgb(238, 114, 32);
   --secondary-color-light: rgb(242, 150, 88);
   --tertiary-color: rgb(138, 138, 138);
+  --tertiary-color-dark: rgb(69, 69, 69);
   --tertiary-color-light: rgb(245, 245, 245);
   --delete-color: rgb(173, 0, 0);
   --delete-color-light: rgb(230, 0, 0);
@@ -29,6 +30,7 @@ body {
 
   /* text shadow for bold */
   --text-shadow: 0.5px 0 #000;
+  --text-shadow-prm-clr: 1px 0 var(--primary-color);
 }
 
 /* reset css */

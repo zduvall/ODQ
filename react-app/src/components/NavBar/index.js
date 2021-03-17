@@ -115,7 +115,10 @@ const NavBar = () => {
         onClick={() => history.push('/')}
       >
         <img className='logo' src={dotLogo} alt='DOT logo' />
-        Diagnostic & Outcome Testing - 21
+        <span className='secondary-title'>D</span>iagnostic &{' '}
+        <span className='secondary-title'>O</span>utcome{' '}
+        <span className='secondary-title'>T</span>esting -{' '}
+        <span className='secondary-title'>21</span>
       </div>
       <nav className='nav'>
         <ul className='nav__wrapper'>{navLinks}</ul>

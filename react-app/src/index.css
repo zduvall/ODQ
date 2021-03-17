@@ -61,7 +61,7 @@ a {
   padding-inline-start: 0;
 } */
 
-li {
+ul > li {
   list-style: none;
 }
 

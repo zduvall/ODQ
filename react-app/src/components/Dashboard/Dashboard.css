@@ -102,9 +102,16 @@
 }
 
 .clients-row:hover {
-  text-shadow: var(--text-shadow-prm-clr-light);
+  text-shadow: var(--text-shadow-prm-clr);
   font-weight: 1000;
-  color: var(--primary-color-light);
+  color: var(--primary-color);
+  /* background-color: var(--tertiary-color-light); */
+  border-color: var(--primary-color);
+}
+
+.clients-row:hover > p {
+  background-color: var(--tertiary-color-light);
+  /* border-radius: var(--pimrary-radius); */
 }
 
 /* form info button */

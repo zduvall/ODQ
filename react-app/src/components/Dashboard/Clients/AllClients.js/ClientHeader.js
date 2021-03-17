@@ -8,8 +8,8 @@ export default function ClientHeader({
 }) {
   let clients = useSelector((state) => Object.values(state.clients));
 
-  const [sortCode, setSortCode] = useState(false);
-  const [sortYear, setSortYear] = useState(false);
+  const [sortCode, setSortCode] = useState(null);
+  const [sortYear, setSortYear] = useState(null);
 
   function sort(attr) {
     const sortBy = attr === 'birthYear' ? sortYear : sortCode;
@@ -23,18 +23,26 @@ export default function ClientHeader({
 
   function handleSortCodeClick() {
     setSortCode((prev) => !prev);
-    setSortYear(false);
+    setSortYear(null);
     sort('code');
   }
 
   function handleSortYearClick() {
     setSortYear((prev) => !prev);
-    setSortCode(false);
+    setSortCode(null);
     sort('birthYear');
   }
 
   function handleStatusClick() {
     setStatus((prev) => (prev === 3 ? 1 : prev + 1));
+  }
+
+  function toggleCaret(sort) {
+    return sort === null
+      ? 'fas fa-sort'
+      : sort
+      ? 'fas fa-sort-up'
+      : 'fas fa-sort-down';
   }
 
   return (
@@ -44,14 +52,14 @@ export default function ClientHeader({
         className='clients-header c-h-1'
         onClick={handleSortCodeClick}
       >
-        Client Code
+        Client Code <i className={toggleCaret(sortCode)}></i>
       </p>
       <p
         title='sort by birth year'
         className='clients-header'
         onClick={handleSortYearClick}
       >
-        Birth Year
+        Birth Year <i className={toggleCaret(sortYear)}></i>
       </p>
       <p
         title='toggle clients shown by status'

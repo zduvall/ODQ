@@ -73,6 +73,14 @@ ul > li {
   padding-bottom: 3rem;
 }
 
+@media (max-width: 500px) {
+  .btwn-nav-footer {
+    padding: 0 2.5%;
+    margin-top: 0.5rem;
+    padding-bottom: 3rem;
+  }
+}
+
 .load-not-found-invalid {
   color: rgb(122, 122, 122);
   position: fixed;

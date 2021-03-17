@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .splash__primary-image {
@@ -31,15 +32,20 @@
   padding: 2rem;
 }
 
-
 @media (max-width: 800px) {
   .splash__secondary-content {
     flex-direction: column-reverse;
   }
-  .splash__secondary-image {
-    width: 100%;
+  .splash__secondary-text {
+    padding: 0 2rem 2rem 2rem;
   }
   .splash__primary-image {
     transform: scale(1);
+  }
+}
+
+@media (max-width: 500px) {
+  .splash__secondary-image {
+    width: 80%;
   }
 }

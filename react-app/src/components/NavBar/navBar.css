@@ -22,15 +22,10 @@
   cursor: pointer;
 }
 
-@media (max-width: 475px) {
+@media (max-width: 385px) {
   .site-header__title {
     font-size: 1rem;
     text-align: left !important;
-  }
-}
-@media (max-width: 390px) {
-  .site-header__title {
-    font-size: 0.9rem;
   }
 }
 
@@ -110,4 +105,13 @@
 
 .logout {
   margin: 0;
+}
+
+@media (max-width: 500px) {
+  .site-header {
+    padding: 0 2.5%;
+  }
+  .nav__dropdown {
+    padding: 0 2.5%;
+  }
 }

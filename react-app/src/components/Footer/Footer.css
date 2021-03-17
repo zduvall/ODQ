@@ -11,14 +11,20 @@
   height: 3rem;
 }
 
+@media (max-width: 800px) {
+  .footer {
+    padding: auto 2.5%;
+  }
+}
+
 .footer__text {
   color: var(--tertiary-color);
   margin-right: 0.5rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 500px) {
   .footer__text {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-align: center;
   }
 }

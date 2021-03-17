@@ -11,24 +11,29 @@ export default function ClientHeader({
   const [sortCode, setSortCode] = useState(null);
   const [sortYear, setSortYear] = useState(null);
 
-  function sort(attr) {
+  function sort(sentAttr) {
+    let attr = sentAttr;
     const sortBy = attr === 'birthYear' ? sortYear : sortCode;
+    if (sortBy === false) {
+      attr = 'id';
+    }
     setFxClients(
       clients.slice().sort((a, b) => {
         if (sortBy) return a[attr] < b[attr] ? 1 : -1;
+        if (attr === 'id') return b[attr] - a[attr];
         return a[attr] < b[attr] ? -1 : 1;
       })
     );
   }
 
   function handleSortCodeClick() {
-    setSortCode((prev) => !prev);
+    setSortCode((prev) => (prev === false ? null : !prev));
     setSortYear(null);
     sort('code');
   }
 
   function handleSortYearClick() {
-    setSortYear((prev) => !prev);
+    setSortYear((prev) => (prev === false ? null : !prev));
     setSortCode(null);
     sort('birthYear');
   }

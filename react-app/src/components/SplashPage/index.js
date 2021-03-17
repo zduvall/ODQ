@@ -3,7 +3,7 @@ import SplashPageSection from './SplashPageSection';
 
 // import style and images
 import './splashPage.css';
-import womanInTherapy from './images/woman-in-therapy.png';
+import womanInTherapy from './images/0_woman-in-therapy.png';
 import takingNotes from './images/1_taking_notes.svg';
 import mobileUser from './images/2_mobile_user.svg';
 import vistualData from './images/3_visual_data.png';

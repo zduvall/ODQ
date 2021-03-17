@@ -11,6 +11,11 @@
   height: 3rem;
 }
 
+.footer__text {
+  color: var(--tertiary-color);
+  margin-right: 0.5rem;
+}
+
 @media (max-width: 800px) {
   .footer__text {
     font-size: 0.75rem;

@@ -81,9 +81,16 @@
   text-align: center;
   padding: 0.25rem;
   font-weight: 1000;
-  border-radius: var(--pimrary-radius);
   margin: 0 !important;
   cursor: pointer;
+}
+
+.c-h-1 {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.c-h-3 {
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .clients-header:hover {
@@ -105,13 +112,18 @@
   text-shadow: var(--text-shadow-prm-clr);
   font-weight: 1000;
   color: var(--primary-color);
-  /* background-color: var(--tertiary-color-light); */
-  border-color: var(--primary-color);
 }
 
 .clients-row:hover > p {
   background-color: var(--tertiary-color-light);
-  /* border-radius: var(--pimrary-radius); */
+}
+
+.clients-row:hover > :first-child {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.clients-row:hover > :last-child {
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 /* form info button */

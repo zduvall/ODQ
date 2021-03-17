@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 export default function ClientHeader({
   setStatus,
-  // status,
+  // status, // conntected with very bottom
   setFxClients,
 }) {
   let clients = useSelector((state) => Object.values(state.clients));
@@ -41,7 +41,7 @@ export default function ClientHeader({
     <>
       <p
         title='sort by client code'
-        className='clients-header'
+        className='clients-header c-h-1'
         onClick={handleSortCodeClick}
       >
         Client Code
@@ -55,7 +55,7 @@ export default function ClientHeader({
       </p>
       <p
         title='toggle clients shown by status'
-        className='clients-header'
+        className='clients-header c-h-3'
         onClick={handleStatusClick}
       >
         Status

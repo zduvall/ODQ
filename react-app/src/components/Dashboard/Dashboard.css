@@ -75,12 +75,8 @@
   justify-items: center;
 }
 
-.clients-table > p {
-  margin: 0.5rem 0 0 0;
-}
-
 .clients-header {
-  background: var(--tertiary-color-light);
+  background-color: var(--tertiary-color-light);
   width: 100%;
   text-align: center;
   padding: 0.25rem;
@@ -94,12 +90,21 @@
   text-shadow: var(--text-shadow);
 }
 
-.client-name {
+.clients-row {
+  display: contents;
   cursor: pointer;
 }
 
-.client-name:hover {
-  text-shadow: var(--text-shadow);
+.clients-row > p {
+  margin: 0.5rem 0 0 0;
+  width: 100%;
+  text-align: center;
+}
+
+.clients-row:hover {
+  text-shadow: var(--text-shadow-prm-clr-light);
+  font-weight: 1000;
+  color: var(--primary-color-light);
 }
 
 /* form info button */

@@ -22,12 +22,10 @@ export default function ClientRow({ status, client }) {
   const toggleDisp = !statusSelected || !searchable ? { display: 'none' } : {};
 
   return (
-    <>
-      <p style={toggleDisp} className='client-name' onClick={handleClickClient}>
-        {code}
-      </p>
+    <div className='clients-row' onClick={handleClickClient}>
+      <p style={toggleDisp}>{code}</p>
       <p style={toggleDisp}>{birthYear}</p>
       <p style={toggleDisp}>{curClient ? 'Active' : 'Terminated'}</p>
-    </>
+    </div>
   );
 }

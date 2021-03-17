@@ -30,7 +30,10 @@ body {
 
   /* text shadow for bold */
   --text-shadow: 0.5px 0 #000;
-  --text-shadow-prm-clr: 1px 0 var(--primary-color);
+  --text-shadow-prm-clr: 0.5px 0 var(--primary-color);
+  --text-shadow-prm-clr: 0.5px 0 var(--primary-color);
+  --text-shadow-prm-clr-light: 0.5px 0 var(--primary-color-light);
+  --text-shadow-scd-clr: 0.5px 0 var(--secondary-color);
 }
 
 /* reset css */

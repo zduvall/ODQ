@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // import component
 import ModalClientFormInfo from './ModalClientFormInfo';
+import ModalConfirmButton from '../../../ModalConfirmButton';
 
 // import thunk
 import { createClient, deleteClient } from '../../../../store/clients';
@@ -21,7 +22,8 @@ export default function ClientForm() {
     selectedClient,
   } = useClientsContext();
 
-  const [showModal, setShowModal] = useState();
+  const [showInfoModal, setShowInfoModal] = useState();
+  const [showDeleteModal, setShowDeleteModal] = useState();
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
@@ -121,22 +123,31 @@ export default function ClientForm() {
     }
   };
 
-  const onDelete = async () => {
-    const remove = window.confirm(
-      `Are you sure you want to delete ${selectedClient.code} and all associated data?`
-    );
-    if (remove) {
-      await dispatch(deleteClient(selectedClient.id));
-      setShowForm(false);
-      setSelectedClient(null);
-    }
+  const handleDelete = async () => {
+    await dispatch(deleteClient(selectedClient.id));
+    setShowForm(false);
+    setSelectedClient(null);
   };
 
   return (
     <>
-      <ModalClientFormInfo showModal={showModal} setShowModal={setShowModal} />
+      <ModalClientFormInfo
+        showInfoModal={showInfoModal}
+        setShowInfoModal={setShowInfoModal}
+      />
+      <ModalConfirmButton
+        showModal={showDeleteModal}
+        setShowModal={setShowDeleteModal}
+        proceedAction={handleDelete}
+        message={`Are you sure you want to delete ${
+          selectedClient ? selectedClient.code : 'this client' // 'this client' shouldn't ever render, this just makes sure there is a selected client to avoid error keying into nothing
+        } and all associated data?`}
+      />
       <div className='site__sub-section'>
-        <i class='fas fa-info-circle' onClick={() => setShowModal(true)}></i>
+        <i
+          class='fas fa-info-circle'
+          onClick={() => setShowInfoModal(true)}
+        ></i>
         <form className='form' onSubmit={onSubmit}>
           <div className='site__sub-section__data'>
             <div className='errors-container'>
@@ -216,7 +227,7 @@ export default function ClientForm() {
               <button
                 className='delete-button form__button dashboard__button'
                 type='button'
-                onClick={onDelete}
+                onClick={() => setShowDeleteModal(true)}
               >
                 Delete
               </button>

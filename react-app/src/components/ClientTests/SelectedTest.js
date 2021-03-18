@@ -19,7 +19,6 @@ export default function SelectedTest() {
     datapoint,
     setDatapoint,
   } = useClientTestsContext();
-  const [datapointDate, setDatapointDate] = useState();
 
   const allTestResOfType = clientTests.filter(
     (test) => test.testCode === selectedTest.code
@@ -61,21 +60,18 @@ export default function SelectedTest() {
   selectedTest.chartOptions.onClick = (e, element) => {
     if (element[0]) {
       setDatapoint(allTestResOfType[element[0]._index]);
-      setDatapointDate(dates[element[0]._index]);
     }
   };
   selectedTest.chartOptions.onHover = (e, element) => {
-    console.log(element[0]);
     e.target.style.cursor = element[0] ? 'pointer' : 'default';
   };
 
   // make most recent data point (test res) default to being selected
   useEffect(() => {
-    if (!datapoint) {
+    if (!datapoint && datapoint !== false) {
       setDatapoint(allTestResOfType[allTestResOfType.length - 1]);
-      setDatapointDate(dates[dates.length - 1]);
     }
-  }, [datapoint, setDatapoint, allTestResOfType, dates]);
+  }, [datapoint, setDatapoint, allTestResOfType]);
 
   return (
     <>
@@ -86,7 +82,7 @@ export default function SelectedTest() {
       {datapoint && (
         <>
           <div className='one1rem-ht' />
-          <SelectedDataPoint datapoint={datapoint} date={datapointDate} />
+          <SelectedDataPoint datapoint={datapoint} />
         </>
       )}
     </>

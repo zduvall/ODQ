@@ -43,43 +43,43 @@ def createTest():
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-# @test_routes.route("/<int:clientId>", methods=["PUT"])
+# @test_routes.route("/<int:testId>", methods=["PUT"])
 # @login_required
-# def updateClient(clientId):
+# def updateTest(testId):
 #     """
-#     Update a client
+#     Update a test
 #     """
-#     form = ClientForm()
+#     form = testForm()
 #     form["csrf_token"].data = request.cookies["csrf_token"]
 
 #     if form.validate_on_submit():
 
-#         client_to_update = Client.query.get(clientId)
+#         test_to_update = Test.query.get(testId)
 
-#         client_to_update.userId = form.data["userId"]
-#         client_to_update.birthYear = form.data["birthYear"]
-#         client_to_update.code = form.data["code"]
-#         client_to_update.curClient = form.data["curClient"]
+#         test_to_update.userId = form.data["userId"]
+#         test_to_update.birthYear = form.data["birthYear"]
+#         test_to_update.code = form.data["code"]
+#         test_to_update.curTest = form.data["curTest"]
 
-#         db.session.add(client_to_update)
+#         db.session.add(test_to_update)
 #         db.session.commit()
-#         return client_to_update.to_dict()
+#         return test_to_update.to_dict()
 
 #     print("-------errors-------", form.errors)
 #     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-# @test_routes.route("/<int:clientId>", methods=["DELETE"])
-# @login_required
-# def deleteClient(clientId):
-#     """
-#     Deletes a client
-#     """
-#     client_to_delete = Client.query.get(clientId)
-#     if client_to_delete:
-#         db.session.delete(client_to_delete)
-#         db.session.commit()
-#         return "deleted"
-#     else:
-#         print(f"-------- no client found with id {clientId} -------- ")
-#         return {"errors": "No client found with given id"}
+@test_routes.route("/<int:testId>", methods=["DELETE"])
+@login_required
+def deleteTest(testId):
+    """
+    Deletes a test
+    """
+    test_to_delete = Test.query.get(testId)
+    if test_to_delete:
+        db.session.delete(test_to_delete)
+        db.session.commit()
+        return "deleted"
+    else:
+        print(f"-------- no test found with id {testId} -------- ")
+        return {"errors": "No test found with given id"}

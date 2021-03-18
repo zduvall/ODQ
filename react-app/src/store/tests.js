@@ -1,7 +1,7 @@
 // Action types
 const LOAD_TESTS = '/tests/LOAD_TESTS';
 // const CREATE_TEST = '/tests/CREATE_TEST'; // also used for update
-// const REMOVE_TEST = '/tests/REMOVE_TEST';
+const REMOVE_TEST = '/tests/REMOVE_TEST';
 
 // Action creators
 const load = (tests) => ({
@@ -15,10 +15,10 @@ const load = (tests) => ({
 //   test,
 // });
 
-// const remove = (testId) => ({
-//   type: REMOVE_TEST,
-//   testId,
-// });
+const remove = (testId) => ({
+  type: REMOVE_TEST,
+  testId,
+});
 
 // Thunks
 // gets all tests associated with logged-in user
@@ -76,14 +76,14 @@ export const getTests = (userId) => async (dispatch) => {
 //   }
 // };
 
-// export const deleteTest = (testId) => async (dispatch) => {
-//   const res = await fetch(`/api/tests/${testId}`, {
-//     method: 'DELETE',
-//   });
-//   if (res.ok) {
-//     dispatch(remove(testId));
-//   }
-// };
+export const deleteTest = (testId) => async (dispatch) => {
+  const res = await fetch(`/api/tests/${testId}`, {
+    method: 'DELETE',
+  });
+  if (res.ok) {
+    dispatch(remove(testId));
+  }
+};
 
 // Reducer
 const initState = {};
@@ -100,9 +100,9 @@ const testReducer = (state = initState, action) => {
     // case CREATE_TEST:
     //   newState[action.test.id] = action.test;
     //   return newState;
-    // case REMOVE_TEST:
-    //   delete newState[Number(action.testId)];
-    //   return newState;
+    case REMOVE_TEST:
+      delete newState[Number(action.testId)];
+      return newState;
     default:
       return newState;
   }

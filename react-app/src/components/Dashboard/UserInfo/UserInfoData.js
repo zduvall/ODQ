@@ -21,14 +21,8 @@ export default function UserInfoData({ setShowUpdateUser }) {
   const { firstName, lastName, lic, pxName, phone, email } = sessionUser;
 
   const handleDeactivate = () => {
-    setShowModal(true);
-    // const confirm = window.confirm(
-    //   'Are you sure you want to deactivate your account? All associated data will be deleted.'
-    // );
-    // if (confirm) {
-    //   dispatch(deleteUser(sessionUser.id));
-    //   history.push('/');
-    // }
+    dispatch(deleteUser(sessionUser.id));
+    history.push('/');
   };
 
   return (
@@ -37,6 +31,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
         <ModalConfirmButton
           showModal={showModal}
           setShowModal={setShowModal}
+          proceedAction={handleDeactivate}
           message={
             'Are you sure you want to deactivate your account? All associated data will be deleted.'
           }
@@ -65,7 +60,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
         </button>
         <button
           className='delete-button dashboard__button'
-          onClick={handleDeactivate}
+          onClick={() => setShowModal(true)}
         >
           Deactivate
         </button>

@@ -65,14 +65,13 @@ export default function SelectedTest() {
   selectedTest.chartOptions.onHover = (e, element) => {
     e.target.style.cursor = element[0] ? 'pointer' : 'default';
   };
-  
 
   // make most recent data point (test res) default to being selected
   useEffect(() => {
-    if (!datapoint) {
+    if (!datapoint && datapoint !== false) {
       setDatapoint(allTestResOfType[allTestResOfType.length - 1]);
     }
-  }, [datapoint, setDatapoint, allTestResOfType, dates]);
+  }, [datapoint, setDatapoint, allTestResOfType]);
 
   return (
     <>

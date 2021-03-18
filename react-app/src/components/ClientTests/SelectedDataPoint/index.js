@@ -19,7 +19,7 @@ export default function SelectedDataPoint() {
     const confirm = window.confirm('Are you sure?');
     if (confirm) {
       await dispatch(deleteTest(datapoint.id));
-      setDatapoint(null);
+      setDatapoint(false);
     }
   }
 

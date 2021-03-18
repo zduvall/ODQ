@@ -20,11 +20,8 @@ export default function SelectedDataPoint() {
   const resObj = JSON.parse(datapoint.res);
 
   async function handleDelete() {
-    // const confirm = window.confirm('Are you sure?');
-    // if (confirm) {
     await dispatch(deleteTest(datapoint.id));
     setDatapoint(false);
-    // }
   }
 
   console.log(datapoint);

@@ -22,9 +22,8 @@ export default function SelectedDataPoint() {
   async function handleDelete() {
     await dispatch(deleteTest(datapoint.id));
     setDatapoint(false);
+    window.scrollBy(0, -1); // this makes it so the screen doesn't snap down to the bottom (where it was when you clicked delete) the next time you click a datapoint
   }
-
-  console.log(datapoint);
 
   return (
     <div className='site__sub-section selected-data-point'>

@@ -1,20 +1,19 @@
 from app.models import db, Test, Client, User
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
+import random
 
 
 # Adds a demo user
 def seed_tests():
 
     user = User.query.filter_by(firstName="Demo").first()
-    client1 = Client.query.filter_by(code="JosS-01.08.21").first()
-    client2 = Client.query.filter_by(code="DonT-01.06.21").first()
-
-    tests = [
+    client_1 = Client.query.filter_by(code="JosS-01.08.21").first()
+    jos_S_tests = [
         # GAD-7 ---------------------------------------------------------------
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="GAD7",
             res={
                 "s1q1": "3",
@@ -30,7 +29,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="GAD7",
             res={
                 "s1q1": "3",
@@ -46,7 +45,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="GAD7",
             res={
                 "s1q1": "2",
@@ -62,7 +61,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="GAD7",
             res={
                 "s1q1": "2",
@@ -78,7 +77,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="GAD7",
             res={
                 "s1q1": "1",
@@ -94,7 +93,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="GAD7",
             res={
                 "s1q1": "1",
@@ -110,7 +109,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="GAD7",
             res={
                 "s1q1": "1",
@@ -126,7 +125,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="GAD7",
             res={
                 "s1q1": "1",
@@ -143,7 +142,7 @@ def seed_tests():
         # PHQ-9 ---------------------------------------------------------------
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "3",
@@ -161,7 +160,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "3",
@@ -179,7 +178,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "2",
@@ -197,7 +196,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "2",
@@ -215,7 +214,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "3",
@@ -233,7 +232,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "1",
@@ -251,7 +250,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "1",
@@ -269,7 +268,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "1",
@@ -287,7 +286,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "1",
@@ -305,7 +304,7 @@ def seed_tests():
         ),
         Test(
             userId=user.id,
-            clientId=client1.id,
+            clientId=client_1.id,
             testCode="PHQ9",
             res={
                 "s1q1": "1",
@@ -323,7 +322,64 @@ def seed_tests():
         ),
     ]
 
-    db.session.bulk_save_objects(tests)
+    db.session.bulk_save_objects(jos_S_tests)
+
+    clients = Client.query.all()
+
+    codes = ["GAD7", "PHQ9"]
+
+    test_template = {
+        "GAD7": [
+            "s1q1",
+            "s1q2",
+            "s1q3",
+            "s1q4",
+            "s1q5",
+            "s1q6",
+            "s1q7",
+            "s2q1",
+        ],
+        "PHQ9": [
+            "s1q1",
+            "s1q2",
+            "s1q3",
+            "s1q4",
+            "s1q5",
+            "s1q6",
+            "s1q7",
+            "s1q8",
+            "s1q9",
+            "s2q1",
+        ],
+    }
+
+    for client in clients:
+        if client.code == client_1.code:
+            continue
+
+        tests = []
+
+        rnd_code = random.choice(codes)
+
+        yr = int("20" + client.code[-2:])
+        mth = int(client.code[-8:-6])
+        dy = int(client.code[-5:-3])
+        start_date = datetime(yr, mth, dy, 8, 0, 0)
+
+        for x in range(1, random.randrange(5, 12)):
+            tests.append(
+                Test(
+                    userId=user.id,
+                    clientId=client.id,
+                    testCode=rnd_code,
+                    res={
+                        key: random.randrange(0, 3) for key in test_template[rnd_code]
+                    },
+                    timeComp=start_date + timedelta(days=7 * x),
+                )
+            )
+        db.session.bulk_save_objects(tests)
+
     db.session.commit()
 
 

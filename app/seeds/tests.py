@@ -1,8 +1,7 @@
 from app.models import db, Test, Client, User
 from datetime import datetime
 import json
-
-from app.forms.test_form import valid_codes
+import random
 
 
 # Adds a demo user
@@ -10,8 +9,6 @@ def seed_tests():
 
     user = User.query.filter_by(firstName="Demo").first()
     client_1 = Client.query.filter_by(code="JosS-01.08.21").first()
-    clients = Client.query.all()
-
     jos_S_tests = [
         # GAD-7 ---------------------------------------------------------------
         Test(
@@ -327,25 +324,52 @@ def seed_tests():
 
     db.session.bulk_save_objects(jos_S_tests)
 
-    for client in clients:
-        tests = [
-            Test(
-                userId=user.id,
-                clientId=client_1.id,
-                testCode="GAD7",
-                res={
-                    "s1q1": "3",
-                    "s1q2": "2",
-                    "s1q3": "3",
-                    "s1q4": "3",
-                    "s1q5": "3",
-                    "s1q6": "2",
-                    "s1q7": "3",
-                    "s2q1": "3",
-                },
-                timeComp=datetime(2021, 1, 8, 11, 31, 0, 0),
-            ),
-        ]
+    clients = Client.query.all()
+
+    gad_7_res = [
+        "s1q1",
+        "s1q2",
+        "s1q3",
+        "s1q4",
+        "s1q5",
+        "s1q6",
+        "s1q7",
+        "s2q1",
+    ]
+
+    phq_9_res = [
+        "s1q1",
+        "s1q2",
+        "s1q3",
+        "s1q4",
+        "s1q5",
+        "s1q6",
+        "s1q7",
+        "s1q8",
+        "s1q9",
+        "s2q1",
+    ]
+
+    for client in clients[1:]:
+        # testCode = random.choice() # pass in a list
+        tests = []
+
+        yr = int("20" + client.code[-2:])
+        mth = int(client.code[-8:-6])
+        dy = int(client.code[-5:-3])
+        start_date = datetime(yr, mth, dy, 8, 0, 0)
+
+        for x in range(1, random.randrange(2, 12)):
+            tests.append(
+                Test(
+                    userId=user.id,
+                    clientId=client.id,
+                    testCode="GAD7",
+                    res={key: random.randrange(0, 3) for key in gad_7_res},
+                    timeComp=start_date,
+                )
+            )
+        db.session.bulk_save_objects(tests)
 
     db.session.commit()
 

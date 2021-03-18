@@ -75,8 +75,8 @@ export default function ClientHeader({
         {/* {status === 1
           ? 'All Clients'
           : status === 2
-          ? 'Active Clients'
-          : 'Terminated Clients'} */}
+          ? 'Active'
+          : 'Terminated'} */}
       </p>
     </>
   );

@@ -17,6 +17,7 @@ body {
   --secondary-color: rgb(238, 114, 32);
   --secondary-color-light: rgb(242, 150, 88);
   --tertiary-color: rgb(138, 138, 138);
+  --tertiary-color-dark: rgb(69, 69, 69);
   --tertiary-color-light: rgb(245, 245, 245);
   --delete-color: rgb(173, 0, 0);
   --delete-color-light: rgb(230, 0, 0);
@@ -29,6 +30,11 @@ body {
 
   /* text shadow for bold */
   --text-shadow: 0.5px 0 #000;
+  --text-shadow-prm-clr: 0.5px 0 var(--primary-color);
+  --text-shadow-prm-clr: 0.5px 0 var(--primary-color);
+  --text-shadow-prm-clr-light: 0.5px 0 var(--primary-color-light);
+  --text-shadow-scd-clr: 0.5px 0 var(--secondary-color);
+  --text-shadow-ter-clr-drk: 0.5px 0 var(--tertiary-color-dark);
 }
 
 /* reset css */
@@ -56,7 +62,7 @@ a {
   padding-inline-start: 0;
 } */
 
-li {
+ul > li {
   list-style: none;
 }
 
@@ -65,6 +71,14 @@ li {
   padding: 0 10%;
   margin-top: 0.5rem;
   padding-bottom: 3rem;
+}
+
+@media (max-width: 500px) {
+  .btwn-nav-footer {
+    padding: 0 2.5%;
+    margin-top: 0.5rem;
+    padding-bottom: 3rem;
+  }
 }
 
 .load-not-found-invalid {
@@ -118,10 +132,11 @@ li {
 }
 
 .site__sub-section__data {
-  font-weight: 1000;
+  /* font-weight: 1000; */
+  color: var(--tertiary-color-dark);
   padding: 0 1rem;
   width: 100%;
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--text-shadow-ter-clr-drk);
 }
 
 @media (max-width: 800px) {

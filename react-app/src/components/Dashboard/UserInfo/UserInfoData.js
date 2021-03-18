@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
 import { deleteUser } from '../../../store/session';
+
+// import component
+import ModalConfirmButton from '../../ModalConfirmButton';
 
 // import css
 import '../Dashboard.css';
@@ -12,20 +16,27 @@ export default function UserInfoData({ setShowUpdateUser }) {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
+  const [showModal, setShowModal] = useState(false);
+
   const { firstName, lastName, lic, pxName, phone, email } = sessionUser;
 
-  const handleDelete = () => {
-    const confirm = window.confirm(
-      'Are you sure you want to deactivate your account? All associated data will be deleted.'
-    );
-    if (confirm) {
-      dispatch(deleteUser(sessionUser.id));
-      history.push('/');
-    }
+  const handleDeactivate = () => {
+    dispatch(deleteUser(sessionUser.id));
+    history.push('/');
   };
 
   return (
     <div className='site__sub-section user__info'>
+      {showModal && (
+        <ModalConfirmButton
+          showModal={showModal}
+          setShowModal={setShowModal}
+          proceedAction={handleDeactivate}
+          message={
+            'Are you sure you want to deactivate your account? All associated data will be deleted.'
+          }
+        />
+      )}
       <div className='site__sub-section__data'>
         <p>
           {firstName} {lastName}
@@ -49,7 +60,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
         </button>
         <button
           className='delete-button dashboard__button'
-          onClick={handleDelete}
+          onClick={() => setShowModal(true)}
         >
           Deactivate
         </button>

@@ -75,31 +75,62 @@
   justify-items: center;
 }
 
-.clients-table > p {
-  margin: 0.5rem 0 0 0;
-}
-
 .clients-header {
-  background: var(--tertiary-color-light);
+  background-color: var(--tertiary-color-light);
   width: 100%;
   text-align: center;
-  padding: 0.25rem;
-  font-weight: 1000;
-  border-radius: var(--pimrary-radius);
+  padding: 0.25rem 0;
   margin: 0 !important;
   cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.c-h-1 {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.c-h-3 {
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .clients-header:hover {
-  text-shadow: var(--text-shadow);
+  font-weight: 1000;
+  /* text-shadow: var(--text-shadow); */
 }
 
-.client-name {
+.fa-sort,
+.fa-sort-up,
+.fa-sort-down {
+  color: var(--tertiary-color);
+}
+
+.clients-row {
+  display: contents;
   cursor: pointer;
 }
 
-.client-name:hover {
-  text-shadow: var(--text-shadow);
+.clients-row > p {
+  margin: 0.5rem 0 0 0;
+  width: 100%;
+  text-align: center;
+}
+
+.clients-row:hover {
+  text-shadow: var(--text-shadow-prm-clr);
+  font-weight: 1000;
+  color: var(--primary-color);
+}
+
+.clients-row:hover > p {
+  background-color: var(--tertiary-color-light);
+}
+
+.clients-row:hover > :first-child {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.clients-row:hover > :last-child {
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 /* form info button */
@@ -123,5 +154,30 @@
   .fa-info-circle {
     top: 0.5rem;
     right: 0.5rem;
+  }
+}
+
+@media (max-width: 515px) {
+  .clients-header {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 410px) {
+  .clients-header,
+  .clients-row {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 410px) {
+  .clients-header,
+  .clients-row {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 376px) {
+  .clients-row {
+    font-size: 0.9rem;
   }
 }

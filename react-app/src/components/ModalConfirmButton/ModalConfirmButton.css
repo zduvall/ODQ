@@ -1,0 +1,9 @@
+.confirm-buttons {
+  flex-direction: row !important;
+}
+
+@media (max-width: 500px) {
+  .confirm-buttons {
+    flex-direction: column !important;
+  }
+}

@@ -132,7 +132,7 @@ function SignUpFormPage() {
             Sign Up
           </button>
         </div>
-        <p className='terms-of-use__reference'>
+        <p className='auth__sml-txt'>
           By using this website, you agree to the{' '}
           <span
             className='clickable-link'

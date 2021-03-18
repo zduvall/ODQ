@@ -83,6 +83,19 @@ function LoginForm() {
             Login
           </button>
         </div>
+        <p className='auth__sml-txt'>
+          Login with{' '}
+          <span
+            className='clickable-link'
+            onClick={() => {
+              setEmail('demo@dot-21.com');
+              setPassword('2345');
+            }}
+          >
+            demo credentials
+          </span>{' '}
+          to test application.
+        </p>
       </form>
     </div>
   );

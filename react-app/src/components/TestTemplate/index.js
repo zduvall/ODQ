@@ -29,7 +29,6 @@ export default function TestTemplate() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    console.log('submitted!!!');
 
     const testInfo = {
       userId,

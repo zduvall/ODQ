@@ -132,16 +132,16 @@ export default function ClientForm() {
   return (
     <>
       <ModalClientFormInfo
-        showInfoModal={showInfoModal}
-        setShowInfoModal={setShowInfoModal}
+        showModal={showInfoModal}
+        setShowModal={setShowInfoModal}
       />
       <ModalConfirmButton
         showModal={showDeleteModal}
         setShowModal={setShowDeleteModal}
         proceedAction={handleDelete}
-        message={`Are you sure you want to delete ${
+        message={`Are you sure you want to remove ${
           selectedClient ? selectedClient.code : 'this client' // 'this client' shouldn't ever render, this just makes sure there is a selected client to avoid error keying into nothing
-        } and all associated data?`}
+        }? All associated data will be deleted.`}
       />
       <div className='site__sub-section'>
         <i
@@ -229,7 +229,7 @@ export default function ClientForm() {
                 type='button'
                 onClick={() => setShowDeleteModal(true)}
               >
-                Delete
+                Remove
               </button>
             )}
           </div>

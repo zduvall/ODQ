@@ -11,7 +11,7 @@ export default function ModalConfirmButton({
 
   return (
     <>
-      <h2 className='primary-title cntr-txt-sml-margin'>{message}</h2>
+      <h3 className='primary-title cntr-txt-sml-margin'>{message}</h3>
       <div className='dashboard__buttons confirm-buttons'>
         <button
           className='primary-button'

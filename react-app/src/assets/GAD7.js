@@ -25,7 +25,6 @@ const GAD7 = {
   maxMinutes: 2,
   attribution:
     'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
-  thankYou: 'Thank you for completing the GAD-7.',
   chartData: {
     datapoints: (tests) => {
       const points = [];

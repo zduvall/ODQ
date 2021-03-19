@@ -50,7 +50,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {showNav && <NavBar />}
+      {!showNav && width < 900 ? null : <NavBar />}
       <div
         className='btwn-nav-footer'
         onDoubleClick={() => (width < 900 ? setShowNav((prev) => !prev) : {})}

@@ -83,6 +83,9 @@
   margin: 0 !important;
   cursor: pointer;
   font-size: 1.2rem;
+  /* display: flex;
+  flex-direction: row;
+  align-items: center; */
 }
 
 .c-h-1 {
@@ -102,6 +105,12 @@
 .fa-sort-up,
 .fa-sort-down {
   color: var(--tertiary-color);
+}
+
+.c-h-ASlashT {
+  font-size: 0.8rem;
+  color: rgb(69, 69, 69);
+  vertical-align: middle;
 }
 
 .clients-row {

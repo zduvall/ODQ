@@ -14,7 +14,6 @@ export default function Section({ section, resObj }) {
 }
 
 export function Radio({ question, resObj }) {
-  // const num = question.id.slice(question.id.indexOf('q') + 1);
   const res = question.scale[resObj[question.id]].label;
 
   return (

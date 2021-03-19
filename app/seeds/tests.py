@@ -366,14 +366,19 @@ def seed_tests():
         dy = int(client.code[-5:-3])
         start_date = datetime(yr, mth, dy, 8, 0, 0)
 
-        for x in range(1, random.randrange(5, 12)):
+        rand_end = random.randrange(5, 12)
+        for x in range(1, rand_end):
+
+            min_scr = 2 if x == 1 else 1 if x < rand_end / 2 else 0
+            max_scr = 3 if x < rand_end / 2 else 2
+
             tests.append(
                 Test(
                     userId=user.id,
                     clientId=client.id,
                     testCode=rnd_code,
                     res={
-                        key: random.randrange(0, 3) for key in test_template[rnd_code]
+                        key: random.randrange(min_scr, max_scr) for key in test_template[rnd_code]
                     },
                     timeComp=start_date + timedelta(days=7 * x),
                 )

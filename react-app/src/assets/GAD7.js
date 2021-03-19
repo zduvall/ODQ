@@ -1,23 +1,8 @@
-// import { horizontalAnnotation } from './index';
 import {
   horizontalAnnotation,
   scaleFrequency,
   scaleDifficulty,
 } from './zUtils';
-
-// const scaleFrequency = [
-//   { value: 0, label: 'Not at all' },
-//   { value: 1, label: 'Several days' },
-//   { value: 2, label: 'More than half the days' },
-//   { value: 3, label: 'Nearly every day' },
-// ];
-
-// const scaleDifficulty = [
-//   { value: 0, label: 'Not difficult at all' },
-//   { value: 1, label: 'Somewhat difficult' },
-//   { value: 2, label: 'Very Difficult' },
-//   { value: 3, label: 'Extremely Difficult' },
-// ];
 
 const GAD7 = {
   id: 2,

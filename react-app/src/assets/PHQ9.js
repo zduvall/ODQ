@@ -1,18 +1,23 @@
-import { horizontalAnnotation } from './index';
+// import { horizontalAnnotation } from './index';
+import {
+  horizontalAnnotation,
+  scaleFrequency,
+  scaleDifficulty,
+} from './zUtils';
 
-const scale1 = [
-  { value: 0, label: 'Not at all' },
-  { value: 1, label: 'Several days' },
-  { value: 2, label: 'More than half the days' },
-  { value: 3, label: 'Nearly every day' },
-];
+// const scaleFrequency = [
+//   { value: 0, label: 'Not at all' },
+//   { value: 1, label: 'Several days' },
+//   { value: 2, label: 'More than half the days' },
+//   { value: 3, label: 'Nearly every day' },
+// ];
 
-const scale2 = [
-  { value: 0, label: 'Not difficult at all' },
-  { value: 1, label: 'Somewhat difficult' },
-  { value: 2, label: 'Very Difficult' },
-  { value: 3, label: 'Extremely Difficult' },
-];
+// const scaleDifficulty = [
+//   { value: 0, label: 'Not difficult at all' },
+//   { value: 1, label: 'Somewhat difficult' },
+//   { value: 2, label: 'Very Difficult' },
+//   { value: 3, label: 'Extremely Difficult' },
+// ];
 
 const PHQ9 = {
   id: 2,
@@ -83,79 +88,77 @@ const PHQ9 = {
       id: 1,
       instructions:
         'Over the last 2 weeks, how often have you been bothered by the following problems?',
-      scale: scale1,
       questions: [
         {
           id: 's1q1',
           type: 'Radio',
           stem: 'Little interest or pleasure in doing things?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q2',
           type: 'Radio',
           stem: 'Feeling down, depressed, or hopeless?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q3',
           type: 'Radio',
           stem: 'Trouble falling or staying asleep, or sleeping too much?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q4',
           type: 'Radio',
           stem: 'Feeling tired or having little energy?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q5',
           type: 'Radio',
           stem: 'Poor appetite or overeating?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q6',
           type: 'Radio',
           stem:
             'Feeling bad about yourself — or that you are a failure or have let yourself or your family down?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q7',
           type: 'Radio',
           stem:
             'Trouble concentrating on things, such as reading the newspaper or watching television?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q8',
           type: 'Radio',
           stem:
             'Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q9',
           type: 'Radio',
           stem:
             'Thoughts that you would be better off dead or of hurting yourself in some way?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
       ],
     },
     {
       id: 2,
       instructions: 'Social impact:',
-      scale: scale2,
       questions: [
         {
           id: 's2q1',
           type: 'Radio',
           stem:
             'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
-          scale: scale2,
+          scale: scaleDifficulty,
         },
       ],
     },

@@ -1,18 +1,23 @@
-import { horizontalAnnotation } from './index';
+// import { horizontalAnnotation } from './index';
+import {
+  horizontalAnnotation,
+  scaleFrequency,
+  scaleDifficulty,
+} from './zUtils';
 
-const scale1 = [
-  { value: 0, label: 'Not at all' },
-  { value: 1, label: 'Several days' },
-  { value: 2, label: 'More than half the days' },
-  { value: 3, label: 'Nearly every day' },
-];
+// const scaleFrequency = [
+//   { value: 0, label: 'Not at all' },
+//   { value: 1, label: 'Several days' },
+//   { value: 2, label: 'More than half the days' },
+//   { value: 3, label: 'Nearly every day' },
+// ];
 
-const scale2 = [
-  { value: 0, label: 'Not difficult at all' },
-  { value: 1, label: 'Somewhat difficult' },
-  { value: 2, label: 'Very Difficult' },
-  { value: 3, label: 'Extremely Difficult' },
-];
+// const scaleDifficulty = [
+//   { value: 0, label: 'Not difficult at all' },
+//   { value: 1, label: 'Somewhat difficult' },
+//   { value: 2, label: 'Very Difficult' },
+//   { value: 3, label: 'Extremely Difficult' },
+// ];
 
 const GAD7 = {
   id: 2,
@@ -81,63 +86,61 @@ const GAD7 = {
       id: 1,
       instructions:
         'Over the last 2 weeks, how often have you been bothered by the following problems?',
-      scale: scale1,
       questions: [
         {
           id: 's1q1',
           type: 'Radio',
           stem: 'Feeling nervous, anxious or on edge?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q2',
           type: 'Radio',
           stem: 'Not being able to stop or control worrying?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q3',
           type: 'Radio',
           stem: 'Worrying too much about different things?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q4',
           type: 'Radio',
           stem: 'Trouble relaxing?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q5',
           type: 'Radio',
           stem: 'Being so restless that it is hard to sit still?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q6',
           type: 'Radio',
           stem: 'Becoming easily annoyed or irritable?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
         {
           id: 's1q7',
           type: 'Radio',
           stem: 'Feeling afraid as if something awful might happen?',
-          scale: scale1,
+          scale: scaleFrequency,
         },
       ],
     },
     {
       id: 2,
       instructions: 'Social impact:',
-      scale: scale2,
       questions: [
         {
           id: 's2q1',
           type: 'Radio',
           stem:
             'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
-          scale: scale2,
+          scale: scaleDifficulty,
         },
       ],
     },

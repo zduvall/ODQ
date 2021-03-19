@@ -53,7 +53,7 @@ function App() {
       {showNav && <NavBar />}
       <div
         className='btwn-nav-footer'
-        onDoubleClick={() => (width < 800 ? setShowNav((prev) => !prev) : {})}
+        onDoubleClick={() => (width < 900 ? setShowNav((prev) => !prev) : {})}
       >
         <Switch>
           <Route path='/login' exact={true}>

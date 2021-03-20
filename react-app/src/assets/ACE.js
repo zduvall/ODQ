@@ -49,7 +49,7 @@ const ACE = {
           ticks: {
             max: 10,
             min: 0,
-            stepSize: 1,
+            stepSize: 2,
           },
         },
       ],
@@ -57,11 +57,15 @@ const ACE = {
     annotation: {
       drawTime: 'beforeDatasetsDraw',
       annotations: [
-        horizontalAnnotation('0', '38% of General Population', 'transparent'),
-        horizontalAnnotation('1', '26%'),
-        horizontalAnnotation('2', '15.9%'),
-        horizontalAnnotation('3', '9.5%'),
-        horizontalAnnotation('4', '12.5%'),
+        horizontalAnnotation(
+          '0',
+          'Score of 0: 37.6% (general pop.)',
+          'transparent'
+        ),
+        horizontalAnnotation('1', 'Score of 1: 22.7%'),
+        horizontalAnnotation('2', 'Score of 2: 12.9%'),
+        horizontalAnnotation('3', 'Score of 3: 9%'),
+        horizontalAnnotation('4', 'Score of 4+: 17.8%'),
       ],
     },
   },

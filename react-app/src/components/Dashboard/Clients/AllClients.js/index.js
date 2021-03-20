@@ -18,7 +18,7 @@ export default function Clients() {
   const [filterClients, setFxClients] = useState(clients);
   const [status, setStatus] = useState(1);
 
-  if (!clients) return <LoadingNotFoundInvalid message={'Loading DOT...'} />;
+  if (!clients) return <LoadingNotFoundInvalid message={'Loading eDOT...'} />;
 
   return (
     <div className='site__sub-section clients-container'>

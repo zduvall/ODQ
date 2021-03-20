@@ -78,6 +78,9 @@
 .clients-header {
   background-color: var(--tertiary-color-light);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 0.25rem 0;
   margin: 0 !important;
@@ -102,11 +105,13 @@
 .fa-sort-up,
 .fa-sort-down {
   color: var(--tertiary-color);
+  padding-left: 0.25rem;
 }
 
 .c-h-ASlashT {
   font-size: 0.8rem;
-  color: rgb(69, 69, 69);
+  color: var(--tertiary-color-dark);
+  padding-left: 0.25rem;
 }
 
 .clients-row {

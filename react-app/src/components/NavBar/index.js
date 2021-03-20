@@ -117,8 +117,7 @@ const NavBar = () => {
         <img className='logo' src={dotLogo} alt='DOT logo' />
         <span className='s-h__t-emph'>D</span>iagnostic &{' '}
         <span className='s-h__t-emph'>O</span>utcome{' '}
-        <span className='s-h__t-emph'>T</span>esting -{' '}
-        <span className='s-h__t-emph'>21</span>
+        <span className='s-h__t-emph'>T</span>esting
       </div>
       <nav className='nav'>
         <ul className='nav__wrapper'>{navLinks}</ul>

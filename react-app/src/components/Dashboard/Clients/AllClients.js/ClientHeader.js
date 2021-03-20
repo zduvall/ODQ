@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 export default function ClientHeader({
   setStatus,
-  // status, // conntected with very bottom
+  status, // conntected with very bottom
   setFxClients,
 }) {
   let clients = useSelector((state) => Object.values(state.clients));
@@ -72,11 +72,9 @@ export default function ClientHeader({
         onClick={handleStatusClick}
       >
         Status
-        {/* {status === 1
-          ? 'All Clients'
-          : status === 2
-          ? 'Active'
-          : 'Terminated'} */}
+        <span className='c-h-ASlashT'>
+          {status === 1 ? ' (A/T)' : status === 2 ? ' (A)' : ' (T)'}
+        </span>
       </p>
     </>
   );

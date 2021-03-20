@@ -1,12 +1,12 @@
 // scales
 export const scaleYesNo = [
   {
-    value: 1,
-    label: 'Yes',
-  },
-  {
     value: 0,
     label: 'No',
+  },
+  {
+    value: 1,
+    label: 'Yes',
   },
 ];
 

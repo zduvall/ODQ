@@ -82,22 +82,22 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
    This will build the dockerfile and push the image to your heroku container registry
 
 ```bash
-heroku container:push web -a dot-21
+heroku container:push web -a edot
 ```
 
 8. Release your docker container to heroku
 
 ```bash
-heroku container:release web -a dot-21
+heroku container:release web -a edot
 ```
 
 9. set up your database:
 
 ```bash
-# heroku run -a dot-21 flask seed undo # if needed
-# heroku run -a dot-21 flask db downgrade base # if needed
-heroku run -a dot-21 flask db upgrade
-heroku run -a dot-21 flask seed all
+# heroku run -a edot flask seed undo # if needed
+# heroku run -a edot flask db downgrade base # if needed
+heroku run -a edot flask db upgrade
+heroku run -a edot flask seed all
 ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.

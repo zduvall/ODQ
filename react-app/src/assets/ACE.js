@@ -35,8 +35,8 @@ const ACE = {
           Number(res.s1q6) +
           Number(res.s1q7) +
           Number(res.s1q8) +
-          Number(res.s1q9);
-        Number(res.s1q10);
+          Number(res.s1q9) +
+          Number(res.s1q10);
         points.push(sumRes);
       });
       return points;

@@ -12,7 +12,7 @@ from wtforms.validators import (
 
 
 def validate_code(form, testCode):
-    valid_codes = ["ACE", "GAD7", "PHQ9"]
+    valid_codes = ["ACE", "GAD7", "PCL5", "PHQ9"]
     if testCode.data not in valid_codes:
         raise ValidationError("Please provide a valid test code")
 

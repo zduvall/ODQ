@@ -5,9 +5,25 @@
   justify-content: center;
 }
 
+.electronic {
+  font-family: 'Allura', cursive;
+  font-weight: 200;
+  /* font-family: 'Cedarville Cursive', cursive; */
+  color: var(--secondary-color-light);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  transform: translate(0, 0.75rem);
+}
+
+.d-and-o-t {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .splash__primary-image {
   width: 100%;
-  padding-top: 1rem;
+  padding-top: .5rem;
   transform: scale(0.9);
 }
 

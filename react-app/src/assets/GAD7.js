@@ -17,7 +17,7 @@ const GAD7 = {
   audience:
     'The GAD-7 has been validated for primary care patients, general population, and adolescents with GAD',
   score:
-    'This is calculated by assigning scores of 0, 1, 2, and 3 to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” GAD-7 total score for the seven items ranges from 0 to 21.',
+    'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” GAD-7 total score for the seven items ranges from 0 to 21.',
   interpretation:
     '0–4: minimal anxiety, 5–9: mild anxiety, 10–14: moderate anxiety, 15–21: severe anxiety ',
   selfAdmin: true,

@@ -263,6 +263,10 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   text-shadow: var(--text-shadow);
 }
 
+.new-line-on-slash-n {
+  white-space: pre-line;
+}
+
 /* --------------- Forms --------------- */
 .form-container {
   display: flex;

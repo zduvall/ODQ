@@ -6,16 +6,16 @@ const PCL5 = {
   code: 'PCL5',
   name: 'PTSD Checklist for DSM-5',
   description:
-    'The PCL-5 is a 20-item self-report measure that assesses the 20 DSM-5 symptoms of PTSD. The PCL-5 has a variety of purposes, including: (1) monitoring symptom change during and after treatment, (2) screening individuals for PTSD, and (3) making a provisional PTSD diagnosis. The gold standard for diagnosing PTSD is a structured clinical interview such as the Clinician-Administered PTSD Scale (CAPS-5). When necessary, the PCL-5 can be scored to provide a provisional PTSD diagnosis.',
+    'The PCL-5 is a 20-item self-report measure that assesses the 20 DSM-5 symptoms of PTSD. The PCL-5 has a variety of purposes, including: (1) monitoring symptom change during and after treatment, (2) screening individuals for PTSD, and (3) making a provisional PTSD diagnosis. \n \n The gold standard for diagnosing PTSD is a structured clinical interview such as the Clinician-Administered PTSD Scale (CAPS-5). When necessary, the PCL-5 can be scored to provide a provisional PTSD diagnosis.',
   link: 'https://www.cdc.gov/violenceprevention/aces/index.html',
   instructions:
     'Below is a list of problems that people sometimes have in response to a very stressful experience. Please read each problem carefully and then choose the most appropriate response to indicate how much you have been bothered by that problem in the past month.',
   audience:
     'The PCL-5 is designed to be used with individuals who may be experiencing PTSD.',
   score:
-    'A total symptom severity score (range - 0-80) can be obtained by summing the scores for each of the 20 items. DSM-5 symptom cluster severity scores can be obtained by summing the scores for the items within a given cluster, i.e., cluster B (items 1-5), cluster C (items 6-7), cluster D (items 8-14), and cluster E (items 15-20).',
+    'A total symptom severity score (range: 0 - 80) can be obtained by summing the scores for each of the 20 items. \n \n DSM-5 symptom cluster severity scores can be obtained by summing the scores for the items within a given cluster, i.e., cluster B (items 1-5), cluster C (items 6-7), cluster D (items 8-14), and cluster E (items 15-20).',
   interpretation:
-    'A provisional PTSD diagnosis can be made by treating each item rated as 2 = "Moderately" or higher as a symptom endorsed, then following the DSM-5 diagnostic rule which requires at least: 1 B item (questions 1-5), 1 C item (questions 6-7), 2 D items (questions 8-14), 2 E items (questions 15-20). Initial research suggests that a PCL-5 cutoff score between 31-33 is indicative of probable PTSD across samples. However, additional research is needed. Further, because the population and the purpose of the screening may warrant different cutoff scores, users are encouraged to consider both of these factors when choosing a cutoff score.',
+    'A provisional PTSD diagnosis can be made by treating each item rated as 2 = "Moderately" or higher as a symptom endorsed, then following the DSM-5 diagnostic rule which requires at least: 1 B item (questions 1-5), 1 C item (questions 6-7), 2 D items (questions 8-14), 2 E items (questions 15-20). \n \n Initial research suggests that a PCL-5 cutoff score between 31-33 is indicative of probable PTSD across samples. However, additional research is needed. Further, because the population and the purpose of the screening may warrant different cutoff scores, users are encouraged to consider both of these factors when choosing a cutoff score.',
   selfAdmin: true,
   minMinutes: 5,
   maxMinutes: 10,

@@ -17,7 +17,7 @@ const PHQ9 = {
   audience:
     'PHQ-9 has good reliability and validity, and high adaptability for patients with MDD in psychiatric hospital. It is a simple, rapid, effective, and reliable tool for screening and evaluation of the severity of depression.',
   score:
-    'This is calculated by assigning scores of 0, 1, 2, and 3 to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” PHQ-9 total score for the 9 items ranges from 0 to 27.',
+    'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” PHQ-9 total score for the 9 items ranges from 0 to 27.',
   interpretation:
     '0-4: minimal depression, 5-9: mild depression, 10-14: moderate depression, 15-19: moderately severe depression, 20-27: severe depression',
   selfAdmin: true,

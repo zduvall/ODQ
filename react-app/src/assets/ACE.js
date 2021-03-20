@@ -13,7 +13,7 @@ const ACE = {
   audience:
     'The ACE is a reliable, valid and economic screen for retrospective assessment of adverse childhood experiences. It Has adequate internal consistency (Cronbach’s alpha = .88).',
   score:
-    'For each question a "yes" answer is worth 1 point and a "no" answer is worth 0 points. At the end, the points for all questions is added up out of a maximum of 10 points.',
+    'For each question a "yes" answer is worth 1 point and a "no" answer is worth 0 points. At the end, points for all questions are added up for a maximum of 10 points.',
   interpretation:
     'The higher the ACE Score, the greater the likelihood that a person will develop one or more of various physical, social, mental, and behavioral problems',
   selfAdmin: true,

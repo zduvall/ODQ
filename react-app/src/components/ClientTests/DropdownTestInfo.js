@@ -28,6 +28,10 @@ export default function DropdownTestInfo() {
             ? 'self-administered'
             : 'taken by professional'}
         </p>
+        <p className='new-line-on-slash-n'>
+          <span className='underline bold'>Attribution</span>:{' '}
+          {dropdownTest.attribution}
+        </p>
         <p
           className='clickable-link'
           onClick={() => window.open(dropdownTest.link)}

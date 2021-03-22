@@ -6,8 +6,9 @@ const PCL5 = {
   code: 'PCL5',
   name: 'PTSD Checklist for DSM-5',
   description:
-    'The PCL-5 is a 20-item self-report measure that assesses the 20 DSM-5 symptoms of PTSD. The PCL-5 has a variety of purposes, including: (1) monitoring symptom change during and after treatment, (2) screening individuals for PTSD, and (3) making a provisional PTSD diagnosis. \n \n The gold standard for diagnosing PTSD is a structured clinical interview such as the Clinician-Administered PTSD Scale (CAPS-5). When necessary, the PCL-5 can be scored to provide a provisional PTSD diagnosis.',
-  link: 'https://www.cdc.gov/violenceprevention/aces/index.html',
+    'The PCL-5 is a 20-item self-report measure that assesses the 20 DSM-5 symptoms of PTSD. The PCL-5 has a variety of purposes, including: (1) monitoring symptom change during and after treatment, (2) screening individuals for PTSD, and (3) making a provisional PTSD diagnosis.',
+  link:
+    'https://www.ptsd.va.gov/professional/assessment/adult-sr/ptsd-checklist.asp',
   instructions:
     'Below is a list of problems that people sometimes have in response to a very stressful experience. Please read each problem carefully and then choose the most appropriate response to indicate how much you have been bothered by that problem in the past month.',
   score:
@@ -18,7 +19,7 @@ const PCL5 = {
   minMinutes: 5,
   maxMinutes: 10,
   attribution:
-    "This measure was developed by staff at VA's National Center for PTSD and is in the public domain and not copyrighted. In accordance with the American Psychological Associations ethical guidelines, this instrument is intended for use by qualified health professionals and researchers.",
+    "This measure was developed by staff at VA's National Center for PTSD.",
   chartData: {
     datapoints: (tests) => {
       const points = [];

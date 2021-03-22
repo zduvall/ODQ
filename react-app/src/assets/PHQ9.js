@@ -22,7 +22,7 @@ const PHQ9 = {
   minMinutes: 1,
   maxMinutes: 3,
   attribution:
-    'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
+    'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc.',
   chartData: {
     datapoints: (tests) => {
       const points = [];

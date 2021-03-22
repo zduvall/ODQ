@@ -10,8 +10,6 @@ const PCL5 = {
   link: 'https://www.cdc.gov/violenceprevention/aces/index.html',
   instructions:
     'Below is a list of problems that people sometimes have in response to a very stressful experience. Please read each problem carefully and then choose the most appropriate response to indicate how much you have been bothered by that problem in the past month.',
-  audience:
-    'The PCL-5 is designed to be used with individuals who may be experiencing PTSD.',
   score:
     'A total symptom severity score (range: 0 - 80) can be obtained by summing the scores for each of the 20 items. \n \n DSM-5 symptom cluster severity scores can be obtained by summing the scores for the items within a given cluster, i.e., cluster B (items 1-5), cluster C (items 6-7), cluster D (items 8-14), and cluster E (items 15-20).',
   interpretation:
@@ -102,7 +100,7 @@ const PCL5 = {
           id: 's1q4',
           type: 'Radio',
           stem:
-            'Feeling very upset when something reminded you of the stressful experience? ',
+            'Feeling very upset when something reminded you of the stressful experience?',
           scale: scaleIntensity,
         },
         {

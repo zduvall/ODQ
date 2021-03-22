@@ -36,6 +36,17 @@ export const scaleDifficulty = [
   { value: 3, label: 'Extremely Difficult' },
 ];
 
+// SWLS
+export const scaleAgreement = [
+  { value: 1, label: 'Strongly Disagree' },
+  { value: 2, label: 'Disagree' },
+  { value: 3, label: 'Slightly Disagree' },
+  { value: 4, label: 'Neither Agree or Disagree' },
+  { value: 5, label: 'Slightly Agree' },
+  { value: 6, label: 'Agree' },
+  { value: 7, label: 'Strongly Agree' },
+];
+
 // for chart annotations
 export function horizontalAnnotation(
   yValue,

@@ -14,8 +14,6 @@ const PHQ9 = {
   link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1495268/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',
-  audience:
-    'PHQ-9 has good reliability and validity, and high adaptability for patients with MDD in psychiatric hospital. It is a simple, rapid, effective, and reliable tool for screening and evaluation of the severity of depression.',
   score:
     'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” PHQ-9 total score for the 9 items ranges from 0 to 27.',
   interpretation:

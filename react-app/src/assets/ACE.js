@@ -10,8 +10,6 @@ const ACE = {
   link: 'https://www.cdc.gov/violenceprevention/aces/index.html',
   instructions:
     'This Questionnaire will be asking you some questions about events that happened during your childhood; specifically the first 18 years of your life. The information you provide by answering these questions will allow us to better understand problems that may have occurred early in your life and allow us to explore how those problems may be impacting the challenges you are experiencing today. This can be very helpful in the success of your treatment.',
-  audience:
-    'The ACE is a reliable, valid and economic screen for retrospective assessment of adverse childhood experiences. It Has adequate internal consistency (Cronbach’s alpha = .88).',
   score:
     'For each question a "yes" answer is worth 1 point and a "no" answer is worth 0 points. At the end, points for all questions are added up for a maximum of 10 points.',
   interpretation:

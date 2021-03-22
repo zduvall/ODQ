@@ -2,8 +2,9 @@ import ACE from './ACE';
 import GAD7 from './GAD7';
 import PCL5 from './PCL5';
 import PHQ9 from './PHQ9';
+import SWLS from './SWLS';
 
-const tests = { ACE, GAD7, PCL5, PHQ9 };
+const tests = { ACE, GAD7, PCL5, PHQ9, SWLS };
 
 export function horizontalAnnotation(
   yValue,

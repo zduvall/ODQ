@@ -10,10 +10,8 @@ const ACE = {
   link: 'https://www.cdc.gov/violenceprevention/aces/index.html',
   instructions:
     'This Questionnaire will be asking you some questions about events that happened during your childhood; specifically the first 18 years of your life. The information you provide by answering these questions will allow us to better understand problems that may have occurred early in your life and allow us to explore how those problems may be impacting the challenges you are experiencing today. This can be very helpful in the success of your treatment.',
-  audience:
-    'The ACE is a reliable, valid and economic screen for retrospective assessment of adverse childhood experiences. It Has adequate internal consistency (Cronbach’s alpha = .88).',
   score:
-    'For each question a "yes" answer is worth 1 point and a "no" answer is worth 0 points. At the end, the points for all questions is added up out of a maximum of 10 points.',
+    'For each question a "yes" answer is worth 1 point and a "no" answer is worth 0 points. At the end, points for all questions are added up for a maximum of 10 points.',
   interpretation:
     'The higher the ACE Score, the greater the likelihood that a person will develop one or more of various physical, social, mental, and behavioral problems',
   selfAdmin: true,
@@ -35,8 +33,8 @@ const ACE = {
           Number(res.s1q6) +
           Number(res.s1q7) +
           Number(res.s1q8) +
-          Number(res.s1q9);
-        Number(res.s1q10);
+          Number(res.s1q9) +
+          Number(res.s1q10);
         points.push(sumRes);
       });
       return points;
@@ -49,7 +47,7 @@ const ACE = {
           ticks: {
             max: 10,
             min: 0,
-            stepSize: 1,
+            stepSize: 2,
           },
         },
       ],
@@ -57,11 +55,15 @@ const ACE = {
     annotation: {
       drawTime: 'beforeDatasetsDraw',
       annotations: [
-        horizontalAnnotation('0', '38% of General Population', 'transparent'),
-        horizontalAnnotation('1', '26%'),
-        horizontalAnnotation('2', '15.9%'),
-        horizontalAnnotation('3', '9.5%'),
-        horizontalAnnotation('4', '12.5%'),
+        horizontalAnnotation(
+          '0',
+          'Score of 0: 37.6% (general pop.)',
+          'transparent'
+        ),
+        horizontalAnnotation('1', 'Score of 1: 22.7%'),
+        horizontalAnnotation('2', 'Score of 2: 12.9%'),
+        horizontalAnnotation('3', 'Score of 3: 9%'),
+        horizontalAnnotation('4', 'Score of 4+: 17.8%'),
       ],
     },
   },

@@ -45,7 +45,7 @@ function App() {
   }, [dispatch, sessionUser]);
 
   if (!loaded || sessionUser === 'do not load') {
-    return <LoadingNotFoundInvalid message={'Loading DOT...'} />;
+    return <LoadingNotFoundInvalid message={'Loading eDOT...'} />;
   }
 
   return (

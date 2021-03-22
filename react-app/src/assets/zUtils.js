@@ -1,4 +1,5 @@
 // scales
+// ACE
 export const scaleYesNo = [
   {
     value: 0,
@@ -10,6 +11,7 @@ export const scaleYesNo = [
   },
 ];
 
+// GAD-7 and PHQ-9
 export const scaleFrequency = [
   { value: 0, label: 'Not at all' },
   { value: 1, label: 'Several days' },
@@ -17,11 +19,32 @@ export const scaleFrequency = [
   { value: 3, label: 'Nearly every day' },
 ];
 
+// PCL-5
+export const scaleIntensity = [
+  { value: 0, label: 'Not at all' },
+  { value: 1, label: 'A little bit' },
+  { value: 2, label: 'Moderately' },
+  { value: 3, label: 'Quite a bit' },
+  { value: 4, label: 'Extremely' },
+];
+
+// GAD-7 and PHQ-9
 export const scaleDifficulty = [
   { value: 0, label: 'Not difficult at all' },
   { value: 1, label: 'Somewhat difficult' },
   { value: 2, label: 'Very Difficult' },
   { value: 3, label: 'Extremely Difficult' },
+];
+
+// SWLS
+export const scaleAgreement = [
+  { value: 1, label: 'Strongly Disagree' },
+  { value: 2, label: 'Disagree' },
+  { value: 3, label: 'Slightly Disagree' },
+  { value: 4, label: 'Neither Agree or Disagree' },
+  { value: 5, label: 'Slightly Agree' },
+  { value: 6, label: 'Agree' },
+  { value: 7, label: 'Strongly Agree' },
 ];
 
 // for chart annotations

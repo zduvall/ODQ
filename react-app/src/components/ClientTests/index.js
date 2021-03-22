@@ -38,7 +38,7 @@ export default function ClientTests() {
     compTestCodes.includes(test.code)
   );
 
-  if (!client) return <LoadingNotFoundInvalid message={'Loading DOT...'} />;
+  if (!client) return <LoadingNotFoundInvalid message={'Loading eDOT...'} />;
 
   return (
     <ClientTestsContext.Provider

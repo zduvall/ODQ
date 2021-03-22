@@ -14,17 +14,15 @@ const GAD7 = {
   link: 'https://pubmed.ncbi.nlm.nih.gov/16717171/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',
-  audience:
-    'The GAD-7 has been validated for primary care patients, general population, and adolescents with GAD',
   score:
-    'This is calculated by assigning scores of 0, 1, 2, and 3 to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” GAD-7 total score for the seven items ranges from 0 to 21.',
+    'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” GAD-7 total score for the seven items ranges from 0 to 21.',
   interpretation:
     '0–4: minimal anxiety, 5–9: mild anxiety, 10–14: moderate anxiety, 15–21: severe anxiety ',
   selfAdmin: true,
   minMinutes: 1,
   maxMinutes: 2,
   attribution:
-    'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
+    'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc.',
   chartData: {
     datapoints: (tests) => {
       const points = [];

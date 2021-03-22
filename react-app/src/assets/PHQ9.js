@@ -14,17 +14,15 @@ const PHQ9 = {
   link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1495268/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',
-  audience:
-    'PHQ-9 has good reliability and validity, and high adaptability for patients with MDD in psychiatric hospital. It is a simple, rapid, effective, and reliable tool for screening and evaluation of the severity of depression.',
   score:
-    'This is calculated by assigning scores of 0, 1, 2, and 3 to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” PHQ-9 total score for the 9 items ranges from 0 to 27.',
+    'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “not at all,” “several days,” “more than half the days,” and “nearly every day.” PHQ-9 total score for the 9 items ranges from 0 to 27.',
   interpretation:
     '0-4: minimal depression, 5-9: mild depression, 10-14: moderate depression, 15-19: moderately severe depression, 20-27: severe depression',
   selfAdmin: true,
   minMinutes: 1,
   maxMinutes: 3,
   attribution:
-    'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.',
+    'Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc.',
   chartData: {
     datapoints: (tests) => {
       const points = [];

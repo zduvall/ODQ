@@ -6,15 +6,31 @@ export default function DropdownTestInfo() {
   return (
     <div className='site__sub-section test-descriptions-container'>
       <h2 className='primary-title cntr-txt-sml-margin'>{dropdownTest.name}</h2>
-      <h3 className='cntr-txt-sml-margin'>({dropdownTest.abbr})</h3>
+      <h3 className='tertiary-title cntr-txt-sml-margin'>
+        ({dropdownTest.abbr})
+      </h3>
       <div className='test-descriptions-text'>
-        <p>
-          <span className='underline'>Description</span>:{' '}
+        <p className='new-line-on-slash-n'>
+          <span className='underline bold'>Description</span>:{' '}
           {dropdownTest.description}
         </p>
+        <p className='new-line-on-slash-n'>
+          <span className='underline bold'>Scoring</span>: {dropdownTest.score}
+        </p>
+        <p className='new-line-on-slash-n'>
+          <span className='underline bold'>Interpretation</span>:{' '}
+          {dropdownTest.interpretation}
+        </p>
         <p>
-          <span className='underline'>Duration</span>: {dropdownTest.minMinutes}{' '}
-          - {dropdownTest.maxMinutes} minutes
+          <span className='underline bold'>Completion</span>:{' '}
+          {dropdownTest.minMinutes} - {dropdownTest.maxMinutes} minutes,{' '}
+          {dropdownTest.selfAdmin
+            ? 'self-administered'
+            : 'taken by professional'}
+        </p>
+        <p className='new-line-on-slash-n'>
+          <span className='underline bold'>Attribution</span>:{' '}
+          {dropdownTest.attribution}
         </p>
         <p
           className='clickable-link'

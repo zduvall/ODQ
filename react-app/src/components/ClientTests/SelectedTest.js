@@ -76,6 +76,10 @@ export default function SelectedTest() {
   return (
     <>
       <div className='site__sub-section chart-container'>
+        <i
+          class='fas fa-info-circle'
+          // onClick={() => setShowInfoModal(true)}
+        ></i>
         <h3 className='cntr-txt-sml-margin'>{selectedTest.name}</h3>
         <Line data={data} options={options} />
       </div>

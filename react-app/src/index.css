@@ -234,6 +234,22 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   border-color: var(--delete-color);
 }
 
+/* info button */
+.fa-info-circle {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  cursor: pointer;
+  color: var(--tertiary-color);
+}
+
+@media (max-width: 800px) {
+  .fa-info-circle {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
 /* --------------- titles and other text --------------- */
 .primary-title {
   color: var(--primary-color);

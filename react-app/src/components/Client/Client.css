@@ -33,8 +33,11 @@
 }
 
 .comp-tests__option:hover {
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--text-shadow-prm-clr);
   font-weight: 1000;
+  color: var(--primary-color);
+  background-color: var(--tertiary-color-light);
+  border-radius: var(--primary-radius);
 }
 
 @media (max-width: 600px) {

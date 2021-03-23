@@ -20,7 +20,6 @@ export default function Clients() {
       : new Date().setDate(new Date().getDate() + 1);
     return bCodeDate - aCodeDate;
   });
-  // clients = clients.reverse();
 
   const [filterClients, setFxClients] = useState(clients);
   const [status, setStatus] = useState(1);

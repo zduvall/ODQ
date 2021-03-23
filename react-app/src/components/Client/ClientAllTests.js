@@ -5,6 +5,7 @@ import './Client.css';
 
 export default function ClientAllTests() {
   const {
+    client,
     compTestObjs,
     setSelectedTest,
     setDatapoint,
@@ -18,7 +19,11 @@ export default function ClientAllTests() {
           return (
             <li
               key={testObj.code}
-              className='comp-tests__option'
+              className={`comp-tests__option ${
+                client.unseenTests.includes(testObj.code)
+                  ? 'secondary-title'
+                  : ''
+              }`}
               onClick={() => {
                 setSelectedTest(testObj);
                 setDatapoint(null);

@@ -27,7 +27,7 @@ class Client(db.Model):
             "lastTestTime": self.tests[-1].to_dict()["timeComp"]
             if self.tests
             else None,
-            "unseenTest": any([not test.to_dict()["userSeen"] for test in self.tests])
+            "unseenTests": [test.to_dict()["testCode"] for test in self.tests if not test.to_dict()["userSeen"]]
             if self.tests
             else False,
         }

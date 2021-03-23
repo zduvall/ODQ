@@ -26,13 +26,12 @@ body {
 
   /* ----- borders ----- */
   --primary-border: var(--primary-color) solid 1px;
-  --pimrary-radius: 0.5rem;
+  --primary-radius: 0.5rem;
   --tertiary-border: var(--tertiary-color) solid 1px;
   --delete-border: var(--delete-color) solid 1px;
 
   /* text shadow for bold */
   --text-shadow: 0.5px 0 #000;
-  --text-shadow-prm-clr: 0.5px 0 var(--primary-color);
   --text-shadow-prm-clr: 0.5px 0 var(--primary-color);
   --text-shadow-prm-clr-light: 0.5px 0 var(--primary-color-light);
   --text-shadow-scd-clr: 0.5px 0 var(--secondary-color);
@@ -119,7 +118,7 @@ ul > li {
   justify-content: center;
   position: relative;
   border: var(--tertiary-border);
-  border-radius: var(--pimrary-radius);
+  border-radius: var(--primary-radius);
   background-color: var(--primary-color-xlight);
   padding: 1rem;
   box-sizing: border-box;
@@ -194,7 +193,7 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   color: rgb(255, 255, 255);
   background-color: var(--primary-color);
   border: var(--primary-color) 1px solid;
-  border-radius: var(--pimrary-radius);
+  border-radius: var(--primary-radius);
 }
 
 .primary-button:hover:enabled {
@@ -217,7 +216,7 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   color: var(--primary-color);
   border: var(--primary-border);
   background-color: rgb(255, 255, 255);
-  border-radius: var(--pimrary-radius);
+  border-radius: var(--primary-radius);
 }
 
 .secondary-button:hover {
@@ -234,7 +233,7 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   color: var(--delete-color);
   border: var(--delete-border);
   background-color: rgb(255, 255, 255);
-  border-radius: var(--pimrary-radius);
+  border-radius: var(--primary-radius);
 }
 
 .delete-button:hover {
@@ -334,7 +333,7 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   width: 100%;
   margin: 0.5rem;
   padding: 0.5rem;
-  border-radius: var(--pimrary-radius);
+  border-radius: var(--primary-radius);
   border: var(--tertiary-border);
   font-size: 1.1rem;
   box-sizing: border-box;

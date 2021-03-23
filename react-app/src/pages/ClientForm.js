@@ -1,22 +1,29 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
 
 // import component
-import ModalClientFormInfo from './ModalClientFormInfo';
-import ModalConfirmButton from '../../ModalConfirmButton';
+import ModalClientFormInfo from '../components/ClientForm/ModalClientFormInfo';
+import ModalConfirmButton from '../components/ModalConfirmButton';
 
 // import thunk
-import { createClient, deleteClient } from '../../../store/clients';
+import { createClient, deleteClient } from '../store/clients';
 
 // import context
-import { useClientsContext } from '../../../pages/Clients';
+// import { useClientsContext } from '../pages/Clients';
 
-export default function ClientForm({ selectedClient }) {
+export default function ClientForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
+
+  const { clientId } = useParams();
+  const selectedClient =
+    useSelector((state) => state.clients[clientId]) || null;
+
   const clients = useSelector((state) => Object.values(state.clients));
 
-  const { setShowForm } = useClientsContext();
+  // const { setShowForm } = useClientsContext();
 
   const [showInfoModal, setShowInfoModal] = useState();
   const [showDeleteModal, setShowDeleteModal] = useState();
@@ -55,6 +62,14 @@ export default function ClientForm({ selectedClient }) {
 
     setCreateDate(dateToSet);
   }, [selectedClient]);
+
+  function reroute() {
+    if (selectedClient) {
+      history.push(`/clients/${selectedClient.id}`);
+    } else {
+      history.push('/clients');
+    }
+  }
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -112,8 +127,7 @@ export default function ClientForm({ selectedClient }) {
 
     if (!user.errors) {
       console.log('updated');
-      setShowForm(false);
-      // setSelectedClient(null); ------------------------------- update -------------------------------
+      reroute();
     } else {
       setErrors(user.errors);
     }
@@ -121,12 +135,11 @@ export default function ClientForm({ selectedClient }) {
 
   const handleDelete = async () => {
     await dispatch(deleteClient(selectedClient.id));
-    setShowForm(false);
-    // setSelectedClient(null); ------------------------------- update -------------------------------
+    history.push('/clients');
   };
 
   return (
-    <>
+    <div className='site__page'>
       <ModalClientFormInfo
         showModal={showInfoModal}
         setShowModal={setShowInfoModal}
@@ -139,6 +152,9 @@ export default function ClientForm({ selectedClient }) {
           selectedClient ? selectedClient.code : 'this client' // 'this client' shouldn't ever render, this just makes sure there is a selected client to avoid error keying into nothing
         }? All associated data will be deleted.`}
       />
+      <h1 className='primary-title'>
+        {selectedClient ? `Update ${selectedClient.clientCode}` : 'New Client'}
+      </h1>
       <div className='site__sub-section'>
         <i
           class='fas fa-info-circle'
@@ -213,9 +229,7 @@ export default function ClientForm({ selectedClient }) {
             <button
               className='secondary-button form__button dashboard__button'
               type='button'
-              onClick={() => {
-                setShowForm(false);
-              }}
+              onClick={() => reroute()}
             >
               Cancel
             </button>
@@ -231,6 +245,6 @@ export default function ClientForm({ selectedClient }) {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }

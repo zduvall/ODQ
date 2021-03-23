@@ -63,9 +63,6 @@ export default function NewUrlControls() {
       )}
       <div className='site__sub-section client-tests__sub-section'>
         <form className='new-url-controls__form' onSubmit={onSubmit}>
-          <button type='submit' className='primary-button'>
-            New Link
-          </button>
           <select
             // options={options}
             value={dropdownTest.code}
@@ -84,6 +81,9 @@ export default function NewUrlControls() {
               </option>
             ))}
           </select>
+          <button type='submit' className='primary-button'>
+            New Link
+          </button>
         </form>
       </div>
     </>

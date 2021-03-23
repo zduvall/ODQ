@@ -12,10 +12,9 @@ import SignUpForm from './components/auth/SignUpForm';
 import Clients from './pages/Clients';
 import Client from './pages/Client'
 import Profile from './pages/Profile';
-
+import ClientForm from './pages/ClientForm'
 
 import Dashboard from './components/Dashboard';
-import ClientTests from './components/ClientTests';
 
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
@@ -87,11 +86,11 @@ function App() {
             <Clients />
           </ProtectedRoute>
           <ProtectedRoute
-            path='/profile'
+            path='/clients/new'
             exact={true}
             authenticated={!!sessionUser}
           >
-            <Profile />
+            <ClientForm />
           </ProtectedRoute>
           <ProtectedRoute
             path='/clients/:clientId'
@@ -99,12 +98,25 @@ function App() {
             authenticated={!!sessionUser}
           >
             <Client />
-            {/* <ClientTests /> */}
           </ProtectedRoute>
-          <Route path='/test/:testCode/:userId/:clientId/:encURL' exact={true}>
+          <ProtectedRoute
+            path='/clients/:clientId/edit'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <ClientForm />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path='/profile'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <Profile />
+          </ProtectedRoute>
+          <Route path='/test/:testCode/:userId/:clientId/:encURL' exact>
             <TestTemplate />
           </Route>
-          <Route path='/terms-of-use'>
+          <Route path='/terms-of-use' exact>
             <TermsOfUse />
           </Route>
           <Route path='/'>

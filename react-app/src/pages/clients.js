@@ -3,7 +3,7 @@ import { useState, createContext, useContext } from 'react';
 // import components
 import ClientContorls from '../components/Clients/ClientControls';
 import AllClients from '../components/Clients/AllClients.js';
-import ClientFrom from '../components/ClientForm';
+// import ClientFrom from '../components/ClientForm';
 
 const ClientsContext = createContext();
 
@@ -25,8 +25,9 @@ export default function Clients() {
       <div className='site__page'>
         <h1 className='primary-title'>Clients</h1>
         <ClientContorls />
-        {!showForm && <AllClients />}
-        {showForm && <ClientFrom />}
+        <AllClients />
+        {/* {!showForm && <AllClients />}
+        {showForm && <ClientFrom />} */}
         <div className='one1rem-ht' />
       </div>
     </ClientsContext.Provider>

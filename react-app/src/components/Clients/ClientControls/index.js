@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { useClientsContext } from '../../../pages/Clients';
 
 export default function ClientControls() {
+  const history = useHistory();
   const {
     searchClients,
     setSearchClients,
@@ -31,7 +33,7 @@ export default function ClientControls() {
       ></input>
       <button
         className='primary-button dashboard__button client-controls__button'
-        onClick={() => setShowForm(true)}
+        onClick={() => history.push('/clients/new')}
         disabled={showForm}
       >
         New Client

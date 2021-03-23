@@ -56,6 +56,7 @@ export default function ClientTests() {
     >
       <div className='site__page'>
         <h1 className='primary-title'>{client.code}</h1>
+        {/* <h2 className='tertiary-title'>Born: {client.birthYear} Status: {client.curClient ? 'Active' : 'Terminated'}</h2> */}
         <NewUrlControls />
         <div className='one1rem-ht' />
         {!dropdownTest.code && <ClientAllTests />}

@@ -14,10 +14,10 @@ export default function Clients() {
   clients = clients.sort((a, b) => {
     const aCodeDate = a.lastTestTime
       ? new Date(a.lastTestTime)
-      : new Date(8640000000000000);
+      : new Date().setDate(new Date().getDate() + 1);
     const bCodeDate = b.lastTestTime
       ? new Date(b.lastTestTime)
-      : new Date(8640000000000000);
+      : new Date().setDate(new Date().getDate() + 1);
     return bCodeDate - aCodeDate;
   });
   // clients = clients.reverse();

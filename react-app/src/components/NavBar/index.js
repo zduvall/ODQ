@@ -50,6 +50,15 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className={navItemClass}
+        to='/clients'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
+      >
+        Clients
+      </NavLink>
+      <NavLink
+        className={navItemClass}
         to='/profile'
         exact
         activeClassName='nav__item-active'

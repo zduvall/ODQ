@@ -78,7 +78,7 @@ export default function SelectedTest() {
 
   return (
     <>
-      <div className='site__sub-section chart-container'>
+      <div className='site__sub-section flex-dir-col chart-container'>
         <i
           class='fas fa-info-circle'
           // onClick={() => setShowInfoModal(true)}

@@ -24,11 +24,6 @@
   }
 }
 
-.clients-container {
-  flex-direction: column;
-  justify-content: flex-start !important;
-}
-
 .clients-table {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -7,7 +7,7 @@ export default function DropdownTestInfo() {
   const { dropdownTest, setDropdownTest } = useClientTestsContext();
 
   return (
-    <div className='site__sub-section test-descriptions-container'>
+    <div className='site__sub-section flex-dir-col'>
       <h2 className='primary-title cntr-txt-sml-margin'>{dropdownTest.name}</h2>
       <h3 className='tertiary-title cntr-txt-sml-margin'>
         ({dropdownTest.abbr})

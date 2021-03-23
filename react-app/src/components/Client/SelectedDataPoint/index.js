@@ -26,7 +26,7 @@ export default function SelectedDataPoint() {
   }
 
   return (
-    <div className='site__sub-section selected-data-point'>
+    <div className='site__sub-section flex-dir-col'>
       <ModalConfirmButton
         showModal={showModal}
         setShowModal={setShowModal}

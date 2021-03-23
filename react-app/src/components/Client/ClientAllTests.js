@@ -11,7 +11,7 @@ export default function ClientAllTests() {
   } = useClientTestsContext();
 
   return (
-    <div className='site__sub-section client-tests__sub-section comp-tests'>
+    <div className='site__sub-section flex-dir-col'>
       <h2 className='comp-tests__title cntr-txt-sml-margin'>Test Results</h2>
       <ul className='comp-tests__list'>
         {compTestObjs.map((testObj) => {

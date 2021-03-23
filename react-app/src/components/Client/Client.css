@@ -1,7 +1,3 @@
-.client-tests__sub-section {
-  min-height: auto !important;
-}
-
 .new-url-controls__form {
   display: flex;
   flex-direction: row;
@@ -23,10 +19,6 @@
 
 /* completed tests (test results)*/
 
-.comp-tests {
-  flex-direction: column;
-}
-
 .comp-tests__title {
   margin: 0;
 }
@@ -45,11 +37,6 @@
   font-weight: 1000;
 }
 
-.chart-container {
-  flex-direction: column;
-  overflow-x: scroll;
-}
-
 @media (max-width: 600px) {
   .chart-container {
     padding-left: 0.25rem !important;
@@ -58,19 +45,13 @@
 }
 
 /* test descriptive view when selected in dropdown */
-.test-descriptions-container {
-  flex-direction: column;
-}
-
 .test-descriptions-text {
   justify-content: flex-start;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* client complete test view */
-.birth-year-validator__container {
-  flex-direction: column;
-}
-
 .birth-year-validator__form__row {
   display: flex;
   justify-content: center;
@@ -80,10 +61,6 @@
 
 .birth-year-validator__error {
   text-align: center;
-}
-
-.test-complete-container {
-  flex-direction: column;
 }
 
 .test-complete__title {
@@ -96,10 +73,6 @@
 }
 
 /* selected data point details */
-.selected-data-point {
-  flex-direction: column;
-}
-
 .selected-data-point__details {
   display: flex;
   flex-direction: column;

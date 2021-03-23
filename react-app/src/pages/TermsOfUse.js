@@ -1,7 +1,7 @@
 export default function TermsOfUse() {
   return (
     <div className='site__page'>
-      <div className='site__sub-section terms-of-use'>
+      <div className='site__sub-section flex-dir-col terms-of-use'>
         <h2 className='primary-title'>Terms of Use Agreement (draft)</h2>
         <h3>General</h3>
         <p>

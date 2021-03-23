@@ -23,7 +23,7 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
   }
 
   return (
-    <div className='site__sub-section birth-year-validator__container'>
+    <div className='site__sub-section flex-dir-col'>
       <h3 className='primary-title'>Please confirm your birth year</h3>
       <form className='form'>
         <div className='birth-year-validator__form__row'>

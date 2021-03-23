@@ -56,7 +56,7 @@ export default function NewUrlControls() {
           test={dropdownTest}
         />
       )}
-      <div className='site__sub-section client-tests__sub-section'>
+      <div className='site__sub-section'>
         <form className='new-url-controls__form' onSubmit={onSubmit}>
           <select
             value={dropdownTest.code}

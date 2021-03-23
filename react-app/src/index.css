@@ -59,7 +59,6 @@ a {
   outline: none;
 }
 
-
 ul > li {
   list-style: none;
 }
@@ -126,11 +125,13 @@ ul > li {
   box-sizing: border-box;
   width: 47rem;
   max-width: 100%;
-  min-height: 14rem;
+}
+
+.flex-dir-col {
+  flex-direction: column;
 }
 
 .site__sub-section__data {
-  /* font-weight: 1000; */
   color: var(--tertiary-color-dark);
   padding: 0 1rem;
   width: 100%;
@@ -373,10 +374,6 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
 .auth__sml-txt {
   font-size: 0.9rem;
   text-align: center;
-}
-
-.terms-of-use {
-  flex-direction: column;
 }
 
 .terms-of-use > p {

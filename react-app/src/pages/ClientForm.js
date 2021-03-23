@@ -153,7 +153,7 @@ export default function ClientForm() {
         }? All associated data will be deleted.`}
       />
       <h1 className='primary-title'>
-        {selectedClient ? `Update ${selectedClient.clientCode}` : 'New Client'}
+        {selectedClient ? `Update ${selectedClient.code}` : 'New Client'}
       </h1>
       <div className='site__sub-section'>
         <i

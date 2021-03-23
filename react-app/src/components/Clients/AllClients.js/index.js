@@ -24,7 +24,7 @@ export default function Clients() {
   if (!clients) return <LoadingNotFoundInvalid message={'Loading eDOT...'} />;
 
   return (
-    <div className='site__sub-section clients-container'>
+    <div className='site__sub-section'>
       <div className='clients-table'>
         <ClientHeader
           status={status}

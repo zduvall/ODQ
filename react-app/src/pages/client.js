@@ -25,10 +25,7 @@ export default function ClientTests() {
   // params and store
   const { clientId } = useParams();
   const client = useSelector((state) => state.clients[clientId]);
-  const allClientsTests = useSelector((state) => Object.values(state.tests));
-  const clientTests = allClientsTests.filter(
-    (test) => test.clientId === Number(clientId)
-  );
+  const clientTests = client.tests;
 
   // tests this client has completed (as an array of codes (strings) and array of objects)
   let compTestCodes = new Set();

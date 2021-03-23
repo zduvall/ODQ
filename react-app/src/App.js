@@ -20,7 +20,7 @@ import TermsOfUse from './pages/TermsOfUse';
 // import thunks
 import { authenticateUser } from './store/session';
 import { getClients } from './store/clients';
-import { getTests } from './store/tests';
+// import { getTests } from './store/tests';
 
 // import custom width hook
 import { useWindowWidth } from './services/windowWidth';
@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     if (sessionUser && sessionUser !== 'do not load') {
       dispatch(getClients(sessionUser.id));
-      dispatch(getTests(sessionUser.id));
+      // dispatch(getTests(sessionUser.id));
     }
   }, [dispatch, sessionUser]);
 

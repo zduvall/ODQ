@@ -12,7 +12,7 @@ import Clients from './pages/Clients';
 import Client from './pages/Client';
 import Profile from './pages/Profile';
 import ClientForm from './pages/ClientForm';
-import TestTemplate from './components/TestTemplate';
+import TestForm from './pages/TestForm';
 import Footer from './components/Footer';
 import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';
 import TermsOfUse from './pages/TermsOfUse';
@@ -103,7 +103,7 @@ function App() {
             <Profile />
           </ProtectedRoute>
           <Route path='/test/:testCode/:userId/:clientId/:encURL' exact>
-            <TestTemplate />
+            <TestForm />
           </Route>
           <Route path='/terms-of-use' exact>
             <TermsOfUse />

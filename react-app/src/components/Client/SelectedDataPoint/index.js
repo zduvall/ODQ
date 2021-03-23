@@ -9,18 +9,18 @@ import Section from './SectionAndQuestionTypes';
 import ModalConfirmButton from '../../ModalConfirmButton';
 
 // import thunk
-import {deleteTest} from '../../../store/tests'
+import {deleteTest} from '../../../store/clients'
 
 export default function SelectedDataPoint() {
   const dispatch = useDispatch();
-  const { selectedTest, setDatapoint, datapoint } = useClientTestsContext();
+  const { clientId, selectedTest, setDatapoint, datapoint } = useClientTestsContext();
 
   const [showModal, setShowModal] = useState(false);
 
   const resObj = JSON.parse(datapoint.res);
 
   async function handleDelete() {
-    await dispatch(deleteTest(datapoint.id));
+    await dispatch(deleteTest(clientId, datapoint.id));
     setDatapoint(false);
     window.scrollBy(0, -1); // this makes it so the screen doesn't snap down to the bottom (where it was when you clicked delete) the next time you click a datapoint
   }

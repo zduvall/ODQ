@@ -80,7 +80,7 @@ export default function SelectedTest() {
     <>
       <div className='site__sub-section flex-dir-col chart-container'>
         <i
-          class='fas fa-info-circle'
+          className='fas fa-info-circle'
           // onClick={() => setShowInfoModal(true)}
         ></i>
         <h3 className='cntr-txt-sml-margin'>{selectedTest.name}</h3>

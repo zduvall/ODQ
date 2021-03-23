@@ -22,10 +22,14 @@ export default function ClientTests() {
   const [dropdownTest, setDropdownTest] = useState({ code: '' });
   const [datapoint, setDatapoint] = useState(null);
 
+  
   // params and store
   const { clientId } = useParams();
   const client = useSelector((state) => state.clients[clientId]);
-  const clientTests = client.tests;
+  
+  if (!client) return <LoadingNotFoundInvalid message={'Loading eDOT...'} />;
+  
+  const clientTests = Object.values(client.tests);
 
   // tests this client has completed (as an array of codes (strings) and array of objects)
   let compTestCodes = new Set();
@@ -35,12 +39,11 @@ export default function ClientTests() {
     compTestCodes.includes(test.code)
   );
 
-  if (!client) return <LoadingNotFoundInvalid message={'Loading eDOT...'} />;
-
   return (
     <ClientTestsContext.Provider
       value={{
         client,
+        clientId: client.id,
         clientTests,
         compTestCodes,
         compTestObjs,

@@ -1,0 +1,120 @@
+.client-tests__sub-section {
+  min-height: auto !important;
+}
+
+.new-url-controls__form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 24rem;
+}
+
+/* new url modal */
+
+.new-url-modal__emph {
+  color: var(--primary-color);
+}
+
+.new-url-modal__sml {
+  color: var(--tertiary-color);
+  font-size: 0.85rem;
+  max-width: 30rem;
+}
+
+/* completed tests (test results)*/
+
+.comp-tests {
+  flex-direction: column;
+}
+
+.comp-tests__title {
+  margin: 0;
+}
+
+.comp-tests__list {
+  padding-inline-start: 0;
+  text-align: center;
+}
+
+.comp-tests__option {
+  cursor: pointer;
+}
+
+.comp-tests__option:hover {
+  text-shadow: var(--text-shadow);
+  font-weight: 1000;
+}
+
+.chart-container {
+  flex-direction: column;
+  overflow-x: scroll;
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+}
+
+/* test descriptive view when selected in dropdown */
+.test-descriptions-container {
+  flex-direction: column;
+}
+
+.test-descriptions-text {
+  justify-content: flex-start;
+}
+
+/* client complete test view */
+.birth-year-validator__container {
+  flex-direction: column;
+}
+
+.birth-year-validator__form__row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  max-width: 24rem;
+}
+
+.birth-year-validator__error {
+  text-align: center;
+}
+
+.test-complete-container {
+  flex-direction: column;
+}
+
+.test-complete__title {
+  margin: 0;
+}
+
+.test-complete__thank-you {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+/* selected data point details */
+.selected-data-point {
+  flex-direction: column;
+}
+
+.selected-data-point__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.selected-dp__section {
+  margin: 0.5rem 0;
+}
+
+.selected-dp__question {
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.selected-dp__res {
+  padding: 0.25rem 0;
+  color: var(--primary-color);
+}

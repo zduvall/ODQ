@@ -8,12 +8,15 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import SplashPage from './components/SplashPage';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import Dashboard from './components/Dashboard';
 
 import Clients from './pages/Clients';
+import Client from './pages/Client'
 import Profile from './pages/Profile';
 
+
+import Dashboard from './components/Dashboard';
 import ClientTests from './components/ClientTests';
+
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
 import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';
@@ -95,7 +98,8 @@ function App() {
             exact={true}
             authenticated={!!sessionUser}
           >
-            <ClientTests />
+            <Client />
+            {/* <ClientTests /> */}
           </ProtectedRoute>
           <Route path='/test/:testCode/:userId/:clientId/:encURL' exact={true}>
             <TestTemplate />

@@ -15,7 +15,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   if (sessionUser) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/clients' />;
   }
 
   const onLogin = async (e) => {
@@ -37,8 +37,7 @@ export default function Login() {
     const user = await dispatch(loginUser(email, password));
 
     if (!user.errors) {
-      console.log('logged in');
-      history.push('/dashboard');
+      history.push('/clients');
     } else {
       setErrors(user.errors);
     }

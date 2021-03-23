@@ -58,10 +58,10 @@ function App() {
         onDoubleClick={() => (width < 900 ? setShowNav((prev) => !prev) : {})}
       >
         <Switch>
-          <Route path='/login' exact={true}>
+          <Route path='/log-in' exact={true}>
             <Login />
           </Route>
-          <Route path='/signup' exact={true}>
+          <Route path='/sign-up' exact={true}>
             <SignUp />
           </Route>
           <Route path='/' exact={true}>

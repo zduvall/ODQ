@@ -57,8 +57,7 @@ export default function SignUp() {
       signUpUser(firstName, lastName, email, password)
     );
     if (!user.errors) {
-      console.log('logged in');
-      history.push('/dashboard');
+      history.push('/clients');
     } else {
       setErrors(user.errors);
     }

@@ -67,7 +67,7 @@ const NavBar = () => {
     <>
       <NavLink
         className={navItemClass}
-        to='/signup'
+        to='/sign-up'
         exact
         activeClassName='nav__item-active'
         onClick={handleClick}
@@ -76,7 +76,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className={navItemClass}
-        to='/login'
+        to='/log-in'
         exact
         activeClassName='nav__item-active'
         onClick={handleClick}

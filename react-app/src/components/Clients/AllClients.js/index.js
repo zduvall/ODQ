@@ -12,8 +12,12 @@ import '../Clients.css';
 export default function Clients() {
   let clients = useSelector((state) => Object.values(state.clients));
   clients = clients.sort((a, b) => {
-    const aCodeDate = new Date(a.lastTestTime);
-    const bCodeDate = new Date(b.lastTestTime);
+    const aCodeDate = a.lastTestTime
+      ? new Date(a.lastTestTime)
+      : new Date(8640000000000000);
+    const bCodeDate = b.lastTestTime
+      ? new Date(b.lastTestTime)
+      : new Date(8640000000000000);
     return bCodeDate - aCodeDate;
   });
   // clients = clients.reverse();

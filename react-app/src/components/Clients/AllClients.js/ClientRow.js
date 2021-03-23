@@ -29,7 +29,9 @@ export default function ClientRow({ status, client }) {
       <p style={toggleDisp}>{code}</p>
       <p style={toggleDisp}>{birthYear}</p>
       <p style={toggleDisp}>{curClient ? 'A' : 'T'}</p>
-      <p style={toggleDisp}>{new Date(lastTestTime).toLocaleDateString()}</p>
+      <p style={toggleDisp}>
+        {lastTestTime ? new Date(lastTestTime).toLocaleDateString() : 'N/A'}
+      </p>
     </div>
   );
 }

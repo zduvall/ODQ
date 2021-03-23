@@ -5,13 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 // components
 import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import SplashPage from './components/SplashPage';
-import Login from './pages/Login'
+import SplashPage from './pages/SplashPage';
+import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Clients from './pages/Clients';
-import Client from './pages/Client'
+import Client from './pages/Client';
 import Profile from './pages/Profile';
-import ClientForm from './pages/ClientForm'
+import ClientForm from './pages/ClientForm';
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
 import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';

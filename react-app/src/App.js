@@ -9,7 +9,7 @@ import SplashPage from './components/SplashPage';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import Dashboard from './components/Dashboard';
-import Profile from './pages/User'
+import Profile from './pages/Profile'
 import ClientTests from './components/ClientTests';
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';

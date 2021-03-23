@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // import components
-import UserInfo from '../components/Profile';
+import Profile from '../components/Profile';
 
 export default function User() {
   const [showUpdateUser, setShowUpdateUser] = useState(false);
@@ -10,7 +10,7 @@ export default function User() {
     <div>
       <div className='site__page'>
         <h1 className='primary-title'>Profile</h1>
-        <UserInfo
+        <Profile
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
         />

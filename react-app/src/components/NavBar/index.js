@@ -48,6 +48,15 @@ const NavBar = () => {
       >
         Dashboard
       </NavLink>
+      <NavLink
+        className={navItemClass}
+        to='/profile'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
+      >
+        Profile
+      </NavLink>
       <button className={navItemClass} onClick={handleLogout}>
         Logout
       </button>

@@ -1,7 +1,7 @@
 import UserInfoData from './UserInfoData';
 import UserInfoForm from './UserInfoForm';
 
-export default function UserInfo({ showUpdateUser, setShowUpdateUser }) {
+export default function Profile({ showUpdateUser, setShowUpdateUser }) {
   if (showUpdateUser) {
     return <UserInfoForm setShowUpdateUser={setShowUpdateUser} />;
   } else {

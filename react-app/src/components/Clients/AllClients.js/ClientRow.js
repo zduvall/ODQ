@@ -24,13 +24,18 @@ export default function ClientRow({ status, client }) {
 
   const toggleDisp = !statusSelected || !searchable ? { display: 'none' } : {};
 
+  function createDate(dateInfo) {
+    const date = new Date(dateInfo).toLocaleDateString();
+    return date.slice(0, date.lastIndexOf('/') + 1) + date.slice(-2);
+  }
+
   return (
     <div className='clients-row' onClick={handleClickClient}>
       <p style={toggleDisp}>{code}</p>
       <p style={toggleDisp}>{birthYear}</p>
       <p style={toggleDisp}>{curClient ? 'A' : 'T'}</p>
       <p style={toggleDisp}>
-        {lastTestTime ? new Date(lastTestTime).toLocaleDateString() : 'N/A'}
+        {lastTestTime ? createDate(lastTestTime) : 'N/A'}
       </p>
     </div>
   );

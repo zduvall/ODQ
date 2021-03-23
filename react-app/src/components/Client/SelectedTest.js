@@ -31,13 +31,8 @@ export default function SelectedTest() {
 
   function dateLabels(tests) {
     tests.forEach((test) => {
-      let date = new Date(test.timeComp);
-      const yr = ('' + date.getFullYear()).slice(-2);
-      const mth = ('' + (date.getMonth() + 1)).slice(-2);
-      const dy = ('' + date.getDate()).slice(-2);
-
-      date = mth + '/' + dy + '/' + yr;
-      dates.push(date);
+      let date = new Date(test.timeComp).toLocaleDateString();
+      dates.push(date.slice(0, date.lastIndexOf('/') + 1) + date.slice(-2));
     });
     return dates;
   }
@@ -75,6 +70,9 @@ export default function SelectedTest() {
       setDatapoint(allTestResOfType[allTestResOfType.length - 1]);
     }
   }, [datapoint, setDatapoint, allTestResOfType]);
+
+  // toggle all tests shown on this chart to be userSeen: true
+  useEffect(() => {}, []);
 
   return (
     <>

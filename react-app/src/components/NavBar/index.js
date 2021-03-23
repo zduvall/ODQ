@@ -41,15 +41,6 @@ const NavBar = () => {
     <>
       <NavLink
         className={navItemClass}
-        to='/dashboard'
-        exact
-        activeClassName='nav__item-active'
-        onClick={handleClick}
-      >
-        Dashboard
-      </NavLink>
-      <NavLink
-        className={navItemClass}
         to='/clients'
         exact
         activeClassName='nav__item-active'

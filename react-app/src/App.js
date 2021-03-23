@@ -8,14 +8,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import SplashPage from './components/SplashPage';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-
 import Clients from './pages/Clients';
 import Client from './pages/Client'
 import Profile from './pages/Profile';
 import ClientForm from './pages/ClientForm'
-
-import Dashboard from './components/Dashboard';
-
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
 import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';
@@ -71,13 +67,6 @@ function App() {
           <Route path='/' exact={true}>
             <SplashPage />
           </Route>
-          <ProtectedRoute
-            path='/dashboard'
-            exact={true}
-            authenticated={!!sessionUser}
-          >
-            <Dashboard />
-          </ProtectedRoute>
           <ProtectedRoute
             path='/clients'
             exact={true}

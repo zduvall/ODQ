@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import SplashPage from './components/SplashPage';
-import LoginForm from './components/auth/LoginForm';
+import LoginForm from './pages/Login'
 import SignUpForm from './components/auth/SignUpForm';
 import Clients from './pages/Clients';
 import Client from './pages/Client'

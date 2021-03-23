@@ -1,5 +1,5 @@
 /* clients */
-.dashboard__client-controls {
+.client-controls {
   display: flex;
   width: 47rem;
   max-width: 100%;
@@ -8,7 +8,7 @@
   padding: 0.25rem 0;
 }
 
-.dashboard__client-controls > input {
+.client-controls > input {
   margin-left: 0 !important;
 }
 

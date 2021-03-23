@@ -1,4 +1,4 @@
-.dashboard__buttons {
+.buttons-grp-colLrg-rowSml {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,16 +26,6 @@
   color: var(--tertiary-color);
 }
 
-.creation-date-label {
-  display: flex;
-  margin-left: 0.5rem;
-  align-items: center;
-}
-
-.creation-date-input {
-  font-family: 'Open Sans', sans-serif !important;
-  text-shadow: var(--text-shadow);
-}
 
 /* clients */
 .dashboard__client-controls {
@@ -146,7 +136,7 @@
 /* Mobile view */
 
 @media (max-width: 800px) {
-  .dashboard__buttons {
+  .buttons-grp-colLrg-rowSml {
     flex-direction: row;
     flex-wrap: nowrap !important;
     width: 100% !important;
@@ -177,4 +167,16 @@
   .clients-row {
     font-size: 0.9rem;
   }
+}
+
+/* new client form */
+.creation-date-label {
+  display: flex;
+  margin-left: 0.5rem;
+  align-items: center;
+}
+
+.creation-date-input {
+  font-family: 'Open Sans', sans-serif !important;
+  text-shadow: var(--text-shadow);
 }

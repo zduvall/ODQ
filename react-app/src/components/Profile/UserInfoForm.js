@@ -6,10 +6,10 @@ import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 
 // import thunks
-import { updateUser } from '../../../store/session';
+import { updateUser } from '../../store/session';
 
 // import css
-import '../Dashboard.css';
+import './User.css';
 
 export default function UserInfo({ setShowUpdateUser }) {
   const dispatch = useDispatch();

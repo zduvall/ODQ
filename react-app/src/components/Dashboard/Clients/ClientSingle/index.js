@@ -19,7 +19,7 @@ export default function ClientSingle() {
           <p>Born: {selectedClient.birthYear}</p>
           <p>Status: {selectedClient.curClient ? 'Active' : 'Terminated'}</p>
         </div>
-        <div className='dashboard__buttons'>
+        <div className='buttons-grp-colLrg-rowSml'>
           <button
             className='primary-button dashboard__button'
             onClick={() => history.push(`/clients/${selectedClient.id}`)}

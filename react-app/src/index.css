@@ -152,6 +152,22 @@ ul > li {
 
 /* --------------- buttons --------------- */
 
+.buttons-grp-colLrg-rowSml {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50% !important;
+}
+
+@media (max-width: 800px) {
+  .buttons-grp-colLrg-rowSml {
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    justify-content: center;
+  }
+}
+
 button:not(.nav__item):not(.nav__dropdown__item) {
   display: flex;
   justify-content: center;

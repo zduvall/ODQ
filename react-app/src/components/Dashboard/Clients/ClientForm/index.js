@@ -207,7 +207,7 @@ export default function ClientForm() {
               ></input>
             </div>
           </div>
-          <div className='form__row dashboard__buttons'>
+          <div className='form__row buttons-grp-colLrg-rowSml'>
             <button
               className='primary-button form__button dashboard__button'
               type='submit'

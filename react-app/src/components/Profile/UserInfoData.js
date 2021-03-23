@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
-import { deleteUser } from '../../../store/session';
+import { deleteUser } from '../../store/session';
 
 // import component
-import ModalConfirmButton from '../../ModalConfirmButton';
+import ModalConfirmButton from '../ModalConfirmButton';
 
 // import css
-import '../Dashboard.css';
+import './User.css';
 
 export default function UserInfoData({ setShowUpdateUser }) {
   const dispatch = useDispatch();

@@ -9,6 +9,7 @@ import SplashPage from './components/SplashPage';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import Dashboard from './components/Dashboard';
+import Profile from './pages/User'
 import ClientTests from './components/ClientTests';
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
@@ -71,6 +72,13 @@ function App() {
             authenticated={!!sessionUser}
           >
             <Dashboard />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path='/profile'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <Profile />
           </ProtectedRoute>
           <ProtectedRoute
             path='/clients/:clientId'

@@ -1,4 +1,4 @@
-import './ModalConfirmButton.css'
+import './ModalConfirmButton.css';
 
 export default function ModalConfirmButton({
   setShowModal,
@@ -12,7 +12,7 @@ export default function ModalConfirmButton({
   return (
     <>
       <h3 className='primary-title cntr-txt-sml-margin'>{message}</h3>
-      <div className='dashboard__buttons confirm-buttons'>
+      <div className='buttons-grp-colLrg-rowSml confirm-buttons'>
         <button
           className='primary-button'
           onClick={() => {

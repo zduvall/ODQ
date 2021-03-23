@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 // import component
 import SelectedDataPoint from './SelectedDataPoint';
 
 // import context
 import { useClientTestsContext } from '../../pages/Client';
+
+// import thunk
+import { toggleSeen } from '../../store/clients';
 
 // import css
 import './Client.css';
@@ -16,7 +20,9 @@ import * as ChartAnnotation from 'chartjs-plugin-annotation';
 Chart.plugins.register([ChartAnnotation]); // Global registering of plugin
 
 export default function SelectedTest() {
+  const dispatch = useDispatch();
   const {
+    clientId,
     selectedTest,
     clientTests,
     datapoint,
@@ -74,8 +80,10 @@ export default function SelectedTest() {
   // toggle all tests shown on this chart to be userSeen: true
   useEffect(() => {
     const unseenTests = allTestResOfType.filter((test) => !test.userSeen);
-    console.log(unseenTests);
-  }, [allTestResOfType]);
+    if (unseenTests.length) {
+      dispatch(toggleSeen(clientId, unseenTests));
+    }
+  }, [allTestResOfType, dispatch, clientId]);
 
   return (
     <>

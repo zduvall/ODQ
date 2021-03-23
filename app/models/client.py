@@ -23,4 +23,5 @@ class Client(db.Model):
             "code": self.code,
             "curClient": self.curClient,
             "pro": self.pro.to_dict(),
+            "tests": [test.to_dict() for test in self.tests],
         }

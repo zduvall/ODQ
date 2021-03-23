@@ -100,6 +100,24 @@ export const deleteTest = (clientId, testId) => async (dispatch) => {
   }
 };
 
+export const toggleSeen = (clientId, unseenTests) => async (dispatch) => {
+  const res = await fetch('/api/tests/toggle-seen', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ clientId, unseenTests }),
+  });
+  const updatedClient = await res.json();
+
+  if (res.ok) {
+    dispatch(create(updatedClient));
+    return updatedClient;
+  } else {
+    console.log("Didn't update seen tests");
+  }
+};
+
 // Reducer
 const initState = {};
 
@@ -120,7 +138,9 @@ const clientReducer = (state = initState, action) => {
       return newState;
     case REMOVE_TEST:
       console.log('inside of reducer!!!', action.payload.clientId);
-      delete newState[Number(action.payload.clientId)].tests[Number(action.payload.testId)];
+      delete newState[Number(action.payload.clientId)].tests[
+        Number(action.payload.testId)
+      ];
       return newState;
     default:
       return newState;

@@ -72,7 +72,10 @@ export default function SelectedTest() {
   }, [datapoint, setDatapoint, allTestResOfType]);
 
   // toggle all tests shown on this chart to be userSeen: true
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const unseenTests = allTestResOfType.filter((test) => !test.userSeen);
+    console.log(unseenTests);
+  }, [allTestResOfType]);
 
   return (
     <>

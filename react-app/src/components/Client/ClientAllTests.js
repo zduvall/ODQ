@@ -1,5 +1,8 @@
 import { useClientTestsContext } from '../../pages/Client';
 
+// import css
+import './Client.css';
+
 export default function ClientAllTests() {
   const {
     compTestObjs,

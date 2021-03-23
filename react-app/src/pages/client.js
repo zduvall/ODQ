@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // import components
+import ClientInfo from '../components/Client/ClientInfo';
 import NewUrlControls from '../components/Client/NewUrlControls';
 import ClientAllTests from '../components/Client/ClientAllTests';
 import SelectedTest from '../components/Client/SelectedTest';
@@ -29,7 +30,7 @@ export default function ClientTests() {
     (test) => test.clientId === Number(clientId)
   );
 
-  // tests this client has completed (as an of codes (str) and array of objects)
+  // tests this client has completed (as an array of codes (strings) and array of objects)
   let compTestCodes = new Set();
   clientTests.forEach((test) => compTestCodes.add(test.testCode));
   compTestCodes = Array.from(compTestCodes);
@@ -43,6 +44,7 @@ export default function ClientTests() {
     <ClientTestsContext.Provider
       value={{
         client,
+        clientTests,
         compTestCodes,
         compTestObjs,
         dropdownTest,
@@ -51,12 +53,12 @@ export default function ClientTests() {
         setDatapoint,
         selectedTest,
         setSelectedTest,
-        clientTests,
       }}
     >
       <div className='site__page'>
         <h1 className='primary-title'>{client.code}</h1>
-        {/* <h2 className='tertiary-title'>Born: {client.birthYear} Status: {client.curClient ? 'Active' : 'Terminated'}</h2> */}
+        <ClientInfo />
+        <div className='one1rem-ht' />
         <NewUrlControls />
         <div className='one1rem-ht' />
         {!dropdownTest.code && <ClientAllTests />}

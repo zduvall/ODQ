@@ -14,7 +14,7 @@ import { useClientTestsContext } from '../../pages/Client';
 import tests from '../../assets';
 
 // import css
-import './ClientTests.css';
+import './Client.css';
 
 export default function NewUrlControls() {
   // store and context
@@ -45,11 +45,6 @@ export default function NewUrlControls() {
     setShowModal(true);
   }
 
-  // const options = [
-  //   Object.values(tests).map((t) => ({ label: t.abbr, value: t.code })),
-  // ];
-  // console.log(options);
-
   return (
     <>
       {showModal && (
@@ -64,7 +59,6 @@ export default function NewUrlControls() {
       <div className='site__sub-section client-tests__sub-section'>
         <form className='new-url-controls__form' onSubmit={onSubmit}>
           <select
-            // options={options}
             value={dropdownTest.code}
             onChange={(e) => {
               setDropdownTest(tests[e.target.value]);

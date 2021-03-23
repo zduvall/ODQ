@@ -6,6 +6,9 @@ import ClientHeader from './ClientHeader';
 import ClientRow from './ClientRow';
 import LoadingNotFoundInvalid from '../../LoadingNotFoundInvalid';
 
+//import css
+import '../Clients.css';
+
 export default function Clients() {
   let clients = useSelector((state) => Object.values(state.clients));
   clients = clients.sort((a, b) => {

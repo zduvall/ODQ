@@ -6,6 +6,9 @@ import SelectedDataPoint from './SelectedDataPoint';
 // import context
 import { useClientTestsContext } from '../../pages/Client';
 
+// import css
+import './Client.css';
+
 // import chart and annotator
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js';

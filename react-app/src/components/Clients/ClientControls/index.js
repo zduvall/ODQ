@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 
 import { useClientsContext } from '../../../pages/Clients';
 
+// import css
+import '../Clients.css'
+
 export default function ClientControls() {
   const history = useHistory();
   const {

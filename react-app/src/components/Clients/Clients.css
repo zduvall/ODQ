@@ -82,7 +82,7 @@
 }
 
 .clients-row:hover {
-  text-shadow: var(--text-shadow-prm-clr);
+  /* text-shadow: var(--text-shadow-prm-clr); */
   font-weight: 1000;
   color: var(--primary-color);
 }

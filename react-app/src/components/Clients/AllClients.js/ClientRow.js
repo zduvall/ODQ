@@ -6,7 +6,7 @@ export default function ClientRow({ status, client }) {
   const history = useHistory();
 
   const { searchClients } = useClientsContext();
-  const { code, birthYear, curClient } = client;
+  const { code, birthYear, curClient, lastTestTime } = client;
 
   function handleClickClient() {
     history.push(`/clients/${client.id}`);
@@ -28,7 +28,8 @@ export default function ClientRow({ status, client }) {
     <div className='clients-row' onClick={handleClickClient}>
       <p style={toggleDisp}>{code}</p>
       <p style={toggleDisp}>{birthYear}</p>
-      <p style={toggleDisp}>{curClient ? 'Active' : 'Terminated'}</p>
+      <p style={toggleDisp}>{curClient ? 'A' : 'T'}</p>
+      <p style={toggleDisp}>{new Date(lastTestTime).toLocaleDateString()}</p>
     </div>
   );
 }

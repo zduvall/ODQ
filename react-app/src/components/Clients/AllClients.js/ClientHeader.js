@@ -64,11 +64,11 @@ export default function ClientHeader({
         className='clients-header'
         onClick={handleSortYearClick}
       >
-        Birth Year <i className={toggleCaret(sortYear)}></i>
+        Born <i className={toggleCaret(sortYear)}></i>
       </p>
       <p
-        title='toggle clients shown by status'
-        className='clients-header c-h-3'
+        title='toggle clients shown by status (active or terminated)'
+        className='clients-header'
         onClick={handleStatusClick}
       >
         Status
@@ -76,6 +76,7 @@ export default function ClientHeader({
           {status === 1 ? ' (A/T)' : status === 2 ? ' (A)' : ' (T)'}
         </span>
       </p>
+      <p className='clients-header c-h-4'>Last Test</p>
     </>
   );
 }

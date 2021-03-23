@@ -24,6 +24,6 @@ class Client(db.Model):
             "curClient": self.curClient,
             "pro": self.pro.to_dict(),
             "tests": {test.id: test.to_dict() for test in self.tests},
-            "lastTestDate": self.tests[-1].to_dict()["timeComp"],
-            "unseenTest": "XXX",
+            "lastTestTime": self.tests[-1].to_dict()["timeComp"],
+            "unseenTest": any([not test.to_dict()["userSeen"] for test in self.tests]),
         }

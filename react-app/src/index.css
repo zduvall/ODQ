@@ -358,7 +358,33 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   text-shadow: none;
 }
 
-/* other */
+/* auth forms */
+.auth__form {
+  max-width: 32rem;
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+}
+
+.auth__form__input {
+  padding: 1rem !important;
+}
+
+.auth__sml-txt {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.terms-of-use {
+  flex-direction: column;
+}
+
+.terms-of-use > p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* --------------- other --------------- */
 
 .clickable-link {
   text-decoration: underline;

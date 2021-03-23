@@ -15,7 +15,7 @@ import ClientForm from './pages/ClientForm'
 import TestTemplate from './components/TestTemplate';
 import Footer from './components/Footer';
 import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';
-import TermsOfUse from './components/auth/TermsOfUse';
+import TermsOfUse from './pages/TermsOfUse';
 
 // import thunks
 import { authenticateUser } from './store/session';

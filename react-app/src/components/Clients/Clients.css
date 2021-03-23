@@ -110,28 +110,28 @@
   }
 }
 
-@media (max-width: 515px) {
+
+@media (max-width: 640px) {
+  .clients-row {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 580px) {
   .clients-header {
     font-size: 1.1rem;
   }
-}
-
-@media (max-width: 410px) {
-  .clients-header,
   .clients-row {
-    font-size: 1rem;
+    font-size: .9rem;
   }
 }
 
-@media (max-width: 410px) {
-  .clients-header,
-  .clients-row {
-    font-size: 1rem;
-  }
-}
 @media (max-width: 376px) {
+  .clients-header {
+    font-size: 1rem;
+  }
   .clients-row {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 

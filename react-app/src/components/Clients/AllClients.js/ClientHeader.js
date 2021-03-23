@@ -57,7 +57,7 @@ export default function ClientHeader({
         className='clients-header c-h-1'
         onClick={handleSortCodeClick}
       >
-        Client Code <i className={toggleCaret(sortCode)}></i>
+        Client <i className={toggleCaret(sortCode)}></i>
       </p>
       <p
         title='sort by birth year'

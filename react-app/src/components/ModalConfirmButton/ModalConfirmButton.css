@@ -2,7 +2,7 @@
   flex-direction: row !important;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 525px) {
   .confirm-buttons {
     flex-direction: column-reverse !important;
   }

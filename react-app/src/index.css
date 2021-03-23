@@ -70,7 +70,7 @@ ul > li {
   padding-bottom: 3rem;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 525px) {
   .btwn-nav-footer {
     padding: 0 2.5%;
     margin-top: 0.5rem;

@@ -95,7 +95,7 @@ export default function SelectedTest() {
           showModal={showInfoModal}
           setShowModal={setShowInfoModal}
           title={'Score Interpretation'}
-          message={selectedTest.interpretation}
+          message={`${selectedTest.interpretation} \n\n(Note: click on individual datapoints to view test scores from that date)`}
         />
       )}
       <div className='site__sub-section flex-dir-col chart-container'>

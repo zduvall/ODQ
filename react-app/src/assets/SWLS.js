@@ -63,7 +63,7 @@ const SWLS = {
   sections: [
     {
       id: 1,
-      instructions: 'How much you agree or disagree with each statement?',
+      instructions: 'How much do you agree or disagree with each statement?',
       questions: [
         {
           id: 's1q1',

@@ -10,36 +10,81 @@ export default function ClientHeader({
 
   const [sortCode, setSortCode] = useState(null);
   const [sortYear, setSortYear] = useState(null);
+  const [sortLastTest, setSortLastTest] = useState(true);
 
   function sort(sentAttr) {
     let attr = sentAttr;
-    const sortBy = attr === 'birthYear' ? sortYear : sortCode;
-    if (sortBy === false) {
-      attr = 'id';
+    const sortDirection =
+      attr === 'birthYear'
+        ? sortYear
+        : attr === 'code'
+        ? sortCode
+        : sortLastTest;
+
+    console.log(attr, sortDirection);
+
+    if (sortDirection === false) {
+      attr = 'lastTestTime';
     }
     setFxClients(
       clients.slice().sort((a, b) => {
-        if (sortBy) return a[attr] < b[attr] ? 1 : -1;
-        if (attr === 'id') return b[attr] - a[attr];
+        if (sortDirection && attr !== 'lastTestTime') {
+          return a[attr] < b[attr] ? 1 : -1;
+        }
+        if (attr === 'lastTestTime') {
+          const aCodeDate = a.lastTestTime
+            ? new Date(a.lastTestTime)
+            : new Date().setDate(new Date().getDate() + 1);
+          const bCodeDate = b.lastTestTime
+            ? new Date(b.lastTestTime)
+            : new Date().setDate(new Date().getDate() + 1);
+          if (sortDirection) {
+            return aCodeDate - bCodeDate;
+          }
+          return bCodeDate - aCodeDate;
+        }
         return a[attr] < b[attr] ? -1 : 1;
       })
     );
   }
 
   function handleSortCodeClick() {
-    setSortCode((prev) => (prev === false ? null : !prev));
+    setSortCode((prev) => {
+      if (prev === false) {
+        setSortLastTest(true);
+        return null;
+      }
+      return !prev;
+    });
+    // setSortCode((prev) => (prev === false ? null : !prev));
     setSortYear(null);
+    setSortLastTest(null);
     sort('code');
   }
 
   function handleSortYearClick() {
-    setSortYear((prev) => (prev === false ? null : !prev));
+    setSortYear((prev) => {
+      if (prev === false) {
+        setSortLastTest(true);
+        return null;
+      }
+      return !prev;
+    });
+    // setSortYear((prev) => (prev === false ? null : !prev));
     setSortCode(null);
+    setSortLastTest(null);
     sort('birthYear');
   }
 
   function handleStatusClick() {
     setStatus((prev) => (prev === 3 ? 1 : prev + 1));
+  }
+
+  function handleLastTestClick() {
+    setSortLastTest((prev) => !prev);
+    setSortCode(null);
+    setSortYear(null);
+    sort('lastTestTime');
   }
 
   function toggleCaret(sort) {
@@ -76,7 +121,9 @@ export default function ClientHeader({
           {status === 1 ? ' (A/T)' : status === 2 ? ' (A)' : ' (T)'}
         </span>
       </p>
-      <p className='clients-header c-h-4'>Last Test</p>
+      <p className='clients-header c-h-4' onClick={handleLastTestClick}>
+        Last Test <i className={toggleCaret(sortLastTest)}></i>
+      </p>
     </>
   );
 }

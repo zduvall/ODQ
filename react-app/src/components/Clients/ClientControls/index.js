@@ -20,7 +20,7 @@ export default function ClientControls() {
     <div className='client-controls'>
       <input
         className='form__input'
-        placeholder='Search code / year'
+        placeholder='Search client / born'
         value={searchClients}
         onChange={(e) => setSearchClients(e.target.value)}
         disabled={numClients < 1 || showForm}

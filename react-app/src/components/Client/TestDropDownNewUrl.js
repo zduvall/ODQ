@@ -47,15 +47,13 @@ export default function TestDropDownNewUrl() {
 
   return (
     <>
-      {showModal && (
-        <ModalNewUrl
-          showModal={showModal}
-          setShowModal={setShowModal}
-          newUrl={newUrl}
-          client={client}
-          test={dropdownTest}
-        />
-      )}
+      <ModalNewUrl
+        showModal={showModal}
+        setShowModal={setShowModal}
+        newUrl={newUrl}
+        client={client}
+        test={dropdownTest}
+      />
       <h2 className='primary-title cntr-txt-sml-margin'>New Test Link</h2>
       <form className='new-url-controls__form' onSubmit={onSubmit}>
         <select

@@ -90,14 +90,12 @@ export default function SelectedTest() {
 
   return (
     <>
-      {showInfoModal && (
-        <ModalInfoButton
-          showModal={showInfoModal}
-          setShowModal={setShowInfoModal}
-          title={'Score Interpretation'}
-          message={`${selectedTest.interpretation} \n\n(Note: click on individual datapoints to view test scores from that date)`}
-        />
-      )}
+      <ModalInfoButton
+        showModal={showInfoModal}
+        setShowModal={setShowInfoModal}
+        title={'Score Interpretation'}
+        message={`${selectedTest.interpretation} \n\n(Note: click on individual datapoints to view test scores from that date)`}
+      />
       <div className='site__sub-section flex-dir-col chart-container'>
         <i
           className='fas fa-info-circle top-right-grey'

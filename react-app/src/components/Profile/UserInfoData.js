@@ -27,16 +27,14 @@ export default function UserInfoData({ setShowUpdateUser }) {
 
   return (
     <div className='site__sub-section user__info'>
-      {showModal && (
-        <ModalConfirmButton
-          showModal={showModal}
-          setShowModal={setShowModal}
-          proceedAction={handleDeactivate}
-          message={
-            'Are you sure you want to deactivate your account? All associated data will be deleted.'
-          }
-        />
-      )}
+      <ModalConfirmButton
+        showModal={showModal}
+        setShowModal={setShowModal}
+        proceedAction={handleDeactivate}
+        message={
+          'Are you sure you want to deactivate your account? All associated data will be deleted.'
+        }
+      />
       <div className='site__sub-section__data'>
         <p>
           {firstName} {lastName}

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
 // import component
-import ModalClientFormInfo from '../components/ClientForm/ModalClientFormInfo';
+import ModalInfoButton from '../components/ModalInfoButton'
 import ModalConfirmButton from '../components/ModalConfirmButton';
 
 // import thunk
@@ -140,9 +140,11 @@ export default function ClientForm() {
 
   return (
     <div className='site__page'>
-      <ModalClientFormInfo
+      <ModalInfoButton
         showModal={showInfoModal}
         setShowModal={setShowInfoModal}
+        title={'Adding and updating clients'}
+        message={'DOT-21 does not store any HIPAA identifiers to protect confidentiality, only the client\'s birth year and a basic auto-generated code based on first name, last name, and creation date of the client. The code can be updated as needed by changing the respective inputs.'}
       />
       <ModalConfirmButton
         showModal={showDeleteModal}

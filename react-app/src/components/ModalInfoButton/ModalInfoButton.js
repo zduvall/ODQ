@@ -1,7 +1,7 @@
 export default function ModalConfirmButton({ title, message }) {
   return (
     <>
-      <h3 className='primary-title cntr-txt-sml-margin'>{title}</h3>
+      <h2 className='primary-title cntr-txt-sml-margin'>{title}</h2>
       <p className='new-line-on-slash-n'>{message}</p>
     </>
   );

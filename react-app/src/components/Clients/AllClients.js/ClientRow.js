@@ -36,7 +36,7 @@ export default function ClientRow({ status, client }) {
       <p style={toggleDisp}>{curClient ? 'A' : 'T'}</p>
       <p
         style={toggleDisp}
-        className={`${unseenTests.length ? 'secondary-title' : ''}`}
+        className={`${unseenTests.length ? 'primary-title' : ''}`}
       >
         {lastTestTime ? createDate(lastTestTime) : 'N/A'}
       </p>

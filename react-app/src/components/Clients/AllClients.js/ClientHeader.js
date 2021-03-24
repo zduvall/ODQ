@@ -53,21 +53,21 @@ export default function ClientHeader({
   return (
     <>
       <p
-        title='sort by client code'
+        title='Sort by client code'
         className='clients-header c-h-1'
         onClick={handleSortCodeClick}
       >
         Client <i className={toggleCaret(sortCode)}></i>
       </p>
       <p
-        title='sort by birth year'
+        title='Sort by birth year'
         className='clients-header'
         onClick={handleSortYearClick}
       >
         Born <i className={toggleCaret(sortYear)}></i>
       </p>
       <p
-        title='toggle clients shown by status (active or terminated)'
+        title='Toggle clients shown by status (active or terminated)'
         className='clients-header'
         onClick={handleStatusClick}
       >

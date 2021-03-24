@@ -21,7 +21,7 @@ export default function ClientAllTests() {
               key={testObj.code}
               className={`comp-tests__option ${
                 client.unseenTests.includes(testObj.code)
-                  ? 'secondary-title'
+                  ? 'primary-title'
                   : ''
               }`}
               onClick={() => {

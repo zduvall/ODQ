@@ -29,6 +29,4 @@ class Test(db.Model):
             "timeSent": self.timeSent,
             "timeComp": self.timeComp,
             "userSeen": self.userSeen,
-            "pro": self.pro.to_dict(),
-            "client": self.client.to_dict(),
         }

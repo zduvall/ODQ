@@ -38,13 +38,13 @@ export const scaleDifficulty = [
 
 // SWLS
 export const scaleAgreement = [
-  { value: 1, label: 'Strongly Disagree' },
-  { value: 2, label: 'Disagree' },
-  { value: 3, label: 'Slightly Disagree' },
-  { value: 4, label: 'Neither Agree or Disagree' },
-  { value: 5, label: 'Slightly Agree' },
-  { value: 6, label: 'Agree' },
-  { value: 7, label: 'Strongly Agree' },
+  { value: 0, label: 'Strongly Disagree' },
+  { value: 1, label: 'Disagree' },
+  { value: 2, label: 'Slightly Disagree' },
+  { value: 3, label: 'Neither Agree or Disagree' },
+  { value: 4, label: 'Slightly Agree' },
+  { value: 5, label: 'Agree' },
+  { value: 6, label: 'Strongly Agree' },
 ];
 
 // for chart annotations

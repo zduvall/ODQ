@@ -2,6 +2,7 @@
 const LOAD_CLIENTS = '/clients/LOAD_CLIENTS';
 const CREATE_CLIENT = '/clients/CREATE_CLIENT'; // also used for update
 const REMOVE_CLIENT = '/clients/REMOVE_CLIENT'; // also used for update
+const REMOVE_TEST = '/clients/REMOVE_TEST';
 
 // Action creators
 const load = (clients) => ({
@@ -18,6 +19,11 @@ const create = (client) => ({
 const remove = (clientId) => ({
   type: REMOVE_CLIENT,
   clientId,
+});
+
+const removeTest = (clientId, testId) => ({
+  type: REMOVE_TEST,
+  payload: { clientId, testId },
 });
 
 // Thunks
@@ -85,6 +91,33 @@ export const deleteClient = (clientId) => async (dispatch) => {
   }
 };
 
+export const deleteTest = (clientId, testId) => async (dispatch) => {
+  const res = await fetch(`/api/tests/${testId}`, {
+    method: 'DELETE',
+  });
+  if (res.ok) {
+    dispatch(removeTest(clientId, testId));
+  }
+};
+
+export const toggleSeen = (clientId, unseenTests) => async (dispatch) => {
+  const res = await fetch('/api/tests/toggle-seen', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ clientId, unseenTests }),
+  });
+  const updatedClient = await res.json();
+
+  if (res.ok) {
+    dispatch(create(updatedClient));
+    return updatedClient;
+  } else {
+    console.log("Didn't update seen tests");
+  }
+};
+
 // Reducer
 const initState = {};
 
@@ -102,6 +135,12 @@ const clientReducer = (state = initState, action) => {
       return newState;
     case REMOVE_CLIENT:
       delete newState[Number(action.clientId)];
+      return newState;
+    case REMOVE_TEST:
+      console.log('inside of reducer!!!', action.payload.clientId);
+      delete newState[Number(action.payload.clientId)].tests[
+        Number(action.payload.testId)
+      ];
       return newState;
     default:
       return newState;

@@ -23,4 +23,11 @@ class Client(db.Model):
             "code": self.code,
             "curClient": self.curClient,
             "pro": self.pro.to_dict(),
+            "tests": {test.id: test.to_dict() for test in self.tests},
+            "lastTestTime": self.tests[-1].to_dict()["timeComp"]
+            if self.tests
+            else None,
+            "unseenTests": [test.to_dict()["testCode"] for test in self.tests if not test.to_dict()["userSeen"]]
+            if self.tests
+            else False,
         }

@@ -1,0 +1,20 @@
+.PhoneInput {
+  background-color: rgb(255, 255, 255);
+}
+
+.PhoneInputInput {
+  border-color: transparent;
+  font-size: 1.1rem;
+  width: 50%;
+}
+
+.PhoneInputInput:focus {
+  background-color: var(--tertiary-color-light);
+}
+
+.add-data-prompt {
+  text-shadow: none;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--tertiary-color);
+}

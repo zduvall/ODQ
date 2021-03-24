@@ -41,12 +41,21 @@ const NavBar = () => {
     <>
       <NavLink
         className={navItemClass}
-        to='/dashboard'
+        to='/clients'
         exact
         activeClassName='nav__item-active'
         onClick={handleClick}
       >
-        Dashboard
+        Clients
+      </NavLink>
+      <NavLink
+        className={navItemClass}
+        to='/profile'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
+      >
+        Profile
       </NavLink>
       <button className={navItemClass} onClick={handleLogout}>
         Logout
@@ -58,7 +67,7 @@ const NavBar = () => {
     <>
       <NavLink
         className={navItemClass}
-        to='/signup'
+        to='/sign-up'
         exact
         activeClassName='nav__item-active'
         onClick={handleClick}
@@ -67,7 +76,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className={navItemClass}
-        to='/login'
+        to='/log-in'
         exact
         activeClassName='nav__item-active'
         onClick={handleClick}

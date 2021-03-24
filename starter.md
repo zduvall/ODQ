@@ -96,8 +96,8 @@ heroku container:release web -a edot
 ```bash
 # heroku run -a edot flask seed undo # if needed
 # heroku run -a edot flask db downgrade base # if needed
-heroku run -a edot flask db upgrade
-heroku run -a edot flask seed all
+heroku run -a edot flask db upgrade # if needed
+heroku run -a edot flask seed all # if needed
 ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.

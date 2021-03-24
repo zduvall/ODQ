@@ -60,7 +60,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 525px) {
   .splash__secondary-image {
     width: 80%;
   }

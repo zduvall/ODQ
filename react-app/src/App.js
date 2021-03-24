@@ -5,20 +5,22 @@ import { useSelector, useDispatch } from 'react-redux';
 // components
 import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import SplashPage from './components/SplashPage';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
-import Dashboard from './components/Dashboard';
-import ClientTests from './components/ClientTests';
-import TestTemplate from './components/TestTemplate';
+import SplashPage from './pages/SplashPage';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Clients from './pages/Clients';
+import Client from './pages/Client';
+import Profile from './pages/Profile';
+import ClientForm from './pages/ClientForm';
+import TestForm from './pages/TestForm';
 import Footer from './components/Footer';
 import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';
-import TermsOfUse from './components/auth/TermsOfUse';
+import TermsOfUse from './pages/TermsOfUse';
 
 // import thunks
 import { authenticateUser } from './store/session';
 import { getClients } from './store/clients';
-import { getTests } from './store/tests';
+// import { getTests } from './store/tests';
 
 // import custom width hook
 import { useWindowWidth } from './services/windowWidth';
@@ -40,7 +42,7 @@ function App() {
   useEffect(() => {
     if (sessionUser && sessionUser !== 'do not load') {
       dispatch(getClients(sessionUser.id));
-      dispatch(getTests(sessionUser.id));
+      // dispatch(getTests(sessionUser.id));
     }
   }, [dispatch, sessionUser]);
 
@@ -56,33 +58,54 @@ function App() {
         onDoubleClick={() => (width < 900 ? setShowNav((prev) => !prev) : {})}
       >
         <Switch>
-          <Route path='/login' exact={true}>
-            <LoginForm />
+          <Route path='/log-in' exact={true}>
+            <Login />
           </Route>
-          <Route path='/signup' exact={true}>
-            <SignUpForm />
+          <Route path='/sign-up' exact={true}>
+            <SignUp />
           </Route>
           <Route path='/' exact={true}>
             <SplashPage />
           </Route>
           <ProtectedRoute
-            path='/dashboard'
+            path='/clients'
             exact={true}
             authenticated={!!sessionUser}
           >
-            <Dashboard />
+            <Clients />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path='/clients/new'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <ClientForm />
           </ProtectedRoute>
           <ProtectedRoute
             path='/clients/:clientId'
             exact={true}
             authenticated={!!sessionUser}
           >
-            <ClientTests />
+            <Client />
           </ProtectedRoute>
-          <Route path='/test/:testCode/:userId/:clientId/:encURL' exact={true}>
-            <TestTemplate />
+          <ProtectedRoute
+            path='/clients/:clientId/edit'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <ClientForm />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path='/profile'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <Profile />
+          </ProtectedRoute>
+          <Route path='/test/:testCode/:userId/:clientId/:encURL' exact>
+            <TestForm />
           </Route>
-          <Route path='/terms-of-use'>
+          <Route path='/terms-of-use' exact>
             <TermsOfUse />
           </Route>
           <Route path='/'>

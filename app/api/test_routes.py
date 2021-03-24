@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 
-from app.models import Test, db
+from app.models import Test, Client, db
 from app.forms import TestForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -43,30 +43,26 @@ def createTest():
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-# @test_routes.route("/<int:testId>", methods=["PUT"])
-# @login_required
-# def updateTest(testId):
-#     """
-#     Update a test
-#     """
-#     form = testForm()
-#     form["csrf_token"].data = request.cookies["csrf_token"]
+@test_routes.route("/toggle-seen", methods=["PUT"])
+@login_required
+def updateTest():
+    """
+    Toggle unseen tests to be seen
+    """
 
-#     if form.validate_on_submit():
+    tests_to_update = request.json["unseenTests"]
+    clientId = request.json["clientId"]
 
-#         test_to_update = Test.query.get(testId)
+    for test in tests_to_update:
+        test_to_update = Test.query.get(test["id"])
+        test_to_update.userSeen = True
+        db.session.add(test_to_update)
 
-#         test_to_update.userId = form.data["userId"]
-#         test_to_update.birthYear = form.data["birthYear"]
-#         test_to_update.code = form.data["code"]
-#         test_to_update.curTest = form.data["curTest"]
+    db.session.commit()
 
-#         db.session.add(test_to_update)
-#         db.session.commit()
-#         return test_to_update.to_dict()
+    client_with_updated_tests = Client.query.get(clientId)
 
-#     print("-------errors-------", form.errors)
-#     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+    return client_with_updated_tests.to_dict()
 
 
 @test_routes.route("/<int:testId>", methods=["DELETE"])

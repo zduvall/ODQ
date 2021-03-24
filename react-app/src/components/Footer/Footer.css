@@ -22,7 +22,7 @@
   margin-right: 0.5rem;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 525px) {
   .footer__text {
     font-size: 0.7rem;
     text-align: center;

@@ -29,7 +29,8 @@ const SWLS = {
           Number(res.s1q2) +
           Number(res.s1q3) +
           Number(res.s1q4) +
-          Number(res.s1q5);
+          Number(res.s1q5) +
+          5;
         points.push(sumRes);
       });
       return points;
@@ -62,7 +63,7 @@ const SWLS = {
   sections: [
     {
       id: 1,
-      instructions: 'How much you agree or disagree with each statement?',
+      instructions: 'How much do you agree or disagree with each statement?',
       questions: [
         {
           id: 's1q1',

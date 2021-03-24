@@ -8,6 +8,10 @@ export default function DropdownTestInfo() {
 
   return (
     <div className='site__sub-section flex-dir-col'>
+      <i
+        class='fas fa-times top-right-grey'
+        onClick={() => setDropdownTest({ code: '' })}
+      ></i>
       <h2 className='primary-title cntr-txt-sml-margin'>{dropdownTest.name}</h2>
       <h3 className='tertiary-title cntr-txt-sml-margin'>
         ({dropdownTest.abbr})

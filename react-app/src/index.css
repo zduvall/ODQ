@@ -130,6 +130,22 @@ ul > li {
   flex-direction: column;
 }
 
+.top-right-grey {
+  position: absolute;
+  font-size: 1.1rem;
+  top: 0.65rem;
+  right: 0.65rem;
+  cursor: pointer;
+  color: var(--tertiary-color);
+}
+
+@media (max-width: 800px) {
+  .top-right-grey {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
 .site__sub-section__data {
   color: var(--tertiary-color-dark);
   padding: 0 1rem;
@@ -244,22 +260,6 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
 .delete-button:focus {
   color: var(--delete-color);
   border-color: var(--delete-color);
-}
-
-/* info button */
-.fa-info-circle {
-  position: absolute;
-  top: 0.9rem;
-  right: 0.9rem;
-  cursor: pointer;
-  color: var(--tertiary-color);
-}
-
-@media (max-width: 800px) {
-  .fa-info-circle {
-    top: 0.5rem;
-    right: 0.5rem;
-  }
 }
 
 /* --------------- titles and other text --------------- */

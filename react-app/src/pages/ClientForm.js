@@ -157,7 +157,7 @@ export default function ClientForm() {
       </h1>
       <div className='site__sub-section'>
         <i
-          className='fas fa-info-circle'
+          className='fas fa-info-circle top-right-grey'
           onClick={() => setShowInfoModal(true)}
         ></i>
         <form className='form' onSubmit={onSubmit}>

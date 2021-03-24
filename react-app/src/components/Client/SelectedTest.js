@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-// import component
+// import components
 import SelectedDataPoint from './SelectedDataPoint';
+import ModalInfoButton from '../ModalInfoButton';
 
 // import context
 import { useClientTestsContext } from '../../pages/Client';
@@ -21,6 +22,8 @@ Chart.plugins.register([ChartAnnotation]); // Global registering of plugin
 
 export default function SelectedTest() {
   const dispatch = useDispatch();
+  const [showInfoModal, setShowInfoModal] = useState();
+
   const {
     clientId,
     selectedTest,
@@ -87,10 +90,18 @@ export default function SelectedTest() {
 
   return (
     <>
+      {showInfoModal && (
+        <ModalInfoButton
+          showModal={showInfoModal}
+          setShowModal={setShowInfoModal}
+          title={'Score Interpretation'}
+          message={selectedTest.interpretation}
+        />
+      )}
       <div className='site__sub-section flex-dir-col chart-container'>
         <i
-          className='fas fa-info-circle'
-          // onClick={() => setShowInfoModal(true)}
+          className='fas fa-info-circle top-right-grey'
+          onClick={() => setShowInfoModal(true)}
         ></i>
         <h3 className='cntr-txt-sml-margin'>{selectedTest.name}</h3>
         <Line data={data} options={options} />

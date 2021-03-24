@@ -1,7 +1,7 @@
 import { useState, createContext, useContext } from 'react';
 
 // import components
-import ClientContorls from '../components/Clients/ClientControls';
+import ClientContorls from '../components/Clients/ClientsControls';
 import AllClients from '../components/Clients/AllClients.js';
 // import ClientFrom from '../components/ClientForm';
 

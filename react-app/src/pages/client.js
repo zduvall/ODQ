@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 
 // import components
 import ClientInfo from '../components/Client/ClientInfo';
-import NewUrlControls from '../components/Client/NewUrlControls';
-import ClientAllTests from '../components/Client/ClientAllTests';
+import ClientControls from '../components/Client/ClientControls';
+// import NewUrlControls from '../components/Client/NewUrlControls';
+// import ClientAllTests from '../components/Client/ClientAllTests';
 import SelectedTest from '../components/Client/SelectedTest';
 import DropdownTestInfo from '../components/Client/DropdownTestInfo';
 import LoadingNotFoundInvalid from '../components/LoadingNotFoundInvalid';
@@ -22,13 +23,12 @@ export default function ClientTests() {
   const [dropdownTest, setDropdownTest] = useState({ code: '' });
   const [datapoint, setDatapoint] = useState(null);
 
-  
   // params and store
   const { clientId } = useParams();
   const client = useSelector((state) => state.clients[clientId]);
-  
+
   if (!client) return <LoadingNotFoundInvalid message={'Loading eDOT...'} />;
-  
+
   const clientTests = Object.values(client.tests);
 
   // tests this client has completed (as an array of codes (strings) and array of objects)
@@ -59,13 +59,15 @@ export default function ClientTests() {
         <h1 className='primary-title'>{client.code}</h1>
         <ClientInfo />
         <div className='one1rem-ht' />
-        <NewUrlControls />
+        <ClientControls />
         <div className='one1rem-ht' />
-        {!dropdownTest.code && <ClientAllTests />}
+        {/* <NewUrlControls />
+        <div className='one1rem-ht' /> */}
+        {/* {!dropdownTest.code && <ClientAllTests />} */}
         {dropdownTest.code && <DropdownTestInfo />}
         {!dropdownTest.code && selectedTest && (
           <>
-            <div className='one1rem-ht' />
+            {/* <div className='one1rem-ht' /> */}
             <SelectedTest />
           </>
         )}

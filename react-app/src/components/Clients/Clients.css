@@ -1,5 +1,5 @@
 /* clients */
-.client-controls {
+.clients-controls {
   display: flex;
   width: 47rem;
   max-width: 100%;
@@ -8,16 +8,16 @@
   padding: 0.25rem 0;
 }
 
-.client-controls > input {
+.clients-controls > input {
   margin-left: 0 !important;
 }
 
-.client-controls__button {
+.clients-controls__button {
   margin-right: 0 !important;
 }
 
 @media (max-width: 475px) {
-  .client-controls__button {
+  .clients-controls__button {
     max-width: 6.5rem !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -110,7 +110,6 @@
   }
 }
 
-
 @media (max-width: 640px) {
   .clients-row {
     font-size: 1rem;
@@ -122,7 +121,7 @@
     font-size: 1.1rem;
   }
   .clients-row {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }
 

@@ -4,20 +4,16 @@ import { useHistory } from 'react-router-dom';
 import { useClientsContext } from '../../../pages/Clients';
 
 // import css
-import '../Clients.css'
+import '../Clients.css';
 
 export default function ClientControls() {
   const history = useHistory();
-  const {
-    searchClients,
-    setSearchClients,
-    showForm,
-  } = useClientsContext();
+  const { searchClients, setSearchClients, showForm } = useClientsContext();
 
   const numClients = useSelector((state) => Object.keys(state.clients).length);
 
   return (
-    <div className='client-controls'>
+    <div className='clients-controls'>
       <input
         className='form__input'
         placeholder='Search client / born'
@@ -34,7 +30,7 @@ export default function ClientControls() {
         style={numClients < 1 || showForm ? { cursor: 'no-drop' } : {}}
       ></input>
       <button
-        className='primary-button client-controls__button'
+        className='primary-button clients-controls__button'
         onClick={() => history.push('/clients/new')}
         disabled={showForm}
       >

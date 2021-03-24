@@ -1,8 +1,12 @@
+.client-controls {
+  align-items: flex-start !important;
+}
+
 .new-url-controls__form {
   display: flex;
-  flex-direction: row;
   width: 100%;
   max-width: 24rem;
+  margin: auto;
 }
 
 /* new url modal */
@@ -19,12 +23,9 @@
 
 /* completed tests (test results)*/
 
-.comp-tests__title {
-  margin: 0;
-}
-
 .comp-tests__list {
   padding-inline-start: 0;
+  margin: 0;
   text-align: center;
 }
 

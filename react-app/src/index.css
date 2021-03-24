@@ -130,6 +130,10 @@ ul > li {
   flex-direction: column;
 }
 
+.width-100 {
+  width: 100%;
+}
+
 .top-right-grey {
   position: absolute;
   font-size: 1.1rem;

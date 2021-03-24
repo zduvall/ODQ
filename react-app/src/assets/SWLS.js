@@ -29,7 +29,8 @@ const SWLS = {
           Number(res.s1q2) +
           Number(res.s1q3) +
           Number(res.s1q4) +
-          Number(res.s1q5);
+          Number(res.s1q5) +
+          5;
         points.push(sumRes);
       });
       return points;

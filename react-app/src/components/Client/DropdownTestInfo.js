@@ -46,12 +46,6 @@ export default function DropdownTestInfo() {
           More Information
         </p>
       </div>
-      <button
-        className='delete-button'
-        onClick={() => setDropdownTest({ code: '' })}
-      >
-        Back
-      </button>
     </div>
   );
 }

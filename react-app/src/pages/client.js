@@ -5,8 +5,6 @@ import { useParams } from 'react-router-dom';
 // import components
 import ClientInfo from '../components/Client/ClientInfo';
 import ClientControls from '../components/Client/ClientControls';
-// import NewUrlControls from '../components/Client/NewUrlControls';
-// import ClientAllTests from '../components/Client/ClientAllTests';
 import SelectedTest from '../components/Client/SelectedTest';
 import DropdownTestInfo from '../components/Client/DropdownTestInfo';
 import LoadingNotFoundInvalid from '../components/LoadingNotFoundInvalid';
@@ -61,13 +59,9 @@ export default function ClientTests() {
         <div className='one1rem-ht' />
         <ClientControls />
         <div className='one1rem-ht' />
-        {/* <NewUrlControls />
-        <div className='one1rem-ht' /> */}
-        {/* {!dropdownTest.code && <ClientAllTests />} */}
         {dropdownTest.code && <DropdownTestInfo />}
         {!dropdownTest.code && selectedTest && (
           <>
-            {/* <div className='one1rem-ht' /> */}
             <SelectedTest />
           </>
         )}

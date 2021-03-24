@@ -15,7 +15,17 @@ export default function CompletedTests() {
   return (
     <>
       <h2 className='primary-title cntr-txt-sml-margin'>Test Results</h2>
-      <ul className='comp-tests__list'>
+      <ul
+        className={`comp-tests__list ${
+          compTestObjs.length >= 7
+            ? 'seven-or-more'
+            : compTestObjs.length >= 5
+            ? 'five-or-more'
+            : compTestObjs.length >= 2
+            ? 'two-or-more'
+            : ''
+        }`}
+      >
         {compTestObjs.map((testObj) => {
           return (
             <li

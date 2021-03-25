@@ -3,7 +3,7 @@ import json
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 
-from app.models import Client, db
+from app.models import Client, User, db
 from app.forms import ClientForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -99,13 +99,18 @@ def checkBirthYear(clientId, yearToCheck):
     return json.dumps(validated)
 
 
-@client_routes.route("/check-test-link/<int:userId>/<int:clientId>")
-def checkClientAndPro(userId, clientId):
+@client_routes.route("/check-test-link/<int:userId>/<int:clientId>/<path:testCode>")
+def checkClientAndPro(userId, clientId, testCode):
     """
     Used to confirm that a test link is valid (url for connected client and professional)
     """
 
     client = Client.query.get(clientId)
+
+    freeTests = ["ACE", "SWLS"]
+    user = User.query.get(userId)
+    if not user.premium and testCode not in freeTests:
+        return json.dumps(False)
 
     if client:
         validUrl = client.pro.id == userId

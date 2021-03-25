@@ -7,8 +7,8 @@ import PremiumRequired from './PremiumRequired';
 // import context
 import { Modal } from '../../../context/Modal';
 
-// import free tests
-import { freeTests } from '../../../assets';
+// import check premium function
+import checkPremium from '../../../services/checkPremium';
 
 export default function ModalNewUrl({
   showModal,
@@ -17,14 +17,7 @@ export default function ModalNewUrl({
   newUrl,
   test,
 }) {
-  const sessionUser = useSelector((state) => state.session.user);
-
-  function checkPremium() {
-    if (!sessionUser.premium && !freeTests.includes(test.code)) {
-      return false;
-    }
-    return true;
-  }
+  const premium = useSelector((state) => state.session.user.premium);
 
   return (
     <>
@@ -33,7 +26,9 @@ export default function ModalNewUrl({
           {checkPremium() && (
             <NewUrl newUrl={newUrl} client={client} test={test} />
           )}
-          {!checkPremium() && <PremiumRequired testAbbr={test.abbr} />}
+          {!checkPremium(premium, test.code) && (
+            <PremiumRequired testAbbr={test.abbr} />
+          )}
         </Modal>
       )}
     </>

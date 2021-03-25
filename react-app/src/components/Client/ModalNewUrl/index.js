@@ -23,7 +23,7 @@ export default function ModalNewUrl({
     <>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          {checkPremium() && (
+          {checkPremium(premium, test.code) && (
             <NewUrl newUrl={newUrl} client={client} test={test} />
           )}
           {!checkPremium(premium, test.code) && (

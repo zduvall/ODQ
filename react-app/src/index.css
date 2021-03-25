@@ -287,6 +287,13 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   text-align: center;
 }
 
+.clickable-link {
+  text-decoration: underline;
+  color: var(--primary-color-light);
+  cursor: pointer;
+  word-break: break-all;
+}
+
 .underline {
   text-decoration: underline;
 }
@@ -385,13 +392,6 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
 }
 
 /* --------------- other --------------- */
-
-.clickable-link {
-  text-decoration: underline;
-  color: var(--primary-color-light);
-  cursor: pointer;
-  word-break: break-all;
-}
 
 .one1rem-ht {
   height: 1rem;

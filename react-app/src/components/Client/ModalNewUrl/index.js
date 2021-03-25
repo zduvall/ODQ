@@ -33,7 +33,7 @@ export default function ModalNewUrl({
           {checkPremium() && (
             <NewUrl newUrl={newUrl} client={client} test={test} />
           )}
-          {!checkPremium() && <PremiumRequired />}
+          {!checkPremium() && <PremiumRequired testAbbr={test.abbr} />}
         </Modal>
       )}
     </>

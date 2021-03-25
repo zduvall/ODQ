@@ -5,6 +5,7 @@ import PHQ9 from './PHQ9';
 import SWLS from './SWLS';
 
 const tests = { ACE, GAD7, PCL5, PHQ9, SWLS };
+export const freeTests = [ACE.code, SWLS.code];
 
 export function horizontalAnnotation(
   yValue,

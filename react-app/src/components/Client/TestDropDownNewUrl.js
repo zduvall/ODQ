@@ -13,6 +13,9 @@ import { useClientTestsContext } from '../../pages/Client';
 // import tests
 import tests from '../../assets';
 
+// import check premium
+import checkPremium from '../../services/checkPremium';
+
 // import css
 import './Client.css';
 
@@ -69,7 +72,9 @@ export default function TestDropDownNewUrl() {
           </option>
           {Object.values(tests).map((t) => (
             <option value={t.code} key={t.code}>
-              {t.abbr}
+              {t.abbr}{' '}
+              {checkPremium(sessionUser.premium, t.code) ? '' : '*'}
+              {/* {checkPremium(sessionUser.premium, t.code) ? '' : `${'\uf5a2'}`} */}
             </option>
           ))}
         </select>

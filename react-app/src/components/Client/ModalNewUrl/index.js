@@ -1,5 +1,6 @@
-// import component
+// import components
 import NewUrl from './NewUrl';
+import PremiumRequired from './PremiumRequired';
 
 // import context
 import { Modal } from '../../../context/Modal';

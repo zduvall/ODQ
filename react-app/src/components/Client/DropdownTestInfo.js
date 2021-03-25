@@ -20,13 +20,19 @@ export default function DropdownTestInfo() {
         class='fas fa-times top-right-grey'
         onClick={() => setDropdownTest({ code: '' })}
       ></i>
-      <h2 className='primary-title cntr-txt-sml-margin'>{dropdownTest.name}</h2>
+      <h2 className='primary-title cntr-txt-sml-margin'>
+        {dropdownTest.name}{' '}
+        {checkPremium(premium, dropdownTest.code) ? (
+          ''
+        ) : (
+          <i
+            title={'Premium tests are available to subscribing users'}
+            class='fas fa-medal'
+          ></i>
+        )}
+      </h2>
       <h3 className='tertiary-title cntr-txt-sml-margin'>
-        ({dropdownTest.abbr}
-        {checkPremium(premium, dropdownTest.code)
-          ? ''
-          : '- requires subscription'}
-        )
+        ({dropdownTest.abbr})
       </h3>
       <div className='test-descriptions-text'>
         <p className='new-line-on-slash-n'>

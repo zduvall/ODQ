@@ -306,6 +306,10 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   white-space: pre-line;
 }
 
+.fa-medal {
+  cursor: help;
+}
+
 /* --------------- Forms --------------- */
 .form-container {
   display: flex;

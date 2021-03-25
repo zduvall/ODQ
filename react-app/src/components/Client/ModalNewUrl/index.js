@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 // import components
 import NewUrl from './NewUrl';
 import PremiumRequired from './PremiumRequired';
@@ -12,11 +14,24 @@ export default function ModalNewUrl({
   newUrl,
   test,
 }) {
+  const sessionUser = useSelector((state) => state.session.user);
+
+  function checkPremium() {
+    const freeTests = ['ACE', 'SWLS'];
+    if (!sessionUser.premium && !freeTests.includes(test.code)) {
+      return false;
+    }
+    return true;
+  }
+
   return (
     <>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <NewUrl newUrl={newUrl} client={client} test={test} />
+          {checkPremium() && (
+            <NewUrl newUrl={newUrl} client={client} test={test} />
+          )}
+          {!checkPremium() && <PremiumRequired />}
         </Modal>
       )}
     </>

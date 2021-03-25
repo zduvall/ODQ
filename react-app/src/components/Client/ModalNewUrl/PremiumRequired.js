@@ -5,11 +5,15 @@ export default function PremiumRequired({ testAbbr }) {
   return (
     <>
       <h2 className='cntr-txt-sml-margin primary-title'>
-        Premium Test <i class='fas fa-medal'></i>
+        Premium Test{' '}
+        <i
+          class='fas fa-medal'
+          title={'Badge indicates premium tests available to subscribing users'}
+        ></i>
       </h2>
       <p>
-        The {`${testAbbr}`} other tests are available to premium users.
-        Please consider our{' '}
+        The {`${testAbbr}`} other tests are available to premium users. Please
+        consider our{' '}
         <span
           className='clickable-link'
           onClick={() => history.push('/profile')}

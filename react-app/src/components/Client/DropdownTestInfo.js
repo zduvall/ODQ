@@ -26,7 +26,9 @@ export default function DropdownTestInfo() {
           ''
         ) : (
           <i
-            title={'Premium tests are available to subscribing users'}
+            title={
+              'Badge indicates premium tests available to subscribing users'
+            }
             class='fas fa-medal'
           ></i>
         )}

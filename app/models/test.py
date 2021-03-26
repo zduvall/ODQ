@@ -12,7 +12,6 @@ class Test(db.Model):
     clientId = db.Column(db.Integer, db.ForeignKey("clients.id"), nullable=False)
     testCode = db.Column(db.String(20), nullable=False)
     res = db.Column(db.JSON)
-    timeSent = db.Column(db.DateTime)
     timeComp = db.Column(db.DateTime, default=datetime.utcnow)
     userSeen = db.Column(db.Boolean, default=False)
 
@@ -26,7 +25,6 @@ class Test(db.Model):
             "clientId": self.clientId,
             "testCode": self.testCode,
             "res": json.dumps(self.res),
-            "timeSent": self.timeSent,
             "timeComp": self.timeComp,
             "userSeen": self.userSeen,
         }

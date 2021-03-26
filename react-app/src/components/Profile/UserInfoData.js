@@ -18,7 +18,15 @@ export default function UserInfoData({ setShowUpdateUser }) {
 
   const [showModal, setShowModal] = useState(false);
 
-  const { firstName, lastName, lic, pxName, phone, email } = sessionUser;
+  const {
+    firstName,
+    lastName,
+    lic,
+    pxName,
+    phone,
+    email,
+    premium,
+  } = sessionUser;
 
   const handleDeactivate = () => {
     dispatch(deleteUser(sessionUser.id));
@@ -38,7 +46,15 @@ export default function UserInfoData({ setShowUpdateUser }) {
       <div className='site__sub-section__data'>
         <p>
           {firstName} {lastName}
-          {lic ? `, ${lic}` : ''}
+          {lic ? `, ${lic}` : ''}{' '}
+          {premium ? (
+            <i
+              title={'As a subscribing user, you have access to all tests!'}
+              class='fas fa-medal medal-w-title primary-title'
+            ></i>
+          ) : (
+            ''
+          )}
         </p>
         <p>{pxName}</p>
         <p>{phone}</p>

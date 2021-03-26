@@ -64,7 +64,7 @@ export default function TestForm() {
 
     async function checkValidUserClientCombo() {
       const res = await fetch(
-        `/api/clients/check-test-link/${userId}/${clientId}`
+        `/api/clients/check-test-link/${userId}/${clientId}/${testCode}`
       );
       const validUCCombo = await res.json();
       if (res.ok) setValidUrl(validUCCombo);

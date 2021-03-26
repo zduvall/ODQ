@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     lic = db.Column(db.String(20))
     pxName = db.Column(db.String(100))
     phone = db.Column(db.String(20))
+    premium = db.Column(db.Boolean, default=False)
 
     clients = db.relationship("Client", back_populates="pro", cascade="all, delete-orphan")
     tests = db.relationship("Test", back_populates="pro")
@@ -38,4 +39,5 @@ class User(db.Model, UserMixin):
             "lic": self.lic,
             "pxName": self.pxName,
             "phone": self.phone,
+            "premium": self.premium,
         }

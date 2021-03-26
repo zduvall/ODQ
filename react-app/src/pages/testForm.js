@@ -45,8 +45,6 @@ export default function TestForm() {
       body: JSON.stringify(testInfo),
     });
 
-    console.log(res);
-
     if (res.ok) setTestComplete(true);
   }
 

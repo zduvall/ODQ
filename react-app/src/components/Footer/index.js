@@ -5,7 +5,17 @@ export default function Footer() {
   if (window.location.pathname.startsWith('/test')) return null;
   return (
     <div className='footer'>
-      <p className='footer__text'>Designed & coded by Zachary Duvall, LCSW</p>
+      <p className='footer__text'>
+        Designed & coded by{' '}
+        <a
+          href={'https://zduvall.github.io/'}
+          target={'blank'}
+          className='clickable-link'
+        >
+          Zachary Duvall
+        </a>
+        , LCSW
+      </p>
       <i
         onClick={() =>
           window.open('https://www.linkedin.com/in/zachary-duvall/', '_blank')

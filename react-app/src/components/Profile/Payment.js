@@ -57,6 +57,7 @@ export default function Payment({ setShowPayment }) {
       // });
 
       const res = await fetch(`/api/payment_intents`, {
+        // not sure if this is formatted right; guessed based on the axios example
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

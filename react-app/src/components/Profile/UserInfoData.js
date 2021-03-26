@@ -11,7 +11,7 @@ import ModalConfirmButton from '../ModalConfirmButton';
 // import css
 import './User.css';
 
-export default function UserInfoData({ setShowUpdateUser }) {
+export default function UserInfoData({ setShowUpdateUser, setShowPayment }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -68,6 +68,12 @@ export default function UserInfoData({ setShowUpdateUser }) {
       <div className='buttons-grp-colLrg-rowSml'>
         <button
           className='primary-button dashboard__button'
+          onClick={() => setShowPayment((prev) => !prev)}
+        >
+          Premium
+        </button>
+        <button
+          className='secondary-button dashboard__button'
           onClick={() => setShowUpdateUser((prev) => !prev)}
         >
           Update

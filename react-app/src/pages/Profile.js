@@ -6,6 +6,7 @@ import Payment from '../components/Profile/Payment';
 
 export default function User() {
   const [showUpdateUser, setShowUpdateUser] = useState(false);
+  const [showPayment, setShowPayment] = useState(true);
 
   return (
     <div>
@@ -14,9 +15,14 @@ export default function User() {
         <Profile
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
+          setShowPayment={setShowPayment}
         />
-        <div className='one1rem-ht' />
-        <Payment />
+        {showPayment && (
+          <>
+            <div className='one1rem-ht' />
+            <Payment setShowPayment={setShowPayment} />
+          </>
+        )}
       </div>
       <div className='one1rem-ht' />
     </div>

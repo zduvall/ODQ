@@ -57,10 +57,10 @@ export default function TestForm() {
       .toString()
       .slice(0, 15);
 
-    // if (expectedEncURL !== encURL) {
-    //   setValidUrl(false);
-    //   return;
-    // }
+    if (expectedEncURL !== encURL) {
+      setValidUrl(false);
+      return;
+    }
 
     async function checkValidUserClientCombo() {
       const res = await fetch(

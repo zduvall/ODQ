@@ -13,7 +13,7 @@ import './index.css';
 // stripe imoprts and setup
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-const stripePromise = loadStripe(process.env.PUBLISHABLE_KEY);
+const stripePromise = loadStripe(`${process.env.PUBLISHABLE_KEY}`);
 
 // set up store
 const store = configureStore();
@@ -27,7 +27,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ModalProvider>
-        <Elements stripte={stripePromise}>
+        <Elements stripe={stripePromise}>
           <App />
         </Elements>
       </ModalProvider>

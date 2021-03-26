@@ -1,7 +1,25 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+// stripe imports
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+
+// const CardElementContainer = styled.div`
+//   height: 40px;
+//   display: flex;
+//   align-items: center;
+
+//   & .StripeElement {
+//     width: 100%;
+//     padding: 15px;
+//   }
+// `;
+
 export default function Payment({ setShowPayment }) {
+  // stripe
+  const stripe = useStripe();
+  const elements = useElements();
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const [errors, setErrors] = useState([]);
@@ -14,12 +32,87 @@ export default function Payment({ setShowPayment }) {
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
 
-  function onSubmit(e) {
-    e.preventDefault();
-    const data = { email, address, city, state, zip };
+  const [isProcessing, setProcessingTo] = useState();
 
-    console.log(data);
+  async function onSubmit(e) {
+    e.preventDefault();
+    const billingDetails = {
+      name,
+      email,
+      address: {
+        city,
+        line1: address,
+        state,
+        postal_code: zip,
+      },
+    };
+
+    setProcessingTo(true);
+
+    const cardElement = elements.getElement('card');
+
+    try {
+      // const { data: clientSecret } = await axios.post('/api/payment_intents', {
+      //   amount: price * 100,
+      // });
+
+      const res = await fetch(`/api/payment_intents`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ amount: 100 }),
+      });
+
+      const { data: clientSecret } = await res.json();
+
+      const paymentMethodReq = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+        billing_details: billingDetails,
+      });
+
+      if (paymentMethodReq.error) {
+        setErrors(paymentMethodReq.error.message);
+        setProcessingTo(false);
+        return;
+      }
+
+      const { error } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: paymentMethodReq.paymentMethod.id,
+      });
+
+      if (error) {
+        setErrors(error.message);
+        setProcessingTo(false);
+        return;
+      }
+
+      // onSuccessfulCheckout();
+    } catch (err) {
+      setErrors(err.message);
+    }
+    console.log(billingDetails);
   }
+
+  const cardElementOptions = {
+    style: {
+      base: {
+        fontSize: '1.2rem',
+        backgroundColor: 'white',
+        '::placeholder': {
+          fontSize: '1.2rem',
+        },
+      },
+      invalid: {
+        color: 'rgb(173, 0, 0)',
+        iconColor: 'rgb(173, 0, 0)',
+      },
+      complete: {},
+    },
+    hidePostalCode: true, // maybe not needed
+  };
+
   return (
     <div className='site__sub-section form-container'>
       <form className='form' onSubmit={onSubmit}>
@@ -85,13 +178,19 @@ export default function Payment({ setShowPayment }) {
               className='form__input'
             ></input>
           </div>
+          <div className='form-row payment-row'>
+            {/* <div className='payment-input'> */}
+            <CardElement options={cardElementOptions} />
+            {/* </div> */}
+          </div>
         </div>
         <div className='form__row buttons-grp-colLrg-rowSml'>
           <button
             className='primary-button form__button dashboard__button'
             type='submit'
+            disabled={isProcessing}
           >
-            Subscribe
+            {isProcessing ? 'Processing...' : 'Subscribe'}
           </button>
           <button
             className='secondary-button form__button dashboard__button'

@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 // import components
 import Profile from '../components/Profile';
+import Payment from '../components/Profile/Payment';
 
 export default function User() {
   const [showUpdateUser, setShowUpdateUser] = useState(false);
@@ -14,6 +15,8 @@ export default function User() {
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
         />
+        <div className='one1rem-ht' />
+        <Payment />
       </div>
       <div className='one1rem-ht' />
     </div>

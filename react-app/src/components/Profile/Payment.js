@@ -43,11 +43,6 @@ export default function Payment({ setShowPayment }) {
 
     // createCustomer(billingDetails.address);
 
-
-
-
-
-
     // const cardElement = elements.getElement('card');
 
     // try {
@@ -115,6 +110,9 @@ export default function Payment({ setShowPayment }) {
 
   return (
     <div className='site__sub-section form-container'>
+      <h2 className='tertiary-title cntr-txt-sml-margin'>
+        Access all tests - $5 per month
+      </h2>
       <form className='form' onSubmit={onSubmit}>
         <div className='site__sub-section__data'>
           <div className='errors-container'>

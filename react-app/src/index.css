@@ -306,7 +306,7 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   white-space: pre-line;
 }
 
-.fa-medal {
+.medal-w-title {
   cursor: help;
 }
 

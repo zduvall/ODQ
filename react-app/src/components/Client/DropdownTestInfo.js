@@ -22,15 +22,13 @@ export default function DropdownTestInfo() {
       ></i>
       <h2 className='primary-title cntr-txt-sml-margin'>
         {dropdownTest.name}{' '}
-        {checkPremium(premium, dropdownTest.code) ? (
-          ''
-        ) : (
+        {checkPremium(premium) ? (
           <i
-            title={
-              'Badge indicates premium tests available to subscribing users'
-            }
-            class='fas fa-medal'
+            title={'Subscribing users have access to premium tests'}
+            class='fas fa-medal medal-w-title'
           ></i>
+        ) : (
+          ''
         )}
       </h2>
       <h3 className='tertiary-title cntr-txt-sml-margin'>

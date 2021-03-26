@@ -6,7 +6,7 @@ import Payment from '../components/Profile/Payment';
 
 export default function User() {
   const [showUpdateUser, setShowUpdateUser] = useState(false);
-  const [showPayment, setShowPayment] = useState(true);
+  const [showPayment, setShowPayment] = useState(false);
 
   return (
     <div>

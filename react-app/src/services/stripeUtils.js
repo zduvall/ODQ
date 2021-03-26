@@ -1,4 +1,4 @@
-export default async function createCustomer(billingEmail) {
+export async function createCustomer(billingEmail) {
   const res = fetch('/create-customer', {
     method: 'post',
     headers: {

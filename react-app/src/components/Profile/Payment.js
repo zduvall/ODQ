@@ -41,7 +41,12 @@ export default function Payment({ setShowPayment }) {
 
     setProcessingTo(true);
 
-    createCustomer(billingDetails.address);
+    // createCustomer(billingDetails.address);
+
+
+
+
+
 
     // const cardElement = elements.getElement('card');
 

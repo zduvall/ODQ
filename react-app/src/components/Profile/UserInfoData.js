@@ -16,7 +16,8 @@ export default function UserInfoData({ setShowUpdateUser, setShowPayment }) {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showDeactivateModal, setShowDeactivateModal] = useState(false);
+  const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
 
   const {
     firstName,
@@ -33,14 +34,26 @@ export default function UserInfoData({ setShowUpdateUser, setShowPayment }) {
     history.push('/');
   };
 
+  const handleUnsubscribe = () => {
+    console.log('Unsubscribed!!!');
+  };
+
   return (
     <div className='site__sub-section user__info'>
       <ModalConfirmButton
-        showModal={showModal}
-        setShowModal={setShowModal}
+        showModal={showDeactivateModal}
+        setShowModal={setShowDeactivateModal}
         proceedAction={handleDeactivate}
         message={
           'Are you sure you want to deactivate your account? All associated data will be deleted.'
+        }
+      />
+      <ModalConfirmButton
+        showModal={showUnsubscribeModal}
+        setShowModal={setShowUnsubscribeModal}
+        proceedAction={handleUnsubscribe}
+        message={
+          'Are you sure you would like to unsubscribe? Premium tests will no longer be accessible.'
         }
       />
       <div className='site__sub-section__data'>
@@ -67,20 +80,30 @@ export default function UserInfoData({ setShowUpdateUser, setShowPayment }) {
       </div>
       <div className='buttons-grp-colLrg-rowSml'>
         <button
-          className='primary-button dashboard__button'
-          onClick={() => setShowPayment((prev) => !prev)}
-        >
-          Premium
-        </button>
-        <button
           className='secondary-button dashboard__button'
           onClick={() => setShowUpdateUser((prev) => !prev)}
         >
           Update
         </button>
+        {!sessionUser.premium && (
+          <button
+            className='primary-button dashboard__button'
+            onClick={() => setShowPayment((prev) => !prev)}
+          >
+            Premium
+          </button>
+        )}
+        {sessionUser.premium && (
+          <button
+            className='delete-button dashboard__button'
+            onClick={() => setShowUnsubscribeModal(true)}
+          >
+            Unsubscribe
+          </button>
+        )}
         <button
           className='delete-button dashboard__button'
-          onClick={() => setShowModal(true)}
+          onClick={() => setShowDeactivateModal(true)}
         >
           Deactivate
         </button>

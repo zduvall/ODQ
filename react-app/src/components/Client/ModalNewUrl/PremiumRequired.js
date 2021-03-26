@@ -7,7 +7,7 @@ export default function PremiumRequired({ testAbbr }) {
       <h2 className='cntr-txt-sml-margin primary-title'>
         Premium Test{' '}
         <i
-          class='fas fa-medal medal-w-title'
+          className='fas fa-medal medal-w-title'
           title={'Subscribing users have access to premium tests'}
         ></i>
       </h2>

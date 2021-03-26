@@ -1,7 +1,7 @@
 import phonenumbers
 
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, BooleanField
 from wtforms.validators import DataRequired, Email, ValidationError, Length
 from app.models import User
 
@@ -71,3 +71,4 @@ class UpdateUserForm(FlaskForm):
         "phone",
         validators=[validate_phone],
     )
+    premium = BooleanField("premium", default=False)

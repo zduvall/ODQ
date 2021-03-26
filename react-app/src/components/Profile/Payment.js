@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // stripe imports
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -7,11 +7,12 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 // local stripe utils
 import { createCustomer } from '../../services/stripeUtils';
 
-export default function Payment({ setShowPayment }) {
+export default function Payment({ setShowPayment, handleToggleSubscribe }) {
   // stripe
   const stripe = useStripe();
   const elements = useElements();
 
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
   const [errors, setErrors] = useState([]);
@@ -40,6 +41,10 @@ export default function Payment({ setShowPayment }) {
     };
 
     setProcessingTo(true);
+
+    if ('everything okay!!!!') {
+      handleToggleSubscribe(true);
+    }
 
     // createCustomer(billingDetails.address);
 

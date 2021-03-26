@@ -17,7 +17,7 @@ export default function DropdownTestInfo() {
   return (
     <div className='site__sub-section flex-dir-col'>
       <i
-        class='fas fa-times top-right-grey'
+        className='fas fa-times top-right-grey'
         onClick={() => setDropdownTest({ code: '' })}
       ></i>
       <h2 className='primary-title cntr-txt-sml-margin'>
@@ -25,7 +25,7 @@ export default function DropdownTestInfo() {
         {checkPremium(premium) ? (
           <i
             title={'Subscribing users have access to premium tests'}
-            class='fas fa-medal medal-w-title'
+            className='fas fa-medal medal-w-title'
           ></i>
         ) : (
           ''

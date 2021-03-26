@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
@@ -11,7 +11,11 @@ import ModalConfirmButton from '../ModalConfirmButton';
 // import css
 import './User.css';
 
-export default function UserInfoData({ setShowUpdateUser, setShowPayment }) {
+export default function UserInfoData({
+  setShowUpdateUser,
+  setShowPayment,
+  handleToggleSubscribe,
+}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -34,10 +38,6 @@ export default function UserInfoData({ setShowUpdateUser, setShowPayment }) {
     history.push('/');
   };
 
-  const handleUnsubscribe = () => {
-    console.log('Unsubscribed!!!');
-  };
-
   return (
     <div className='site__sub-section user__info'>
       <ModalConfirmButton
@@ -51,7 +51,7 @@ export default function UserInfoData({ setShowUpdateUser, setShowPayment }) {
       <ModalConfirmButton
         showModal={showUnsubscribeModal}
         setShowModal={setShowUnsubscribeModal}
-        proceedAction={handleUnsubscribe}
+        proceedAction={handleToggleSubscribe}
         message={
           'Are you sure you would like to unsubscribe? Premium tests will no longer be accessible.'
         }
@@ -63,7 +63,7 @@ export default function UserInfoData({ setShowUpdateUser, setShowPayment }) {
           {premium ? (
             <i
               title={'As a subscribing user, you have access to all tests!'}
-              class='fas fa-medal medal-w-title primary-title'
+              className='fas fa-medal medal-w-title primary-title'
             ></i>
           ) : (
             ''

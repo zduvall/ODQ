@@ -5,6 +5,7 @@ export default function UserInfo({
   showUpdateUser,
   setShowUpdateUser,
   setShowPayment,
+  handleToggleSubscribe,
 }) {
   if (showUpdateUser) {
     return <UserInfoForm setShowUpdateUser={setShowUpdateUser} />;
@@ -13,6 +14,7 @@ export default function UserInfo({
       <UserInfoData
         setShowUpdateUser={setShowUpdateUser}
         setShowPayment={setShowPayment}
+        handleToggleSubscribe={handleToggleSubscribe}
       />
     );
   }

@@ -66,7 +66,8 @@ export const updateUser = (
   email,
   lic,
   pxName,
-  phone
+  phone,
+  premium
 ) => async (dispatch) => {
   const res = await fetch(`/api/auth/signup/${id}`, {
     method: 'PUT',
@@ -80,6 +81,7 @@ export const updateUser = (
       lic,
       pxName,
       phone,
+      premium,
     }),
   });
 

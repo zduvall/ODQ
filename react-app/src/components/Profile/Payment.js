@@ -23,27 +23,42 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
+  const [country, setCountry] = useState('');
   const [zip, setZip] = useState('');
 
   const [isProcessing, setProcessingTo] = useState();
 
   async function onSubmit(e) {
     e.preventDefault();
+    setErrors([]);
     const billingDetails = {
       name,
       email,
-      address: {
-        city,
-        line1: address,
-        state,
-        postal_code: zip,
-      },
+      city,
+      line1: address,
+      state,
+      country,
+      postal_code: zip,
+      userId: sessionUser.id,
     };
 
-    setProcessingTo(true);
+    // setProcessingTo(true);
 
-    if ('everything okay!!!!') {
-      handleToggleSubscribe(true);
+    const res = await fetch('/api/payments/create-customer', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(billingDetails),
+    });
+
+    const customer = await res.json();
+
+    if (!customer.errors) {
+      // handleToggleSubscribe(true);
+      console.log(customer);
+    } else {
+      setErrors(customer.errors);
     }
 
     // createCustomer(billingDetails.address);
@@ -129,7 +144,7 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
             <input
               name='name'
               type='text'
-              placeholder='Name'
+              placeholder='Full name'
               onChange={(e) => setName(e.target.value)}
               value={name}
               className='form__input'
@@ -162,14 +177,22 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
               value={city}
               className='form__input'
             ></input>
-          </div>
-          <div className='form__row'>
             <input
               name='state'
               type='text'
               placeholder='State'
               onChange={(e) => setState(e.target.value)}
               value={state}
+              className='form__input'
+            ></input>
+          </div>
+          <div className='form__row'>
+            <input
+              name='country'
+              type='text'
+              placeholder='Country'
+              onChange={(e) => setCountry(e.target.value)}
+              value={country}
               className='form__input'
             ></input>
             <input

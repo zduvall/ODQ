@@ -2,9 +2,11 @@ import os
 import stripe
 
 from flask import Blueprint, jsonify, request
-from app.forms import NewCustomerForm
 from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
+
+from app.forms import NewCustomerForm
+from app.models import Customer, db
 
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/account/apikeys
@@ -41,7 +43,7 @@ def create_customer():
     form = NewCustomerForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        customer = stripe.Customer.create(
+        stripe_customer = stripe.Customer.create(
             name=form.data["name"],
             email=form.data["email"],
             address={
@@ -53,7 +55,16 @@ def create_customer():
             },
             metadata={"userId": form.data["userId"]},
         )
-        return customer
+
+        new_db_customer = Customer(
+            userId=stripe_customer.metadata["userId"],
+            stripeCustomerId=stripe_customer.id,
+        )
+
+        db.session.add(new_db_customer)
+        db.session.commit()
+
+        return stripe_customer
 
     print("-------errors-------", form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401

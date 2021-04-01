@@ -42,8 +42,6 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
       userId: sessionUser.id,
     };
 
-    // setProcessingTo(true);
-
     const res = await fetch('/api/payments/create-customer', {
       method: 'post',
       headers: {
@@ -55,15 +53,21 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
     const customer = await res.json();
 
     if (!customer.errors) {
-      // handleToggleSubscribe(true);
       console.log(customer);
+
+      // const cardElement = elements.getElement('card');
+      // const paymentMethodReq = await stripe.createPaymentMethod({
+      //   type: 'card',
+      //   card: cardElement,
+      //   billing_details: billingDetails,
+      // });
+
+      // handleToggleSubscribe(true);
+      // setProcessingTo(true);
     } else {
       setErrors(customer.errors);
     }
 
-    // createCustomer(billingDetails.address);
-
-    // const cardElement = elements.getElement('card');
 
     // try {
     //   // const { data: clientSecret } = await axios.post('/api/payment_intents', {

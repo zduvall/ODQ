@@ -16,8 +16,11 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(20))
     premium = db.Column(db.Boolean, default=False)
 
-    clients = db.relationship("Client", back_populates="pro", cascade="all, delete-orphan")
+    clients = db.relationship(
+        "Client", back_populates="pro", cascade="all, delete-orphan"
+    )
     tests = db.relationship("Test", back_populates="pro")
+    customer = db.relationship("Customer", back_populates="user")
 
     @property
     def password(self):

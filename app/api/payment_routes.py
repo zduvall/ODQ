@@ -27,11 +27,15 @@ payment_routes = Blueprint("payments", __name__)
 
 # @payment_routes.route("/config")
 # def get_publishable_key():
-#     stripe_config = {"publicKey": stripe_keys["publishable_key"]}
-#     return jsonify(stripe_config)
+#     return jsonify(stripe.api_key)
 
 
 # from: https://stripe.com/docs/billing/subscriptions/fixed-price -- in the middle of '4 Create Stripe Customer'
+
+
+@payment_routes.route("/config")
+def get_publishable_key():
+    return jsonify(stripe.api_key)
 
 
 @payment_routes.route("/create-customer", methods=["post"])
@@ -56,6 +60,7 @@ def create_customer():
             metadata={"userId": form.data["userId"]},
         )
 
+        # maybe have an if statement here before creating the new customer
         new_db_customer = Customer(
             userId=stripe_customer.metadata["userId"],
             stripeCustomerId=stripe_customer.id,

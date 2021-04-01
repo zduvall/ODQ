@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// country codes
+import countryCodes from '../../services/countryCodes';
+
 // stripe imports
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
@@ -31,43 +34,46 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
   async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
+    const cardElement = elements.getElement('card');
+
+    const billingAddress = { line1: address, state, country, postal_code: zip };
+
     const billingDetails = {
       name,
       email,
-      city,
-      line1: address,
-      state,
-      country,
-      postal_code: zip,
-      userId: sessionUser.id,
+      address: billingAddress,
     };
 
-    const res = await fetch('/api/payments/create-customer', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(billingDetails),
+    const paymentMethodReq = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+      billing_details: billingDetails,
     });
 
-    const customer = await res.json();
+    console.log(paymentMethodReq);
 
-    if (!customer.errors) {
-      console.log(customer);
+    // const res = await fetch('/api/payments/create-customer', {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     name,
+    //     email,
+    //     ...billingAddress,
+    //     userId: sessionUser.id,
+    //   }),
+    // });
 
-      // const cardElement = elements.getElement('card');
-      // const paymentMethodReq = await stripe.createPaymentMethod({
-      //   type: 'card',
-      //   card: cardElement,
-      //   billing_details: billingDetails,
-      // });
+    // const customer = await res.json();
 
-      // handleToggleSubscribe(true);
-      // setProcessingTo(true);
-    } else {
-      setErrors(customer.errors);
-    }
-
+    // if (!customer.errors) {
+    //   console.log(customer);
+    //   // handleToggleSubscribe(true);
+    //   // setProcessingTo(true);
+    // } else {
+    //   setErrors(customer.errors);
+    // }
 
     // try {
     //   // const { data: clientSecret } = await axios.post('/api/payment_intents', {
@@ -191,14 +197,25 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
             ></input>
           </div>
           <div className='form__row'>
-            <input
+            <select
               name='country'
               type='text'
               placeholder='Country'
               onChange={(e) => setCountry(e.target.value)}
               value={country}
               className='form__input'
-            ></input>
+            >
+              <option value='' disabled>
+                Country
+              </option>
+              {countryCodes.map((code) => {
+                return (
+                  <option key={code} value={code}>
+                    {code}
+                  </option>
+                );
+              })}
+            </select>
             <input
               name='zip'
               type='number'

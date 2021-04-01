@@ -18,5 +18,4 @@ class Customer(db.Model):
             "userId": self.userId,
             "stripeCustomerId": self.stripeCustomerId,
             "stripeSubscriptionId": self.stripeSubscriptionId,
-            "curClient": self.curClient,
         }

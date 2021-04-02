@@ -219,10 +219,10 @@ export default function Payment() {
               <option value='' disabled>
                 Country
               </option>
-              {countryCodes.map((code) => {
+              {countryCodes.map((country) => {
                 return (
-                  <option key={code} value={code}>
-                    {code}
+                  <option key={country.code} value={country.code}>
+                    {country.name}
                   </option>
                 );
               })}

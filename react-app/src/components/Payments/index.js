@@ -37,7 +37,6 @@ export default function Payment() {
   const [isProcessing, setProcessingTo] = useState();
 
   const cardElement = elements.getElement('card');
-  // cardElement.on('change', (e) => setErrors(e.error.message));
 
   // function displayError(event) {
   //   let displayError = document.getElementById('card-element-errors');
@@ -248,12 +247,12 @@ export default function Payment() {
           </div>
           <div className='form-row payment-row'>
             {/* <div className='payment-input'> */}
-            <CardElement options={cardElementOptions} />
+            <CardElement
+              options={cardElementOptions}
+              onChange={(e) => setErrors(e.error ? [e.error.message] : [])}
+            />
             {/* </div> */}
           </div>
-          {/* <div className='form-row payment-row'>
-
-          </div> */}
         </div>
         <div className='form__row buttons-grp-colLrg-rowSml'>
           <button

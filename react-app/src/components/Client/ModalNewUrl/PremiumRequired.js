@@ -16,7 +16,7 @@ export default function PremiumRequired({ testAbbr }) {
         consider our{' '}
         <span
           className='clickable-link'
-          onClick={() => history.push('/profile')}
+          onClick={() => history.push('/payments')}
         >
           monthly subscription
         </span>{' '}

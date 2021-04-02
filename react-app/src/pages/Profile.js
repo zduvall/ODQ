@@ -1,19 +1,10 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-// import thunk
-import { togglePremium } from '../store/session';
 
 // import components
 import Profile from '../components/Profile';
-import Payment from '../components/Profile/Payment';
 
 export default function User() {
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-
   const [showUpdateUser, setShowUpdateUser] = useState(false);
-  const [showPayment, setShowPayment] = useState(false);
 
   return (
     <div>

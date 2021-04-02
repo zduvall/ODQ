@@ -38,21 +38,10 @@ export default function Payment() {
 
   const cardElement = elements.getElement('card');
 
-  // function displayError(event) {
-  //   let displayError = document.getElementById('card-element-errors');
-  //   if (event.error) {
-  //     displayError.textContent = event.error.message;
-  //   } else {
-  //     displayError.textContent = '';
-  //   }
-  // }
-
   async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
-
-    await dispatch(togglePremium(sessionUser.id, true));
-    return;
+    setProcessingTo(true);
 
     const billingAddress = { line1: address, state, country, postal_code: zip };
 
@@ -62,36 +51,38 @@ export default function Payment() {
       address: billingAddress,
     };
 
-    const paymentMethodReq = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-      billing_details: billingDetails,
-    });
+    // // start from $6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
+    // // also remember to use if !errors.length somewhere before and/or inbetween payment and customer or other way around
 
-    console.log(paymentMethodReq);
-
-    // const res = await fetch('/api/payments/create-customer', {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     name,
-    //     email,
-    //     ...billingAddress,
-    //     userId: sessionUser.id,
-    //   }),
+    // const paymentMethodReq = await stripe.createPaymentMethod({
+    //   type: 'card',
+    //   card: cardElement,
+    //   billing_details: billingDetails,
     // });
 
-    // const customer = await res.json();
+    // console.log(paymentMethodReq);
 
-    // if (!customer.errors) {
-    //   console.log(customer);
-    //   // handleToggleSubscribe(true);
-    //   // setProcessingTo(true);
-    // } else {
-    //   setErrors(customer.errors);
-    // }
+    const res = await fetch('/api/payments/create-customer', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        ...billingAddress,
+        userId: sessionUser.id,
+      }),
+    });
+
+    const customer = await res.json();
+
+    if (!customer.errors) {
+      console.log(customer);
+      // await dispatch(togglePremium(sessionUser.id, true));
+    } else {
+      setErrors(customer.errors);
+    }
 
     // // ------- this separates the things I haven't really used yet -------
 
@@ -258,9 +249,9 @@ export default function Payment() {
           <button
             className='primary-button form__button dashboard__button'
             type='submit'
-            disabled={isProcessing}
+            disabled={isProcessing || errors.length}
           >
-            {isProcessing ? 'Processing...' : 'Subscribe'}
+            {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
           </button>
           <button
             className='secondary-button form__button dashboard__button'

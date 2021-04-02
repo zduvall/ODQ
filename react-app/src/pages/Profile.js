@@ -15,10 +15,6 @@ export default function User() {
   const [showUpdateUser, setShowUpdateUser] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
 
-  const handleToggleSubscribe = async (newPremium = !sessionUser.premium) => {
-    await dispatch(togglePremium(sessionUser.id, newPremium));
-  };
-
   return (
     <div>
       <div className='site__page'>
@@ -31,10 +27,7 @@ export default function User() {
         {showPayment && (
           <>
             <div className='one1rem-ht' />
-            <Payment
-              setShowPayment={setShowPayment}
-              handleToggleSubscribe={handleToggleSubscribe}
-            />
+            <Payment setShowPayment={setShowPayment} />
           </>
         )}
       </div>

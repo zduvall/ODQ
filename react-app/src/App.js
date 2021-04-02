@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp';
 import Clients from './pages/Clients';
 import Client from './pages/Client';
 import Profile from './pages/Profile';
+import Payments from './pages/Payments';
 import ClientForm from './pages/ClientForm';
 import TestForm from './pages/TestForm';
 import Footer from './components/Footer';
@@ -100,6 +101,13 @@ function App() {
             authenticated={!!sessionUser}
           >
             <Profile />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path='/payments'
+            exact={true}
+            authenticated={!!sessionUser}
+          >
+            <Payments />
           </ProtectedRoute>
           <Route path='/test/:testCode/:userId/:clientId/:encURL' exact>
             <TestForm />

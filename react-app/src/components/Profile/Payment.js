@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// import thunk
+import { togglePremium } from '../../store/session';
+
 // country codes
 import countryCodes from '../../services/countryCodes';
 
@@ -10,7 +13,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 // local stripe utils
 import { createCustomer } from '../../services/stripeUtils';
 
-export default function Payment({ setShowPayment, handleToggleSubscribe }) {
+export default function Payment({ setShowPayment }) {
   // stripe
   const stripe = useStripe();
   const elements = useElements();
@@ -47,7 +50,7 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
     e.preventDefault();
     setErrors([]);
 
-    handleToggleSubscribe(true);
+    await dispatch(togglePremium(sessionUser.id, true));
     return;
 
     const billingAddress = { line1: address, state, country, postal_code: zip };

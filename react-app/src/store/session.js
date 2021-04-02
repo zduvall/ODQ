@@ -93,6 +93,25 @@ export const updateUser = (
   return user;
 };
 
+export const togglePremium = (id, premium) => async (dispatch) => {
+  const res = await fetch(`/api/auth/toggle-premium/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      premium,
+    }),
+  });
+
+  const user = await res.json();
+
+  if (res.ok && !user.errors) {
+    dispatch(setUser(user));
+  }
+  return user;
+};
+
 export const logoutUser = () => async (dispatch) => {
   await fetch('/api/auth/logout', {
     headers: {

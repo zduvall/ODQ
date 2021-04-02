@@ -11,10 +11,7 @@ import ModalConfirmButton from '../ModalConfirmButton';
 // import css
 import './User.css';
 
-export default function UserInfoData({
-  setShowUpdateUser,
-  setShowPayment,
-}) {
+export default function UserInfoData({ setShowUpdateUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -91,7 +88,7 @@ export default function UserInfoData({
         {!sessionUser.premium && (
           <button
             className='primary-button dashboard__button'
-            onClick={() => setShowPayment((prev) => !prev)}
+            onClick={() => history.push('/payments')}
           >
             Premium
           </button>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // import thunk
 import { togglePremium } from '../../store/session';
@@ -13,11 +14,12 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 // local stripe utils
 import { createCustomer } from '../../services/stripeUtils';
 
-export default function Payment({ setShowPayment }) {
+export default function Payment() {
   // stripe
   const stripe = useStripe();
   const elements = useElements();
 
+  const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -264,7 +266,7 @@ export default function Payment({ setShowPayment }) {
           <button
             className='secondary-button form__button dashboard__button'
             type='button'
-            onClick={() => setShowPayment(false)}
+            onClick={() => history.push('/profile')}
           >
             Cancel
           </button>

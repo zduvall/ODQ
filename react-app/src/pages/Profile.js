@@ -22,14 +22,7 @@ export default function User() {
         <Profile
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
-          setShowPayment={setShowPayment}
         />
-        {showPayment && (
-          <>
-            <div className='one1rem-ht' />
-            <Payment setShowPayment={setShowPayment} />
-          </>
-        )}
       </div>
       <div className='one1rem-ht' />
     </div>

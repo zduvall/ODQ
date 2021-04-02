@@ -114,6 +114,20 @@ def update(userId):
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
+@auth_routes.route("/toggle-premium/<int:userId>", methods=["PUT"])
+@login_required
+def toggle-premium(userId):
+    """
+    toggles premium status of a user
+    """
+    user_to_update = User.query.get(userId)
+    user_to_update.premium = form.data["premium"]
+
+    db.session.add(user_to_update)
+    db.session.commit()
+    return user_to_update.to_dict()
+
+
 @auth_routes.route("/unauthorized")
 def unauthorized():
     """

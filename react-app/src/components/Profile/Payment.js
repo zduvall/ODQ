@@ -31,10 +31,22 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
 
   const [isProcessing, setProcessingTo] = useState();
 
+  const cardElement = elements.getElement('card');
+  cardElement.on('change', (e) => setErrors(e.error.message));
+  // cardElement.on('change', (e) => displayError(e));
+
+  // function displayError(event) {
+  //   let displayError = document.getElementById('card-element-errors');
+  //   if (event.error) {
+  //     displayError.textContent = event.error.message;
+  //   } else {
+  //     displayError.textContent = '';
+  //   }
+  // }
+
   async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    const cardElement = elements.getElement('card');
 
     const billingAddress = { line1: address, state, country, postal_code: zip };
 
@@ -230,6 +242,9 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
             <CardElement options={cardElementOptions} />
             {/* </div> */}
           </div>
+          {/* <div className='form-row payment-row'>
+
+          </div> */}
         </div>
         <div className='form__row buttons-grp-colLrg-rowSml'>
           <button

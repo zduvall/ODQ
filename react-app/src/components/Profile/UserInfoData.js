@@ -35,6 +35,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
   };
 
   const handleUnsubscribe = () => {
+    // need to add cancel stripe logic here too!
     dispatch(togglePremium(sessionUser.id, false));
   };
 

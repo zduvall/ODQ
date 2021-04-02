@@ -89,7 +89,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
         {!sessionUser.premium && (
           <button
             className='primary-button dashboard__button'
-            onClick={() => history.push('/payments')}
+            onClick={() => history.push('/payments/1')}
           >
             Premium
           </button>

@@ -14,7 +14,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 // local stripe utils
 import { createCustomer } from '../../services/stripeUtils';
 
-export default function Payment() {
+export default function Payment1() {
   // stripe
   const stripe = useStripe();
   const elements = useElements();
@@ -150,7 +150,7 @@ export default function Payment() {
   };
 
   return (
-    <div className='site__sub-section form-container'>
+    <>
       <h2 className='tertiary-title cntr-txt-sml-margin'>
         Access all tests - $5 per month
       </h2>
@@ -262,6 +262,6 @@ export default function Payment() {
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 }

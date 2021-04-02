@@ -103,7 +103,7 @@ function App() {
             <Profile />
           </ProtectedRoute>
           <ProtectedRoute
-            path='/payments'
+            path='/payments/:subPageId'
             exact={true}
             authenticated={!!sessionUser}
           >

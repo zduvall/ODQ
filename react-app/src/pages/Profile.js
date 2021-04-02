@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // import thunk
-import { updateUser } from '../store/session';
+import { togglePremium } from '../store/session';
 
 // import components
 import Profile from '../components/Profile';
@@ -16,19 +16,7 @@ export default function User() {
   const [showPayment, setShowPayment] = useState(false);
 
   const handleToggleSubscribe = async (newPremium = !sessionUser.premium) => {
-    await dispatch(
-      updateUser(
-        sessionUser.id,
-        sessionUser.firstName,
-        sessionUser.lastName,
-        sessionUser.email,
-        sessionUser.lic,
-        sessionUser.pxName,
-        sessionUser.phone,
-        newPremium
-      )
-    );
-    console.log('toggle subscribed!!!');
+    await dispatch(togglePremium(sessionUser.id, newPremium));
   };
 
   return (

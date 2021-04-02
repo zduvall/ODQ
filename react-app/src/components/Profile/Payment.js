@@ -32,8 +32,7 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
   const [isProcessing, setProcessingTo] = useState();
 
   const cardElement = elements.getElement('card');
-  cardElement.on('change', (e) => setErrors(e.error.message));
-  // cardElement.on('change', (e) => displayError(e));
+  // cardElement.on('change', (e) => setErrors(e.error.message));
 
   // function displayError(event) {
   //   let displayError = document.getElementById('card-element-errors');
@@ -47,6 +46,9 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
   async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
+
+    handleToggleSubscribe(true);
+    return;
 
     const billingAddress = { line1: address, state, country, postal_code: zip };
 
@@ -86,6 +88,8 @@ export default function Payment({ setShowPayment, handleToggleSubscribe }) {
     // } else {
     //   setErrors(customer.errors);
     // }
+
+    // // ------- this separates the things I haven't really used yet -------
 
     // try {
     //   // const { data: clientSecret } = await axios.post('/api/payment_intents', {

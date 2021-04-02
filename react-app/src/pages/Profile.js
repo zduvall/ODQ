@@ -27,7 +27,6 @@ export default function User() {
           showUpdateUser={showUpdateUser}
           setShowUpdateUser={setShowUpdateUser}
           setShowPayment={setShowPayment}
-          handleToggleSubscribe={handleToggleSubscribe}
         />
         {showPayment && (
           <>

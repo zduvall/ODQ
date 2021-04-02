@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
-import { deleteUser } from '../../store/session';
+import { deleteUser, togglePremium } from '../../store/session';
 
 // import component
 import ModalConfirmButton from '../ModalConfirmButton';
@@ -14,7 +14,6 @@ import './User.css';
 export default function UserInfoData({
   setShowUpdateUser,
   setShowPayment,
-  handleToggleSubscribe,
 }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,6 +37,10 @@ export default function UserInfoData({
     history.push('/');
   };
 
+  const handleUnsubscribe = () => {
+    dispatch(togglePremium(sessionUser.id, false));
+  };
+
   return (
     <div className='site__sub-section user__info'>
       <ModalConfirmButton
@@ -51,7 +54,7 @@ export default function UserInfoData({
       <ModalConfirmButton
         showModal={showUnsubscribeModal}
         setShowModal={setShowUnsubscribeModal}
-        proceedAction={handleToggleSubscribe}
+        proceedAction={handleUnsubscribe}
         message={
           'Are you sure you would like to unsubscribe? Premium tests will no longer be accessible.'
         }

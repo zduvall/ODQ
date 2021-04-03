@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+// import thunk
+import { togglePremium } from '../../store/session';
 
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
@@ -7,12 +11,14 @@ import { usePaymentsContext } from '../../pages/Payments';
 // stripe imports
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
+// local stripe utils
+import { createCustomer } from '../../services/stripeUtils';
+
 export default function Payment1() {
   const history = useHistory();
-
-  const { billingInfo, setPaymentMethod } = usePaymentsContext();
-
-  console.log(billingInfo);
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const { billingInfo } = usePaymentsContext();
 
   // stripe
   const stripe = useStripe();
@@ -31,23 +37,13 @@ export default function Payment1() {
     // // start from $6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
     // // also remember to use if !errors.length somewhere before and/or inbetween payment and customer or other way around
 
-    const paymentMethodRes = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-      billing_details: {
-        address: billingInfo.address,
-        email: billingInfo.email,
-        name: billingInfo.name,
-      },
-    });
+    // const paymentMethodReq = await stripe.createPaymentMethod({
+    //   type: 'card',
+    //   card: cardElement,
+    //   billing_details: billingDetails,
+    // });
 
-    if (!paymentMethodRes.errors) {
-      setPaymentMethod(paymentMethodRes);
-      history.push('/payments/3');
-    } else {
-      setProcessingTo(false);
-      setErrors(paymentMethodRes.errors);
-    }
+    // console.log(paymentMethodReq);
   }
 
   useEffect(() => {

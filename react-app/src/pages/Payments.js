@@ -11,10 +11,13 @@ export const usePaymentsContext = () => useContext(PaymentsContext);
 export default function Payments() {
   const { subPageId } = useParams('subPageId');
 
-  const [billingInfo, setBillingInfo] = useState();
+  const [billingInfo, setBillingInfo] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('');
 
   return (
-    <PaymentsContext.Provider value={{ billingInfo, setBillingInfo }}>
+    <PaymentsContext.Provider
+      value={{ billingInfo, setBillingInfo, paymentMethod, setPaymentMethod }}
+    >
       <div className='site__page'>
         <h1 className='primary-title'>Premium Subscription</h1>
         <div className='site__sub-section form-container'>

@@ -2,22 +2,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-// import thunk
-import { togglePremium } from '../../store/session';
-
 // country codes
 import countryCodes from '../../services/countryCodes';
 
-// stripe imports
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-
-// local stripe utils
-import { createCustomer } from '../../services/stripeUtils';
-
 export default function Payment1() {
-  // stripe
-  const stripe = useStripe();
-  const elements = useElements();
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -35,8 +23,6 @@ export default function Payment1() {
   const [zip, setZip] = useState('');
 
   const [isProcessing, setProcessingTo] = useState();
-
-  const cardElement = elements.getElement('card');
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -83,71 +69,7 @@ export default function Payment1() {
     } else {
       setErrors(customer.errors);
     }
-
-    // // ------- this separates the things I haven't really used yet -------
-
-    // try {
-    //   // const { data: clientSecret } = await axios.post('/api/payment_intents', {
-    //   //   amount: price * 100,
-    //   // });
-
-    //   const res = await fetch(`/api/payment_intents`, {
-    //     // not sure if this is formatted right; guessed based on the axios example
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ amount: 100 }),
-    //   });
-
-    //   const { data: clientSecret } = await res.json();
-
-    //   const paymentMethodReq = await stripe.createPaymentMethod({
-    //     type: 'card',
-    //     card: cardElement,
-    //     billing_details: billingDetails,
-    //   });
-
-    //   if (paymentMethodReq.error) {
-    //     setErrors(paymentMethodReq.error.message);
-    //     setProcessingTo(false);
-    //     return;
-    //   }
-
-    //   const { error } = await stripe.confirmCardPayment(clientSecret, {
-    //     payment_method: paymentMethodReq.paymentMethod.id,
-    //   });
-
-    //   if (error) {
-    //     setErrors(error.message);
-    //     setProcessingTo(false);
-    //     return;
-    //   }
-
-    //   // onSuccessfulCheckout();
-    // } catch (err) {
-    //   setErrors(err.message);
-    // }
-    // console.log(billingDetails);
   }
-
-  const cardElementOptions = {
-    style: {
-      base: {
-        fontSize: '1.2rem',
-        backgroundColor: 'white',
-        '::placeholder': {
-          fontSize: '1.2rem',
-        },
-      },
-      invalid: {
-        color: 'rgb(173, 0, 0)',
-        iconColor: 'rgb(173, 0, 0)',
-      },
-      complete: {},
-    },
-    hidePostalCode: true, // maybe not needed
-  };
 
   return (
     <>
@@ -235,14 +157,6 @@ export default function Payment1() {
               value={zip}
               className='form__input'
             ></input>
-          </div>
-          <div className='form-row payment-row'>
-            {/* <div className='payment-input'> */}
-            <CardElement
-              options={cardElementOptions}
-              onChange={(e) => setErrors(e.error ? [e.error.message] : [])}
-            />
-            {/* </div> */}
           </div>
         </div>
         <div className='form__row buttons-grp-colLrg-rowSml'>

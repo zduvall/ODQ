@@ -8,65 +8,27 @@ import { togglePremium } from '../../store/session';
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
 
-// stripe imports
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-
 // local stripe utils
-import { createCustomer } from '../../services/stripeUtils';
+// import { createCustomer } from '../../services/stripeUtils'; // maybe use this!!!!!!!!!!!!!!!!!!!!!
 
 export default function Payment1() {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const { billingInfo } = usePaymentsContext();
-
-  // stripe
-  const stripe = useStripe();
-  const elements = useElements();
+  const { billingInfo, paymentMethod } = usePaymentsContext();
 
   const [errors, setErrors] = useState([]);
   const [isProcessing, setProcessingTo] = useState();
-
-  const cardElement = elements.getElement('card');
 
   async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
     setProcessingTo(true);
-
-    // // start from $6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
-    // // also remember to use if !errors.length somewhere before and/or inbetween payment and customer or other way around
-
-    // const paymentMethodReq = await stripe.createPaymentMethod({
-    //   type: 'card',
-    //   card: cardElement,
-    //   billing_details: billingDetails,
-    // });
-
-    // console.log(paymentMethodReq);
   }
 
   useEffect(() => {
-    if (!billingInfo) history.push('/payments/1');
-  }, [billingInfo, history]);
-
-  const cardElementOptions = {
-    style: {
-      base: {
-        fontSize: '17px',
-        backgroundColor: 'white',
-        '::placeholder': {
-          fontSize: '17px',
-        },
-      },
-      invalid: {
-        color: 'rgb(173, 0, 0)',
-        iconColor: 'rgb(173, 0, 0)',
-      },
-      complete: {},
-    },
-    hidePostalCode: true, // maybe not needed
-  };
+    if (!billingInfo || !paymentMethod) history.push('/payments/1');
+  }, [billingInfo, paymentMethod, history]);
 
   return (
     <>
@@ -77,12 +39,6 @@ export default function Payment1() {
             {errors.map((error) => (
               <div key={error}>{error}</div>
             ))}
-          </div>
-          <div className='form-row payment-row'>
-            <CardElement
-              options={cardElementOptions}
-              onChange={(e) => setErrors(e.error ? [e.error.message] : [])}
-            />
           </div>
         </div>
         <div className='form__row buttons-grp-colLrg-rowSml'>

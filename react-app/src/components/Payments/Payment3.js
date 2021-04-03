@@ -30,15 +30,39 @@ export default function Payment1() {
     if (!billingInfo || !paymentMethod) history.push('/payments/1');
   }, [billingInfo, paymentMethod, history]);
 
+  if (!billingInfo || !paymentMethod) return null;
+
+  const {
+    brand,
+    last4,
+    exp_month,
+    exp_year,
+  } = paymentMethod.paymentMethod.card;
+
+  console.log('payment method', paymentMethod.paymentMethod.card);
+
   return (
     <>
-      <h2 className='tertiary-title cntr-txt-sml-margin'>Payment Method</h2>
+      <h2 className='tertiary-title cntr-txt-sml-margin'>Confirm</h2>
       <form className='form' onSubmit={onSubmit}>
         <div className='site__sub-section__data'>
           <div className='errors-container'>
             {errors.map((error) => (
               <div key={error}>{error}</div>
             ))}
+          </div>
+          <div className='site__sub-section__data'>
+            <p>{billingInfo.name}</p>
+            <p>{billingInfo.address.line1}</p>
+            <p>
+              {billingInfo.address.city}, {billingInfo.address.state}{' '}
+              {billingInfo.address.postal_code}
+            </p>
+            <p>{billingInfo.email}</p>
+            <p>
+              {brand.charAt(0).toUpperCase() + brand.slice(1)}: ***
+              {last4}, Exp: {exp_month}/{exp_year}
+            </p>
           </div>
         </div>
         <div className='form__row buttons-grp-colLrg-rowSml'>

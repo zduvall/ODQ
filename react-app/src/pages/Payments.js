@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 // import components
 import Payment1 from '../components/Payments/Payment1';
 import Payment2 from '../components/Payments/Payment2';
+import Payment3 from '../components/Payments/Payment3';
 
 const PaymentsContext = createContext();
 export const usePaymentsContext = () => useContext(PaymentsContext);
@@ -23,6 +24,7 @@ export default function Payments() {
         <div className='site__sub-section form-container'>
           {subPageId === '1' && <Payment1 />}
           {subPageId === '2' && <Payment2 />}
+          {subPageId === '3' && <Payment3 />}
         </div>
         <div className='one1rem-ht' />
       </div>

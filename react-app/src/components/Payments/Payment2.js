@@ -12,8 +12,6 @@ export default function Payment1() {
 
   const { billingInfo, setPaymentMethod } = usePaymentsContext();
 
-  console.log(billingInfo);
-
   // stripe
   const stripe = useStripe();
   const elements = useElements();

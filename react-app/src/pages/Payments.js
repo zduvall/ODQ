@@ -21,5 +21,7 @@ export default function Payments() {
   );
 }
 
+// 0 = subscription details with pics
 // 1 = billing information
 // 2 = payment method
+// 3 = confirm

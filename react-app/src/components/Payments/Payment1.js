@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+// import context
+import { usePaymentsContext } from '../../pages/Payments';
 
 // country codes
 import countryCodes from '../../services/countryCodes';
 
 export default function Payment1() {
-
   const history = useHistory();
-  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const { setBillingInfo } = usePaymentsContext();
 
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(
@@ -22,51 +24,47 @@ export default function Payment1() {
   const [country, setCountry] = useState('');
   const [zip, setZip] = useState('');
 
-  const [isProcessing, setProcessingTo] = useState();
+  const [isProcessing, setProcessingTo] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
     setProcessingTo(true);
 
-    const billingAddress = { line1: address, state, country, postal_code: zip };
+    const billingAddress = {
+      line1: address,
+      city,
+      state,
+      country,
+      postal_code: zip,
+    };
 
     const billingDetails = {
       name,
       email,
-      address: billingAddress,
+      line1: address,
+      city,
+      state,
+      country,
+      postal_code: zip,
+      userId: sessionUser.id,
     };
-
-    // // start from $6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
-    // // also remember to use if !errors.length somewhere before and/or inbetween payment and customer or other way around
-
-    // const paymentMethodReq = await stripe.createPaymentMethod({
-    //   type: 'card',
-    //   card: cardElement,
-    //   billing_details: billingDetails,
-    // });
-
-    // console.log(paymentMethodReq);
 
     const res = await fetch('/api/payments/create-customer', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        name,
-        email,
-        ...billingAddress,
-        userId: sessionUser.id,
-      }),
+      body: JSON.stringify(billingDetails),
     });
 
     const customer = await res.json();
 
     if (!customer.errors) {
-      console.log(customer);
-      // await dispatch(togglePremium(sessionUser.id, true));
+      setBillingInfo(customer);
+      history.push('/payments/2');
     } else {
+      setProcessingTo(false);
       setErrors(customer.errors);
     }
   }
@@ -74,7 +72,7 @@ export default function Payment1() {
   return (
     <>
       <h2 className='tertiary-title cntr-txt-sml-margin'>
-        Access all tests - $5 per month
+        Billing Information
       </h2>
       <form className='form' onSubmit={onSubmit}>
         <div className='site__sub-section__data'>
@@ -163,9 +161,9 @@ export default function Payment1() {
           <button
             className='primary-button form__button dashboard__button'
             type='submit'
-            disabled={isProcessing || errors.length}
+            disabled={isProcessing}
           >
-            {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
+            {isProcessing ? 'Processing...' : 'Next'}
           </button>
           <button
             className='secondary-button form__button dashboard__button'

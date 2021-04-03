@@ -5,6 +5,9 @@ import { useHistory } from 'react-router-dom';
 // import thunk
 import { togglePremium } from '../../store/session';
 
+// import context
+import { usePaymentsContext } from '../../pages/Payments';
+
 // stripe imports
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
@@ -12,16 +15,16 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { createCustomer } from '../../services/stripeUtils';
 
 export default function Payment1() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const { billingInfo } = usePaymentsContext();
+
   // stripe
   const stripe = useStripe();
   const elements = useElements();
 
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-
   const [errors, setErrors] = useState([]);
-
   const [isProcessing, setProcessingTo] = useState();
 
   const cardElement = elements.getElement('card');
@@ -41,16 +44,15 @@ export default function Payment1() {
     // });
 
     // console.log(paymentMethodReq);
-
   }
 
   const cardElementOptions = {
     style: {
       base: {
-        fontSize: '1.2rem',
+        fontSize: '17px',
         backgroundColor: 'white',
         '::placeholder': {
-          fontSize: '1.2rem',
+          fontSize: '17px',
         },
       },
       invalid: {
@@ -65,7 +67,7 @@ export default function Payment1() {
   return (
     <>
       <h2 className='tertiary-title cntr-txt-sml-margin'>
-        Access all tests - $5 per month
+        Payment Method
       </h2>
       <form className='form' onSubmit={onSubmit}>
         <div className='site__sub-section__data'>

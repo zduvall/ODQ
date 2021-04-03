@@ -17,11 +17,9 @@ export default function Payments() {
     <PaymentsContext.Provider value={{ billingInfo, setBillingInfo }}>
       <div className='site__page'>
         <h1 className='primary-title'>Premium Subscription</h1>
-        <div className='site__page'>
-          <div className='site__sub-section form-container'>
-            {subPageId === '1' && <Payment1 />}
-            {subPageId === '2' && <Payment2 />}
-          </div>
+        <div className='site__sub-section form-container'>
+          {subPageId === '1' && <Payment1 />}
+          {subPageId === '2' && <Payment2 />}
         </div>
         <div className='one1rem-ht' />
       </div>

@@ -20,3 +20,6 @@ export default function Payments() {
     </div>
   );
 }
+
+// 1 = billing information
+// 2 = payment method

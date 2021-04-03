@@ -46,7 +46,9 @@ export default function Payment1() {
 
   return (
     <>
-      <h2 className='tertiary-title cntr-txt-sml-margin'>Confirm</h2>
+      <h2 className='tertiary-title cntr-txt-sml-margin'>
+        Confirm Information
+      </h2>
       <form className='form' onSubmit={onSubmit}>
         <div className='site__sub-section__data'>
           <div className='errors-container'>
@@ -55,14 +57,22 @@ export default function Payment1() {
             ))}
           </div>
           <div className='site__sub-section__data'>
-            <p>{billingInfo.name}</p>
-            <p>{billingInfo.address.line1}</p>
-            <p>
+            <p>Billing Information</p>
+            <p className='tertiary-text indented-tight-text'>
+              {billingInfo.name}
+            </p>
+            <p className='tertiary-text indented-tight-text'>
+              {billingInfo.address.line1}
+            </p>
+            <p className='tertiary-text indented-tight-text'>
               {billingInfo.address.city}, {billingInfo.address.state}{' '}
               {billingInfo.address.postal_code}
             </p>
-            <p>{billingInfo.email}</p>
-            <p>
+            <p className='tertiary-text indented-tight-text'>
+              {billingInfo.email}
+            </p>
+            <p>Payment Method</p>
+            <p className='tertiary-text indented-tight-text'>
               {brand.charAt(0).toUpperCase() + brand.slice(1)}: ***
               {last4}, Exp: {exp_month}/{exp_year}
             </p>
@@ -71,8 +81,8 @@ export default function Payment1() {
         <div className='form__row buttons-grp-colLrg-rowSml'>
           <button
             className='primary-button form__button dashboard__button'
-            type='submit'
             disabled={isProcessing || errors.length}
+            onClick={() => {}}
           >
             {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
           </button>

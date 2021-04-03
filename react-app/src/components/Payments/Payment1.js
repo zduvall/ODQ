@@ -31,14 +31,6 @@ export default function Payment1() {
     setErrors([]);
     setProcessingTo(true);
 
-    const billingAddress = {
-      line1: address,
-      city,
-      state,
-      country,
-      postal_code: zip,
-    };
-
     const billingDetails = {
       name,
       email,

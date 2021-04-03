@@ -282,6 +282,14 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   text-align: center;
 }
 
+.tertiary-text {
+  color: var(--tertiary-color);
+}
+
+.indented-tight-text {
+  margin: 0 0 0 0.5rem;
+}
+
 .cntr-txt-sml-margin {
   margin: 0.5rem 0;
   text-align: center;

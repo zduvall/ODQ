@@ -47,6 +47,30 @@ def create_customer():
     form = NewCustomerForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
+
+        # modify customer if already exists
+        customer_to_update = Customer.query.filter_by(
+            userId=form.data["userId"]
+        ).first()
+
+        if customer_to_update:
+            stripe_customer = stripe.Customer.modify(
+                customer_to_update.stripeCustomerId,
+                name=form.data["name"],
+                email=form.data["email"],
+                address={
+                    "city": form.data["city"],
+                    "line1": form.data["line1"],
+                    "state": form.data["state"],
+                    "country": form.data["country"],
+                    "postal_code": form.data["postal_code"],
+                },
+                metadata={"userId": form.data["userId"]},
+            )
+
+            return stripe_customer
+
+        # create customer if doesn't yet exist
         stripe_customer = stripe.Customer.create(
             name=form.data["name"],
             email=form.data["email"],
@@ -60,7 +84,6 @@ def create_customer():
             metadata={"userId": form.data["userId"]},
         )
 
-        # maybe have an if statement here before creating the new customer
         new_db_customer = Customer(
             userId=stripe_customer.metadata["userId"],
             stripeCustomerId=stripe_customer.id,

@@ -166,7 +166,7 @@ export default function Payment1() {
             {isProcessing ? 'Processing...' : 'Next'}
           </button>
           <button
-            className='secondary-button form__button dashboard__button'
+            className='delete-button form__button dashboard__button'
             type='button'
             onClick={() => history.push('/profile')}
           >

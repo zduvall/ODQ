@@ -19,15 +19,10 @@ export default function Payment1() {
   const [errors, setErrors] = useState([]);
   const [isProcessing, setProcessingTo] = useState();
 
-  const cardElement = elements.getElement('card');
-
   async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
     setProcessingTo(true);
-
-    // // start from $6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
-    // // also remember to use if !errors.length somewhere before and/or inbetween payment and customer or other way around
 
     const paymentMethodRes = await stripe.createPaymentMethod({
       type: 'card',
@@ -70,6 +65,10 @@ export default function Payment1() {
     hidePostalCode: true, // maybe not needed
   };
 
+  if (!elements) return null;
+
+  const cardElement = elements.getElement('card');
+
   return (
     <>
       <h2 className='tertiary-title cntr-txt-sml-margin'>Payment Method</h2>
@@ -93,14 +92,14 @@ export default function Payment1() {
             type='submit'
             disabled={isProcessing || errors.length}
           >
-            {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
+            {isProcessing && !errors.length ? 'Processing...' : 'Next'}
           </button>
           <button
             className='secondary-button form__button dashboard__button'
             type='button'
-            onClick={() => history.push('/profile')}
+            onClick={() => history.push('/payments/1')}
           >
-            Cancel
+            Back
           </button>
         </div>
       </form>

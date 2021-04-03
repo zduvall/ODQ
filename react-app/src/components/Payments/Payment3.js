@@ -11,6 +11,9 @@ import { usePaymentsContext } from '../../pages/Payments';
 // local stripe utils
 // import { createCustomer } from '../../services/stripeUtils'; // maybe use this!!!!!!!!!!!!!!!!!!!!!
 
+// // start from $6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
+// // also remember to use if !errors.length somewhere before and/or inbetween payment and customer or other way around
+
 export default function Payment1() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -75,6 +78,13 @@ export default function Payment1() {
           </button>
           <button
             className='secondary-button form__button dashboard__button'
+            type='button'
+            onClick={() => history.push('/payments/1')}
+          >
+            Start Over
+          </button>
+          <button
+            className='delete-button form__button dashboard__button'
             type='button'
             onClick={() => history.push('/profile')}
           >

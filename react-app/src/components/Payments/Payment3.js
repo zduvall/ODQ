@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunk
-import { togglePremium } from '../../store/session';
+import { togglePremium, addPaymentMethod } from '../../store/session';
 
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
@@ -11,8 +11,7 @@ import { usePaymentsContext } from '../../pages/Payments';
 // local stripe utils
 // import { createCustomer } from '../../services/stripeUtils'; // maybe use this!!!!!!!!!!!!!!!!!!!!!
 
-// // start from $6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
-// // also remember to use if !errors.length somewhere before and/or inbetween payment and customer or other way around
+// // start from #6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
 
 export default function Payment1() {
   const history = useHistory();

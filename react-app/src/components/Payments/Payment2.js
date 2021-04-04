@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
 
-// import thunk
-import { addPaymentMethod } from '../../store/session';
+// // import thunk
+// import { addPaymentMethod } from '../../store/session';
 
 // stripe imports
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 export default function Payment1() {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  // const dispatch = useDispatch();
+  // const sessionUser = useSelector((state) => state.session.user);
 
   const { billingInfo, setPaymentMethod } = usePaymentsContext();
 
@@ -44,16 +44,18 @@ export default function Payment1() {
       console.log('payment method', paymentMethodRes);
 
       if (!paymentMethodRes.error) {
-        const {
-          brand,
-          last4,
-          exp_month,
-          exp_year,
-        } = paymentMethodRes.paymentMethod.card;
-        dispatch(
-          addPaymentMethod(sessionUser.id, brand, last4, exp_month, exp_year)
-        );
-        // maybe just put the payment method in here below, b/c everything else will be on the sessionUser.customer
+        // const {
+        //   brand,
+        //   last4,
+        //   exp_month,
+        //   exp_year,
+        // } = paymentMethodRes.paymentMethod.card;
+        // dispatch(
+        //   addPaymentMethod(sessionUser.id, brand, last4, exp_month, exp_year)
+        // );
+
+        // // I may actually use this thunk in the next page and update it to take in the subScriptionId as well,
+        // // if I do use commented out stuff above, maybe just put the payment method id in here below, b/c everything else will be on the sessionUser.customer
         setPaymentMethod(paymentMethodRes);
 
         history.push('/payments/3');

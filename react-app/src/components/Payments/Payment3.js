@@ -26,7 +26,7 @@ export default function Payment1() {
   async function handleSubscribe() {
     setErrors([]);
     setProcessingTo(true);
-    https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
+    // https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
   }
 
   useEffect(() => {

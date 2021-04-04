@@ -20,7 +20,12 @@ class User(db.Model, UserMixin):
         "Client", back_populates="pro", cascade="all, delete-orphan"
     )
     tests = db.relationship("Test", back_populates="pro")
-    customer = db.relationship("Customer", back_populates="user")
+    customer = db.relationship(
+        "Customer",
+        cascade="all, delete-orphan",
+        back_populates="user",
+        uselist=False,
+    )
 
     @property
     def password(self):

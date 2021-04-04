@@ -92,13 +92,13 @@ def create_customer():
         db.session.add(new_db_customer)
         db.session.commit()
 
-        return stripe_customer
+        return stripe_customer.to_dict()
 
     print("-------errors-------", form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@payment_routes.route("/add-payment-info", methods=["post"])
+@payment_routes.route("/add-payment-info", methods=["put"])
 @login_required
 def add_payment_info():
     """
@@ -106,20 +106,22 @@ def add_payment_info():
     """
 
     # modify customer if already exists
-    customer_to_update = Customer.query.filter_by(userId=form.json["userId"]).first()
+    customer_to_update = Customer.query.filter_by(userId=request.json["userId"]).first()
+
+    print("customer to update --------------------- ", customer_to_update)
 
     if customer_to_update:
-        customer_to_update.brand = form.json["brand"]
-        customer_to_update.last4 = form.json["last4"]
-        customer_to_update.expMonth = form.json["exp_month"]
-        customer_to_update.expYear = form.json["exp_year"]
+        customer_to_update.brand = request.json["brand"]
+        customer_to_update.last4 = request.json["last4"]
+        customer_to_update.expMonth = request.json["exp_month"]
+        customer_to_update.expYear = request.json["exp_year"]
 
         db.session.add(customer_to_update)
         db.session.commit()
 
-        user = User.query.get(form.json["userId"])
+        user_w_new_customer = User.query.get(request.json["userId"])
 
-        return user
+        return user_w_new_customer.to_dict()
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

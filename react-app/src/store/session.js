@@ -152,7 +152,7 @@ export const addPaymentMethod = (
   exp_month,
   exp_year
 ) => async (dispatch) => {
-  const res = await fetch(`/payments/add-payment-info`, {
+  const res = await fetch(`/api/payments/add-payment-info`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

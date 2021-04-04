@@ -42,8 +42,6 @@ export default function Payment1() {
     exp_year,
   } = paymentMethod.paymentMethod.card;
 
-  console.log('payment method', paymentMethod.paymentMethod.card);
-
   return (
     <>
       <h2 className='tertiary-title cntr-txt-sml-margin'>

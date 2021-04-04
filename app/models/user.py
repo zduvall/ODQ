@@ -43,4 +43,5 @@ class User(db.Model, UserMixin):
             "pxName": self.pxName,
             "phone": self.phone,
             "premium": self.premium,
+            "customer": self.customer.to_dict() if self.customer else None,
         }

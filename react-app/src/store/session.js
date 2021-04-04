@@ -145,6 +145,32 @@ export const deleteUser = (userId) => async (dispatch) => {
   }
 };
 
+export const addPaymentMethod = (
+  userId,
+  brand,
+  last4,
+  exp_month,
+  exp_year
+) => async (dispatch) => {
+  const res = await fetch(`/payments/add-payment-info`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userId,
+      brand,
+      last4,
+      exp_month,
+      exp_year,
+    }),
+  });
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(setUser(user));
+  }
+};
+
 // Reducer
 const sessionReducer = (state = { user: 'do not load' }, action) => {
   let newState = { ...state };

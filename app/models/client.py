@@ -22,7 +22,7 @@ class Client(db.Model):
             "birthYear": self.birthYear,
             "code": self.code,
             "curClient": self.curClient,
-            "pro": self.pro.to_dict(),
+            # "pro": self.pro.to_dict(),
             "tests": {test.id: test.to_dict() for test in self.tests},
             "lastTestTime": self.tests[-1].to_dict()["timeComp"]
             if self.tests

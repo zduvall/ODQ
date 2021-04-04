@@ -6,7 +6,7 @@ from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
 
 from app.forms import NewCustomerForm
-from app.models import Customer, db
+from app.models import Customer, User, db
 
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/account/apikeys
@@ -50,11 +50,23 @@ def create_customer():
 
         # modify customer if already exists
         customer_to_update = Customer.query.filter_by(
-            userId=request.json["userId"]
+            userId=form.data["userId"]
         ).first()
 
         if customer_to_update:
-            # customer_to_update.
+            stripe_customer = stripe.Customer.modify(
+                customer_to_update.stripeCustomerId,
+                name=form.data["name"],
+                email=form.data["email"],
+                address={
+                    "city": form.data["city"],
+                    "line1": form.data["line1"],
+                    "state": form.data["state"],
+                    "country": form.data["country"],
+                    "postal_code": form.data["postal_code"],
+                },
+                metadata={"userId": form.data["userId"]},
+            )
 
             return stripe_customer
 
@@ -94,27 +106,20 @@ def add_payment_info():
     """
 
     # modify customer if already exists
-    customer_to_update = Customer.query.filter_by(userId=form.data["userId"]).first()
+    customer_to_update = Customer.query.filter_by(userId=form.json["userId"]).first()
 
     if customer_to_update:
-        stripe_customer = stripe.Customer.modify(
-            customer_to_update.stripeCustomerId,
-            name=form.data["name"],
-            email=form.data["email"],
-            address={
-                "city": form.data["city"],
-                "line1": form.data["line1"],
-                "state": form.data["state"],
-                "country": form.data["country"],
-                "postal_code": form.data["postal_code"],
-            },
-            metadata={"userId": form.data["userId"]},
-        )
+        customer_to_update.brand = form.json["brand"]
+        customer_to_update.last4 = form.json["last4"]
+        customer_to_update.expMonth = form.json["exp_month"]
+        customer_to_update.expYear = form.json["exp_year"]
 
-    return stripe_customer
+        db.session.add(customer_to_update)
+        db.session.commit()
 
-    print("-------errors-------", form.errors)
-    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+        user = User.query.get(form.json["userId"])
+
+        return user
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

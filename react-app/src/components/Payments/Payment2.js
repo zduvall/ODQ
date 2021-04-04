@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
+
+// import thunk
+import { addPaymentMethod } from '../../store/session';
 
 // stripe imports
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 export default function Payment1() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
 
   const { billingInfo, setPaymentMethod } = usePaymentsContext();
 
@@ -35,8 +41,18 @@ export default function Payment1() {
     });
 
     if (!paymentMethodRes.errors) {
-      
+      const {
+        brand,
+        last4,
+        exp_month,
+        exp_year,
+      } = paymentMethodRes.paymentMethod.card;
+      dispatch(
+        addPaymentMethod(sessionUser.id, brand, last4, exp_month, exp_year)
+      );
+      // maybe just put the payment method in here below, b/c everything else will be on the sessionUser.customer
       setPaymentMethod(paymentMethodRes);
+
       history.push('/payments/3');
     } else {
       setProcessingTo(false);

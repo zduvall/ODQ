@@ -35,6 +35,7 @@ export default function Payment1() {
     });
 
     if (!paymentMethodRes.errors) {
+      
       setPaymentMethod(paymentMethodRes);
       history.push('/payments/3');
     } else {

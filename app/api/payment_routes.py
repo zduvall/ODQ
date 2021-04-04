@@ -42,7 +42,7 @@ def get_publishable_key():
 @login_required
 def create_customer():
     """
-    Creates a new client
+    Creates a new customer
     """
     form = NewCustomerForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -50,23 +50,11 @@ def create_customer():
 
         # modify customer if already exists
         customer_to_update = Customer.query.filter_by(
-            userId=form.data["userId"]
+            userId=request.json["userId"]
         ).first()
 
         if customer_to_update:
-            stripe_customer = stripe.Customer.modify(
-                customer_to_update.stripeCustomerId,
-                name=form.data["name"],
-                email=form.data["email"],
-                address={
-                    "city": form.data["city"],
-                    "line1": form.data["line1"],
-                    "state": form.data["state"],
-                    "country": form.data["country"],
-                    "postal_code": form.data["postal_code"],
-                },
-                metadata={"userId": form.data["userId"]},
-            )
+            # customer_to_update.
 
             return stripe_customer
 
@@ -93,6 +81,37 @@ def create_customer():
         db.session.commit()
 
         return stripe_customer
+
+    print("-------errors-------", form.errors)
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@payment_routes.route("/add-payment-info", methods=["post"])
+@login_required
+def add_payment_info():
+    """
+    Add some payment info to customer in DB
+    """
+
+    # modify customer if already exists
+    customer_to_update = Customer.query.filter_by(userId=form.data["userId"]).first()
+
+    if customer_to_update:
+        stripe_customer = stripe.Customer.modify(
+            customer_to_update.stripeCustomerId,
+            name=form.data["name"],
+            email=form.data["email"],
+            address={
+                "city": form.data["city"],
+                "line1": form.data["line1"],
+                "state": form.data["state"],
+                "country": form.data["country"],
+                "postal_code": form.data["postal_code"],
+            },
+            metadata={"userId": form.data["userId"]},
+        )
+
+    return stripe_customer
 
     print("-------errors-------", form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401

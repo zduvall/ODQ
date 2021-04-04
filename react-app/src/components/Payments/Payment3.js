@@ -23,10 +23,10 @@ export default function Payment1() {
   const [errors, setErrors] = useState([]);
   const [isProcessing, setProcessingTo] = useState();
 
-  async function onSubmit(e) {
-    e.preventDefault();
+  async function handleSubscribe() {
     setErrors([]);
     setProcessingTo(true);
+    https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
   }
 
   useEffect(() => {
@@ -47,59 +47,57 @@ export default function Payment1() {
       <h2 className='tertiary-title cntr-txt-sml-margin'>
         Confirm Information
       </h2>
-      <form className='form' onSubmit={onSubmit}>
+      <div className='site__sub-section__data'>
+        <div className='errors-container'>
+          {errors.map((error) => (
+            <div key={error}>{error}</div>
+          ))}
+        </div>
         <div className='site__sub-section__data'>
-          <div className='errors-container'>
-            {errors.map((error) => (
-              <div key={error}>{error}</div>
-            ))}
-          </div>
-          <div className='site__sub-section__data'>
-            <p>Billing Information</p>
-            <p className='tertiary-text indented-tight-text'>
-              {billingInfo.name}
-            </p>
-            <p className='tertiary-text indented-tight-text'>
-              {billingInfo.address.line1}
-            </p>
-            <p className='tertiary-text indented-tight-text'>
-              {billingInfo.address.city}, {billingInfo.address.state}{' '}
-              {billingInfo.address.postal_code}
-            </p>
-            <p className='tertiary-text indented-tight-text'>
-              {billingInfo.email}
-            </p>
-            <p>Payment Method</p>
-            <p className='tertiary-text indented-tight-text'>
-              {brand.charAt(0).toUpperCase() + brand.slice(1)}: ***
-              {last4}, Exp: {exp_month}/{exp_year}
-            </p>
-          </div>
+          <p>Billing Information</p>
+          <p className='tertiary-text indented-tight-text'>
+            {billingInfo.name}
+          </p>
+          <p className='tertiary-text indented-tight-text'>
+            {billingInfo.address.line1}
+          </p>
+          <p className='tertiary-text indented-tight-text'>
+            {billingInfo.address.city}, {billingInfo.address.state}{' '}
+            {billingInfo.address.postal_code}
+          </p>
+          <p className='tertiary-text indented-tight-text'>
+            {billingInfo.email}
+          </p>
+          <p>Payment Method</p>
+          <p className='tertiary-text indented-tight-text'>
+            {brand.charAt(0).toUpperCase() + brand.slice(1)}: ***
+            {last4}, Exp: {exp_month}/{exp_year}
+          </p>
         </div>
-        <div className='form__row buttons-grp-colLrg-rowSml'>
-          <button
-            className='primary-button form__button dashboard__button'
-            disabled={isProcessing || errors.length}
-            onClick={() => {}}
-          >
-            {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
-          </button>
-          <button
-            className='secondary-button form__button dashboard__button'
-            type='button'
-            onClick={() => history.push('/payments/1')}
-          >
-            Start Over
-          </button>
-          <button
-            className='delete-button form__button dashboard__button'
-            type='button'
-            onClick={() => history.push('/profile')}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
+      </div>
+      <div className='form__row buttons-grp-colLrg-rowSml'>
+        <button
+          className='primary-button form__button dashboard__button'
+          disabled={isProcessing || errors.length}
+          onClick={() => {}}
+        >
+          {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
+        </button>
+        <button
+          className='secondary-button form__button dashboard__button'
+          type='button'
+          onClick={() => history.push('/payments/1')}
+        >
+          Start Over
+        </button>
+        <button
+          className='delete-button form__button dashboard__button'
+          type='button'
+          onClick={() => history.push('/profile')}
+        >
+          Cancel
+        </button>
+      </div>
     </>
   );
 }

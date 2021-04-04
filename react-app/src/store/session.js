@@ -145,6 +145,7 @@ export const deleteUser = (userId) => async (dispatch) => {
   }
 };
 
+// add payment method onto the customer, and get updated customer onto user in redux store
 export const addPaymentMethod = (
   userId,
   brand,

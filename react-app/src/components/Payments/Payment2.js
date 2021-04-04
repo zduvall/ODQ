@@ -30,33 +30,40 @@ export default function Payment1() {
     setErrors([]);
     setProcessingTo(true);
 
-    const paymentMethodRes = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-      billing_details: {
-        address: billingInfo.address,
-        email: billingInfo.email,
-        name: billingInfo.name,
-      },
-    });
+    if (cardElement) {
+      const paymentMethodRes = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+        billing_details: {
+          address: billingInfo.address,
+          email: billingInfo.email,
+          name: billingInfo.name,
+        },
+      });
 
-    if (!paymentMethodRes.errors) {
-      const {
-        brand,
-        last4,
-        exp_month,
-        exp_year,
-      } = paymentMethodRes.paymentMethod.card;
-      dispatch(
-        addPaymentMethod(sessionUser.id, brand, last4, exp_month, exp_year)
-      );
-      // maybe just put the payment method in here below, b/c everything else will be on the sessionUser.customer
-      setPaymentMethod(paymentMethodRes);
+      console.log('payment method', paymentMethodRes);
 
-      history.push('/payments/3');
+      if (!paymentMethodRes.error) {
+        const {
+          brand,
+          last4,
+          exp_month,
+          exp_year,
+        } = paymentMethodRes.paymentMethod.card;
+        dispatch(
+          addPaymentMethod(sessionUser.id, brand, last4, exp_month, exp_year)
+        );
+        // maybe just put the payment method in here below, b/c everything else will be on the sessionUser.customer
+        setPaymentMethod(paymentMethodRes);
+
+        history.push('/payments/3');
+      } else {
+        setProcessingTo(false);
+        setErrors([paymentMethodRes.error.message]);
+      }
     } else {
       setProcessingTo(false);
-      setErrors(paymentMethodRes.errors);
+      setErrors(['Card informoation cannot be empty.']);
     }
   }
 

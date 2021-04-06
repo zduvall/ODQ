@@ -153,8 +153,9 @@ def add_payment_info():
             return user_w_new_customer.to_dict()
 
     except Exception as e:
-        print("-------errors-------", str(e))
-        return {"errors": str(e)}, 200
+        error = str(e)[str(e).index(":") + 1:]
+        print("-------errors-------", error)
+        return {"errors": error}, 200
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

@@ -53,7 +53,7 @@ export default function Payment1() {
     );
 
     if (res.errors) {
-      setErrors(res.errors);
+      setErrors([res.errors]);
     }
   }
 
@@ -62,13 +62,13 @@ export default function Payment1() {
       <h2 className='tertiary-title cntr-txt-sml-margin'>
         Confirm Information
       </h2>
+      <div className='errors-container'>
+        {errors.map((error) => (
+          <div key={error}>{error}</div>
+        ))}
+      </div>
       <div className='form'>
         <div className='site__sub-section__data'>
-          <div className='errors-container'>
-            {errors.map((error) => (
-              <div key={error}>{error}</div>
-            ))}
-          </div>
           <p>Billing Information</p>
           <p className='tertiary-text indented-tight-text'>
             {billingInfo.name}

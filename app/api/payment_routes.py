@@ -127,27 +127,32 @@ def add_payment_info():
             items=[{"price": request.json["priceId"]}],
             expand=["latest_invoice.payment_intent"],
         )
+
+        # modify customer if already exists
+        customer_to_update = Customer.query.filter_by(
+            userId=request.json["userId"]
+        ).first()
+
+        if customer_to_update:
+            customer_to_update.brand = request.json["brand"]
+            customer_to_update.last4 = request.json["last4"]
+            customer_to_update.expMonth = request.json["exp_month"]
+            customer_to_update.expYear = request.json["exp_year"]
+            customer_to_update.stripeSubId = subscription.id
+            customer_to_update.subType = subscription.metadata.subType
+
+            db.session.add(customer_to_update)
+            db.session.commit()
+
+            user_w_new_customer = User.query.get(request.json["userId"])
+
+            return user_w_new_customer.to_dict()
+        print(subscription)
+
         return jsonify(subscription)
     except Exception as e:
         print("-------errors-------", str(e))
         return jsonify(error={"message": str(e)}), 200
-
-    # # modify customer if already exists
-    # customer_to_update = Customer.query.filter_by(userId=request.json["userId"]).first()
-
-    # if customer_to_update:
-    #     customer_to_update.brand = request.json["brand"]
-    #     customer_to_update.last4 = request.json["last4"]
-    #     customer_to_update.expMonth = request.json["exp_month"]
-    #     customer_to_update.expYear = request.json["exp_year"]
-    #     # customer_to_update.stripeSubscriptionId = request.json["stripeSubscriptionId"]
-
-    #     db.session.add(customer_to_update)
-    #     db.session.commit()
-
-    #     user_w_new_customer = User.query.get(request.json["userId"])
-
-    #     return user_w_new_customer.to_dict()
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

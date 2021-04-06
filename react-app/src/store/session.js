@@ -156,6 +156,7 @@ export const addPaymentMethod = (
   exp_month,
   exp_year
 ) => async (dispatch) => {
+
   const res = await fetch(`/api/payments/create-subscription`, {
     method: 'POST',
     headers: {
@@ -172,10 +173,16 @@ export const addPaymentMethod = (
       exp_year,
     }),
   });
-  if (res.ok) {
-    const user = await res.json();
+
+  debugger
+
+  const user = await res.json();
+
+  if (user.ok) {
     dispatch(setUser(user));
   }
+
+  return user;
 };
 
 // Reducer

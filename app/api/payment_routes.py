@@ -128,8 +128,6 @@ def add_payment_info():
             expand=["latest_invoice.payment_intent"],
         )
 
-        print(subscription)
-
         product_dict = {"prod_JFrghUn65BDJnY": "premium-basic"}
 
         subType = product_dict[subscription["items"]["data"][0]["plan"]["product"]]
@@ -152,9 +150,10 @@ def add_payment_info():
 
             user_w_new_customer = User.query.get(request.json["userId"])
 
+            print("---------- user w cust ------------- ", user_w_new_customer.to_dict())
+
             return user_w_new_customer.to_dict()
 
-        return jsonify(subscription)
     except Exception as e:
         print("-------errors-------", str(e))
         return {"errors": str(e)}, 200

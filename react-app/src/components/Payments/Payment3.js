@@ -52,8 +52,6 @@ export default function Payment1() {
       )
     );
 
-    const result = await res.json();
-
     if (res.errors) {
       setErrors(res.errors);
     }

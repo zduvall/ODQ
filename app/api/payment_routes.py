@@ -42,7 +42,7 @@ def get_publishable_key():
 @login_required
 def create_customer():
     """
-    Creates a new customer
+    Creates a new customer or modifies customer if already exists
     """
     form = NewCustomerForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -98,30 +98,56 @@ def create_customer():
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@payment_routes.route("/add-payment-info", methods=["put"])
+@payment_routes.route("/create-subscription", methods=["POST"])
 @login_required
 def add_payment_info():
     """
-    Add some payment info to customer in DB
+    Create subscription, add some of payment info to customer in DB
     """
 
-    # modify customer if already exists
-    customer_to_update = Customer.query.filter_by(userId=request.json["userId"]).first()
+    print("--------------request.json--------------", request.json)
 
-    print("customer to update --------------------- ", customer_to_update)
+    try:
+        # Attach the payment method to the customer
+        stripe.PaymentMethod.attach(
+            request.json["paymentMethodId"],
+            customer=request.json["customerId"],
+        )
+        # Set the default payment method on the customer
+        stripe.Customer.modify(
+            request.json["customerId"],
+            invoice_settings={
+                "default_payment_method": request.json["paymentMethodId"],
+            },
+        )
 
-    if customer_to_update:
-        customer_to_update.brand = request.json["brand"]
-        customer_to_update.last4 = request.json["last4"]
-        customer_to_update.expMonth = request.json["exp_month"]
-        customer_to_update.expYear = request.json["exp_year"]
+        # Create the subscription
+        subscription = stripe.Subscription.create(
+            customer=request.json["customerId"],
+            items=[{"price": request.json["priceId"]}],
+            expand=["latest_invoice.payment_intent"],
+        )
+        return jsonify(subscription)
+    except Exception as e:
+        print("-------errors-------", str(e))
+        return jsonify(error={"message": str(e)}), 200
 
-        db.session.add(customer_to_update)
-        db.session.commit()
+    # # modify customer if already exists
+    # customer_to_update = Customer.query.filter_by(userId=request.json["userId"]).first()
 
-        user_w_new_customer = User.query.get(request.json["userId"])
+    # if customer_to_update:
+    #     customer_to_update.brand = request.json["brand"]
+    #     customer_to_update.last4 = request.json["last4"]
+    #     customer_to_update.expMonth = request.json["exp_month"]
+    #     customer_to_update.expYear = request.json["exp_year"]
+    #     # customer_to_update.stripeSubscriptionId = request.json["stripeSubscriptionId"]
 
-        return user_w_new_customer.to_dict()
+    #     db.session.add(customer_to_update)
+    #     db.session.commit()
+
+    #     user_w_new_customer = User.query.get(request.json["userId"])
+
+    #     return user_w_new_customer.to_dict()
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

@@ -22,24 +22,36 @@ export default function Payment1() {
   const [errors, setErrors] = useState([]);
   const [isProcessing, setProcessingTo] = useState();
 
-  async function handleSubscribe() {
-    setErrors([]);
-    setProcessingTo(true);
-    // https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
-  }
-
   useEffect(() => {
     if (!billingInfo || !paymentMethod) history.push('/payments/1');
   }, [billingInfo, paymentMethod, history]);
 
   if (!billingInfo || !paymentMethod) return null;
 
-  const {
-    brand,
-    last4,
-    exp_month,
-    exp_year,
-  } = paymentMethod.paymentMethod.card;
+  console.log('payment method', paymentMethod);
+  console.log('billing info', billingInfo);
+
+  const { brand, last4, exp_month, exp_year } = paymentMethod.card;
+
+  async function handleSubscribe() {
+    setErrors([]);
+    setProcessingTo(true);
+
+    const priceId = 'price_1IZ9EXJUL0dIO0rK5PWf3OS3';
+
+    dispatch(
+      addPaymentMethod(
+        billingInfo.id,
+        paymentMethod.id,
+        priceId,
+        sessionUser.id,
+        brand,
+        last4,
+        exp_month,
+        exp_year
+      )
+    );
+  }
 
   return (
     <>
@@ -78,7 +90,7 @@ export default function Payment1() {
         <button
           className='primary-button form__button dashboard__button'
           disabled={isProcessing || errors.length}
-          onClick={() => {}}
+          onClick={handleSubscribe}
         >
           {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
         </button>

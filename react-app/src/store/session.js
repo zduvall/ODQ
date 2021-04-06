@@ -172,10 +172,10 @@ export const addPaymentMethod = (
       exp_year,
     }),
   });
-  // if (res.ok) {
-  //   const user = await res.json();
-  //   dispatch(setUser(user));
-  // }
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(setUser(user));
+  }
 };
 
 // Reducer

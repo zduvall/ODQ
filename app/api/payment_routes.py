@@ -128,6 +128,8 @@ def add_payment_info():
             expand=["latest_invoice.payment_intent"],
         )
 
+        print(subscription)
+
         # modify customer if already exists
         customer_to_update = Customer.query.filter_by(
             userId=request.json["userId"]
@@ -139,7 +141,7 @@ def add_payment_info():
             customer_to_update.expMonth = request.json["exp_month"]
             customer_to_update.expYear = request.json["exp_year"]
             customer_to_update.stripeSubId = subscription.id
-            customer_to_update.subType = subscription.metadata.subType
+            # customer_to_update.subType = subscription.metadata.subType
 
             db.session.add(customer_to_update)
             db.session.commit()
@@ -147,12 +149,11 @@ def add_payment_info():
             user_w_new_customer = User.query.get(request.json["userId"])
 
             return user_w_new_customer.to_dict()
-        print(subscription)
 
         return jsonify(subscription)
     except Exception as e:
         print("-------errors-------", str(e))
-        return jsonify(error={"message": str(e)}), 200
+        return {"errors": str(e)}, 200
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

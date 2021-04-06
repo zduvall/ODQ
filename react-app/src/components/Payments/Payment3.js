@@ -37,9 +37,9 @@ export default function Payment1() {
     setErrors([]);
     setProcessingTo(true);
 
-    const priceId = 'price_1IZ9EXJUL0dIO0rK5PWf3OS3';
+    const priceId = 'price_1IdLwoJUL0dIO0rKqFkkantv';
 
-    dispatch(
+    const res = await dispatch(
       addPaymentMethod(
         billingInfo.id,
         paymentMethod.id,
@@ -51,6 +51,12 @@ export default function Payment1() {
         exp_year
       )
     );
+
+    const result = await res.json();
+
+    if (res.errors) {
+      setErrors(res.errors);
+    }
   }
 
   return (

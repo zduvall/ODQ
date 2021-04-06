@@ -130,6 +130,10 @@ def add_payment_info():
 
         print(subscription)
 
+        product_dict = {"prod_JFrghUn65BDJnY": "premium-basic"}
+
+        subType = product_dict[subscription["items"]["data"][0]["plan"]["product"]]
+
         # modify customer if already exists
         customer_to_update = Customer.query.filter_by(
             userId=request.json["userId"]
@@ -141,7 +145,7 @@ def add_payment_info():
             customer_to_update.expMonth = request.json["exp_month"]
             customer_to_update.expYear = request.json["exp_year"]
             customer_to_update.stripeSubId = subscription.id
-            # customer_to_update.subType = subscription.metadata.subType
+            customer_to_update.subType = subType
 
             db.session.add(customer_to_update)
             db.session.commit()

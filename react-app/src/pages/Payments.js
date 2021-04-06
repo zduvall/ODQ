@@ -21,11 +21,11 @@ export default function Payments() {
     >
       <div className='site__page'>
         <h1 className='primary-title'>Premium Subscription</h1>
-        <div className='site__sub-section form-container'>
+        {/* <div className='site__sub-section form-container'> */}
           {subPageId === '1' && <Payment1 />}
           {subPageId === '2' && <Payment2 />}
           {subPageId === '3' && <Payment3 />}
-        </div>
+        {/* </div> */}
         <div className='one1rem-ht' />
       </div>
     </PaymentsContext.Provider>

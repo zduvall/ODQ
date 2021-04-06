@@ -94,7 +94,7 @@ export default function Payment1() {
   const cardElement = elements.getElement('card');
 
   return (
-    <>
+    <div className='site__sub-section form-container'>
       <h2 className='tertiary-title cntr-txt-sml-margin'>Payment Method</h2>
       <form className='form' onSubmit={onSubmit}>
         <div className='site__sub-section__data'>
@@ -127,6 +127,6 @@ export default function Payment1() {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }

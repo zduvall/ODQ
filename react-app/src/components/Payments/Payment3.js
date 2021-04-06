@@ -58,17 +58,17 @@ export default function Payment1() {
   }
 
   return (
-    <>
+    <div className='site__sub-section'>
       <h2 className='tertiary-title cntr-txt-sml-margin'>
         Confirm Information
       </h2>
-      <div className='site__sub-section__data'>
-        <div className='errors-container'>
-          {errors.map((error) => (
-            <div key={error}>{error}</div>
-          ))}
-        </div>
+      <div className='form'>
         <div className='site__sub-section__data'>
+          <div className='errors-container'>
+            {errors.map((error) => (
+              <div key={error}>{error}</div>
+            ))}
+          </div>
           <p>Billing Information</p>
           <p className='tertiary-text indented-tight-text'>
             {billingInfo.name}
@@ -89,32 +89,30 @@ export default function Payment1() {
             {last4}, Exp: {exp_month}/{exp_year}
           </p>
         </div>
+        <div className='form__row buttons-grp-colLrg-rowSml'>
+          <button
+            className='primary-button form__button dashboard__button'
+            disabled={isProcessing || errors.length}
+            onClick={handleSubscribe}
+          >
+            {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
+          </button>
+          <button
+            className='secondary-button form__button dashboard__button'
+            type='button'
+            onClick={() => history.push('/payments/1')}
+          >
+            Start Over
+          </button>
+          <button
+            className='delete-button form__button dashboard__button'
+            type='button'
+            onClick={() => history.push('/profile')}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
-      <div className='form__row buttons-grp-colLrg-rowSml'>
-        <button
-          className='primary-button form__button dashboard__button'
-          disabled={isProcessing || errors.length}
-          onClick={handleSubscribe}
-        >
-          {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
-        </button>
-        <button
-          className='secondary-button form__button dashboard__button'
-          type='button'
-          onClick={() => history.push('/payments/1')}
-        >
-          Start Over
-        </button>
-        <button
-          className='delete-button form__button dashboard__button'
-          type='button'
-          onClick={() => history.push('/profile')}
-        >
-          Cancel
-        </button>
-      </div>
-    </>
+    </div>
   );
 }
-
-

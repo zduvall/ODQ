@@ -150,8 +150,6 @@ def add_payment_info():
 
             user_w_new_customer = User.query.get(request.json["userId"])
 
-            print("---------- user w cust ------------- ", user_w_new_customer.to_dict())
-
             return user_w_new_customer.to_dict()
 
     except Exception as e:

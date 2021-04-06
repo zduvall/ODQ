@@ -62,7 +62,7 @@ export default function Payment1() {
   }
 
   return (
-    <>
+    <div className='site__sub-section form-container'>
       <h2 className='tertiary-title cntr-txt-sml-margin'>
         Billing Information
       </h2>
@@ -166,6 +166,6 @@ export default function Payment1() {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }

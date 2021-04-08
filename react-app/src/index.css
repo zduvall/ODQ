@@ -226,7 +226,9 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   border-color: var(--primary-color);
 }
 
-.primary-button:disabled {
+.primary-button:disabled,
+.secondary-button:disabled,
+.delete-button:disabled {
   background-color: var(--tertiary-color-light);
   border: var(--tertiary-color) 1px solid;
   color: var(--tertiary-color);

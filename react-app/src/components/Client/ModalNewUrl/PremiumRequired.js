@@ -12,7 +12,7 @@ export default function PremiumRequired({ testAbbr }) {
         ></i>
       </h2>
       <p>
-        The {`${testAbbr}`} other tests are available to premium users. Please
+        The {`${testAbbr}`} and other tests are available to premium users. Please
         consider our{' '}
         <span
           className='clickable-link'

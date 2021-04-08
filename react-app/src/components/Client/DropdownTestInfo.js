@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 // import context
 import { useClientTestsContext } from '../../pages/Client';
 
-// import check premium function
-import checkPremium from '../../services/checkPremium';
+// import check subscription type function
+import checkSubType from '../../services/checkSubType';
 
 // import css
 import './Client.css';
 
 export default function DropdownTestInfo() {
-  const premium = useSelector((state) => state.session.user.subType);
+  const subType = useSelector((state) => state.session.user.subType);
 
   const { dropdownTest, setDropdownTest } = useClientTestsContext();
 
@@ -22,7 +22,7 @@ export default function DropdownTestInfo() {
       ></i>
       <h2 className='primary-title cntr-txt-sml-margin'>
         {dropdownTest.name}{' '}
-        {checkPremium(premium) ? (
+        {checkSubType(subType) ? (
           ''
         ) : (
           <i

@@ -72,7 +72,7 @@ export default function TestDropDownNewUrl() {
           </option>
           {Object.values(tests).map((t) => (
             <option value={t.code} key={t.code}>
-              {t.abbr} {checkPremium(t.code, sessionUser.premium) ? '' : '*'}
+              {t.abbr} {checkPremium(t.code, sessionUser.subType) ? '' : '*'}
               {/* {checkPremium(sessionUser.premium, t.code) ? '' : `${'\uf5a2'}`} */}
             </option>
           ))}

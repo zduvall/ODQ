@@ -28,9 +28,6 @@ export default function Payment1() {
 
   if (!billingInfo || !paymentMethod) return null;
 
-  console.log('payment method', paymentMethod);
-  console.log('billing info', billingInfo);
-
   const { brand, last4, exp_month, exp_year } = paymentMethod.card;
 
   async function handleSubscribe() {
@@ -58,7 +55,7 @@ export default function Payment1() {
   }
 
   return (
-    <div className='site__sub-section'>
+    <div className='site__sub-section form-container'>
       <h2 className='tertiary-title cntr-txt-sml-margin'>
         Confirm Information
       </h2>

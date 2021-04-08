@@ -66,8 +66,7 @@ export const updateUser = (
   email,
   lic,
   pxName,
-  phone,
-  premium
+  phone
 ) => async (dispatch) => {
   const res = await fetch(`/api/auth/signup/${id}`, {
     method: 'PUT',
@@ -81,7 +80,6 @@ export const updateUser = (
       lic,
       pxName,
       phone,
-      premium,
     }),
   });
 
@@ -156,7 +154,6 @@ export const addPaymentMethod = (
   exp_month,
   exp_year
 ) => async (dispatch) => {
-
   const res = await fetch(`/api/payments/create-subscription`, {
     method: 'POST',
     headers: {
@@ -174,15 +171,13 @@ export const addPaymentMethod = (
     }),
   });
 
-  debugger
-
-  const user = await res.json();
-
-  if (user.ok) {
+  if (res.ok) {
+    const user = await res.json();
+    console.log('user', user);
     dispatch(setUser(user));
   }
 
-  return user;
+  return 'done!';
 };
 
 // Reducer

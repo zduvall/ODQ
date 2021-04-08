@@ -104,7 +104,6 @@ def update(userId):
         user_to_update.lic = form.data["lic"]
         user_to_update.pxName = form.data["pxName"]
         user_to_update.phone = form.data["phone"]
-        user_to_update.premium = form.data["premium"]
 
         db.session.add(user_to_update)
         db.session.commit()

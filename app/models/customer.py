@@ -10,7 +10,6 @@ class Customer(db.Model):
     )
     stripeCustomerId = db.Column(db.String(255), unique=True, nullable=False)
     stripeSubId = db.Column(db.String(255), unique=True)
-    subType = db.Column(db.String(30))
     brand = db.Column(db.String(50))
     last4 = db.Column(db.Integer)
     expMonth = db.Column(db.Integer)
@@ -24,7 +23,6 @@ class Customer(db.Model):
             "userId": self.userId,
             "stripeCustomerId": self.stripeCustomerId,
             "stripeSubId": self.stripeSubId,
-            "subType": self.subType,
             "brand": self.brand,
             "last4": self.last4,
             "expMonth": self.expMonth,

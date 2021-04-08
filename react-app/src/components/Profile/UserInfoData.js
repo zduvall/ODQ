@@ -26,7 +26,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
     pxName,
     phone,
     email,
-    premium,
+    subType,
   } = sessionUser;
 
   const handleDeactivate = () => {
@@ -61,7 +61,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
         <p>
           {firstName} {lastName}
           {lic ? `, ${lic}` : ''}{' '}
-          {premium ? (
+          {subType ? (
             <i
               title={'As a subscribing user, you have access to all tests!'}
               className='fas fa-medal medal-w-title primary-title'
@@ -86,7 +86,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
         >
           Update
         </button>
-        {!sessionUser.premium && (
+        {!sessionUser.subType && (
           <button
             className='primary-button dashboard__button'
             onClick={() => history.push('/payments/1')}
@@ -94,7 +94,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
             Premium
           </button>
         )}
-        {sessionUser.premium && (
+        {!!sessionUser.subType && (
           <button
             className='delete-button dashboard__button'
             onClick={() => setShowUnsubscribeModal(true)}

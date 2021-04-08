@@ -13,7 +13,7 @@ def seed_users():
         lic="LCSW",
         pxName="Pro Counseling Demo LLC",
         phone="+18012401234",
-        premium=True,
+        subType=0
     )
     demo2 = User(
         firstName="Demo2",

@@ -10,7 +10,7 @@ import checkPremium from '../../services/checkPremium';
 import './Client.css';
 
 export default function DropdownTestInfo() {
-  const premium = useSelector((state) => state.session.user.premium);
+  const premium = useSelector((state) => state.session.user.subType);
 
   const { dropdownTest, setDropdownTest } = useClientTestsContext();
 
@@ -23,12 +23,12 @@ export default function DropdownTestInfo() {
       <h2 className='primary-title cntr-txt-sml-margin'>
         {dropdownTest.name}{' '}
         {checkPremium(premium) ? (
+          ''
+        ) : (
           <i
             title={'Subscribing users have access to premium tests'}
             className='fas fa-medal medal-w-title'
           ></i>
-        ) : (
-          ''
         )}
       </h2>
       <h3 className='tertiary-title cntr-txt-sml-margin'>

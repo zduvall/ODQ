@@ -128,7 +128,9 @@ def add_payment_info():
             expand=["latest_invoice.payment_intent"],
         )
 
-        product_dict = {"prod_JFrghUn65BDJnY": "premium-basic"}
+        print(subscription)
+
+        product_dict = {"prod_JFrghUn65BDJnY": 1}
 
         subType = product_dict[subscription["items"]["data"][0]["plan"]["product"]]
 
@@ -143,17 +145,20 @@ def add_payment_info():
             customer_to_update.expMonth = request.json["exp_month"]
             customer_to_update.expYear = request.json["exp_year"]
             customer_to_update.stripeSubId = subscription.id
-            customer_to_update.subType = subType
+            # customer_to_update.subType = subType
 
             db.session.add(customer_to_update)
-            db.session.commit()
 
             user_w_new_customer = User.query.get(request.json["userId"])
+            user_w_new_customer.subType = subType
+
+            db.session.add(user_w_new_customer)
+            db.session.commit()
 
             return user_w_new_customer.to_dict()
 
     except Exception as e:
-        error = str(e)[str(e).index(":") + 1:]
+        error = str(e)[str(e).index(":") + 1 :]
         print("-------errors-------", error)
         return {"errors": error}, 200
 
@@ -162,7 +167,7 @@ def add_payment_info():
 def webhook_received():
     # You can use webhooks to receive information about asynchronous payment events.
     # For more about our webhook events check out https://stripe.com/docs/webhooks.
-    webhook_secret = os.getenv("STRIPE_WEBHOOK_SECRET")
+    webhook_secret = os.environ("STRIPE_WEBHOOK_SECRET")
     request_data = json.loads(request.data)
 
     if webhook_secret:

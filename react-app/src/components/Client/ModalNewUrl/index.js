@@ -17,7 +17,7 @@ export default function ModalNewUrl({
   newUrl,
   test,
 }) {
-  const premium = useSelector((state) => state.session.user.premium);
+  const premium = useSelector((state) => state.session.user.subType);
 
   return (
     <>

@@ -42,20 +42,7 @@ export default function Payment1() {
       });
 
       if (!paymentMethodRes.error) {
-        // const {
-        //   brand,
-        //   last4,
-        //   exp_month,
-        //   exp_year,
-        // } = paymentMethodRes.paymentMethod.card;
-        // dispatch(
-        //   addPaymentMethod(sessionUser.id, brand, last4, exp_month, exp_year)
-        // );
-
-        // // I may actually use this thunk in the next page and update it to take in the subScriptionId as well,
-        // // if I do use commented out stuff above, maybe just put the payment method id in here below, b/c everything else will be on the sessionUser.customer
         setPaymentMethod(paymentMethodRes.paymentMethod);
-
         history.push('/payments/3');
       } else {
         setProcessingTo(false);

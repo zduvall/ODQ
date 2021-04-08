@@ -167,6 +167,8 @@ def cancel_subscription():
 
         db.session.add(user_w_cancelled_sub)
         db.session.commit()
+
+        return user_w_cancelled_sub.to_dict()
     except Exception as e:
         error = "Cancellation failed, please reach out to Zachary Duvall (see footer) with concerns"
         print("-------errors-------", error)

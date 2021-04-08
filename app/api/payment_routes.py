@@ -25,13 +25,6 @@ payment_routes = Blueprint("payments", __name__)
 
 # from: https://testdriven.io/blog/flask-stripe-subscriptions/ -- got up to 'AJAX Request'
 
-# @payment_routes.route("/config")
-# def get_publishable_key():
-#     return jsonify(stripe.api_key)
-
-
-# from: https://stripe.com/docs/billing/subscriptions/fixed-price -- in the middle of '4 Create Stripe Customer'
-
 
 @payment_routes.route("/config")
 def get_publishable_key():
@@ -105,8 +98,6 @@ def add_payment_info():
     Create subscription, add some of payment info to customer in DB
     """
 
-    print("--------------request.json--------------", request.json)
-
     try:
         # Attach the payment method to the customer
         stripe.PaymentMethod.attach(
@@ -158,6 +149,26 @@ def add_payment_info():
 
     except Exception as e:
         error = str(e)[str(e).index(":") + 1 :]
+        print("-------errors-------", error)
+        return {"errors": error}, 200
+
+
+@payment_routes.route("/cancel-subscription", methods=["PUT"])
+@login_required
+def cancel_subscription():
+    """
+    Cancel subscription in stripe and change subType on user
+    """
+    try:
+        stripe.Subscription.delete(request.json["stripeSubId"])
+
+        user_w_cancelled_sub = User.query.get(request.json["userId"])
+        user_w_cancelled_sub.subType = 0
+
+        db.session.add(user_w_cancelled_sub)
+        db.session.commit()
+    except Exception as e:
+        error = "Cancellation failed, please reach out to Zachary Duvall (see footer) with concerns"
         print("-------errors-------", error)
         return {"errors": error}, 200
 

@@ -62,7 +62,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
           {lic ? `, ${lic}` : ''}{' '}
           {subType ? (
             <i
-              title={'As a subscribing user, you have access to all tests!'}
+              title={'As a subscribing user, you have access to all tests.'}
               className='fas fa-medal medal-w-title primary-title'
             ></i>
           ) : (

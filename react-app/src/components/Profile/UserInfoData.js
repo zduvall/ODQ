@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
-import { deleteUser, togglePremium } from '../../store/session';
+import { deleteUser, cancelSubscription } from '../../store/session';
 
 // import component
 import ModalConfirmButton from '../ModalConfirmButton';
@@ -35,8 +35,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
   };
 
   const handleUnsubscribe = () => {
-    // need to add cancel stripe logic here too!
-    // dispatch(togglePremium(sessionUser.id, false));
+    dispatch(cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId));
   };
 
   return (

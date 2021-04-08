@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunk
-import { togglePremium, addPaymentMethod } from '../../store/session';
+import { addPaymentMethod } from '../../store/session';
 
 // import context
 import { usePaymentsContext } from '../../pages/Payments';

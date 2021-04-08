@@ -145,7 +145,6 @@ def add_payment_info():
             customer_to_update.expMonth = request.json["exp_month"]
             customer_to_update.expYear = request.json["exp_year"]
             customer_to_update.stripeSubId = subscription.id
-            # customer_to_update.subType = subType
 
             db.session.add(customer_to_update)
 

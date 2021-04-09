@@ -33,28 +33,48 @@ export default function SubscriptionInfo() {
           'Are you sure you would like to unsubscribe? Premium tests will no longer be accessible.'
         }
       />
-      <div className='site__sub-section__data'>
+      <div className='site__sub-section__data sml-scrn-lft-align'>
         <p>
           <span className='underline'>Account type</span>:{' '}
           <span className='primary-title bold'>
-            {!!sessionUser.subType ? 'Premium Subscription' : 'Free Account'}
+            {!!sessionUser.subType ? (
+              <>
+                Premium Subscription{' '}
+                <i
+                  title={'As a subscribing user, you have access to all tests.'}
+                  className='fas fa-medal medal-w-title primary-title'
+                ></i>
+              </>
+            ) : (
+              'Free Account'
+            )}
           </span>
         </p>
+        <p>
+          <span className='underline'>Access</span>:{' '}
+          {!!sessionUser.subType
+            ? 'all tests in eDOT database.'
+            : 'free tests in eDOT database'}
+        </p>
+        <p>
+          <span className='underline'>Billing</span>:{' '}
+          {!!sessionUser.subType ? (
+            <>
+              {`$7.99 monthly, 
+          ${
+            brand.charAt(0).toUpperCase() + brand.slice(1)
+          } (***${last4}, exp: ${expMonth}/${expYear
+                .toString()
+                .slice(2)})`}{' '}
+            </>
+          ) : (
+            'none'
+          )}
+        </p>
         {!sessionUser.subType && (
-          <>
-            <p>Subscribe to have access to all eDOT tests.</p>
-            <p>$7.99 billed monthly</p>
-          </>
-        )}
-        {!!sessionUser.subType && (
-          <>
-            <p>Premium subscription allows to all eDOT tests.</p>
-            <p>
-              Billing: $7.99 monthly,{' '}
-              {brand.charAt(0).toUpperCase() + brand.slice(1)} (***
-              {last4}, exp: {expMonth}/{expYear})
-            </p>
-          </>
+          <p style={{ fontSize: '0.9rem' }}>
+            (Subscribe for $7.99 / month to access all tests)
+          </p>
         )}
       </div>
       <div className='buttons-grp-colLrg-rowSml'>

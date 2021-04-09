@@ -81,8 +81,8 @@ export default function Payment1() {
           </p>
           <p>Payment Method</p>
           <p className='tertiary-text indented-tight-text'>
-            {brand.charAt(0).toUpperCase() + brand.slice(1)}: ***
-            {last4}, Exp: {exp_month}/{exp_year}
+            {brand.charAt(0).toUpperCase() + brand.slice(1)}: ***{last4}, Exp:{' '}
+            {exp_month}/{exp_year.toString().slice(2)}
           </p>
         </div>
         <div className='form__row buttons-grp-colLrg-rowSml'>
@@ -98,7 +98,7 @@ export default function Payment1() {
             disabled={isProcessing}
             onClick={() => history.push('/payments/1')}
           >
-            Start Over
+            Restart
           </button>
           <button
             className='delete-button form__button dashboard__button'

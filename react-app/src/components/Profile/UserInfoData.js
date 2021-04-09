@@ -47,14 +47,14 @@ export default function UserInfoData({ setShowUpdateUser }) {
         <p>
           {firstName} {lastName}
           {lic ? `, ${lic}` : ''}{' '}
-          {subType ? (
+          {/* {subType ? (
             <i
               title={'As a subscribing user, you have access to all tests.'}
               className='fas fa-medal medal-w-title primary-title'
             ></i>
           ) : (
             ''
-          )}
+          )} */}
         </p>
         <p>{pxName}</p>
         <p>{phone}</p>

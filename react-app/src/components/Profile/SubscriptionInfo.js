@@ -35,17 +35,22 @@ export default function SubscriptionInfo() {
       />
       <div className='site__sub-section__data'>
         <p>
-          Account type:{' '}
-          {!!sessionUser.subType ? 'Premium Subscription' : 'Free Account'}
+          <span className='underline'>Account type</span>:{' '}
+          <span className='primary-title bold'>
+            {!!sessionUser.subType ? 'Premium Subscription' : 'Free Account'}
+          </span>
         </p>
         {!sessionUser.subType && (
-          <p>Subscribe to have access to all eDOT tests.</p>
+          <>
+            <p>Subscribe to have access to all eDOT tests.</p>
+            <p>$7.99 billed monthly</p>
+          </>
         )}
         {!!sessionUser.subType && (
           <>
             <p>Premium subscription allows to all eDOT tests.</p>
             <p>
-              $7.99 billed monthly to{' '}
+              Billing: $7.99 monthly,{' '}
               {brand.charAt(0).toUpperCase() + brand.slice(1)} (***
               {last4}, exp: {expMonth}/{expYear})
             </p>

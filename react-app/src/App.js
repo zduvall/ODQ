@@ -96,7 +96,7 @@ function App() {
             <ClientForm />
           </ProtectedRoute>
           <ProtectedRoute
-            path='/profile'
+            path='/account'
             exact={true}
             authenticated={!!sessionUser}
           >

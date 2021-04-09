@@ -9,7 +9,7 @@ export default function User() {
 
   return (
     <div className='site__page'>
-      <h1 className='primary-title'>Profile</h1>
+      <h1 className='primary-title'>Account</h1>
       <Profile
         showUpdateUser={showUpdateUser}
         setShowUpdateUser={setShowUpdateUser}

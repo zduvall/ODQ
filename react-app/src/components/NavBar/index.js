@@ -50,12 +50,12 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className={navItemClass}
-        to='/profile'
+        to='/account'
         exact
         activeClassName='nav__item-active'
         onClick={handleClick}
       >
-        Profile
+        Account
       </NavLink>
       <button className={navItemClass} onClick={handleLogout}>
         Logout

@@ -1,0 +1,9 @@
+.powered-by-stripe {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: var(--tertiary-color);
+  font-size: 0.8rem;
+  position: relative;
+  top: -0.75em;
+}

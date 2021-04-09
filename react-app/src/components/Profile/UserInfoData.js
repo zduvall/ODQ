@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
@@ -16,7 +16,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showDeactivateModal, setShowDeactivateModal] = useState(false);
 
   const {
     firstName,
@@ -25,7 +25,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
     pxName,
     phone,
     email,
-    premium,
+    subType,
   } = sessionUser;
 
   const handleDeactivate = () => {
@@ -36,8 +36,8 @@ export default function UserInfoData({ setShowUpdateUser }) {
   return (
     <div className='site__sub-section user__info'>
       <ModalConfirmButton
-        showModal={showModal}
-        setShowModal={setShowModal}
+        showModal={showDeactivateModal}
+        setShowModal={setShowDeactivateModal}
         proceedAction={handleDeactivate}
         message={
           'Are you sure you want to deactivate your account? All associated data will be deleted.'
@@ -47,14 +47,14 @@ export default function UserInfoData({ setShowUpdateUser }) {
         <p>
           {firstName} {lastName}
           {lic ? `, ${lic}` : ''}{' '}
-          {premium ? (
+          {/* {subType ? (
             <i
-              title={'As a subscribing user, you have access to all tests!'}
-              class='fas fa-medal medal-w-title primary-title'
+              title={'As a subscribing user, you have access to all tests.'}
+              className='fas fa-medal medal-w-title primary-title'
             ></i>
           ) : (
             ''
-          )}
+          )} */}
         </p>
         <p>{pxName}</p>
         <p>{phone}</p>
@@ -67,14 +67,14 @@ export default function UserInfoData({ setShowUpdateUser }) {
       </div>
       <div className='buttons-grp-colLrg-rowSml'>
         <button
-          className='primary-button dashboard__button'
+          className='secondary-button dashboard__button'
           onClick={() => setShowUpdateUser((prev) => !prev)}
         >
           Update
         </button>
         <button
           className='delete-button dashboard__button'
-          onClick={() => setShowModal(true)}
+          onClick={() => setShowDeactivateModal(true)}
         >
           Deactivate
         </button>

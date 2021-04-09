@@ -84,8 +84,8 @@ export default function Login() {
           <span
             className='clickable-link'
             onClick={() => {
-              setEmail('demo@dot-21.com');
-              setPassword('2345');
+              setEmail('demo@edot.com');
+              setPassword('2345@#$%');
             }}
           >
             demo credentials

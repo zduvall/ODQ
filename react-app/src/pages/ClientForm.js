@@ -126,7 +126,6 @@ export default function ClientForm() {
     );
 
     if (!user.errors) {
-      console.log('updated');
       reroute();
     } else {
       setErrors(user.errors);
@@ -144,7 +143,7 @@ export default function ClientForm() {
         showModal={showInfoModal}
         setShowModal={setShowInfoModal}
         title={'Adding and updating clients'}
-        message={'DOT-21 does not store any HIPAA identifiers to protect confidentiality, only the client\'s birth year and a basic auto-generated code based on first name, last name, and creation date of the client. The code can be updated as needed by changing the respective inputs.'}
+        message={'eDOT does not store any HIPAA identifiers to protect confidentiality, only the client\'s birth year and a basic auto-generated code based on first name, last name, and creation date of the client. The code can be updated as needed by changing the respective inputs.'}
       />
       <ModalConfirmButton
         showModal={showDeleteModal}

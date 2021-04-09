@@ -12,7 +12,10 @@ class Client(db.Model):
 
     pro = db.relationship("User", back_populates="clients")
     tests = db.relationship(
-        "Test", back_populates="client", cascade="all, delete-orphan"
+        "Test",
+        back_populates="client",
+        cascade="all, delete-orphan",
+        order_by="asc(Test.timeComp)",
     )
 
     def to_dict(self):
@@ -22,12 +25,15 @@ class Client(db.Model):
             "birthYear": self.birthYear,
             "code": self.code,
             "curClient": self.curClient,
-            "pro": self.pro.to_dict(),
             "tests": {test.id: test.to_dict() for test in self.tests},
             "lastTestTime": self.tests[-1].to_dict()["timeComp"]
             if self.tests
             else None,
-            "unseenTests": [test.to_dict()["testCode"] for test in self.tests if not test.to_dict()["userSeen"]]
+            "unseenTests": [
+                test.to_dict()["testCode"]
+                for test in self.tests
+                if not test.to_dict()["userSeen"]
+            ]
             if self.tests
             else False,
         }

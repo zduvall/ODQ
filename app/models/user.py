@@ -14,10 +14,18 @@ class User(db.Model, UserMixin):
     lic = db.Column(db.String(20))
     pxName = db.Column(db.String(100))
     phone = db.Column(db.String(20))
-    premium = db.Column(db.Boolean, default=False)
+    subType = db.Column(db.Integer, default=0)
 
-    clients = db.relationship("Client", back_populates="pro", cascade="all, delete-orphan")
+    clients = db.relationship(
+        "Client", back_populates="pro", cascade="all, delete-orphan"
+    )
     tests = db.relationship("Test", back_populates="pro")
+    customer = db.relationship(
+        "Customer",
+        cascade="all, delete-orphan",
+        back_populates="user",
+        uselist=False,
+    )
 
     @property
     def password(self):
@@ -39,5 +47,6 @@ class User(db.Model, UserMixin):
             "lic": self.lic,
             "pxName": self.pxName,
             "phone": self.phone,
-            "premium": self.premium,
+            "subType": self.subType,
+            "customer": self.customer.to_dict() if self.customer else None,
         }

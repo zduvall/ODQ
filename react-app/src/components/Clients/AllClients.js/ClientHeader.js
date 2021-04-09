@@ -21,8 +21,6 @@ export default function ClientHeader({
         ? sortCode
         : sortLastTest;
 
-    console.log(attr, sortDirection);
-
     if (sortDirection === false) {
       attr = 'lastTestTime';
     }

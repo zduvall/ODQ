@@ -3,33 +3,33 @@ import { useSelector } from 'react-redux';
 // import context
 import { useClientTestsContext } from '../../pages/Client';
 
-// import check premium function
-import checkPremium from '../../services/checkPremium';
+// import check subscription type function
+import checkSubType from '../../services/checkSubType';
 
 // import css
 import './Client.css';
 
 export default function DropdownTestInfo() {
-  const premium = useSelector((state) => state.session.user.premium);
+  const subType = useSelector((state) => state.session.user.subType);
 
   const { dropdownTest, setDropdownTest } = useClientTestsContext();
 
   return (
     <div className='site__sub-section flex-dir-col'>
       <i
-        class='fas fa-times top-right-grey'
+        className='fas fa-times top-right-grey'
         onClick={() => setDropdownTest({ code: '' })}
       ></i>
       <h2 className='primary-title cntr-txt-sml-margin'>
         {dropdownTest.name}{' '}
-        {checkPremium(premium) ? (
-          <i
-            title={'Subscribing users have access to premium tests'}
-            class='fas fa-medal medal-w-title'
-          ></i>
-        ) : (
-          ''
-        )}
+        <i
+          title={
+            checkSubType(dropdownTest.code, subType)
+              ? 'As a s subscribing user, you have access to premium tests.'
+              : 'Subscribing users have access to premium tests'
+          }
+          className='fas fa-medal medal-w-title'
+        ></i>
       </h2>
       <h3 className='tertiary-title cntr-txt-sml-margin'>
         ({dropdownTest.abbr})

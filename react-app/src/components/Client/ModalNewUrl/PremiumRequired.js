@@ -7,20 +7,20 @@ export default function PremiumRequired({ testAbbr }) {
       <h2 className='cntr-txt-sml-margin primary-title'>
         Premium Test{' '}
         <i
-          class='fas fa-medal medal-w-title'
+          className='fas fa-medal medal-w-title'
           title={'Subscribing users have access to premium tests'}
         ></i>
       </h2>
       <p>
-        The {`${testAbbr}`} other tests are available to premium users. Please
+        The {`${testAbbr}`} and other tests are available to premium users. Please
         consider our{' '}
         <span
           className='clickable-link'
-          onClick={() => history.push('/profile')}
+          onClick={() => history.push('/payments/1')}
         >
           monthly subscription
         </span>{' '}
-        for $5 per month.
+        for $7.99 per month.
       </p>
     </>
   );

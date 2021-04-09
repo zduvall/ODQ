@@ -92,6 +92,8 @@ def update(userId):
     form = UpdateUserForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
+    print("-------------", form.data)
+
     if form.validate_on_submit():
         user_to_update = User.query.get(userId)
 

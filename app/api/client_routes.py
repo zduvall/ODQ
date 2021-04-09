@@ -109,7 +109,7 @@ def checkClientAndPro(userId, clientId, testCode):
 
     freeTests = ["ACE", "SWLS"]
     user = User.query.get(userId)
-    if not user.premium and testCode not in freeTests:
+    if not user.subType and testCode not in freeTests:
         return json.dumps(False)
 
     if client:

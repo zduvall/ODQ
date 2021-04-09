@@ -7,8 +7,8 @@ import PremiumRequired from './PremiumRequired';
 // import context
 import { Modal } from '../../../context/Modal';
 
-// import check premium function
-import checkPremium from '../../../services/checkPremium';
+// import check subscription type function
+import checkSubType from '../../../services/checkSubType';
 
 export default function ModalNewUrl({
   showModal,
@@ -17,16 +17,16 @@ export default function ModalNewUrl({
   newUrl,
   test,
 }) {
-  const premium = useSelector((state) => state.session.user.premium);
+  const subType = useSelector((state) => state.session.user.subType);
 
   return (
     <>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          {checkPremium(test.code, premium) && (
+          {checkSubType(test.code, subType) && (
             <NewUrl newUrl={newUrl} client={client} test={test} />
           )}
-          {!checkPremium(test.code, premium) && (
+          {!checkSubType(test.code, subType) && (
             <PremiumRequired testAbbr={test.abbr} />
           )}
         </Modal>

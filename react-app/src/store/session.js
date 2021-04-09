@@ -124,6 +124,60 @@ export const deleteUser = (userId) => async (dispatch) => {
   }
 };
 
+// add payment method onto the customer, and get updated customer onto user in redux store
+export const addPaymentMethod = (
+  customerId,
+  paymentMethodId,
+  priceId,
+  userId,
+  brand,
+  last4,
+  exp_month,
+  exp_year
+) => async (dispatch) => {
+  const res = await fetch(`/api/payments/create-subscription`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      customerId,
+      paymentMethodId,
+      priceId,
+      userId,
+      brand,
+      last4,
+      exp_month,
+      exp_year,
+    }),
+  });
+
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(setUser(user));
+  }
+
+  return 'done!';
+};
+
+export const cancelSubscription = (userId, stripeSubId) => async (dispatch) => {
+  const res = await fetch(`/api/payments/cancel-subscription`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userId,
+      stripeSubId,
+    }),
+  });
+
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(setUser(user));
+  }
+};
+
 // Reducer
 const sessionReducer = (state = { user: 'do not load' }, action) => {
   let newState = { ...state };

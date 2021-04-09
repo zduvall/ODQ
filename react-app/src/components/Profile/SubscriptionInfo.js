@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -13,15 +13,25 @@ export default function SubscriptionInfo() {
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
+
+  const [billDate, setBillDate] = useState('loading...');
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
 
+  const { brand, last4, expMonth, expYear, stripeSubId } = sessionUser.customer;
+
   const handleUnsubscribe = () => {
-    dispatch(
-      cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
-    );
+    dispatch(cancelSubscription(sessionUser.id, stripeSubId));
   };
 
-  const { brand, last4, expMonth, expYear } = sessionUser.customer;
+  useEffect(() => {
+    if (sessionUser.subType) {
+      async function getBillingDate() {
+        const res = await fetch(`/api/payments/get-bill-date/${stripeSubId}`);
+        return res.json();
+      }
+      setBillDate(getBillingDate());
+    }
+  }, [sessionUser, stripeSubId]);
 
   return (
     <div className='site__sub-section'>
@@ -35,8 +45,8 @@ export default function SubscriptionInfo() {
       />
       <div className='site__sub-section__data sml-scrn-lft-align'>
         <p>
-          <span className='underline'>Account type</span>:{' '}
-          <span className='primary-title bold'>
+          <span className='underline bold'>Account type</span>:{' '}
+          <span className='primary-text'>
             {!!sessionUser.subType ? (
               <>
                 Premium Subscription{' '}
@@ -50,29 +60,36 @@ export default function SubscriptionInfo() {
             )}
           </span>
         </p>
+
         <p>
           <span className='underline'>Access</span>:{' '}
-          {!!sessionUser.subType
-            ? 'all tests in eDOT database.'
-            : 'free tests in eDOT database'}
+          <span className='tertiary-text'>
+            {!!sessionUser.subType
+              ? 'all tests in eDOT database.'
+              : 'free tests in eDOT database'}
+          </span>
         </p>
+
         <p>
           <span className='underline'>Billing</span>:{' '}
-          {!!sessionUser.subType ? (
-            <>
-              {`$7.99 monthly, 
+          <span className='tertiary-text'>
+            {!!sessionUser.subType ? (
+              <>
+                {`$7.99 monthly, 
           ${
             brand.charAt(0).toUpperCase() + brand.slice(1)
           } (***${last4}, exp: ${expMonth}/${expYear
-                .toString()
-                .slice(2)})`}{' '}
-            </>
-          ) : (
-            'none'
-          )}
+                  .toString()
+                  .slice(2)})`}{' '}
+              </>
+            ) : (
+              'none'
+            )}
+          </span>
         </p>
+
         {!sessionUser.subType && (
-          <p style={{ fontSize: '0.9rem' }}>
+          <p className='tertiary-text' style={{ fontSize: '0.9rem' }}>
             (Subscribe for $7.99 / month to access all tests)
           </p>
         )}

@@ -293,8 +293,14 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   text-align: center;
 }
 
+.primary-text {
+  color: var(--primary-color);
+  text-shadow: none;
+}
+
 .tertiary-text {
   color: var(--tertiary-color);
+  text-shadow: none;
 }
 
 .indented-tight-text {

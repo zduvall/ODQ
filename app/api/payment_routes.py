@@ -1,5 +1,6 @@
 import os
 import stripe
+from datetime import datetime
 
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
@@ -173,6 +174,18 @@ def cancel_subscription():
         error = "Cancellation failed, please reach out to Zachary Duvall (see footer) with concerns"
         print("-------errors-------", error)
         return {"errors": error}, 200
+
+
+@payment_routes.route("/get-bill-date/<path:stripeSubId>", methods=["GET"])
+@login_required
+def get_bill_date(stripeSubId):
+    """
+    Get the next billing date from stripe
+    """
+    subscription = stripe.Subscription.retrieve(stripeSubId)
+    bill_date = datetime.fromtimestamp(subscription.current_period_end / 1e3)
+    print("subscription---------------------", bill_date)
+    return "temporary return"
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

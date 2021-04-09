@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import context
@@ -10,8 +9,6 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 export default function Payment1() {
   const history = useHistory();
-  // const dispatch = useDispatch();
-  // const sessionUser = useSelector((state) => state.session.user);
 
   const { billingInfo, setPaymentMethod } = usePaymentsContext();
 

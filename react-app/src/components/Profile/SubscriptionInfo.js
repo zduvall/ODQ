@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
-import { cancelSubscription } from '../../store/session';
+import { cancelSubscription, updateNextBillDate } from '../../store/session';
 
 // import component
 import ModalConfirmButton from '../ModalConfirmButton';
@@ -14,24 +14,26 @@ export default function SubscriptionInfo() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [billDate, setBillDate] = useState('loading...');
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
 
-  const { brand, last4, expMonth, expYear, stripeSubId } = sessionUser.customer;
+  const {
+    brand,
+    last4,
+    expMonth,
+    expYear,
+    stripeSubId,
+    nextBillDate,
+  } = sessionUser.customer;
 
   const handleUnsubscribe = () => {
     dispatch(cancelSubscription(sessionUser.id, stripeSubId));
   };
 
   useEffect(() => {
-    if (sessionUser.subType) {
-      async function getBillingDate() {
-        const res = await fetch(`/api/payments/get-bill-date/${stripeSubId}`);
-        return res.json();
-      }
-      setBillDate(getBillingDate());
+    if (sessionUser.subType && new Date(nextBillDate) < new Date()) {
+      dispatch(updateNextBillDate(stripeSubId));
     }
-  }, [sessionUser, stripeSubId]);
+  }, [dispatch, sessionUser.subType, stripeSubId, nextBillDate]);
 
   return (
     <div className='site__sub-section'>
@@ -45,7 +47,7 @@ export default function SubscriptionInfo() {
       />
       <div className='site__sub-section__data sml-scrn-lft-align'>
         <p>
-          <span className='underline bold'>Account type</span>:{' '}
+          <span className='underline bold'>Type</span>:{' '}
           <span className='primary-text'>
             {!!sessionUser.subType ? (
               <>
@@ -75,12 +77,8 @@ export default function SubscriptionInfo() {
           <span className='tertiary-text'>
             {!!sessionUser.subType ? (
               <>
-                {`$7.99 monthly, 
-          ${
-            brand.charAt(0).toUpperCase() + brand.slice(1)
-          } (***${last4}, exp: ${expMonth}/${expYear
-                  .toString()
-                  .slice(2)})`}{' '}
+                {brand.charAt(0).toUpperCase() + brand.slice(1)} (***{last4},
+                exp: {expMonth}/{expYear.toString().slice(2)})
               </>
             ) : (
               'none'
@@ -91,6 +89,14 @@ export default function SubscriptionInfo() {
         {!sessionUser.subType && (
           <p className='tertiary-text' style={{ fontSize: '0.9rem' }}>
             (Subscribe for $7.99 / month to access all tests)
+          </p>
+        )}
+        {!!sessionUser.subType && (
+          <p>
+            <span className='underline'>Next Charge</span>:{' '}
+            <span className='tertiary-text'>
+              $7.99 on {new Date(nextBillDate).toLocaleDateString()}
+            </span>
           </p>
         )}
       </div>

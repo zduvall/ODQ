@@ -178,6 +178,15 @@ export const cancelSubscription = (userId, stripeSubId) => async (dispatch) => {
   }
 };
 
+export const updateNextBillDate = (stripeSubId) => async (dispatch) => {
+  const res = await fetch(`/api/payments/get-bill-date/${stripeSubId}`);
+
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(setUser(user));
+  }
+};
+
 // Reducer
 const sessionReducer = (state = { user: 'do not load' }, action) => {
   let newState = { ...state };

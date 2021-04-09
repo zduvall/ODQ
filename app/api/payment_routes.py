@@ -3,7 +3,7 @@ import stripe
 from datetime import datetime
 
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 
 from app.forms import NewCustomerForm
@@ -183,9 +183,15 @@ def get_bill_date(stripeSubId):
     Get the next billing date from stripe
     """
     subscription = stripe.Subscription.retrieve(stripeSubId)
-    bill_date = datetime.fromtimestamp(subscription.current_period_end / 1e3)
-    print("subscription---------------------", bill_date)
-    return "temporary return"
+    print('next bill date ------------------ ', subscription.current_period_end)
+    bill_date = datetime.fromtimestamp(subscription.current_period_end)
+
+    current_user.customer.nextBillDate = bill_date
+
+    db.session.add(current_user)
+    db.session.commit()
+
+    return current_user.to_dict()
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

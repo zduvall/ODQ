@@ -77,6 +77,7 @@ export default function UserInfoData({ setShowUpdateUser }) {
             ? '(Incomplete profile, please update)'
             : ''}
         </p>
+        <p>Account type: {!!sessionUser.subType ? 'Premium Subscription': 'Free Account'}</p>
       </div>
       <div className='buttons-grp-colLrg-rowSml'>
         <button

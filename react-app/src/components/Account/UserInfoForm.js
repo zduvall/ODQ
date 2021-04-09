@@ -36,7 +36,7 @@ export default function UserInfo({ setShowUpdateUser }) {
     }
 
     const user = await dispatch(
-      updateUser(sessionUser.id, firstName, lastName, email, lic, pxName, phone)
+      updateUser(firstName, lastName, email, lic, pxName, phone)
     );
     if (!user.errors) {
       setShowUpdateUser(false);

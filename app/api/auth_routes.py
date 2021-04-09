@@ -83,31 +83,27 @@ def sign_up():
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@auth_routes.route("/signup/<int:userId>", methods=["PUT"])
+@auth_routes.route("/signup", methods=["PUT"])
 @login_required
-def update(userId):
+def update():
     """
-    Updates User Info
+    Updates info of currently logged in user
     """
     form = UpdateUserForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    print("-------------", form.data)
-
     if form.validate_on_submit():
-        user_to_update = User.query.get(userId)
+        current_user.firstName = form.data["firstName"]
+        current_user.lastName = form.data["lastName"]
+        current_user.email = form.data["email"]
+        # current_user.password = form.data["password"],
+        current_user.lic = form.data["lic"]
+        current_user.pxName = form.data["pxName"]
+        current_user.phone = form.data["phone"]
 
-        user_to_update.firstName = form.data["firstName"]
-        user_to_update.lastName = form.data["lastName"]
-        user_to_update.email = form.data["email"]
-        # user_to_update.password = form.data["password"],
-        user_to_update.lic = form.data["lic"]
-        user_to_update.pxName = form.data["pxName"]
-        user_to_update.phone = form.data["phone"]
-
-        db.session.add(user_to_update)
+        db.session.add(current_user)
         db.session.commit()
-        return user_to_update.to_dict()
+        return current_user.to_dict()
 
     print("-------errors-------", form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401

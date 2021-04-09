@@ -10,7 +10,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Clients from './pages/Clients';
 import Client from './pages/Client';
-import Profile from './pages/Profile';
+import Account from './pages/Account';
 import Payments from './pages/Payments';
 import ClientForm from './pages/ClientForm';
 import TestForm from './pages/TestForm';
@@ -100,7 +100,7 @@ function App() {
             exact={true}
             authenticated={!!sessionUser}
           >
-            <Profile />
+            <Account />
           </ProtectedRoute>
           <ProtectedRoute
             path='/payments/:subPageId'

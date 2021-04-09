@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 // import components
-import Profile from '../components/Profile';
-import SubscriptionInfo from '../components/Profile/SubscriptionInfo';
+import Account from '../components/Account';
+import SubscriptionInfo from '../components/Account/SubscriptionInfo';
 
 export default function User() {
   const [showUpdateUser, setShowUpdateUser] = useState(false);
@@ -10,11 +10,11 @@ export default function User() {
   return (
     <div className='site__page'>
       <h1 className='primary-title'>Account</h1>
-      <Profile
+      <Account
         showUpdateUser={showUpdateUser}
         setShowUpdateUser={setShowUpdateUser}
       />
-      <div className='one1rem-ht'/>
+      <div className='one1rem-ht' />
       <SubscriptionInfo />
     </div>
   );

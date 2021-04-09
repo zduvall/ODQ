@@ -39,7 +39,6 @@ export default function UserInfo({ setShowUpdateUser }) {
       updateUser(sessionUser.id, firstName, lastName, email, lic, pxName, phone)
     );
     if (!user.errors) {
-      console.log('updated');
       setShowUpdateUser(false);
     } else {
       setErrors(user.errors);

@@ -113,9 +113,7 @@ export const toggleSeen = (clientId, unseenTests) => async (dispatch) => {
   if (res.ok) {
     dispatch(create(updatedClient));
     return updatedClient;
-  } else {
-    console.log("Didn't update seen tests");
-  }
+  } 
 };
 
 // Reducer
@@ -137,7 +135,6 @@ const clientReducer = (state = initState, action) => {
       delete newState[Number(action.clientId)];
       return newState;
     case REMOVE_TEST:
-      console.log('inside of reducer!!!', action.payload.clientId);
       delete newState[Number(action.payload.clientId)].tests[
         Number(action.payload.testId)
       ];

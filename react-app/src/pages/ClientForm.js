@@ -126,7 +126,6 @@ export default function ClientForm() {
     );
 
     if (!user.errors) {
-      console.log('updated');
       reroute();
     } else {
       setErrors(user.errors);

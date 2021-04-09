@@ -45,60 +45,64 @@ export default function SubscriptionInfo() {
           'Are you sure you would like to unsubscribe? Premium tests will no longer be accessible.'
         }
       />
-      <div className='site__sub-section__data sml-scrn-lft-align'>
-        <p>
-          <span className='underline bold'>Type</span>:{' '}
-          <span className='primary-text'>
-            {!!sessionUser.subType ? (
-              <>
-                Premium Subscription{' '}
-                <i
-                  title={'As a subscribing user, you have access to all tests.'}
-                  className='fas fa-medal medal-w-title primary-title'
-                ></i>
-              </>
-            ) : (
-              'Free Account'
-            )}
-          </span>
-        </p>
-
-        <p>
-          <span className='underline'>Access</span>:{' '}
-          <span className='tertiary-text'>
-            {!!sessionUser.subType
-              ? 'all tests in eDOT database.'
-              : 'free tests in eDOT database'}
-          </span>
-        </p>
-
-        <p>
-          <span className='underline'>Billing</span>:{' '}
-          <span className='tertiary-text'>
-            {!!sessionUser.subType ? (
-              <>
-                {brand.charAt(0).toUpperCase() + brand.slice(1)} (***{last4},
-                exp: {expMonth}/{expYear.toString().slice(2)})
-              </>
-            ) : (
-              'none'
-            )}
-          </span>
-        </p>
-
-        {!sessionUser.subType && (
-          <p className='tertiary-text' style={{ fontSize: '0.9rem' }}>
-            (Subscribe for $7.99 / month to access all tests)
-          </p>
-        )}
-        {!!sessionUser.subType && (
+      <div className='site__sub-section__data subscription-container'>
+        <div className='lft-align'>
           <p>
-            <span className='underline'>Next Charge</span>:{' '}
-            <span className='tertiary-text'>
-              $7.99 on {new Date(nextBillDate).toLocaleDateString()}
+            <span className='underline bold'>Type</span>:{' '}
+            <span className='primary-text'>
+              {!!sessionUser.subType ? (
+                <>
+                  Premium Subscription{' '}
+                  <i
+                    title={
+                      'As a subscribing user, you have access to all tests.'
+                    }
+                    className='fas fa-medal medal-w-title primary-title'
+                  ></i>
+                </>
+              ) : (
+                'Free Account'
+              )}
             </span>
           </p>
-        )}
+
+          <p>
+            <span className='underline'>Access</span>:{' '}
+            <span className='tertiary-text'>
+              {!!sessionUser.subType
+                ? 'all tests in eDOT database.'
+                : 'free tests in eDOT database'}
+            </span>
+          </p>
+
+          <p>
+            <span className='underline'>Billing</span>:{' '}
+            <span className='tertiary-text'>
+              {!!sessionUser.subType ? (
+                <>
+                  {brand.charAt(0).toUpperCase() + brand.slice(1)} (***{last4},
+                  exp: {expMonth}/{expYear.toString().slice(2)})
+                </>
+              ) : (
+                'none'
+              )}
+            </span>
+          </p>
+
+          {!sessionUser.subType && (
+            <p className='tertiary-text' style={{ fontSize: '0.9rem' }}>
+              (Subscribe for $7.99 / month to access all tests)
+            </p>
+          )}
+          {!!sessionUser.subType && (
+            <p>
+              <span className='underline'>Next Charge</span>:{' '}
+              <span className='tertiary-text'>
+                $7.99 on {new Date(nextBillDate).toLocaleDateString()}
+              </span>
+            </p>
+          )}
+        </div>
       </div>
       <div className='buttons-grp-colLrg-rowSml'>
         {!sessionUser.subType && (

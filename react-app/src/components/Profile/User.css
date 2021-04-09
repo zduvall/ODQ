@@ -48,3 +48,14 @@
   background-color: var(--tertiary-color-light);
   border: var(--primary-color) solid 1px;
 }
+
+@media (max-width: 800px) {
+  .subscription-container {
+    display: flex;
+    justify-content: center;
+  }
+  .lft-align {
+    text-align: left !important;
+    width: fit-content;
+  }
+}

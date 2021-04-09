@@ -120,8 +120,6 @@ def add_payment_info():
             expand=["latest_invoice.payment_intent"],
         )
 
-        print(subscription)
-
         product_dict = {"prod_JGiarSkv0bSEhu": 1}
 
         subType = product_dict[subscription["items"]["data"][0]["plan"]["product"]]

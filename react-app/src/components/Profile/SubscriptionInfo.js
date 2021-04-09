@@ -16,14 +16,8 @@ export default function SubscriptionInfo() {
 
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
 
-  const {
-    brand,
-    last4,
-    expMonth,
-    expYear,
-    stripeSubId,
-    nextBillDate,
-  } = sessionUser.customer;
+  const { brand, last4, expMonth, expYear, stripeSubId, nextBillDate } =
+    sessionUser.customer || {}; // in case there isn't a customer attached yet.
 
   const handleUnsubscribe = () => {
     dispatch(cancelSubscription(sessionUser.id, stripeSubId));

@@ -140,13 +140,12 @@ def add_payment_info():
 
             db.session.add(customer_to_update)
 
-            user_w_new_customer = User.query.get(request.json["userId"])
-            user_w_new_customer.subType = subType
+            current_user.subType = subType
+            db.session.add(current_user)
 
-            db.session.add(user_w_new_customer)
             db.session.commit()
 
-            return user_w_new_customer.to_dict()
+            return current_user.to_dict()
 
     except Exception as e:
         error = str(e)[str(e).index(":") + 1 :]
@@ -183,7 +182,7 @@ def get_bill_date(stripeSubId):
     Get the next billing date from stripe
     """
     subscription = stripe.Subscription.retrieve(stripeSubId)
-    print('next bill date ------------------ ', subscription.current_period_end)
+    print("next bill date ------------------ ", subscription.current_period_end)
     bill_date = datetime.fromtimestamp(subscription.current_period_end)
 
     current_user.customer.nextBillDate = bill_date

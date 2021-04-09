@@ -21,6 +21,8 @@ export default function SubscriptionInfo() {
     );
   };
 
+  const { brand, last4, expMonth, expYear } = sessionUser.customer;
+
   return (
     <div className='site__sub-section'>
       <ModalConfirmButton
@@ -36,6 +38,19 @@ export default function SubscriptionInfo() {
           Account type:{' '}
           {!!sessionUser.subType ? 'Premium Subscription' : 'Free Account'}
         </p>
+        {!sessionUser.subType && (
+          <p>Subscribe to have access to all eDOT tests.</p>
+        )}
+        {!!sessionUser.subType && (
+          <>
+            <p>Premium subscription allows to all eDOT tests.</p>
+            <p>
+              $7.99 billed monthly to{' '}
+              {brand.charAt(0).toUpperCase() + brand.slice(1)} (***
+              {last4}, exp: {expMonth}/{expYear})
+            </p>
+          </>
+        )}
       </div>
       <div className='buttons-grp-colLrg-rowSml'>
         {!sessionUser.subType && (
@@ -43,7 +58,7 @@ export default function SubscriptionInfo() {
             className='primary-button dashboard__button'
             onClick={() => history.push('/payments/1')}
           >
-            Premium
+            Subscribe
           </button>
         )}
         {!!sessionUser.subType && (

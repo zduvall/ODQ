@@ -31,7 +31,7 @@ export default function Payment1() {
     setErrors([]);
     setProcessingTo(true);
 
-    const priceId = 'price_1Ie90mJUL0dIO0rK1rmxJREe';
+    const priceId = 'price_1IeB9EJUL0dIO0rKVVRUwYOr';
 
     const res = await dispatch(
       addPaymentMethod(

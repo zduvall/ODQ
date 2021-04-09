@@ -20,7 +20,7 @@ export default function PremiumRequired({ testAbbr }) {
         >
           monthly subscription
         </span>{' '}
-        for $5 per month.
+        for $7.99 per month.
       </p>
     </>
   );

@@ -5,9 +5,6 @@ import { useHistory } from 'react-router-dom';
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
 
-// // import thunk
-// import { addPaymentMethod } from '../../store/session';
-
 // stripe imports
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
@@ -96,6 +93,16 @@ export default function Payment1() {
               onChange={(e) => setErrors(e.error ? [e.error.message] : [])}
             />
           </div>
+          <p className='powered-by-stripe'>
+            Powered by{' '}
+            <a
+              href='https://stripe.com/'
+              target='blank'
+              className='clickable-link'
+            >
+              Stripe
+            </a>
+          </p>
         </div>
         <div className='form__row buttons-grp-colLrg-rowSml'>
           <button

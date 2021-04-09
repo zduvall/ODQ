@@ -121,7 +121,7 @@ def add_payment_info():
 
         print(subscription)
 
-        product_dict = {"prod_JGgN0Lm9q8PodT": 1}
+        product_dict = {"prod_JGiarSkv0bSEhu": 1}
 
         subType = product_dict[subscription["items"]["data"][0]["plan"]["product"]]
 

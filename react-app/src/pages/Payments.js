@@ -6,6 +6,9 @@ import Payment1 from '../components/Payments/Payment1';
 import Payment2 from '../components/Payments/Payment2';
 import Payment3 from '../components/Payments/Payment3';
 
+// import css
+import '../components/Payments/Payments.css'
+
 const PaymentsContext = createContext();
 export const usePaymentsContext = () => useContext(PaymentsContext);
 

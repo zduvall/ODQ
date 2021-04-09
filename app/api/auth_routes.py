@@ -129,5 +129,5 @@ def delete_user(userId):
         db.session.commit()
         return "Deleted"
     else:
-        print(f"-------- no user found with id {userId} -------- ")
+        print(f"-------- no user found with id {userId} --------")
         return {"errors": "No user found with given id"}

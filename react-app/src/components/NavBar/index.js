@@ -36,7 +36,7 @@ const NavBar = () => {
   // hide navbar when srolling on small screens
   let hideScroll = window.pageYOffset;
   window.onscroll = function () {
-    if (width > 900) return;
+    if (width > 850) return;
     
     setShowDropdown(false);
     

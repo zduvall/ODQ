@@ -65,9 +65,9 @@ def updateTest():
     return client_with_updated_tests.to_dict()
 
 
-@test_routes.route("/<int:testId>", methods=["DELETE"])
+@test_routes.route("/<int:clientId>/<int:testId>", methods=["DELETE"])
 @login_required
-def deleteTest(testId):
+def deleteTest(clientId, testId):
     """
     Deletes a test
     """
@@ -75,7 +75,9 @@ def deleteTest(testId):
     if test_to_delete:
         db.session.delete(test_to_delete)
         db.session.commit()
-        return "deleted"
+
+        client_w_test = Client.query.get(clientId)
+        return client_w_test.to_dict()
     else:
         print(f"-------- no test found with id {testId} -------- ")
         return {"errors": "No test found with given id"}

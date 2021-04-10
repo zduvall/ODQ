@@ -90,7 +90,7 @@ export default function SubscriptionInfo() {
           )}
           {!!sessionUser.subType && (
             <p>
-              <span className='underline'>Next Charge</span>:{' '}
+              <span className='underline'>Next Payment</span>:{' '}
               <span className='tertiary-text'>
                 $7.99 on {new Date(nextBillDate).toLocaleDateString()}
               </span>

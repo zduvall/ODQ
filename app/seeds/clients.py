@@ -4,7 +4,7 @@ from app.models import db, Client, User
 # Adds a demo user
 def seed_clients():
 
-    user_1 = User.query.filter_by(firstName="Demo").first()
+    user_1 = User.query.filter_by(firstName="Jon").first()
 
     clients = [
         Client(

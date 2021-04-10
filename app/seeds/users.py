@@ -6,8 +6,8 @@ from app.models import db, User
 def seed_users():
 
     demo = User(
-        firstName="Demo",
-        lastName="Pro",
+        firstName="Jon",
+        lastName="McDemosen",
         email="demo@edot.com",
         password="2345@#$%",
         lic="LCSW",

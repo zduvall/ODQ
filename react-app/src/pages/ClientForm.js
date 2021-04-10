@@ -23,8 +23,6 @@ export default function ClientForm() {
 
   const clients = useSelector((state) => Object.values(state.clients));
 
-  // const { setShowForm } = useClientsContext();
-
   const [showInfoModal, setShowInfoModal] = useState();
   const [showDeleteModal, setShowDeleteModal] = useState();
 

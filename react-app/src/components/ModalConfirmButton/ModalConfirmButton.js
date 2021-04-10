@@ -7,7 +7,7 @@ export default function ModalConfirmButton({
 }) {
   function handleProceed() {
     proceedAction();
-    setShowModal(false); // didn't seem to need this before, probably because I was calling set show modal false in other places (everywhere except unsubscribe)
+    setShowModal(false);
   }
 
   return (

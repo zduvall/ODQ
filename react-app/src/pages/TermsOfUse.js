@@ -2,7 +2,11 @@ export default function TermsOfUse() {
   return (
     <div className='site__page'>
       <div className='site__sub-section flex-dir-col terms-of-use'>
-        <h2 className='primary-title'>Terms of Use Agreement (draft)</h2>
+        <h2 className='primary-title'>Terms of Use Agreement</h2>
+        <p>
+          (Note, this site is still in production. Do not load real client
+          data.)
+        </p>
         <h3>General</h3>
         <p>
           Information on this website is for general informational and

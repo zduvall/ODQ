@@ -180,7 +180,6 @@ def get_bill_date(stripeSubId):
     Get the next billing date from stripe
     """
     subscription = stripe.Subscription.retrieve(stripeSubId)
-    print("next bill date ------------------ ", subscription.current_period_end)
     bill_date = datetime.fromtimestamp(subscription.current_period_end)
 
     current_user.customer.nextBillDate = bill_date

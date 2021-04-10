@@ -88,7 +88,6 @@ export const deleteTest = (clientId, testId) => async (dispatch) => {
   });
   if (res.ok) {
     const client = await res.json();
-    console.log('client', client);
     dispatch(create(client));
   }
 };

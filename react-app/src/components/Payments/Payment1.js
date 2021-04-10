@@ -160,7 +160,7 @@ export default function Payment1() {
           <button
             className='delete-button form__button dashboard__button'
             type='button'
-            onClick={() => history.push('/profile')}
+            onClick={() => history.push('/account')}
           >
             Cancel
           </button>

@@ -1,8 +1,7 @@
 // Action types
 const LOAD_CLIENTS = '/clients/LOAD_CLIENTS';
-const CREATE_CLIENT = '/clients/CREATE_CLIENT'; // also used for update
-const REMOVE_CLIENT = '/clients/REMOVE_CLIENT'; // also used for update
-const REMOVE_TEST = '/clients/REMOVE_TEST';
+const CREATE_CLIENT = '/clients/CREATE_OR_UPDATE_CLIENT'; // also used for update
+const REMOVE_CLIENT = '/clients/REMOVE_CLIENT';
 
 // Action creators
 const load = (clients) => ({
@@ -11,7 +10,6 @@ const load = (clients) => ({
 });
 
 const create = (client) => ({
-  // also used for update
   type: CREATE_CLIENT,
   client,
 });
@@ -19,11 +17,6 @@ const create = (client) => ({
 const remove = (clientId) => ({
   type: REMOVE_CLIENT,
   clientId,
-});
-
-const removeTest = (clientId, testId) => ({
-  type: REMOVE_TEST,
-  payload: { clientId, testId },
 });
 
 // Thunks
@@ -40,8 +33,6 @@ export const getClients = (userId) => async (dispatch) => {
 export const createClient = (client, clientIDtoUpdate = null) => async (
   dispatch
 ) => {
-  // const { userId, birthYear, code, curClient } = client;
-
   if (clientIDtoUpdate) {
     // for updating client
     const res = await fetch(`/api/clients/${clientIDtoUpdate}`, {
@@ -92,11 +83,12 @@ export const deleteClient = (clientId) => async (dispatch) => {
 };
 
 export const deleteTest = (clientId, testId) => async (dispatch) => {
-  const res = await fetch(`/api/tests/${testId}`, {
+  const res = await fetch(`/api/tests/${clientId}/${testId}`, {
     method: 'DELETE',
   });
   if (res.ok) {
-    dispatch(removeTest(clientId, testId));
+    const client = await res.json();
+    dispatch(create(client));
   }
 };
 
@@ -113,7 +105,7 @@ export const toggleSeen = (clientId, unseenTests) => async (dispatch) => {
   if (res.ok) {
     dispatch(create(updatedClient));
     return updatedClient;
-  } 
+  }
 };
 
 // Reducer
@@ -133,11 +125,6 @@ const clientReducer = (state = initState, action) => {
       return newState;
     case REMOVE_CLIENT:
       delete newState[Number(action.clientId)];
-      return newState;
-    case REMOVE_TEST:
-      delete newState[Number(action.payload.clientId)].tests[
-        Number(action.payload.testId)
-      ];
       return newState;
     default:
       return newState;

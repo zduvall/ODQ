@@ -1,4 +1,4 @@
-import { horizontalAnnotation, scaleYesNo, scaleDifficulty } from './zUtils';
+import { horizontalAnnotation, scaleYesNo } from './zUtils';
 
 const ACE = {
   id: 3,

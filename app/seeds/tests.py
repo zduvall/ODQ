@@ -7,7 +7,7 @@ import random
 # Adds a demo user
 def seed_tests():
 
-    user = User.query.filter_by(firstName="Demo").first()
+    user = User.query.filter_by(firstName="Jon").first()
     client_1 = Client.query.filter_by(code="JosS-01.08.21").first()
     jos_S_tests = [
         # GAD-7 ---------------------------------------------------------------

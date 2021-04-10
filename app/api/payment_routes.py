@@ -1,8 +1,9 @@
 import os
 import stripe
+from datetime import datetime
 
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 
 from app.forms import NewCustomerForm
@@ -119,8 +120,6 @@ def add_payment_info():
             expand=["latest_invoice.payment_intent"],
         )
 
-        print(subscription)
-
         product_dict = {"prod_JGiarSkv0bSEhu": 1}
 
         subType = product_dict[subscription["items"]["data"][0]["plan"]["product"]]
@@ -139,13 +138,12 @@ def add_payment_info():
 
             db.session.add(customer_to_update)
 
-            user_w_new_customer = User.query.get(request.json["userId"])
-            user_w_new_customer.subType = subType
+            current_user.subType = subType
+            db.session.add(current_user)
 
-            db.session.add(user_w_new_customer)
             db.session.commit()
 
-            return user_w_new_customer.to_dict()
+            return current_user.to_dict()
 
     except Exception as e:
         error = str(e)[str(e).index(":") + 1 :]
@@ -173,6 +171,23 @@ def cancel_subscription():
         error = "Cancellation failed, please reach out to Zachary Duvall (see footer) with concerns"
         print("-------errors-------", error)
         return {"errors": error}, 200
+
+
+@payment_routes.route("/get-bill-date/<path:stripeSubId>", methods=["GET"])
+@login_required
+def get_bill_date(stripeSubId):
+    """
+    Get the next billing date from stripe
+    """
+    subscription = stripe.Subscription.retrieve(stripeSubId)
+    bill_date = datetime.fromtimestamp(subscription.current_period_end)
+
+    current_user.customer.nextBillDate = bill_date
+
+    db.session.add(current_user)
+    db.session.commit()
+
+    return current_user.to_dict()
 
 
 @payment_routes.route("/stripe-webhook", methods=["POST"])

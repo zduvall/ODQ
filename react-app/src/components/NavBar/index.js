@@ -33,6 +33,24 @@ const NavBar = () => {
     setShowDropdown(false);
   };
 
+  // hide navbar when srolling on small screens
+  let hideScroll = window.pageYOffset;
+  window.onscroll = function () {
+    if (width > 850) return;
+    
+    setShowDropdown(false);
+    
+    let currentScrollPos = window.pageYOffset;
+
+    if (hideScroll > window.pageYOffset) {
+      document.getElementById('navbar').style.top = '0';
+    } else {
+      document.getElementById('navbar').style.top = '-70px';
+    }
+
+    hideScroll = currentScrollPos;
+  };
+
   let navLinks;
 
   let navItemClass = width > 800 ? 'nav__item' : 'nav__dropdown__item';
@@ -50,12 +68,12 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className={navItemClass}
-        to='/profile'
+        to='/account'
         exact
         activeClassName='nav__item-active'
         onClick={handleClick}
       >
-        Profile
+        Account
       </NavLink>
       <button className={navItemClass} onClick={handleLogout}>
         Logout
@@ -118,7 +136,7 @@ const NavBar = () => {
   }
 
   return (
-    <header className='site-header'>
+    <header id='navbar' className='site-header'>
       <div
         className='site-header__title primary-title'
         onClick={() => history.push('/')}

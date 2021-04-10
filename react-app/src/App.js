@@ -10,7 +10,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Clients from './pages/Clients';
 import Client from './pages/Client';
-import Profile from './pages/Profile';
+import Account from './pages/Account';
 import Payments from './pages/Payments';
 import ClientForm from './pages/ClientForm';
 import TestForm from './pages/TestForm';
@@ -21,19 +21,11 @@ import TermsOfUse from './pages/TermsOfUse';
 // import thunks
 import { authenticateUser } from './store/session';
 import { getClients } from './store/clients';
-// import { getTests } from './store/tests';
-
-// import custom width hook
-import { useWindowWidth } from './services/windowWidth';
 
 function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [loaded, setLoaded] = useState(false);
-
-  // set up to hide nav bar on dbl click on small screens
-  const [showNav, setShowNav] = useState(true);
-  const width = useWindowWidth();
 
   useEffect(() => {
     dispatch(authenticateUser());
@@ -52,11 +44,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      {!showNav && width < 900 ? null : <NavBar />}
-      <div
-        className='btwn-nav-footer'
-        onDoubleClick={() => (width < 900 ? setShowNav((prev) => !prev) : {})}
-      >
+      <NavBar />
+      <div className='btwn-nav-footer'>
         <Switch>
           <Route path='/log-in' exact={true}>
             <Login />
@@ -96,11 +85,11 @@ function App() {
             <ClientForm />
           </ProtectedRoute>
           <ProtectedRoute
-            path='/profile'
+            path='/account'
             exact={true}
             authenticated={!!sessionUser}
           >
-            <Profile />
+            <Account />
           </ProtectedRoute>
           <ProtectedRoute
             path='/payments/:subPageId'

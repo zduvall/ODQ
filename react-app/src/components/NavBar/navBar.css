@@ -11,6 +11,7 @@
   padding: 0 10%;
   font-size: 1.2rem;
   height: 4rem;
+  transition: top 0.3s;
 }
 
 .site-header__title {

@@ -14,6 +14,7 @@ class Customer(db.Model):
     last4 = db.Column(db.Integer)
     expMonth = db.Column(db.Integer)
     expYear = db.Column(db.Integer)
+    nextBillDate = db.Column(db.DateTime)
 
     user = db.relationship("User", back_populates="customer")
 
@@ -27,4 +28,5 @@ class Customer(db.Model):
             "last4": self.last4,
             "expMonth": self.expMonth,
             "expYear": self.expYear,
+            "nextBillDate": self.nextBillDate,
         }

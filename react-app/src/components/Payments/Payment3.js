@@ -49,7 +49,7 @@ export default function Payment1() {
     if (res.errors) {
       setErrors([res.errors]);
     } else {
-      history.push('/profile');
+      history.push('/account');
     }
   }
 
@@ -103,7 +103,7 @@ export default function Payment1() {
           <button
             className='delete-button form__button dashboard__button'
             disabled={isProcessing}
-            onClick={() => history.push('/profile')}
+            onClick={() => history.push('/account')}
           >
             Cancel
           </button>

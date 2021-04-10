@@ -60,7 +60,6 @@ export const signUpUser = (firstName, lastName, email, password) => async (
 };
 
 export const updateUser = (
-  id,
   firstName,
   lastName,
   email,
@@ -68,7 +67,7 @@ export const updateUser = (
   pxName,
   phone
 ) => async (dispatch) => {
-  const res = await fetch(`/api/auth/signup/${id}`, {
+  const res = await fetch(`/api/auth/signup`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -171,6 +170,15 @@ export const cancelSubscription = (userId, stripeSubId) => async (dispatch) => {
       stripeSubId,
     }),
   });
+
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(setUser(user));
+  }
+};
+
+export const updateNextBillDate = (stripeSubId) => async (dispatch) => {
+  const res = await fetch(`/api/payments/get-bill-date/${stripeSubId}`);
 
   if (res.ok) {
     const user = await res.json();

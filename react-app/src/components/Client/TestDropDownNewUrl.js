@@ -65,7 +65,6 @@ export default function TestDropDownNewUrl() {
             setDropdownTest(tests[e.target.value]);
           }}
           className='form__input'
-          required
         >
           <option disabled value=''>
             - Tests -
@@ -77,7 +76,11 @@ export default function TestDropDownNewUrl() {
             </option>
           ))}
         </select>
-        <button type='submit' className='primary-button'>
+        <button
+          disabled={!dropdownTest.code}
+          type='submit'
+          className='primary-button'
+        >
           Generate
         </button>
       </form>

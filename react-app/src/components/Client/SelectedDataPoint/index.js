@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 //import context
@@ -9,11 +9,16 @@ import Section from './SectionAndQuestionTypes';
 import ModalConfirmButton from '../../ModalConfirmButton';
 
 // import thunk
-import {deleteTest} from '../../../store/clients'
+import { deleteTest } from '../../../store/clients';
 
 export default function SelectedDataPoint() {
   const dispatch = useDispatch();
-  const { clientId, selectedTest, setDatapoint, datapoint } = useClientTestsContext();
+  const {
+    clientId,
+    selectedTest,
+    setDatapoint,
+    datapoint,
+  } = useClientTestsContext();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -25,8 +30,14 @@ export default function SelectedDataPoint() {
     window.scrollBy(0, -1); // this makes it so the screen doesn't snap down to the bottom (where it was when you clicked delete) the next time you click a datapoint
   }
 
+  useEffect(() => {
+    let el = document.querySelector('.data-point-fade');
+    el.classList.remove('data-point-fade-in');
+    setTimeout(() => el.classList.add('data-point-fade-in'), 50);
+  }, [datapoint]);
+
   return (
-    <div className='site__sub-section flex-dir-col'>
+    <div className='site__sub-section flex-dir-col data-point-fade'>
       <ModalConfirmButton
         showModal={showModal}
         setShowModal={setShowModal}

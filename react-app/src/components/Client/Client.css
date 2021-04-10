@@ -113,3 +113,12 @@
   padding: 0.25rem 0;
   color: var(--primary-color);
 }
+
+.data-point-fade {
+  opacity: 0;
+}
+
+.data-point-fade-in {
+  opacity: 1;
+  transition: 0.5s opacity;
+}

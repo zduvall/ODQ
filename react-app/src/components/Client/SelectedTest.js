@@ -23,6 +23,8 @@ Chart.plugins.register([ChartAnnotation]); // Global registering of plugin
 export default function SelectedTest() {
   const dispatch = useDispatch();
   const [showInfoModal, setShowInfoModal] = useState();
+  const [pointBackgroundColor, setPointBackgroundColor] = useState([]);
+  const [datapointIndex, setDatapointIndex] = useState();
 
   const {
     clientId,
@@ -53,9 +55,10 @@ export default function SelectedTest() {
         label: 'Test Scores',
         data: selectedTest.chartData.datapoints(allTestResOfType),
         fill: false,
-        backgroundColor: 'rgb(238, 114, 32)',
+        pointBackgroundColor,
+        // backgroundColor: 'rgb(238, 114, 32)',
         borderColor: 'rgb(242, 150, 88)',
-        pointRadius: 4,
+        pointRadius: 4.5,
         pointHitRadius: 15,
       },
     ],
@@ -66,7 +69,9 @@ export default function SelectedTest() {
   // add chart options that exist on all charts
   selectedTest.chartOptions.onClick = (e, element) => {
     if (element[0]) {
-      setDatapoint(allTestResOfType[element[0]._index]);
+      const idx = element[0]._index;
+      setDatapoint(allTestResOfType[idx]);
+      setDatapointIndex(idx);
     }
   };
   selectedTest.chartOptions.onHover = (e, element) => {
@@ -76,7 +81,9 @@ export default function SelectedTest() {
   // make most recent data point (test res) default to being selected
   useEffect(() => {
     if (!datapoint && datapoint !== false) {
-      setDatapoint(allTestResOfType[allTestResOfType.length - 1]);
+      const last = allTestResOfType.length - 1;
+      setDatapoint(allTestResOfType[last]);
+      setDatapointIndex(last);
     }
   }, [datapoint, setDatapoint, allTestResOfType]);
 
@@ -87,6 +94,14 @@ export default function SelectedTest() {
       dispatch(toggleSeen(clientId, unseenTests));
     }
   }, [allTestResOfType, dispatch, clientId]);
+
+  // change color on selected data point
+  const length = allTestResOfType.length;
+  useEffect(() => {
+    const arr = new Array(length).fill('rgb(238, 114, 32)');
+    arr[datapointIndex] = 'rgb(32, 156, 238)';
+    setPointBackgroundColor(arr);
+  }, [datapoint, setPointBackgroundColor, datapointIndex, length]);
 
   return (
     <>

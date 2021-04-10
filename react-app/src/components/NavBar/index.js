@@ -37,6 +37,9 @@ const NavBar = () => {
   let hideScroll = window.pageYOffset;
   window.onscroll = function () {
     if (width > 900) return;
+    
+    setShowDropdown(false);
+    
     let currentScrollPos = window.pageYOffset;
 
     if (hideScroll > window.pageYOffset) {

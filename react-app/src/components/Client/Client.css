@@ -120,5 +120,5 @@
 
 .data-point-fade-in {
   opacity: 1;
-  transition: 0.5s opacity;
+  transition: 0.75s opacity;
 }

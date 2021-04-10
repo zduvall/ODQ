@@ -58,7 +58,8 @@ export default function SelectedTest() {
         pointBackgroundColor,
         // backgroundColor: 'rgb(238, 114, 32)',
         borderColor: 'rgb(242, 150, 88)',
-        pointRadius: 4.5,
+        pointBorderColor: 'transparent',
+        pointRadius: 5,
         pointHitRadius: 15,
       },
     ],
@@ -95,11 +96,11 @@ export default function SelectedTest() {
     }
   }, [allTestResOfType, dispatch, clientId]);
 
-  // change color on selected data point
+  // change color on selected data point (test res)
   const length = allTestResOfType.length;
   useEffect(() => {
     const arr = new Array(length).fill('rgb(238, 114, 32)');
-    arr[datapointIndex] = 'rgb(32, 156, 238)';
+    arr[datapointIndex] = 'rgb(14, 119, 189)';
     setPointBackgroundColor(arr);
   }, [datapoint, setPointBackgroundColor, datapointIndex, length]);
 

@@ -51,6 +51,7 @@ const NavBar = () => {
     hideScroll = currentScrollPos;
   };
 
+  // create nav links for logged in vs logged out
   let navLinks;
 
   let navItemClass = width > 800 ? 'nav__item' : 'nav__dropdown__item';

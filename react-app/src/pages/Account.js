@@ -16,6 +16,7 @@ export default function User() {
       />
       <div className='one1rem-ht' />
       <SubscriptionInfo />
+      <div className='one1rem-ht' />
     </div>
   );
 }

@@ -3,14 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
 // import component
-import ModalInfoButton from '../components/ModalInfoButton'
+import ModalInfoButton from '../components/ModalInfoButton';
 import ModalConfirmButton from '../components/ModalConfirmButton';
 
 // import thunk
 import { createClient, deleteClient } from '../store/clients';
-
-// import context
-// import { useClientsContext } from '../pages/Clients';
 
 export default function ClientForm() {
   const dispatch = useDispatch();
@@ -74,7 +71,7 @@ export default function ClientForm() {
     setErrors([]);
     let errorHit = false;
 
-    if (!firstName || !lastName || !birthYear) {
+    if ((!firstName || !lastName || !birthYear || curClient === '')) {
       setErrors([...errors, 'Please fill out all fields']);
       errorHit = true;
     }
@@ -101,7 +98,8 @@ export default function ClientForm() {
       dup = false;
       /* eslint-disable no-loop-func */
       clients.forEach((client) => {
-        if (selectedClient && selectedClient.id === client.id) return;
+        if ((selectedClient && selectedClient.id === client.id) || !client.code)
+          return;
         if (client.code.startsWith(code.slice(0, code.indexOf('-')))) {
           dup = true;
         }
@@ -141,7 +139,9 @@ export default function ClientForm() {
         showModal={showInfoModal}
         setShowModal={setShowInfoModal}
         title={'Adding and updating clients'}
-        message={'eDOT does not store any HIPAA identifiers to protect confidentiality, only the client\'s birth year and a basic auto-generated code based on first name, last name, and creation date of the client. The code can be updated as needed by changing the respective inputs.'}
+        message={
+          "eDOT does not store any HIPAA identifiers to protect confidentiality, only the client's birth year and a basic auto-generated code based on first name, last name, and creation date of the client. The code can be updated as needed by changing the respective inputs."
+        }
       />
       <ModalConfirmButton
         showModal={showDeleteModal}

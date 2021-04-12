@@ -45,7 +45,7 @@ export const createClient = (client, clientIDtoUpdate = null) => async (
 
     const updatedClient = await res.json();
 
-    if (res.ok) {
+    if (!res.errors) {
       dispatch(create(updatedClient));
       return updatedClient;
     } else {

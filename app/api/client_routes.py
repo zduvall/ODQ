@@ -30,6 +30,8 @@ def createClient():
     form = ClientForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
+    print('form data------------------------', request.json)
+
     if form.validate_on_submit():
         new_client = Client(
             userId=form.data["userId"],
@@ -54,6 +56,7 @@ def updateClient(clientId):
     form = ClientForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
+    print('form data------------------------', request.json)
     if form.validate_on_submit():
 
         client_to_update = Client.query.get(clientId)

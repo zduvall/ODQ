@@ -190,6 +190,8 @@ def get_bill_date(stripeSubId):
     return current_user.to_dict()
 
 
+#  https://stripe.com/docs/billing/subscriptions/fixed-price#manage-subscription-payment-failure
+
 @payment_routes.route("/stripe-webhook", methods=["POST"])
 def webhook_received():
     # You can use webhooks to receive information about asynchronous payment events.

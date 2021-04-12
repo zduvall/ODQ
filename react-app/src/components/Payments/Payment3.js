@@ -8,8 +8,6 @@ import { addPaymentMethod } from '../../store/session';
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
 
-// // start from #6 here: https://stripe.com/docs/billing/subscriptions/fixed-price#create-customer
-
 export default function Payment1() {
   const history = useHistory();
   const dispatch = useDispatch();

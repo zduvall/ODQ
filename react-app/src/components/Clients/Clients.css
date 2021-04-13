@@ -146,23 +146,23 @@
   text-shadow: var(--text-shadow);
 }
 
-.pulse {
-  animation: pulse 2s infinite;
+.pulse:not(.pulse:hover) {
+  animation: pulse-button 2s infinite;
 }
 
-@keyframes pulse {
+@keyframes pulse-button {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    /* box-shadow: 0 0 0 0 rgba(138, 138, 138); */
   }
 
   70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    transform: scale(1.05);
+    /* box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); */
   }
 
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
   }
 }

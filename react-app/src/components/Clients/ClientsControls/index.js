@@ -15,7 +15,9 @@ export default function ClientControls() {
   return (
     <div className='clients-controls'>
       <button
-        className='primary-button clients-controls__button'
+        className={`primary-button clients-controls__button ${
+          !numClients && 'pulse'
+        }`}
         onClick={() => history.push('/clients/new')}
         disabled={showForm}
       >

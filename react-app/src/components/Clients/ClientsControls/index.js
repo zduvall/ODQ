@@ -14,6 +14,13 @@ export default function ClientControls() {
 
   return (
     <div className='clients-controls'>
+      <button
+        className='primary-button clients-controls__button'
+        onClick={() => history.push('/clients/new')}
+        disabled={showForm}
+      >
+        New Client
+      </button>
       <input
         className='form__input'
         placeholder='Search client / born'
@@ -29,13 +36,6 @@ export default function ClientControls() {
         }
         style={numClients < 1 || showForm ? { cursor: 'no-drop' } : {}}
       ></input>
-      <button
-        className='primary-button clients-controls__button'
-        onClick={() => history.push('/clients/new')}
-        disabled={showForm}
-      >
-        New Client
-      </button>
     </div>
   );
 }

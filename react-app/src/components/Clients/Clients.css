@@ -9,11 +9,11 @@
 }
 
 .clients-controls > input {
-  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .clients-controls__button {
-  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
 
 @media (max-width: 475px) {

@@ -417,6 +417,31 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   text-justify: inter-word;
 }
 
+
+/* --------------- pulse animation --------------- */
+
+.pulse:not(.pulse:hover) {
+  animation: pulse-action 2s infinite;
+}
+
+@keyframes pulse-action {
+  0% {
+    transform: scale(0.95);
+    /* box-shadow: 0 0 0 0 rgba(138, 138, 138); */
+  }
+
+  70% {
+    transform: scale(1.05);
+    /* box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); */
+  }
+
+  100% {
+    transform: scale(0.95);
+    /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
+  }
+}
+
+
 /* --------------- other --------------- */
 
 .one1rem-ht {

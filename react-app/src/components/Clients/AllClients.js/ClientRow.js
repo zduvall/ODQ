@@ -31,7 +31,10 @@ export default function ClientRow({ status, client }) {
 
   return (
     <div className='clients-row' onClick={handleClickClient}>
-      <p style={toggleDisp}>{code}</p>
+      <p style={toggleDisp}>
+        {code.slice(0, code.indexOf('-'))}
+        <span className='tertiary-text'>{code.slice(code.indexOf('-'))}</span>
+      </p>
       <p style={toggleDisp}>{birthYear}</p>
       <p style={toggleDisp}>{curClient ? 'A' : 'T'}</p>
       <p

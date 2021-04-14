@@ -6,6 +6,9 @@ import { useClientTestsContext } from '../../pages/Client';
 // import check subscription type function
 import checkSubType from '../../services/checkSubType';
 
+// import free tests
+import { freeTests } from '../../assets';
+
 // import css
 import './Client.css';
 
@@ -22,14 +25,16 @@ export default function DropdownTestInfo() {
       ></i>
       <h2 className='primary-title cntr-txt-sml-margin'>
         {dropdownTest.name}{' '}
-        <i
-          title={
-            checkSubType(dropdownTest.code, subType)
-              ? 'As a s subscribing user, you have access to premium tests.'
-              : 'Subscribing users have access to premium tests'
-          }
-          className='fas fa-medal medal-w-title'
-        ></i>
+        {!freeTests.includes(dropdownTest.code) && (
+          <i
+            title={
+              checkSubType(dropdownTest.code, subType)
+                ? 'As a s subscribing user, you have access to premium tests.'
+                : 'Subscribing users have access to premium tests'
+            }
+            className='fas fa-medal medal-w-title'
+          ></i>
+        )}
       </h2>
       <h3 className='tertiary-title cntr-txt-sml-margin'>
         ({dropdownTest.abbr})

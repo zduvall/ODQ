@@ -80,6 +80,18 @@ export default function Login() {
           </button>
         </div>
         <p className='auth__sml-txt'>
+          Checkout the{' '}
+          <a
+            className='clickable-link'
+            href='https://youtu.be/Ycli5-38V-Q'
+            target='_blank'
+            rel='noreferrer'
+          >
+            demo video
+          </a>
+          .
+        </p>
+        {/* <p className='auth__sml-txt'>
           Login with{' '}
           <span
             className='clickable-link'
@@ -91,7 +103,7 @@ export default function Login() {
             demo credentials
           </span>{' '}
           to test application.
-        </p>
+        </p> */}
       </form>
     </div>
   );

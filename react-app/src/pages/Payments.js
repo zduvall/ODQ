@@ -24,7 +24,8 @@ export default function Payments() {
 
   // redirect to account page if try to access payments page while already subscribed
   useEffect(() => {
-    if (sessionUser.subType) history.push('/account');
+    if (sessionUser.subType || process.env.NODE_ENV === 'production')
+      history.push('/account');
   }, [sessionUser, history]);
 
   return (

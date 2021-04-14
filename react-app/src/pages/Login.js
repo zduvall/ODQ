@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 
+// import component
+import DemoVideo from '../components/auth/DemoVideo';
+
 // import thunks
 import { loginUser } from '../store/session';
 
@@ -79,18 +82,7 @@ export default function Login() {
             Login
           </button>
         </div>
-        <p className='auth__sml-txt'>
-          Checkout the{' '}
-          <a
-            className='clickable-link'
-            href='https://youtu.be/Ycli5-38V-Q'
-            target='_blank'
-            rel='noreferrer'
-          >
-            demo video
-          </a>
-          .
-        </p>
+        <DemoVideo />
         {/* <p className='auth__sml-txt'>
           Login with{' '}
           <span

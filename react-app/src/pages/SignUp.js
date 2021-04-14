@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 
+// import component
+import DemoVideo from '../components/auth/DemoVideo';
+
 // import thunks
 import { signUpUser } from '../store/session';
 
@@ -138,6 +141,7 @@ export default function SignUp() {
           </span>
           .
         </p>
+        <DemoVideo />
       </form>
     </div>
   );

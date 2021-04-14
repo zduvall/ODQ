@@ -9,7 +9,7 @@ def seed_users():
         firstName="Jon",
         lastName="McDemosen",
         email="demo@edot.com",
-        password="2345@#$%",
+        password="2345",
         lic="LCSW",
         pxName="Pro Counseling Demo LLC",
         phone="+18012401234",

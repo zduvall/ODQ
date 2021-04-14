@@ -89,7 +89,7 @@ export default function Login() {
             className='clickable-link'
             onClick={() => {
               setEmail('demo@edot.com');
-              setPassword('2345@#$%');
+              setPassword('2345');
             }}
           >
             demo credentials

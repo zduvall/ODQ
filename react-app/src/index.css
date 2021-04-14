@@ -417,8 +417,7 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   text-justify: inter-word;
 }
 
-
-/* --------------- pulse animation --------------- */
+/* --------------- pulse  --------------- */
 
 .pulse:not(.pulse:hover) {
   animation: pulse-action 2s infinite;
@@ -427,20 +426,22 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
 @keyframes pulse-action {
   0% {
     transform: scale(0.95);
-    /* box-shadow: 0 0 0 0 rgba(138, 138, 138); */
+    box-shadow: 0 0 0 0 rgba(138, 138, 138);
+    border-radius: var(--primary-radius);
   }
 
   70% {
     transform: scale(1.05);
-    /* box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); */
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    border-radius: var(--primary-radius);
   }
 
   100% {
     transform: scale(0.95);
-    /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    border-radius: var(--primary-radius);
   }
 }
-
 
 /* --------------- other --------------- */
 

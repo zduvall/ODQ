@@ -33,7 +33,7 @@ Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database 
 
 ## Code Snippets
 
-Here is a use effect, used to verify that a URL for a client to take a test is valid. It checks by verifying that (1) the hashed portion of the url is accurate, (2) the client is associated with the user, and (3) the user has access to the test if it is a premium test.
+Here is the code that verifies that a URL for a client to take a test is valid. It checks by verifying that (1) the hashed portion of the url is accurate, (2) the client is associated with the user, and (3) the user has access to the test if it is a premium test.
 
 ```js
 useEffect(() => {

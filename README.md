@@ -78,3 +78,39 @@ def checkClientAndPro(userId, clientId, testCode):
         return json.dumps(validUrl)
     return json.dumps(False)
 ```
+
+If all of those tests pass, the person attempted to complete the test at the URL also has to verify their birth year:
+
+```js
+async function handleSubmit(e) {
+  e.preventDefault();
+  if (!year) {
+    setWrongYear(true);
+    setAttempts((prev) => prev - 1);
+    return;
+  }
+  const res = await fetch(`/api/clients/check-year/${clientId}/${year}`);
+  const validated = await res.json();
+  if (validated) {
+    setShowTest(true);
+  } else {
+    setAttempts((prev) => prev - 1);
+    setWrongYear(true);
+  }
+}
+```
+
+Here is the associated backend code:
+
+```py
+@client_routes.route("/check-year/<int:clientId>/<int:yearToCheck>")
+def checkBirthYear(clientId, yearToCheck):
+    """
+    Checks if birth year sent in body matches birth year of client
+    """
+
+    client = Client.query.get(clientId)
+
+    validated = client.birthYear == yearToCheck
+    return json.dumps(validated)
+```

@@ -5,7 +5,7 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
   const [wrongYear, setWrongYear] = useState(false);
   const [attempts, setAttempts] = useState(5);
 
-  async function handleClick(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!year) {
       setWrongYear(true);
@@ -39,7 +39,7 @@ export default function BirthYearValidator({ setShowTest, clientId }) {
           <button
             type='submit'
             className='primary-button'
-            onClick={handleClick}
+            onClick={handleSubmit}
             disabled={attempts <= 0}
           >
             Validate

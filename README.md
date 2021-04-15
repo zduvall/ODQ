@@ -4,6 +4,10 @@
 
 **Electronic Diagnostic and Outcome Testing** for therapists and other helping professionals. A web application to allow users to diagnose and track client progress using evidence based diagnostic and outcome questionnaires.
 
+Try the live site [here](https://edot.herokuapp.com/) and check out a [demo video](https://youtu.be/56xb_IM6Nfs) on YouTube.
+
+Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database schema, routes, user stories, and feature list.
+
 ## Tech Stack
 
 ### [eDOT](https://eDOT.herokuapp.com/) uses the following tools, frameworks, and key packages:
@@ -22,5 +26,3 @@
 - [React StripeJS](https://stripe.com/docs/stripe-js/react)
 - [Redux](https://react-redux.js.org/)
 - [Stripe API](https://stripe.com/docs/api)
-
-Check out a [demo video](https://youtu.be/56xb_IM6Nfs) on YouTube.

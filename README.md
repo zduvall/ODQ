@@ -2,7 +2,7 @@
 
 ![Welcome to eDOT](https://dot-aws.s3-us-west-1.amazonaws.com/edot-preview-small.png)
 
-**Electronic Diagnostic and Outcome Testing** for therapists and other helping professionals. A web application to allow users to diagnose and track client progress using evidence based diagnostic and outcome questionnaires.
+**[Electronic Diagnostic and Outcome Testing](https://edot.herokuapp.com/)** for therapists and other helping professionals. A web application to allow users to diagnose and track client progress using evidence based diagnostic and outcome questionnaires.
 
 Try the live site [here](https://edot.herokuapp.com/) and check out a [demo video](https://youtu.be/56xb_IM6Nfs) on YouTube.
 

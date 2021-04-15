@@ -10,7 +10,6 @@ Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database 
 
 [![Contributors](https://img.shields.io/github/contributors/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/contributors)
 [![Open Issues](https://img.shields.io/github/issues/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/issues)
-[![Forks](https://img.shields.io/github/forks/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/forks)
 [![Stars](https://img.shields.io/github/stars/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/stars)
 
 ## Tech Stack

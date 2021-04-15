@@ -103,3 +103,5 @@ heroku run -a edot flask seed all # if needed
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 11. profit
+
+<!-- heroku run -a edot flask seed undo && heroku run -a edot flask db downgrade base && heroku run -a edot flask db upgrade && heroku run -a edot flask seed all -->

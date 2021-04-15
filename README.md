@@ -81,7 +81,7 @@ def checkClientAndPro(userId, clientId, testCode):
     return json.dumps(False)
 ```
 
-If all of those validations pass, the person attempting to complete the test must also verify their birth year (to make sure the right person is taking the test):
+If all of those validations pass, the person attempting to complete the test must also verify their birth year (to make sure the right person is taking the test). They have 5 attempts:
 
 ```js
 async function handleSubmit(e) {

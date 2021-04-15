@@ -4,6 +4,6 @@
 
 **Electronic Diagnostic and Outcome Testing** for therapists and other helping professionals. 
 
-A full stack solo project using Node.js, React, Redux, Flask, SQL-Alchemy, Chart.js and more.
+A full stack solo project using Node.js, React, Redux, Flask, SQL-Alchemy, Chart.js, Stripe API and more.
 
 Check out a [demo video](https://youtu.be/56xb_IM6Nfs) on YouTube.

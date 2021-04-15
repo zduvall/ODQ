@@ -8,16 +8,6 @@ from .auth_routes import validation_errors_to_error_messages
 test_routes = Blueprint("tests", __name__)
 
 
-@test_routes.route("/<int:userId>")
-@login_required
-def getTests(userId):
-    """
-    Gets all tests associated with the identified (logged-in) user
-    """
-    tests = Test.query.filter_by(userId=userId).all()
-    return {"tests": [test.to_dict() for test in tests]}
-
-
 @test_routes.route("/", methods=["POST"])
 # @login_required
 def createTest():

@@ -8,10 +8,10 @@ Try the live site [here](https://edot.herokuapp.com/) and check out a [demo vide
 
 Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database schema, routes, user stories, and feature list.
 
-[![Contributors](https://img.shields.io/github/contributors/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/contributors)
-[![Commits](https://img.shields.io/github/commit-activity/y/zduvall/eDOT?style=flat-square)](https://www.github.com/zduvall/eDOT/commits)
-[![Open Issues](https://img.shields.io/github/issues/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/issues)
-[![Stars](https://img.shields.io/github/stars/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/stargazers)
+[![Contributors](https://img.shields.io/github/contributors/zduvall/eDOT?style=for-the-badge)](https://www.github.com/zduvall/eDOT/contributors)
+[![Commits](https://img.shields.io/github/commit-activity/y/zduvall/eDOT?style=for-the-badge)](https://www.github.com/zduvall/eDOT/commits)
+[![Open Issues](https://img.shields.io/github/issues/zduvall/eDOT?style=for-the-badge)](https://www.github.com/zduvall/eDOT/issues)
+[![Stars](https://img.shields.io/github/stars/zduvall/eDOT?style=for-the-badge)](https://www.github.com/zduvall/eDOT/stargazers)
 
 ## Tech Stack
 

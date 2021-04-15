@@ -9,7 +9,6 @@ test_routes = Blueprint("tests", __name__)
 
 
 @test_routes.route("/", methods=["POST"])
-# @login_required
 def createTest():
     """
     Creates a new test

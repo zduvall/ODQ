@@ -30,3 +30,51 @@ Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database 
 - [React StripeJS](https://stripe.com/docs/stripe-js/react)
 - [Redux](https://react-redux.js.org/)
 - [Stripe API](https://stripe.com/docs/api)
+
+## Code Snippets
+
+Here is a use effect, used to verify that a URL for a client to take a test is valid. It checks by verifying that (1) the hashed portion of the url is accurate, (2) the client is associated with the user, and (3) the user has access to the test if it is a premium test.
+
+```js
+useEffect(() => {
+  const expectedEncURL = CryptoJS.SHA3(`${clientId}x$${testCode}%-${userId}5z`)
+    .toString()
+    .slice(0, 15);
+
+  if (expectedEncURL !== encURL) {
+    setValidUrl(false);
+    return;
+  }
+
+  async function checkValidUserClientCombo() {
+    const res = await fetch(
+      `/api/clients/check-test-link/${userId}/${clientId}/${testCode}`
+    );
+    const validUCCombo = await res.json();
+    if (res.ok) setValidUrl(validUCCombo);
+  }
+  checkValidUserClientCombo();
+}, [userId, clientId, encURL, testCode]);
+```
+
+Here is the associated backend api route:
+
+```py
+@client_routes.route("/check-test-link/<int:userId>/<int:clientId>/<path:testCode>")
+def checkClientAndPro(userId, clientId, testCode):
+    """
+    Used to confirm that a test link is valid (url for connected client and professional)
+    """
+
+    client = Client.query.get(clientId)
+
+    freeTests = ["ACE", "SWLS"]
+    user = User.query.get(userId)
+    if not user.subType and testCode not in freeTests:
+        return json.dumps(False)
+
+    if client:
+        validUrl = client.pro.id == userId
+        return json.dumps(validUrl)
+    return json.dumps(False)
+```

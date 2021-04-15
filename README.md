@@ -11,7 +11,7 @@ Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database 
 [![Contributors](https://img.shields.io/github/contributors/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/contributors)
 [![Commits](https://img.shields.io/github/commit-activity/y/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/commits)
 [![Open Issues](https://img.shields.io/github/issues/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/issues)
-[![Stars](https://img.shields.io/github/stars/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/stars)
+[![Stars](https://img.shields.io/github/stars/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/stargazers)
 
 ## Tech Stack
 

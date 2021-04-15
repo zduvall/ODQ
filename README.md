@@ -9,7 +9,7 @@ Try the live site [here](https://edot.herokuapp.com/) and check out a [demo vide
 Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database schema, routes, user stories, and feature list.
 
 [![Contributors](https://img.shields.io/github/contributors/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/contributors)
-[![Commits](https://img.shields.io/github/commit-activity/:interval/:user/:repo)](https://www.github.com/zduvall/eDOT/commits)
+[![Commits](https://img.shields.io/github/commit-activity/y/zduvall/eDOT?style=flat-square)](https://www.github.com/zduvall/eDOT/commits)
 [![Open Issues](https://img.shields.io/github/issues/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/issues)
 [![Stars](https://img.shields.io/github/stars/zduvall/eDOT)](https://www.github.com/zduvall/eDOT/stars)
 
@@ -34,7 +34,7 @@ Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database 
 
 ## Code Snippets
 
-Here is the code that verifies if a URL for a client to take a test is valid. 
+Here is the code that verifies if a URL for a client to take a test is valid.
 
 It checks by verifying that (1) the hashed portion of the url is accurate, (2) the client is associated with the user, and (3) the user has access to the test if it is a premium test.
 

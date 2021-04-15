@@ -24,9 +24,9 @@ stripe.api_key = stripe_keys["secret_key"]
 payment_routes = Blueprint("payments", __name__)
 
 
-@payment_routes.route("/config")
-def get_publishable_key():
-    return jsonify(stripe.api_key)
+# @payment_routes.route("/config")
+# def get_publishable_key():
+#     return jsonify(stripe.api_key)
 
 
 @payment_routes.route("/create-customer", methods=["post"])

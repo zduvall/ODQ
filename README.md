@@ -16,10 +16,13 @@ A full stack solo project using Node.js, React, Redux, Flask, SQL-Alchemy, Chart
 - [Flask-Login](https://flask-login.readthedocs.io/en/latest/)
 - [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/#)
 - [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
-- Hosted on [Heroku](https://dashboard.heroku.com/)
+- [Heroku](https://dashboard.heroku.com/)
 - [Node.js](https://nodejs.org/en/)
 - [PostgreSQL](https://www.postgresql.org/))
 - [React](https://reactjs.org/)
+- [React ChartJS](https://reactchartjs.github.io/react-chartjs-2/#/)
+- [React StripeJS](https://stripe.com/docs/stripe-js/react)
 - [Redux](https://react-redux.js.org/)
+- [Stripe API](https://stripe.com/docs/api)
 
 Check out a [demo video](https://youtu.be/56xb_IM6Nfs) on YouTube.

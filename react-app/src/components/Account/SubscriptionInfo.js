@@ -8,7 +8,6 @@ import { cancelSubscription, updateNextBillDate } from '../../store/session';
 // import component
 // import ModalConfirmButton from '../ModalConfirmButton';
 import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
-
 const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
 
 export default function SubscriptionInfo() {

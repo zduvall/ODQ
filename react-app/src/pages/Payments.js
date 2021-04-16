@@ -17,7 +17,6 @@ import '../components/Payments/Payments.css';
 // import Payment2 from '../components/Payments/Payment2';
 // import Payment3 from '../components/Payments/Payment3';
 import LoadingNotFoundInvalid from '../components/LoadingNotFoundInvalid';
-
 const Payment1 = lazy(() => import('../components/Payments/Payment1'));
 const Payment2 = lazy(() => import('../components/Payments/Payment2'));
 const Payment3 = lazy(() => import('../components/Payments/Payment3'));

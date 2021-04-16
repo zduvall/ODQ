@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
 import { deleteUser } from '../../store/session';
 
-// import component
-import ModalConfirmButton from '../ModalConfirmButton';
-
 // import css
 import './User.css';
+
+// import component
+// import ModalConfirmButton from '../ModalConfirmButton';
+import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
+const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
 
 export default function UserInfoData({ setShowUpdateUser }) {
   const dispatch = useDispatch();
@@ -25,8 +27,12 @@ export default function UserInfoData({ setShowUpdateUser }) {
     history.push('/');
   };
 
-  return (
-    <div className='site__sub-section user__info'>
+  // ------ lazy components ------
+  const renderLoader = () => (
+    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  );
+  const ModalConfirmButtonLazy = () => (
+    <Suspense fallback={renderLoader()}>
       <ModalConfirmButton
         showModal={showDeactivateModal}
         setShowModal={setShowDeactivateModal}
@@ -35,6 +41,12 @@ export default function UserInfoData({ setShowUpdateUser }) {
           'Are you sure you want to deactivate your account? All associated data will be deleted.'
         }
       />
+    </Suspense>
+  );
+
+  return (
+    <div className='site__sub-section user__info'>
+      <ModalConfirmButtonLazy />
       <div className='site__sub-section__data'>
         <p>
           {firstName} {lastName}

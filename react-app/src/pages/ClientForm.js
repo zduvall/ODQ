@@ -9,7 +9,6 @@ import { createClient, deleteClient } from '../store/clients';
 // import ModalInfoButton from '../components/ModalInfoButton';
 // import ModalConfirmButton from '../components/ModalConfirmButton';
 import LoadingNotFoundInvalid from '../components/LoadingNotFoundInvalid';
-
 const ModalInfoButton = lazy(() => import('../components/ModalInfoButton'));
 const ModalConfirmButton = lazy(() =>
   import('../components/ModalConfirmButton')

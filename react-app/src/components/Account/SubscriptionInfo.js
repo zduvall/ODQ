@@ -32,7 +32,7 @@ export default function SubscriptionInfo() {
     }
   }, [dispatch, sessionUser.subType, stripeSubId, nextBillDate]);
 
-  // lazy components
+  // ------ lazy components ------
   const renderLoader = () => (
     <LoadingNotFoundInvalid message={'Loading eDOT...'} />
   );

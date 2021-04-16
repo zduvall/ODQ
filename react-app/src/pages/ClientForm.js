@@ -139,7 +139,7 @@ export default function ClientForm() {
     history.push('/clients');
   };
 
-  // lazy components
+  // ------ lazy components ------
   const renderLoader = () => (
     <LoadingNotFoundInvalid message={'Loading eDOT...'} />
   );

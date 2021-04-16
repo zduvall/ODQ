@@ -40,7 +40,7 @@ export default function Payments() {
       history.push('/account');
   }, [sessionUser, history]);
 
-  // lazy components
+  // ------ lazy components ------
   const renderLoader = () => (
     <LoadingNotFoundInvalid message={'Loading eDOT...'} />
   );

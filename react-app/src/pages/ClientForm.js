@@ -1,13 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
-// import component
-import ModalInfoButton from '../components/ModalInfoButton';
-import ModalConfirmButton from '../components/ModalConfirmButton';
-
 // import thunk
 import { createClient, deleteClient } from '../store/clients';
+
+// // import component
+// import ModalInfoButton from '../components/ModalInfoButton';
+// import ModalConfirmButton from '../components/ModalConfirmButton';
+import LoadingNotFoundInvalid from '../components/LoadingNotFoundInvalid';
+
+const ModalInfoButton = lazy(() => import('../components/ModalInfoButton'));
+const ModalConfirmButton = lazy(() =>
+  import('../components/ModalConfirmButton')
+);
 
 export default function ClientForm() {
   const dispatch = useDispatch();
@@ -71,7 +77,7 @@ export default function ClientForm() {
     setErrors([]);
     let errorHit = false;
 
-    if ((!firstName || !lastName || !birthYear || curClient === '')) {
+    if (!firstName || !lastName || !birthYear || curClient === '') {
       setErrors([...errors, 'Please fill out all fields']);
       errorHit = true;
     }
@@ -133,8 +139,12 @@ export default function ClientForm() {
     history.push('/clients');
   };
 
-  return (
-    <div className='site__page'>
+  const renderLoader = () => (
+    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  );
+
+  const ModalInfoButtonDetails = () => (
+    <Suspense fallback={renderLoader()}>
       <ModalInfoButton
         showModal={showInfoModal}
         setShowModal={setShowInfoModal}
@@ -143,6 +153,10 @@ export default function ClientForm() {
           "eDOT does not store any HIPAA identifiers to protect confidentiality, only the client's birth year and a basic auto-generated code based on first name, last name, and creation date of the client. The code can be updated as needed by changing the respective inputs."
         }
       />
+    </Suspense>
+  );
+  const ModalConfirmButtonDetails = () => (
+    <Suspense fallback={renderLoader()}>
       <ModalConfirmButton
         showModal={showDeleteModal}
         setShowModal={setShowDeleteModal}
@@ -151,6 +165,13 @@ export default function ClientForm() {
           selectedClient ? selectedClient.code : 'this client' // 'this client' shouldn't ever render, this just makes sure there is a selected client to avoid error keying into nothing
         }? All associated data will be deleted.`}
       />
+    </Suspense>
+  );
+
+  return (
+    <div className='site__page'>
+      <ModalInfoButtonDetails />
+      <ModalConfirmButtonDetails />
       <h1 className='primary-title'>
         {selectedClient ? `Update ${selectedClient.code}` : 'New Client'}
       </h1>

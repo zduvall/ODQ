@@ -8,10 +8,6 @@ Try the live site [here](https://edot.herokuapp.com/) and check out a [demo vide
 
 Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database schema, routes, user stories, and feature list.
 
-[![Contributors](https://img.shields.io/github/contributors/zduvall/eDOT?style=for-the-badge)](https://www.github.com/zduvall/eDOT/contributors)
-[![Open Issues](https://img.shields.io/github/issues/zduvall/eDOT?style=for-the-badge)](https://www.github.com/zduvall/eDOT/issues)
-[![Stars](https://img.shields.io/github/stars/zduvall/eDOT?style=for-the-badge)](https://www.github.com/zduvall/eDOT/stargazers)
-
 ## Tech Stack
 
 ### [eDOT](https://eDOT.herokuapp.com/) uses the following tools, frameworks, and key packages:

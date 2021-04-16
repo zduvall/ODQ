@@ -10,7 +10,7 @@ import './User.css';
 
 // import component
 // import ModalConfirmButton from '../ModalConfirmButton';
-import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
+import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
 const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
 
 export default function UserInfoData({ setShowUpdateUser }) {

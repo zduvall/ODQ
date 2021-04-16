@@ -3,7 +3,6 @@ import { useState, createContext, useContext } from 'react';
 // import components
 import ClientContorls from '../components/Clients/ClientsControls';
 import AllClients from '../components/Clients/AllClients.js/index.js';
-// import ClientFrom from '../components/ClientForm';
 
 const ClientsContext = createContext();
 
@@ -26,8 +25,6 @@ export default function Clients() {
         <h1 className='primary-title'>Clients</h1>
         <ClientContorls />
         <AllClients />
-        {/* {!showForm && <AllClients />}
-        {showForm && <ClientFrom />} */}
         <div className='one1rem-ht' />
       </div>
     </ClientsContext.Provider>

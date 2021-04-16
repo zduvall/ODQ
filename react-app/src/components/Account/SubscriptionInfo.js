@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -6,7 +6,9 @@ import { useHistory } from 'react-router-dom';
 import { cancelSubscription, updateNextBillDate } from '../../store/session';
 
 // import component
-import ModalConfirmButton from '../ModalConfirmButton';
+// import ModalConfirmButton from '../ModalConfirmButton';
+import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
+const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
 
 export default function SubscriptionInfo() {
   const dispatch = useDispatch();
@@ -29,8 +31,13 @@ export default function SubscriptionInfo() {
     }
   }, [dispatch, sessionUser.subType, stripeSubId, nextBillDate]);
 
-  return (
-    <div className='site__sub-section'>
+  // ------ lazy components ------
+  const renderLoader = () => (
+    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  );
+
+  const ModalConfirmButtonLazy = () => (
+    <Suspense fallback={renderLoader()}>
       <ModalConfirmButton
         showModal={showUnsubscribeModal}
         setShowModal={setShowUnsubscribeModal}
@@ -39,6 +46,12 @@ export default function SubscriptionInfo() {
           'Are you sure you would like to unsubscribe? Premium tests will no longer be accessible.'
         }
       />
+    </Suspense>
+  );
+
+  return (
+    <div className='site__sub-section'>
+      <ModalConfirmButtonLazy />
       <div className='site__sub-section__data subscription-container'>
         <div className='lft-align'>
           <p>

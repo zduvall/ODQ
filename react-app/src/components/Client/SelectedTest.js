@@ -1,9 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
-
-// import components
-import SelectedDataPoint from './SelectedDataPoint';
-import ModalInfoButton from '../ModalInfoButton';
 
 // import context
 import { useClientTestsContext } from '../../pages/Client';
@@ -18,6 +14,13 @@ import './Client.css';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js';
 import * as ChartAnnotation from 'chartjs-plugin-annotation';
+
+// import components
+import SelectedDataPoint from './SelectedDataPoint';
+// import ModalInfoButton from '../ModalInfoButton';
+import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
+const ModalInfoButton = lazy(() => import('../ModalInfoButton'));
+
 Chart.plugins.register([ChartAnnotation]); // Global registering of plugin
 
 export default function SelectedTest() {
@@ -104,14 +107,24 @@ export default function SelectedTest() {
     setPointBackgroundColor(arr);
   }, [datapoint, setPointBackgroundColor, datapointIndex, length]);
 
-  return (
-    <>
+  // ------ lazy components ------
+  const renderLoader = () => (
+    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  );
+
+  const ModalInfoButtonLazy = () => (
+    <Suspense fallback={renderLoader()}>
       <ModalInfoButton
         showModal={showInfoModal}
         setShowModal={setShowInfoModal}
         title={'Score Interpretation'}
-        message={`${selectedTest.interpretation} \n\n(Note: click on individual datapoints to view test scores from that date)`}
+        message={`${selectedTest.interpretation} \n\n(Note: click on individual datapoints to view detailed results from that date)`}
       />
+    </Suspense>
+  );
+
+  return (
+    <>
       <div className='site__sub-section flex-dir-col chart-container'>
         <i
           className='fas fa-info-circle top-right-grey'
@@ -120,12 +133,9 @@ export default function SelectedTest() {
         <h3 className='cntr-txt-sml-margin'>{selectedTest.name}</h3>
         <Line data={data} options={options} />
       </div>
-      {datapoint && (
-        <>
-          <div className='one1rem-ht' />
-          <SelectedDataPoint datapoint={datapoint} />
-        </>
-      )}
+      <div className='one1rem-ht' />
+      {datapoint && <SelectedDataPoint datapoint={datapoint} />}
+      <ModalInfoButtonLazy />
     </>
   );
 }

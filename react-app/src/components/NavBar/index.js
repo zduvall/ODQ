@@ -14,7 +14,7 @@ import { logoutUser } from '../../store/session';
 
 // import css and pic
 import './navBar.css';
-import dotLogo from './dot-logo.png';
+import dotLogo from './dot-logo.webp';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -37,9 +37,9 @@ const NavBar = () => {
   let hideScroll = window.pageYOffset;
   window.onscroll = function () {
     if (width > 850) return;
-    
+
     setShowDropdown(false);
-    
+
     let currentScrollPos = window.pageYOffset;
 
     if (hideScroll > window.pageYOffset) {

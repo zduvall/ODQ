@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 
 //import context
 import { useClientTestsContext } from '../../../pages/Client';
 
-// import component
-import Section from './SectionAndQuestionTypes';
-import ModalConfirmButton from '../../ModalConfirmButton';
-
 // import thunk
 import { deleteTest } from '../../../store/clients';
+
+// import component
+import Section from './SectionAndQuestionTypes';
+// import ModalConfirmButton from '../../ModalConfirmButton';
+const ModalConfirmButton = lazy(() => import('../../ModalConfirmButton'));
 
 export default function SelectedDataPoint() {
   const dispatch = useDispatch();
@@ -36,8 +37,11 @@ export default function SelectedDataPoint() {
     setTimeout(() => el.classList.add('data-point-fade-in'), 50);
   }, [datapoint]);
 
-  return (
-    <div className='site__sub-section flex-dir-col data-point-fade'>
+  // ------ lazy components ------
+  const renderLoader = () => <p></p>;
+
+  const ModalConfirmButtonLazy = () => (
+    <Suspense fallback={renderLoader()}>
       <ModalConfirmButton
         showModal={showModal}
         setShowModal={setShowModal}
@@ -46,6 +50,11 @@ export default function SelectedDataPoint() {
           datapoint.timeComp
         ).toLocaleDateString()}? You should only do this if there is an error in the client response.`}
       />
+    </Suspense>
+  );
+
+  return (
+    <div className='site__sub-section flex-dir-col data-point-fade'>
       <h3 className='cntr-txt-sml-margin primary-title'>
         {new Date(datapoint.timeComp).toLocaleDateString()}
       </h3>
@@ -57,6 +66,7 @@ export default function SelectedDataPoint() {
       <button onClick={() => setShowModal(true)} className='delete-button'>
         Delete
       </button>
+      <ModalConfirmButtonLazy />
     </div>
   );
 }

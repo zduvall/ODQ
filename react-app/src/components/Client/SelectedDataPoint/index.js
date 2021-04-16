@@ -56,7 +56,6 @@ export default function SelectedDataPoint() {
 
   return (
     <div className='site__sub-section flex-dir-col data-point-fade'>
-      <ModalConfirmButtonLazy />
       <h3 className='cntr-txt-sml-margin primary-title'>
         {new Date(datapoint.timeComp).toLocaleDateString()}
       </h3>
@@ -68,6 +67,7 @@ export default function SelectedDataPoint() {
       <button onClick={() => setShowModal(true)} className='delete-button'>
         Delete
       </button>
+      <ModalConfirmButtonLazy />
     </div>
   );
 }

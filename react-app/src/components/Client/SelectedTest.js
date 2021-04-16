@@ -17,9 +17,9 @@ import * as ChartAnnotation from 'chartjs-plugin-annotation';
 
 // import components
 import SelectedDataPoint from './SelectedDataPoint';
-// import ModalInfoButton from '../ModalInfoButton';
-import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
-const ModalInfoButton = lazy(() => import('../ModalInfoButton'));
+import ModalInfoButton from '../ModalInfoButton';
+// import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
+// const ModalInfoButton = lazy(() => import('../ModalInfoButton'));
 
 Chart.plugins.register([ChartAnnotation]); // Global registering of plugin
 
@@ -107,21 +107,21 @@ export default function SelectedTest() {
     setPointBackgroundColor(arr);
   }, [datapoint, setPointBackgroundColor, datapointIndex, length]);
 
-  // ------ lazy components ------
-  const renderLoader = () => (
-    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
-  );
+  // // ------ lazy components ------
+  // const renderLoader = () => (
+  //   <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  // );
 
-  const ModalInfoButtonLazy = () => (
-    <Suspense fallback={renderLoader()}>
-      <ModalInfoButton
-        showModal={showInfoModal}
-        setShowModal={setShowInfoModal}
-        title={'Score Interpretation'}
-        message={`${selectedTest.interpretation} \n\n(Note: click on individual datapoints to view detailed results from that date)`}
-      />
-    </Suspense>
-  );
+  // const ModalInfoButtonLazy = () => (
+  //   <Suspense fallback={renderLoader()}>
+  // <ModalInfoButton
+  //   showModal={showInfoModal}
+  //   setShowModal={setShowInfoModal}
+  //   title={'Score Interpretation'}
+  //   message={`${selectedTest.interpretation} \n\n(Note: click on individual datapoints to view detailed results from that date)`}
+  // />
+  //   </Suspense>
+  // );
 
   return (
     <>
@@ -135,7 +135,13 @@ export default function SelectedTest() {
       </div>
       <div className='one1rem-ht' />
       {datapoint && <SelectedDataPoint datapoint={datapoint} />}
-      <ModalInfoButtonLazy />
+      {/* <ModalInfoButtonLazy /> */}
+      <ModalInfoButton
+        showModal={showInfoModal}
+        setShowModal={setShowInfoModal}
+        title={'Score Interpretation'}
+        message={`${selectedTest.interpretation} \n\n(Note: click on individual datapoints to view detailed results from that date)`}
+      />
     </>
   );
 }

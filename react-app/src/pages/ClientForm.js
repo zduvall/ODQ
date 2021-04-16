@@ -6,13 +6,13 @@ import { useParams, useHistory } from 'react-router-dom';
 import { createClient, deleteClient } from '../store/clients';
 
 // // import component
-// import ModalInfoButton from '../components/ModalInfoButton';
-// import ModalConfirmButton from '../components/ModalConfirmButton';
-import LoadingNotFoundInvalid from '../components/LoadingNotFoundInvalid';
-const ModalInfoButton = lazy(() => import('../components/ModalInfoButton'));
-const ModalConfirmButton = lazy(() =>
-  import('../components/ModalConfirmButton')
-);
+import ModalInfoButton from '../components/ModalInfoButton';
+import ModalConfirmButton from '../components/ModalConfirmButton';
+// import LoadingNotFoundInvalid from '../components/LoadingNotFoundInvalid';
+// const ModalInfoButton = lazy(() => import('../components/ModalInfoButton'));
+// const ModalConfirmButton = lazy(() =>
+//   import('../components/ModalConfirmButton')
+// );
 
 export default function ClientForm() {
   const dispatch = useDispatch();
@@ -138,13 +138,40 @@ export default function ClientForm() {
     history.push('/clients');
   };
 
-  // ------ lazy components ------
-  const renderLoader = () => (
-    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
-  );
+  // // ------ lazy components ------
+  // const renderLoader = () => (
+  //   <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  // );
 
-  const ModalInfoButtonLazy = () => (
-    <Suspense fallback={renderLoader()}>
+  // const ModalInfoButtonLazy = () => (
+  //   <Suspense fallback={renderLoader()}>
+  //     <ModalInfoButton
+  //       showModal={showInfoModal}
+  //       setShowModal={setShowInfoModal}
+  //       title={'Adding and updating clients'}
+  //       message={
+  //         "eDOT does not store any HIPAA identifiers to protect confidentiality, only the client's birth year and a basic auto-generated code based on first name, last name, and creation date of the client. The code can be updated as needed by changing the respective inputs."
+  //       }
+  //     />
+  //   </Suspense>
+  // );
+  // const ModalConfirmButtonLazy = () => (
+  //   <Suspense fallback={renderLoader()}>
+  //     <ModalConfirmButton
+  //       showModal={showDeleteModal}
+  //       setShowModal={setShowDeleteModal}
+  //       proceedAction={handleDelete}
+  //       message={`Are you sure you want to remove ${
+  //         selectedClient ? selectedClient.code : 'this client' // 'this client' shouldn't ever render, this just makes sure there is a selected client to avoid error keying into nothing
+  //       }? All associated data will be deleted.`}
+  //     />
+  //   </Suspense>
+  // );
+
+  return (
+    <div className='site__page'>
+      {/* <ModalInfoButtonLazy />
+      <ModalConfirmButtonLazy /> */}
       <ModalInfoButton
         showModal={showInfoModal}
         setShowModal={setShowInfoModal}
@@ -153,10 +180,6 @@ export default function ClientForm() {
           "eDOT does not store any HIPAA identifiers to protect confidentiality, only the client's birth year and a basic auto-generated code based on first name, last name, and creation date of the client. The code can be updated as needed by changing the respective inputs."
         }
       />
-    </Suspense>
-  );
-  const ModalConfirmButtonLazy = () => (
-    <Suspense fallback={renderLoader()}>
       <ModalConfirmButton
         showModal={showDeleteModal}
         setShowModal={setShowDeleteModal}
@@ -165,13 +188,6 @@ export default function ClientForm() {
           selectedClient ? selectedClient.code : 'this client' // 'this client' shouldn't ever render, this just makes sure there is a selected client to avoid error keying into nothing
         }? All associated data will be deleted.`}
       />
-    </Suspense>
-  );
-
-  return (
-    <div className='site__page'>
-      <ModalInfoButtonLazy />
-      <ModalConfirmButtonLazy />
       <h1 className='primary-title'>
         {selectedClient ? `Update ${selectedClient.code}` : 'New Client'}
       </h1>

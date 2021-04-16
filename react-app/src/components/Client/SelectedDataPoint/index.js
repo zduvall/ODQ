@@ -9,8 +9,8 @@ import { deleteTest } from '../../../store/clients';
 
 // import component
 import Section from './SectionAndQuestionTypes';
-// import ModalConfirmButton from '../../ModalConfirmButton';
-const ModalConfirmButton = lazy(() => import('../../ModalConfirmButton'));
+import ModalConfirmButton from '../../ModalConfirmButton';
+// const ModalConfirmButton = lazy(() => import('../../ModalConfirmButton'));
 
 export default function SelectedDataPoint() {
   const dispatch = useDispatch();
@@ -37,21 +37,21 @@ export default function SelectedDataPoint() {
     setTimeout(() => el.classList.add('data-point-fade-in'), 50);
   }, [datapoint]);
 
-  // ------ lazy components ------
-  const renderLoader = () => <p></p>;
+  // // ------ lazy components ------
+  // const renderLoader = () => <p></p>;
 
-  const ModalConfirmButtonLazy = () => (
-    <Suspense fallback={renderLoader()}>
-      <ModalConfirmButton
-        showModal={showModal}
-        setShowModal={setShowModal}
-        proceedAction={handleDelete}
-        message={`Are you sure you want to delete this test result from ${new Date(
-          datapoint.timeComp
-        ).toLocaleDateString()}? You should only do this if there is an error in the client response.`}
-      />
-    </Suspense>
-  );
+  // const ModalConfirmButtonLazy = () => (
+  //   <Suspense fallback={renderLoader()}>
+  //     <ModalConfirmButton
+  //       showModal={showModal}
+  //       setShowModal={setShowModal}
+  //       proceedAction={handleDelete}
+  //       message={`Are you sure you want to delete this test result from ${new Date(
+  //         datapoint.timeComp
+  //       ).toLocaleDateString()}? You should only do this if there is an error in the client response.`}
+  //     />
+  //   </Suspense>
+  // );
 
   return (
     <div className='site__sub-section flex-dir-col data-point-fade'>
@@ -66,7 +66,15 @@ export default function SelectedDataPoint() {
       <button onClick={() => setShowModal(true)} className='delete-button'>
         Delete
       </button>
-      <ModalConfirmButtonLazy />
+      {/* <ModalConfirmButtonLazy /> */}
+      <ModalConfirmButton
+        showModal={showModal}
+        setShowModal={setShowModal}
+        proceedAction={handleDelete}
+        message={`Are you sure you want to delete this test result from ${new Date(
+          datapoint.timeComp
+        ).toLocaleDateString()}? You should only do this if there is an error in the client response.`}
+      />
     </div>
   );
 }

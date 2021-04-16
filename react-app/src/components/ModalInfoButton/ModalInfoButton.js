@@ -1,4 +1,4 @@
-export default function ModalConfirmButton({ title, message }) {
+export default function ModalInfoButton({ title, message }) {
   return (
     <>
       <h2 className='primary-title cntr-txt-sml-margin'>{title}</h2>

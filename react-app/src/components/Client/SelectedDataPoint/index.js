@@ -10,7 +10,6 @@ import { deleteTest } from '../../../store/clients';
 // import component
 import Section from './SectionAndQuestionTypes';
 // import ModalConfirmButton from '../../ModalConfirmButton';
-// import LoadingNotFoundInvalid from '../../LoadingNotFoundInvalid';
 const ModalConfirmButton = lazy(() => import('../../ModalConfirmButton'));
 
 export default function SelectedDataPoint() {

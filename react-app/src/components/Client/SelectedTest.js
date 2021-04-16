@@ -108,10 +108,9 @@ export default function SelectedTest() {
   }, [datapoint, setPointBackgroundColor, datapointIndex, length]);
 
   // ------ lazy components ------
-  // const renderLoader = () => (
-  //   <LoadingNotFoundInvalid message={'Loading eDOT...'} />
-  // );
-  const renderLoader = () => <p></p>;
+  const renderLoader = () => (
+    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  );
 
   const ModalInfoButtonLazy = () => (
     <Suspense fallback={renderLoader()}>

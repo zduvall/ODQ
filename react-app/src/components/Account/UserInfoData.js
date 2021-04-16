@@ -9,9 +9,9 @@ import { deleteUser } from '../../store/session';
 import './User.css';
 
 // import component
-import ModalConfirmButton from '../ModalConfirmButton';
-// import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
-// const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
+// import ModalConfirmButton from '../ModalConfirmButton';
+import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
+const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
 
 export default function UserInfoData({ setShowUpdateUser }) {
   const dispatch = useDispatch();
@@ -27,26 +27,12 @@ export default function UserInfoData({ setShowUpdateUser }) {
     history.push('/');
   };
 
-  // // ------ lazy components ------
-  // const renderLoader = () => (
-  //   <LoadingNotFoundInvalid message={'Loading eDOT...'} />
-  // );
-  // const ModalConfirmButtonLazy = () => (
-  //   <Suspense fallback={renderLoader()}>
-  //     <ModalConfirmButton
-  //       showModal={showDeactivateModal}
-  //       setShowModal={setShowDeactivateModal}
-  //       proceedAction={handleDeactivate}
-  //       message={
-  //         'Are you sure you want to deactivate your account? All associated data will be deleted.'
-  //       }
-  //     />
-  //   </Suspense>
-  // );
-
-  return (
-    <div className='site__sub-section user__info'>
-      {/* <ModalConfirmButtonLazy /> */}
+  // ------ lazy components ------
+  const renderLoader = () => (
+    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  );
+  const ModalConfirmButtonLazy = () => (
+    <Suspense fallback={renderLoader()}>
       <ModalConfirmButton
         showModal={showDeactivateModal}
         setShowModal={setShowDeactivateModal}
@@ -55,6 +41,12 @@ export default function UserInfoData({ setShowUpdateUser }) {
           'Are you sure you want to deactivate your account? All associated data will be deleted.'
         }
       />
+    </Suspense>
+  );
+
+  return (
+    <div className='site__sub-section user__info'>
+      <ModalConfirmButtonLazy />
       <div className='site__sub-section__data'>
         <p>
           {firstName} {lastName}

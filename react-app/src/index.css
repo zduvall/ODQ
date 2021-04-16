@@ -88,8 +88,6 @@ ul > li {
   justify-content: center;
   align-items: center;
   animation: pulse 2s infinite;
-  background-color: var(--tertiary-color-light);
-  border-radius: var(--primary-radius);
 }
 
 @keyframes pulse {

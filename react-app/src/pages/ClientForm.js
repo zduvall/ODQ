@@ -139,11 +139,12 @@ export default function ClientForm() {
     history.push('/clients');
   };
 
+  // lazy components
   const renderLoader = () => (
     <LoadingNotFoundInvalid message={'Loading eDOT...'} />
   );
 
-  const ModalInfoButtonDetails = () => (
+  const ModalInfoButtonLazy = () => (
     <Suspense fallback={renderLoader()}>
       <ModalInfoButton
         showModal={showInfoModal}
@@ -155,7 +156,7 @@ export default function ClientForm() {
       />
     </Suspense>
   );
-  const ModalConfirmButtonDetails = () => (
+  const ModalConfirmButtonLazy = () => (
     <Suspense fallback={renderLoader()}>
       <ModalConfirmButton
         showModal={showDeleteModal}
@@ -170,8 +171,8 @@ export default function ClientForm() {
 
   return (
     <div className='site__page'>
-      <ModalInfoButtonDetails />
-      <ModalConfirmButtonDetails />
+      <ModalInfoButtonLazy />
+      <ModalConfirmButtonLazy />
       <h1 className='primary-title'>
         {selectedClient ? `Update ${selectedClient.code}` : 'New Client'}
       </h1>

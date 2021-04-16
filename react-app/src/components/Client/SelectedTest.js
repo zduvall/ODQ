@@ -16,10 +16,9 @@ import Chart from 'chart.js';
 import * as ChartAnnotation from 'chartjs-plugin-annotation';
 
 // import components
-// import SelectedDataPoint from './SelectedDataPoint';
+import SelectedDataPoint from './SelectedDataPoint';
 // import ModalInfoButton from '../ModalInfoButton';
 import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
-const SelectedDataPoint = lazy(() => import('./SelectedDataPoint'));
 const ModalInfoButton = lazy(() => import('../ModalInfoButton'));
 
 Chart.plugins.register([ChartAnnotation]); // Global registering of plugin
@@ -109,9 +108,10 @@ export default function SelectedTest() {
   }, [datapoint, setPointBackgroundColor, datapointIndex, length]);
 
   // ------ lazy components ------
-  const renderLoader = () => (
-    <LoadingNotFoundInvalid message={'Loading eDOT...'} />
-  );
+  // const renderLoader = () => (
+  //   <LoadingNotFoundInvalid message={'Loading eDOT...'} />
+  // );
+  const renderLoader = () => <p></p>;
 
   const ModalInfoButtonLazy = () => (
     <Suspense fallback={renderLoader()}>
@@ -123,15 +123,9 @@ export default function SelectedTest() {
       />
     </Suspense>
   );
-  const SelectedDataPointLazy = () => (
-    <Suspense fallback={renderLoader()}>
-      <SelectedDataPoint datapoint={datapoint} />
-    </Suspense>
-  );
 
   return (
     <>
-      <ModalInfoButtonLazy />
       <div className='site__sub-section flex-dir-col chart-container'>
         <i
           className='fas fa-info-circle top-right-grey'
@@ -140,12 +134,9 @@ export default function SelectedTest() {
         <h3 className='cntr-txt-sml-margin'>{selectedTest.name}</h3>
         <Line data={data} options={options} />
       </div>
-      {datapoint && (
-        <>
-          <div className='one1rem-ht' />
-          <SelectedDataPointLazy />
-        </>
-      )}
+      <div className='one1rem-ht' />
+      {datapoint && <SelectedDataPoint datapoint={datapoint} />}
+      <ModalInfoButtonLazy />
     </>
   );
 }

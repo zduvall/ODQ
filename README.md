@@ -31,7 +31,7 @@ Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database 
 
 Here is the code that verifies if a URL for a client to take a test is valid. This is done because the clients of the therapist or other professional don't have to login to take a test.
 
-It checks by verifying that (1) the hashed portion of the url is accurate, (2) the client is associated with the user, and (3) the user has access to the test if it is a premium test.
+It checks by verifying that (1) the hashed portion of the url is accurate, (2) the client is associated with the user, and (3) the user has access to the test if it is a premium test. With these checks, a client wouldn't be able to guess another client's URL.
 
 ```js
 useEffect(() => {

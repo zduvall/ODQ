@@ -20,7 +20,7 @@ Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database 
 - [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 - [Heroku](https://dashboard.heroku.com/)
 - [Node.js](https://nodejs.org/en/)
-- [PostgreSQL](https://www.postgresql.org/))
+- [PostgreSQL](https://www.postgresql.org/)
 - [React](https://reactjs.org/)
 - [React ChartJS](https://reactchartjs.github.io/react-chartjs-2/#/)
 - [React StripeJS](https://stripe.com/docs/stripe-js/react)

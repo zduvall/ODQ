@@ -7,6 +7,9 @@ import CryptoJS from 'crypto-js';
 // import tests object
 import tests from '../assets';
 
+// import css
+import '../components/TestForm/TestTemplate.css'
+
 // import components
 import TestHeader from '../components/TestForm/TestHeader';
 import BirthYearValidator from '../components/TestForm/BirthYearValidator';

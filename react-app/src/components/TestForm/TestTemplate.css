@@ -1,0 +1,20 @@
+/* client complete test view */
+.birth-year-validator__form__row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  max-width: 24rem;
+}
+
+.birth-year-validator__error {
+  text-align: center;
+}
+
+.test-complete__title {
+  margin: 0;
+}
+
+.test-complete__thank-you {
+  margin: 0.5rem 0;
+  text-align: center;
+}

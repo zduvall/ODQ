@@ -79,7 +79,7 @@ def checkClientAndPro(userId, clientId, testCode):
 
 If all of those validations pass, the person attempting to complete the test must also verify their birth year (to make sure the right person is taking the test). They have 5 attempts:
 
-![Confirm Birth Year, mobile view](https://dot-aws.s3-us-west-1.amazonaws.com/confirm-birth-year-mobile-view.png =100x)
+<img src="https://dot-aws.s3-us-west-1.amazonaws.com/confirm-birth-year-mobile-view.png" alt="Confirm Birth Year, mobile view" width="100"/>
 
 ```js
 async function handleSubmit(e) {

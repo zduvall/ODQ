@@ -6,13 +6,21 @@ export default function Unsubscribe() {
   const { pathname } = useLocation();
 
   const infoFromPath = {
-    '/unsubscribe': { title: 'Sorry to see you unsubscribe' },
-    '/deactivate': { title: 'Sorry to see you leave' },
+    '/unsubscribe': {
+      title: 'Sorry to see you unsubscribe!',
+      feedback: 'Please take a moment to share why you usubscribed.',
+    },
+    '/deactivate': {
+      title: 'Sorry to see you leave!',
+      feedback:
+        'Please take a moment to share why you are deactivating your account.',
+    },
   };
 
   return (
     <div className='site__page'>
       <h1 className='primary-title'>{infoFromPath[pathname].title}</h1>
+      <h2 className='secondary-title'>{infoFromPath[pathname].feedback}</h2>
       <div className='site__sub-section'></div>
       <div className='one1rem-ht' />
       <img

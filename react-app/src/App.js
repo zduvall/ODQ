@@ -33,6 +33,7 @@ const Payments = lazy(() => import('./pages/Payments'));
 const ClientForm = lazy(() => import('./pages/ClientForm'));
 const TestForm = lazy(() => import('./pages/TestForm'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
+const Unsubscribe = lazy(() => import('./pages/UnsubOrDeactivate'));
 
 function App() {
   const dispatch = useDispatch();
@@ -118,6 +119,9 @@ function App() {
             </Route>
             <Route path='/terms-of-use' exact>
               <TermsOfUse />
+            </Route>
+            <Route path='/unsubscribe' exact>
+              <Unsubscribe />
             </Route>
             <Route path='/'>
               <LoadingNotFoundInvalid message={'Page not found...'} />

@@ -1,9 +1,18 @@
-import goodBye from '../components/Unsubscribe/images/leaving-through-door.svg';
+import { useLocation } from 'react-router-dom';
+
+import goodBye from '../components/UnsubOrDeactivate/images/leaving-through-door.svg';
 
 export default function Unsubscribe() {
+  const { pathname } = useLocation();
+
+  const infoFromPath = {
+    '/unsubscribe': { title: 'Sorry to see you unsubscribe' },
+    '/deactivate': { title: 'Sorry to see you leave' },
+  };
+
   return (
     <div className='site__page'>
-      <h1 className='primary-title'>Sorry to see you go!</h1>
+      <h1 className='primary-title'>{infoFromPath[pathname].title}</h1>
       <div className='site__sub-section'></div>
       <div className='one1rem-ht' />
       <img

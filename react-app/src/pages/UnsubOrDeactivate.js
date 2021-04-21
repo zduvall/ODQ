@@ -11,7 +11,7 @@ export default function Unsubscribe() {
       feedback: 'Please take a moment to share why you usubscribed.',
     },
     '/deactivate': {
-      title: 'Sorry to see you leave!',
+      title: 'Sorry to see you go!',
       feedback:
         'Please take a moment to share why you are deactivating your account.',
     },
@@ -29,6 +29,7 @@ export default function Unsubscribe() {
         alt={'Man exiting through door'}
         title={'Man exiting through door'}
       />
+      <div className='one1rem-ht' />
     </div>
   );
 }

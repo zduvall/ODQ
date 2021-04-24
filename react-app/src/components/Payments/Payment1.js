@@ -149,7 +149,7 @@ export default function Payment1() {
             ></input>
           </div>
         </div>
-        <div className='form__row buttons-grp-colLrg-rowSml'>
+        <div className='buttons-grp-colLrg-rowSml'>
           <button
             className='primary-button form__button dashboard__button'
             type='submit'

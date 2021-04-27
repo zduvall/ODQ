@@ -29,7 +29,7 @@ Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database 
 
 ## Code Snippets
 
-Here is the code that verifies if a URL for a client to take a test is valid. This is done because the clients of the therapist or other professional don't have to login to take a test.
+Here is the code that verifies if a URL for a client to take a test is valid. This validation is in place so the clients don't have to login or have an account to take a test.
 
 It checks by verifying that (1) the hashed portion of the url is accurate, (2) the client is associated with the user, and (3) the user has access to the test if it is a premium test. With these checks, a client wouldn't be able to guess another client's URL.
 
@@ -77,7 +77,7 @@ def checkClientAndPro(userId, clientId, testCode):
     return json.dumps(False)
 ```
 
-If all of those validations pass, the person attempting to complete the test must also verify their birth year (to make sure the right person is taking the test). They have 5 attempts:
+If all of those validations pass, the person attempting to complete the test will also be prompted also verify their birth year (to make sure the right person is taking the test). They have 5 attempts:
 
 <p align="center">
   <img src="https://dot-aws.s3-us-west-1.amazonaws.com/confirm-birth-year-mobile.png" alt="Confirm Birth Year, mobile view" width="350" />
@@ -102,7 +102,7 @@ async function handleSubmit(e) {
 }
 ```
 
-Here is the associated backend code:
+Here is the backend code associated with that verification:
 
 ```py
 @client_routes.route("/check-year/<int:clientId>/<int:yearToCheck>")

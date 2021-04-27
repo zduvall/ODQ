@@ -4,7 +4,7 @@ export default function DemoVideo() {
       To preview the site, check out the{' '}
       <a
         className='clickable-link'
-        href='https://youtu.be/Ycli5-38V-Q'
+        href='https://youtu.be/56xb_IM6Nfs'
         target='_blank'
         rel='noreferrer'
       >

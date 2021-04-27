@@ -102,7 +102,7 @@ async function handleSubmit(e) {
 }
 ```
 
-Here is the associated backend code:
+Here is the backend code associated with that verification:
 
 ```py
 @client_routes.route("/check-year/<int:clientId>/<int:yearToCheck>")

@@ -6,7 +6,7 @@
 
 Try the live site [here](https://edot.herokuapp.com/) and check out a [demo video](https://youtu.be/56xb_IM6Nfs) on YouTube.
 
-Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database schema, routes, user stories, and feature list.
+Visit the [site wiki](https://github.com/zduvall/eDOT/wiki) to see the database schema, routes, user stories and feature list.
 
 ## Tech Stack
 

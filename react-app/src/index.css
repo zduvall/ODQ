@@ -178,7 +178,7 @@ ul > li {
 @media (max-width: 800px) {
   .buttons-grp-colLrg-rowSml {
     flex-direction: row;
-    flex-wrap: nowrap !important;
+    flex-wrap: nowrap;
     width: 100% !important;
     justify-content: center;
   }

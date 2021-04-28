@@ -30,9 +30,8 @@ export default function FeedbackForm({ type }) {
       feedback: feedback,
       sent: readableDate,
     };
-    console.log(data);
 
-    await fetch(
+    const res = await fetch(
       'https://sheet.best/api/sheets/8e811641-935d-4f71-8958-0cf7bddab246',
       {
         method: 'POST',
@@ -40,9 +39,12 @@ export default function FeedbackForm({ type }) {
         body: JSON.stringify(data),
       }
     );
+    if (res.ok) {
+      proceed();
+    }
   }
 
-  const handleDeactivate = async () => {
+  async function handleDeactivate() {
     if (sessionUser.subType) {
       await dispatch(
         cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
@@ -50,13 +52,18 @@ export default function FeedbackForm({ type }) {
     }
     await dispatch(deleteUser(sessionUser.id));
     history.push('/');
-  };
+  }
 
-  const handleUnsubscribe = () => {
+  async function handleUnsubscribe() {
     dispatch(
       cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
     );
-  };
+  }
+
+  function proceed() {
+    if (type === 'deactivate') handleDeactivate();
+    else handleUnsubscribe();
+  }
 
   return (
     <div className='site__sub-section form-container'>

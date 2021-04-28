@@ -55,9 +55,10 @@ export default function FeedbackForm({ type }) {
   }
 
   async function handleUnsubscribe() {
-    dispatch(
+    await dispatch(
       cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
     );
+    history.push('/account');
   }
 
   function proceed() {

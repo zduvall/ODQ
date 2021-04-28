@@ -18,11 +18,15 @@ export default function FeedbackForm() {
             <div key={error}>{error}</div>
           ))}
         </div>
-        <textarea
-          placeholder='Share feedback here.'
-          onChange={(e) => setFeedback(e.target.value)}
-          className='form__input form__textarea'
-        ></textarea>
+        <div className='site__sub-section__data'>
+          <div className='form__row'>
+            <textarea
+              placeholder='Share feedback here.'
+              onChange={(e) => setFeedback(e.target.value)}
+              className='form__input form__textarea'
+            ></textarea>
+          </div>
+        </div>
         <div className='buttons-grp-colLrg-rowSml'>
           <button className='primary-button'>Submit</button>
           <button className='secondary-button'>Skip</button>

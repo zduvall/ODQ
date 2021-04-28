@@ -10,14 +10,20 @@ export default function FeedbackForm() {
   function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    console.log(feedback);
 
-    // const data = {
-    //   name: name,
-    //   email: email,
-    //   message: message,
-    //   sent: readableDate,
-    // };
+    const date = new Date();
+    const readableDate = date.toLocaleString('en-us', {
+      timeZone: 'America/Denver',
+    });
+
+    const data = {
+      name: `${sessionUser.firstName} ${sessionUser.lastName}`,
+      email: sessionUser.email,
+      feedback: feedback,
+      sent: readableDate,
+    };
+
+    console.log(data);
   }
 
   return (

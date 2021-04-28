@@ -1,7 +1,14 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+// import thunks
+import { cancelSubscription, deleteUser } from '../../store/session';
 
 export default function FeedbackForm({ type }) {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const [feedback, setFeedback] = useState();
@@ -34,6 +41,22 @@ export default function FeedbackForm({ type }) {
       }
     );
   }
+
+  const handleDeactivate = async () => {
+    if (sessionUser.subType) {
+      await dispatch(
+        cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
+      );
+    }
+    await dispatch(deleteUser(sessionUser.id));
+    history.push('/');
+  };
+
+  const handleUnsubscribe = () => {
+    dispatch(
+      cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
+    );
+  };
 
   return (
     <div className='site__sub-section form-container'>

@@ -7,7 +7,7 @@ import FeedbackForm from '../components/UnsubOrDeactivate/FeedbackForm';
 import goodBye from '../components/UnsubOrDeactivate/images/leaving-through-door.svg';
 
 // css
-import '../components/UnsubOrDeactivate/UnsubOrDeactivate.css.css';
+import '../components/UnsubOrDeactivate/UnsubOrDeactivate.css';
 
 export default function Unsubscribe() {
   const { pathname } = useLocation();
@@ -27,16 +27,15 @@ export default function Unsubscribe() {
   return (
     <div className='site__page'>
       <h1 className='primary-title'>{infoFromPath[pathname].title}</h1>
-      <h2 className='secondary-title'>{infoFromPath[pathname].feedback}</h2>
-      <FeedbackForm />
-      <div className='one1rem-ht' />
       <img
-        className='splash__secondary-image'
+        className='goodbye-image'
         src={goodBye}
         alt={'Person exiting through door'}
         title={'Person exiting through door'}
       />
       <div className='one1rem-ht' />
+      <h3 className='secondary-title'>{infoFromPath[pathname].feedback}</h3>
+      <FeedbackForm />
     </div>
   );
 }

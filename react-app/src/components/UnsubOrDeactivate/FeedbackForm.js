@@ -7,7 +7,7 @@ export default function FeedbackForm({ type }) {
   const [feedback, setFeedback] = useState();
   const [errors, setErrors] = useState([]);
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
 
@@ -23,8 +23,16 @@ export default function FeedbackForm({ type }) {
       feedback: feedback,
       sent: readableDate,
     };
-
     console.log(data);
+
+    await fetch(
+      'https://sheet.best/api/sheets/8e811641-935d-4f71-8958-0cf7bddab246',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      }
+    );
   }
 
   return (

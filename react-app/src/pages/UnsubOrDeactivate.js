@@ -25,9 +25,7 @@ export default function Unsubscribe() {
     <div className='site__page'>
       <h1 className='primary-title'>{infoFromPath[pathname].title}</h1>
       <h2 className='secondary-title'>{infoFromPath[pathname].feedback}</h2>
-      <div className='site__sub-section'>
-        <FeedbackForm />
-      </div>
+      <FeedbackForm />
       <div className='one1rem-ht' />
       <img
         className='splash__secondary-image'

@@ -1,5 +1,9 @@
 import { useLocation } from 'react-router-dom';
 
+// component
+import FeedbackForm from '../components/UnsubOrDeactivate/FeedbackForm';
+
+// image
 import goodBye from '../components/UnsubOrDeactivate/images/leaving-through-door.svg';
 
 export default function Unsubscribe() {
@@ -21,13 +25,15 @@ export default function Unsubscribe() {
     <div className='site__page'>
       <h1 className='primary-title'>{infoFromPath[pathname].title}</h1>
       <h2 className='secondary-title'>{infoFromPath[pathname].feedback}</h2>
-      <div className='site__sub-section'></div>
+      <div className='site__sub-section'>
+        <FeedbackForm />
+      </div>
       <div className='one1rem-ht' />
       <img
         className='splash__secondary-image'
         src={goodBye}
-        alt={'Man exiting through door'}
-        title={'Man exiting through door'}
+        alt={'Person exiting through door'}
+        title={'Person exiting through door'}
       />
       <div className='one1rem-ht' />
     </div>

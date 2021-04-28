@@ -6,6 +6,9 @@ import FeedbackForm from '../components/UnsubOrDeactivate/FeedbackForm';
 // image
 import goodBye from '../components/UnsubOrDeactivate/images/leaving-through-door.svg';
 
+// css
+import '../components/UnsubOrDeactivate/UnsubOrDeactivate.css.css';
+
 export default function Unsubscribe() {
   const { pathname } = useLocation();
 

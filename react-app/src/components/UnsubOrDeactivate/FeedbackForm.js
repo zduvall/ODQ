@@ -21,7 +21,7 @@ export default function FeedbackForm() {
         <textarea
           placeholder='Write feedback here'
           onChange={(e) => setFeedback(e.target.value)}
-          className='form__input'
+          className='form__input form__textarea'
         ></textarea>
         <div className='buttons-grp-colLrg-rowSml'>
           <button className='primary-button'>Submit</button>

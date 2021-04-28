@@ -25,7 +25,7 @@ export default function FeedbackForm() {
         ></textarea>
         <div className='buttons-grp-colLrg-rowSml'>
           <button className='primary-button'>Submit</button>
-          <button className='primary-button'>Skip</button>
+          <button className='secondary-button'>Skip</button>
         </div>
       </form>
     </div>

@@ -23,13 +23,14 @@ export default function UserInfoData({ setShowUpdateUser }) {
   const { firstName, lastName, lic, pxName, phone, email } = sessionUser;
 
   const handleDeactivate = async () => {
-    if (sessionUser.subType) {
-      await dispatch(
-        cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
-      );
-    }
-    await dispatch(deleteUser(sessionUser.id));
-    history.push('/');
+    // if (sessionUser.subType) {
+    //   await dispatch(
+    //     cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
+    //   );
+    // }
+    // await dispatch(deleteUser(sessionUser.id));
+    // history.push('/');
+    history.push('/deactivate');
   };
 
   // ------ lazy components ------

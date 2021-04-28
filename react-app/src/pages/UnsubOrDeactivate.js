@@ -15,12 +15,12 @@ export default function Unsubscribe() {
   const infoFromPath = {
     '/unsubscribe': {
       title: 'Sorry to see you unsubscribe!',
-      feedback: 'Please take a moment to share why you usubscribed.',
+      feedback: 'Lastly, please take a moment to share why you are usubscribing.',
     },
     '/deactivate': {
       title: 'Sorry to see you go!',
       feedback:
-        'Please take a moment to share why you are deactivating your account.',
+        'Lastly, please take a moment to share why you are deactivating your account.',
     },
   };
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-export default function FeedbackForm() {
+export default function FeedbackForm({ type }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   const [feedback, setFeedback] = useState();
@@ -19,6 +19,7 @@ export default function FeedbackForm() {
     const data = {
       name: `${sessionUser.firstName} ${sessionUser.lastName}`,
       email: sessionUser.email,
+      type,
       feedback: feedback,
       sent: readableDate,
     };

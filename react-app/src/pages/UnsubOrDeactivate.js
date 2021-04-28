@@ -35,7 +35,7 @@ export default function Unsubscribe() {
       />
       <div className='one1rem-ht' />
       <h3 className='secondary-title'>{infoFromPath[pathname].feedback}</h3>
-      <FeedbackForm />
+      <FeedbackForm type={pathname.slice(1)} />
     </div>
   );
 }

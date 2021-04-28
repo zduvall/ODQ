@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function FeedbackForm() {
+  const sessionUser = useSelector((state) => state.session.user);
+
   const [feedback, setFeedback] = useState();
   const [errors, setErrors] = useState([]);
 
@@ -8,6 +11,13 @@ export default function FeedbackForm() {
     e.preventDefault();
     setErrors([]);
     console.log(feedback);
+
+    // const data = {
+    //   name: name,
+    //   email: email,
+    //   message: message,
+    //   sent: readableDate,
+    // };
   }
 
   return (

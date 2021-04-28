@@ -12,7 +12,6 @@ export default function FeedbackForm() {
 
   return (
     <div className='site__sub-section form-container'>
-      <h1>Feedback Form</h1>
       <form className='form' onSubmit={onSubmit}>
         <div className='errors-container'>
           {errors.map((error) => (

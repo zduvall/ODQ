@@ -383,7 +383,8 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
 }
 
 .form__textarea {
-  height: 6.25rem
+  height: 6.25rem;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .form__button {

@@ -19,7 +19,7 @@ export default function FeedbackForm() {
           ))}
         </div>
         <textarea
-          placeholder='Write feedback here'
+          placeholder='Share feedback here.'
           onChange={(e) => setFeedback(e.target.value)}
           className='form__input form__textarea'
         ></textarea>

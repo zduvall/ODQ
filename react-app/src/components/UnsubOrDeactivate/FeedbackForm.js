@@ -22,9 +22,12 @@ export default function FeedbackForm() {
         <textarea
           placeholder='Write feedback here'
           onChange={(e) => setFeedback(e.target.value)}
+          className='form__input'
         ></textarea>
-        <button className='primary-button'>Submit</button>
-        <button className='primary-button'>Skip</button>
+        <div className='buttons-grp-colLrg-rowSml'>
+          <button className='primary-button'>Submit</button>
+          <button className='primary-button'>Skip</button>
+        </div>
       </form>
     </div>
   );

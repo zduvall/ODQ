@@ -83,7 +83,9 @@ export default function FeedbackForm({ type }) {
           </div>
         </div>
         <div className='buttons-grp-colLrg-rowSml'>
-          <button className='primary-button'>Submit</button>
+          <button type='submit' className='primary-button'>
+            Submit
+          </button>
           <button className='secondary-button'>Skip</button>
         </div>
       </form>

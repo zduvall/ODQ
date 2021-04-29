@@ -1,9 +1,6 @@
 import { useState, lazy, Suspense } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// import thunks
-import { cancelSubscription, deleteUser } from '../../store/session';
 
 // import css
 import './User.css';
@@ -14,7 +11,6 @@ import LoadingNotFoundInvalid from '../LoadingNotFoundInvalid';
 const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
 
 export default function UserInfoData({ setShowUpdateUser }) {
-  const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -23,13 +19,6 @@ export default function UserInfoData({ setShowUpdateUser }) {
   const { firstName, lastName, lic, pxName, phone, email } = sessionUser;
 
   const handleDeactivate = async () => {
-    // if (sessionUser.subType) {
-    //   await dispatch(
-    //     cancelSubscription(sessionUser.id, sessionUser.customer.stripeSubId)
-    //   );
-    // }
-    // await dispatch(deleteUser(sessionUser.id));
-    // history.push('/');
     history.push('/deactivate');
   };
 

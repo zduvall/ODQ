@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import thunks
-import { cancelSubscription, updateNextBillDate } from '../../store/session';
+import { updateNextBillDate } from '../../store/session';
 
 // import component
 // import ModalConfirmButton from '../ModalConfirmButton';
@@ -22,7 +22,6 @@ export default function SubscriptionInfo() {
     sessionUser.customer || {}; // in case there isn't a customer attached yet.
 
   const handleUnsubscribe = () => {
-    // dispatch(cancelSubscription(sessionUser.id, stripeSubId));
     history.push('/unsubscribe');
   };
 

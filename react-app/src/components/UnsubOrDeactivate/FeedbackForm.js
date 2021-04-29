@@ -13,10 +13,12 @@ export default function FeedbackForm({ type }) {
 
   const [feedback, setFeedback] = useState();
   const [errors, setErrors] = useState([]);
+  const [processing, setProcessing] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
     setErrors([]);
+    setProcessing(true);
 
     const date = new Date();
     const readableDate = date.toLocaleString('en-us', {
@@ -84,10 +86,16 @@ export default function FeedbackForm({ type }) {
           </div>
         </div>
         <div className='buttons-grp-colLrg-rowSml'>
-          <button type='submit' className='primary-button'>
-            Submit
+          <button
+            type='submit'
+            className='primary-button'
+            disabled={processing}
+          >
+            {processing ? 'Processing...' : 'Send'}
           </button>
-          <button className='secondary-button'>Skip</button>
+          <button className='secondary-button' disabled={processing}>
+            Skip
+          </button>
         </div>
       </form>
     </div>

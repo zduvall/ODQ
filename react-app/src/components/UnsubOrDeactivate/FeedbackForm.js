@@ -101,7 +101,11 @@ export default function FeedbackForm({ type }) {
           >
             {processing ? 'Processing...' : 'Send'}
           </button>
-          <button className='secondary-button' disabled={processing}>
+          <button
+            className='secondary-button'
+            disabled={processing}
+            onClick={() => proceed()}
+          >
             Skip
           </button>
         </div>

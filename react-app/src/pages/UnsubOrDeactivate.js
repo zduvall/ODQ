@@ -1,6 +1,13 @@
 import { useLocation } from 'react-router-dom';
 
+// component
+import FeedbackForm from '../components/UnsubOrDeactivate/FeedbackForm';
+
+// image
 import goodBye from '../components/UnsubOrDeactivate/images/leaving-through-door.svg';
+
+// css
+import '../components/UnsubOrDeactivate/UnsubOrDeactivate.css';
 
 export default function Unsubscribe() {
   const { pathname } = useLocation();
@@ -8,28 +15,31 @@ export default function Unsubscribe() {
   const infoFromPath = {
     '/unsubscribe': {
       title: 'Sorry to see you unsubscribe!',
-      feedback: 'Please take a moment to share why you usubscribed.',
+      prompt: 'Lastly, please take a moment to share why you are usubscribing.',
     },
     '/deactivate': {
       title: 'Sorry to see you go!',
-      feedback:
-        'Please take a moment to share why you are deactivating your account.',
+      prompt:
+        'Lastly, please take a moment to share why you are deactivating your account.',
     },
   };
 
   return (
     <div className='site__page'>
-      <h1 className='primary-title'>{infoFromPath[pathname].title}</h1>
-      <h2 className='secondary-title'>{infoFromPath[pathname].feedback}</h2>
-      <div className='site__sub-section'></div>
-      <div className='one1rem-ht' />
+      <h1 className='primary-title cntr-txt-sml-margin'>
+        {infoFromPath[pathname].title}
+      </h1>
+      <h3 className='secondary-title cntr-txt-sml-margin'>
+        {infoFromPath[pathname].prompt}
+      </h3>
       <img
-        className='splash__secondary-image'
+        className='goodbye-image'
         src={goodBye}
-        alt={'Man exiting through door'}
-        title={'Man exiting through door'}
+        alt={'Person exiting through door'}
+        title={'Person exiting through door'}
       />
       <div className='one1rem-ht' />
+      <FeedbackForm type={pathname.slice(1)} />
     </div>
   );
 }

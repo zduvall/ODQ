@@ -382,6 +382,11 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
   border: var(--primary-color) solid 1px;
 }
 
+.form__textarea {
+  height: 6.25rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
 .form__button {
   margin-top: 0.75rem;
   width: 50%;

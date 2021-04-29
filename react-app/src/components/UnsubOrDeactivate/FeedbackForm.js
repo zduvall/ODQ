@@ -20,6 +20,12 @@ export default function FeedbackForm({ type }) {
     setErrors([]);
     setProcessing(true);
 
+    if (!feedback) {
+      setErrors(['Please enter feedback before sending']);
+      setProcessing(false);
+      return;
+    }
+
     const date = new Date();
     const readableDate = date.toLocaleString('en-us', {
       timeZone: 'America/Denver',
@@ -43,6 +49,8 @@ export default function FeedbackForm({ type }) {
     );
     if (res.ok) {
       proceed();
+    } else {
+      setProcessing(false);
     }
   }
 
@@ -71,12 +79,12 @@ export default function FeedbackForm({ type }) {
   return (
     <div className='site__sub-section form-container'>
       <form className='form' onSubmit={onSubmit}>
-        <div className='errors-container'>
-          {errors.map((error) => (
-            <div key={error}>{error}</div>
-          ))}
-        </div>
         <div className='site__sub-section__data'>
+          <div className='errors-container'>
+            {errors.map((error) => (
+              <div key={error}>{error}</div>
+            ))}
+          </div>
           <div className='form__row'>
             <textarea
               placeholder='Share feedback here.'
@@ -93,7 +101,11 @@ export default function FeedbackForm({ type }) {
           >
             {processing ? 'Processing...' : 'Send'}
           </button>
-          <button className='secondary-button' disabled={processing}>
+          <button
+            className='secondary-button'
+            disabled={processing}
+            onClick={() => proceed()}
+          >
             Skip
           </button>
         </div>

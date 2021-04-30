@@ -120,9 +120,9 @@ function App() {
             <Route path='/terms-of-use' exact>
               <TermsOfUse />
             </Route>
-            <Route path={['/unsubscribe', '/deactivate']} exact>
+            <ProtectedRoute path={['/unsubscribe', '/deactivate']} exact>
               <UnsubOrDeactivate />
-            </Route>
+            </ProtectedRoute>
             <Route path='/'>
               <LoadingNotFoundInvalid message={'Page not found...'} />
             </Route>

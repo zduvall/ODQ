@@ -73,7 +73,8 @@ export default function FeedbackForm({ type }) {
 
   function proceed() {
     if (type === 'deactivate') handleDeactivate();
-    else handleUnsubscribe();
+    else if (type === 'unsubscribe') handleUnsubscribe();
+    else if (type === 'feedback') history.push('/');
   }
 
   return (

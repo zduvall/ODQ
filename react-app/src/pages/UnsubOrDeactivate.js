@@ -1,13 +1,13 @@
 import { useLocation } from 'react-router-dom';
 
 // component
-import FeedbackForm from '../components/UnsubOrDeactivate/FeedbackForm';
+import FeedbackForm from '../components/Feedback/FeedbackForm';
 
 // image
-import goodBye from '../components/UnsubOrDeactivate/images/leaving-through-door.svg';
+import goodBye from '../components/Feedback/images/leaving-through-door.svg';
 
 // css
-import '../components/UnsubOrDeactivate/UnsubOrDeactivate.css';
+import '../components/Feedback/UnsubOrDeactivate.css';
 
 export default function Unsubscribe() {
   const { pathname } = useLocation();

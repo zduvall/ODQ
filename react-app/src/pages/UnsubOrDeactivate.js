@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 // component
 import FeedbackForm from '../components/Feedback/FeedbackForm';
 
-// image
-import goodBye from '../components/Feedback/images/leaving-through-door.svg';
+// images
+import goodByeImg from '../components/Feedback/images/leaving-through-door.svg';
+import feedbackImg from '../components/Feedback/images/undraw_Design_feedback.svg';
 
 // css
 import '../components/Feedback/UnsubOrDeactivate.css';
@@ -22,6 +23,10 @@ export default function Unsubscribe() {
       prompt:
         'Lastly, please take a moment to share why you are deactivating your account.',
     },
+    '/feedback': {
+      title: 'Feedback',
+      prompt: 'What suggestions do you have for how eDOT can be improved?',
+    },
   };
 
   return (
@@ -34,7 +39,7 @@ export default function Unsubscribe() {
       </h3>
       <img
         className='goodbye-image'
-        src={goodBye}
+        src={pathname === '/feedback' ? feedbackImg : goodByeImg}
         alt={'Person exiting through door'}
         title={'Person exiting through door'}
       />

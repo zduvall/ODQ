@@ -121,15 +121,15 @@ function App() {
             <Route path='/terms-of-use' exact>
               <TermsOfUse />
             </Route>
-            <ProtectedRoute
+            {/* <ProtectedRoute
               path={'/feedback'}
               exact={true}
               authenticated={!!sessionUser}
             >
               <Feedback />
-            </ProtectedRoute>
+            </ProtectedRoute> */}
             <ProtectedRoute
-              path={['/unsubscribe', '/deactivate']}
+              path={['/unsubscribe', '/deactivate', '/feedback']}
               exact={true}
               authenticated={!!sessionUser}
             >

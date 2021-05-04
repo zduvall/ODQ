@@ -33,6 +33,7 @@ const Payments = lazy(() => import('./pages/Payments'));
 const ClientForm = lazy(() => import('./pages/ClientForm'));
 const TestForm = lazy(() => import('./pages/TestForm'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
+const Feedback = lazy(() => import('./pages/Feedback'));
 const UnsubOrDeactivate = lazy(() => import('./pages/UnsubOrDeactivate'));
 
 function App() {
@@ -120,7 +121,18 @@ function App() {
             <Route path='/terms-of-use' exact>
               <TermsOfUse />
             </Route>
-            <ProtectedRoute path={['/unsubscribe', '/deactivate']} exact>
+            <ProtectedRoute
+              path={'/feedback'}
+              exact
+              authenticated={!!sessionUser}
+            >
+              <Feedback />
+            </ProtectedRoute>
+            <ProtectedRoute
+              path={['/unsubscribe', '/deactivate']}
+              exact
+              authenticated={!!sessionUser}
+            >
               <UnsubOrDeactivate />
             </ProtectedRoute>
             <Route path='/'>

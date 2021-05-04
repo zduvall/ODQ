@@ -123,14 +123,14 @@ function App() {
             </Route>
             <ProtectedRoute
               path={'/feedback'}
-              exact
+              exact={true}
               authenticated={!!sessionUser}
             >
               <Feedback />
             </ProtectedRoute>
             <ProtectedRoute
               path={['/unsubscribe', '/deactivate']}
-              exact
+              exact={true}
               authenticated={!!sessionUser}
             >
               <UnsubOrDeactivate />

@@ -9,6 +9,7 @@ const load = (clients) => ({
   clients,
 });
 
+// also used for updating a client
 const create = (client) => ({
   type: CREATE_CLIENT,
   client,

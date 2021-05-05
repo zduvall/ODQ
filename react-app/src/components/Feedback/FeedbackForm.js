@@ -107,7 +107,7 @@ export default function FeedbackForm({ type }) {
             disabled={processing}
             onClick={() => proceed()}
           >
-            Skip
+            {type === 'feedback' ? 'Cancel' : 'Skip'}
           </button>
         </div>
       </form>

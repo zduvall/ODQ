@@ -5,7 +5,8 @@ import FeedbackForm from '../components/Feedback/FeedbackForm';
 
 // images
 import goodByeImg from '../components/Feedback/images/leaving-through-door.svg';
-import feedbackImg from '../components/Feedback/images/undraw_Design_feedback.svg';
+import feedbackImg from '../components/Feedback/images/undraw_Redesign_feedback.svg';
+// import feedbackImg from '../components/Feedback/images/undraw_Design_feedback.svg';
 
 // css
 import '../components/Feedback/UnsubOrDeactivate.css';

@@ -33,7 +33,7 @@ const Payments = lazy(() => import('./pages/Payments'));
 const ClientForm = lazy(() => import('./pages/ClientForm'));
 const TestForm = lazy(() => import('./pages/TestForm'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
-const UnsubOrDeactivate = lazy(() => import('./pages/UnsubOrDeactivate'));
+const UnsubOrDeactivate = lazy(() => import('./pages/Feedback'));
 
 function App() {
   const dispatch = useDispatch();

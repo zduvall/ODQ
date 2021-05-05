@@ -9,7 +9,7 @@ import feedbackImg from '../components/Feedback/images/undraw_Redesign_feedback.
 // import feedbackImg from '../components/Feedback/images/undraw_Design_feedback.svg';
 
 // css
-import '../components/Feedback/UnsubOrDeactivate.css';
+import '../components/Feedback/Feedback.css';
 
 export default function Unsubscribe() {
   const { pathname } = useLocation();
@@ -38,14 +38,16 @@ export default function Unsubscribe() {
       <h3 className='secondary-title cntr-txt-sml-margin'>
         {infoFromPath[pathname].prompt}
       </h3>
-      <img
-        className='goodbye-image'
-        src={pathname === '/feedback' ? feedbackImg : goodByeImg}
-        alt={'Person exiting through door'}
-        title={'Person exiting through door'}
-      />
-      <div className='one1rem-ht' />
       <FeedbackForm type={pathname.slice(1)} />
+      <div className='one1rem-ht' />
+      <div className='site__sub-section'>
+        <img
+          className='feedback-image'
+          src={pathname === '/feedback' ? feedbackImg : goodByeImg}
+          alt={'Person exiting through door'}
+          title={'Person exiting through door'}
+        />
+      </div>
     </div>
   );
 }

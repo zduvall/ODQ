@@ -6,8 +6,8 @@
   align-items: center;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 -3px 6px -3px rgba(0, 0, 0, 0.5);
-  padding: 0 10%;
-  width: 80%;
+  /* padding: 0 10%; */
+  width: 100%;
   height: 3rem;
 }
 
@@ -19,14 +19,7 @@
 
 .footer__text {
   color: var(--tertiary-color);
-  margin-right: 0.5rem;
-}
-
-@media (max-width: 525px) {
-  .footer__text {
-    font-size: 0.7rem;
-    text-align: center;
-  }
+  margin: 0 0.5rem;
 }
 
 .footer__icon {
@@ -38,4 +31,14 @@
 .footer__icon:hover {
   transform: scale(1.1);
   transition-duration: 0.5s;
+}
+
+@media (max-width: 525px) {
+  .footer__text {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  .footer__icon {
+    font-size: 1.2rem;
+  }
 }

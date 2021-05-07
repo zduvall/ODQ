@@ -6,7 +6,6 @@ export default function Footer() {
   return (
     <div className='footer'>
       <p className='footer__text'>
-        Designed & coded by{' '}
         <a
           href={'https://zduvall.github.io/'}
           target={'blank'}
@@ -28,6 +27,9 @@ export default function Footer() {
         title='https://github.com/zduvall'
         className='fab fa-github-square fa-lg footer__icon'
       ></i>
+      <a href={'/feedback'} className='clickable-link footer__text'>
+        Feedback
+      </a>
     </div>
   );
 }

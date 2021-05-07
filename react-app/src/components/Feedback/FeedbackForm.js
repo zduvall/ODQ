@@ -73,7 +73,8 @@ export default function FeedbackForm({ type }) {
 
   function proceed() {
     if (type === 'deactivate') handleDeactivate();
-    else handleUnsubscribe();
+    else if (type === 'unsubscribe') handleUnsubscribe();
+    else if (type === 'feedback') history.goBack();
   }
 
   return (
@@ -102,11 +103,12 @@ export default function FeedbackForm({ type }) {
             {processing ? 'Processing...' : 'Send'}
           </button>
           <button
+            type='button'
             className='secondary-button'
             disabled={processing}
             onClick={() => proceed()}
           >
-            Skip
+            {type === 'feedback' ? 'Cancel' : 'Skip'}
           </button>
         </div>
       </form>

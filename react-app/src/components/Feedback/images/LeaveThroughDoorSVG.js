@@ -1,6 +1,6 @@
 import '../Feedback.css';
 
-function LeaveThroughDoor() {
+function LeaveThroughDoorSVG() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -95,4 +95,4 @@ function LeaveThroughDoor() {
   );
 }
 
-export default LeaveThroughDoor;
+export default LeaveThroughDoorSVG;

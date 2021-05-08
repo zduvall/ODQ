@@ -1,4 +1,5 @@
-import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useLocation, useHistory } from 'react-router-dom';
 
 // component
 import FeedbackForm from '../components/Feedback/FeedbackForm';
@@ -6,13 +7,19 @@ import FeedbackForm from '../components/Feedback/FeedbackForm';
 // images
 import goodByeImg from '../components/Feedback/images/leaving-through-door.svg';
 import feedbackImg from '../components/Feedback/images/undraw_Redesign_feedback.svg';
-// import feedbackImg from '../components/Feedback/images/undraw_Design_feedback.svg';
 
 // css
 import '../components/Feedback/Feedback.css';
 
 export default function Unsubscribe() {
+  const history = useHistory();
   const { pathname } = useLocation();
+
+  // if they get to '/unsubscribe' and aren't a subscribing user, go back
+  const sessionUser = useSelector((state) => state.session.user);
+  if (pathname === '/unsubscribe' && !sessionUser.subType) {
+    history.goBack();
+  }
 
   const infoFromPath = {
     '/unsubscribe': {

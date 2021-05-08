@@ -383,7 +383,9 @@ button:disabled:not(.nav__item):not(.nav__dropdown__item) {
 }
 
 .form__textarea {
-  height: 6.25rem;
+  /* this height is to make it the same size as the two buttons next to it, but I like it bigger */
+  /* height: 6.25rem; */ 
+  height: 10rem;
   font-family: 'Open Sans', sans-serif;
 }
 

@@ -1,8 +1,13 @@
+import { useSelector } from 'react-redux';
+
 import './Footer.css';
 
 export default function Footer() {
+  const sessionUser = useSelector((state) => state.session.user);
+  
   // don't render footer if just on page for client to take test
   if (window.location.pathname.startsWith('/test')) return null;
+  
   return (
     <div className='footer'>
       <p className='footer__text'>
@@ -27,9 +32,11 @@ export default function Footer() {
         title='https://github.com/zduvall'
         className='fab fa-github-square fa-lg footer__icon'
       ></i>
-      <a href={'/feedback'} className='clickable-link footer__text'>
-        Feedback
-      </a>
+      {sessionUser && (
+        <a href={'/feedback'} className='clickable-link footer__text'>
+          Feedback
+        </a>
+      )}
     </div>
   );
 }

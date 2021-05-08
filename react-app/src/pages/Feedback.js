@@ -5,8 +5,6 @@ import { useLocation, useHistory } from 'react-router-dom';
 import FeedbackForm from '../components/Feedback/FeedbackForm';
 
 // images
-import goodByeImg from '../components/Feedback/images/leaving-through-door.svg';
-import feedbackImg from '../components/Feedback/images/undraw_Redesign_feedback.svg';
 import LeaveThroughDoorSVG from '../components/Feedback/images/LeaveThroughDoorSVG';
 import GeneralFeedbackSVG from '../components/Feedback/images/GeneralFeedbackSVG';
 

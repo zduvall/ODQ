@@ -1,8 +1,8 @@
 export default function TermsOfUse() {
   return (
     <div className='site__page'>
+      <h1 className='primary-title'>Terms of Use Agreement</h1>
       <div className='site__sub-section flex-dir-col terms-of-use'>
-        <h2 className='primary-title'>Terms of Use Agreement</h2>
         <p>
           (Note, this site is still in production. Do not load real client
           data.)
@@ -77,7 +77,6 @@ export default function TermsOfUse() {
           Web site at any time at its discretion.
         </p>
       </div>
-      <div className='one1rem-ht' />
     </div>
   );
 }

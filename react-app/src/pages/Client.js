@@ -65,7 +65,6 @@ export default function ClientTests() {
             <SelectedTest />
           </>
         )}
-        <div className='one1rem-ht' />
       </div>
     </ClientTestsContext.Provider>
   );

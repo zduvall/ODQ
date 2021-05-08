@@ -25,7 +25,6 @@ export default function Clients() {
         <h1 className='primary-title'>Clients</h1>
         <ClientContorls />
         <AllClients />
-        <div className='one1rem-ht' />
       </div>
     </ClientsContext.Provider>
   );

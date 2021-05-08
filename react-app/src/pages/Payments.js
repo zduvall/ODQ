@@ -65,12 +65,9 @@ export default function Payments() {
     >
       <div className='site__page'>
         <h1 className='primary-title'>Premium Subscription</h1>
-        {/* <div className='site__sub-section form-container'> */}
         {subPageId === '1' && <Payment1Lazy />}
         {subPageId === '2' && <Payment2Lazy />}
         {subPageId === '3' && <Payment3Lazy />}
-        {/* </div> */}
-        <div className='one1rem-ht' />
       </div>
     </PaymentsContext.Provider>
   );

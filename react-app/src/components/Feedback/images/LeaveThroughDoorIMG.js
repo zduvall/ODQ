@@ -1,13 +1,13 @@
-import React from 'react';
+import '../Feedback.css';
 
 function LeaveThroughDoor() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='870'
-      height='520.139'
       data-name='Layer 1'
       viewBox='0 0 870 520.139'
+      className='feedback-image'
+      alt='Person exiting through door'
     >
       <path
         fill='#f2f2f2'

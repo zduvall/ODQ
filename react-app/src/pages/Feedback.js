@@ -6,6 +6,7 @@ import FeedbackForm from '../components/Feedback/FeedbackForm';
 
 // images
 import goodByeImg from '../components/Feedback/images/leaving-through-door.svg';
+import LeaveThroughDoorIMG from '../components/Feedback/images/LeaveThroughDoorIMG';
 import feedbackImg from '../components/Feedback/images/undraw_Redesign_feedback.svg';
 
 // css
@@ -54,6 +55,7 @@ export default function Unsubscribe() {
           alt={'Person exiting through door'}
           title={'Person exiting through door'}
         />
+        {pathname !== '/feedback' && <LeaveThroughDoorIMG />}
       </div>
     </div>
   );

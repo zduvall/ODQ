@@ -7,8 +7,8 @@ function GeneralFeedbackSVG() {
       data-name='Layer 1'
       viewBox='0 0 936.268 604'
       className='feedback-image'
-      alt='Woman incorporating feedback'
     >
+      <title>Woman considering & incorporating feedback</title>
       <path
         fill='#ccc'
         d='M572.866 243h-88a5 5 0 010-10h88a5 5 0 010 10zM640.866 278h-156a5 5 0 010-10h156a5 5 0 010 10zM601.866 313h-117a5 5 0 010-10h117a5 5 0 010 10zM640.866 348h-156a5 5 0 010-10h156a5 5 0 010 10z'

@@ -1,4 +1,4 @@
-function Icon() {
+function takingNotes() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -271,4 +271,4 @@ function Icon() {
   );
 }
 
-export default Icon;
+export default takingNotes;

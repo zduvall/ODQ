@@ -1,12 +1,7 @@
 function visualData() {
   return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='1114'
-      height='785'
-      fill='none'
-      viewBox='0 0 1114 785'
-    >
+    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 1114 785'>
+      <title>Creating digital tests</title>
       <path fill='#fff' d='M0 0H1114V785H0z'></path>
       <g clipPath='url(#clip0)'>
         <path

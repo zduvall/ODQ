@@ -2,11 +2,10 @@ function mobileUser() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='1188.532'
-      height='718'
       data-name='Layer 1'
       viewBox='0 0 1188.532 718'
     >
+      <title>Creating digital tests</title>
       <defs>
         <linearGradient
           id='adf7ac93-4989-4cdd-bde6-06fdb252ba8f'

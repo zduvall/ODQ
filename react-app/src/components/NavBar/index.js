@@ -76,6 +76,15 @@ const NavBar = () => {
       >
         Account
       </NavLink>
+      <NavLink
+        className={navItemClass}
+        to='/all-tests'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
+      >
+        Tests
+      </NavLink>
       <button className={navItemClass} onClick={handleLogout}>
         Logout
       </button>
@@ -84,6 +93,15 @@ const NavBar = () => {
 
   let loggedOutLinks = (
     <>
+      <NavLink
+        className={navItemClass}
+        to='/all-tests'
+        exact
+        activeClassName='nav__item-active'
+        onClick={handleClick}
+      >
+        Tests
+      </NavLink>
       <NavLink
         className={navItemClass}
         to='/sign-up'

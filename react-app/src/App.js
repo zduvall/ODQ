@@ -104,13 +104,9 @@ function App() {
             >
               <Payments />
             </ProtectedRoute>
-            <ProtectedRoute
-              path='/tests'
-              exact={true}
-              authenticated={!!sessionUser}
-            >
+            <Route path='/all-tests' exact={true}>
               <AllTests />
-            </ProtectedRoute>
+            </Route>
             <Route path='/test/:testCode/:userId/:clientId/:encURL' exact>
               <TestForm />
             </Route>

@@ -4,6 +4,7 @@ import PCL5 from './PCL5';
 import PHQ9 from './PHQ9';
 import SWLS from './SWLS';
 
+// remember also to update test_form.py when adding new tests
 const tests = { ACE, GAD7, PCL5, PHQ9, SWLS };
 export const freeTests = [ACE.code, SWLS.code];
 

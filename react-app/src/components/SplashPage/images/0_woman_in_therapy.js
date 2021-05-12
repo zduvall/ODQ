@@ -1,6 +1,11 @@
 function womanInTherapy() {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 1613 824'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      viewBox='0 0 1613 824'
+      className='splash__primary-image'
+    >
       <title>Woman meeting with a therapist</title>
       <g clipPath='url(#clip0)'>
         <path

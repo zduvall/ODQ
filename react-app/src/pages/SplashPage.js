@@ -4,7 +4,8 @@ import SplashPageSection2 from '../components/SplashPage/SplashPageSection2';
 
 // import style and images
 import '../components/SplashPage/SplashPage.css';
-import womanInTherapySVG from '../components/SplashPage/images/0_woman_in_therapy.svg';
+import WomanInTherapy from '../components/SplashPage/images/0_woman_in_therapy.js';
+// import womanInTherapySVG from '../components/SplashPage/images/0_woman_in_therapy.svg';
 import TakingNotes1 from '../components/SplashPage/images/1_taking_notes.js';
 import MobileUser1 from '../components/SplashPage/images/2_mobile_user.js';
 import VistualData1 from '../components/SplashPage/images/3_visual_data.js';
@@ -23,12 +24,13 @@ export default function SplashPage() {
         <h2 className='tertiary-title'>
           for therapists & other helping professionals
         </h2>
-        <img
+        {/* <img
           className='splash__primary-image'
           src={womanInTherapySVG}
           title='Woman meeting with a therapist'
           alt='Woman meeting with a therapist'
-        />
+        /> */}
+        <WomanInTherapy />
       </div>
       {/* <SplashPageSection
         image={takingNotes}

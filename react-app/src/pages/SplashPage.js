@@ -2,7 +2,7 @@
 import SplashPageSection from '../components/SplashPage/SplashPageSection';
 
 // import style and images
-import '../components/SplashPage/SplashPage.css';
+import '../components/SplashPage/SsplashPage.css';
 import WomanInTherapy from '../components/SplashPage/images/0_woman_in_therapy.js';
 import TakingNotes from '../components/SplashPage/images/1_taking_notes.js';
 import MobileUser from '../components/SplashPage/images/2_mobile_user.js';

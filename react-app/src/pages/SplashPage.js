@@ -4,7 +4,7 @@ import SplashPageSection2 from '../components/SplashPage/SplashPageSection2';
 
 // import style and images
 import '../components/SplashPage/SplashPage.css';
-import womanInTherapy from '../components/SplashPage/images/0_woman-in-therapy.webp';
+import womanInTherapySVG from '../components/SplashPage/images/0_woman_in_therapy.svg';
 import TakingNotes1 from '../components/SplashPage/images/1_taking_notes.js';
 import MobileUser1 from '../components/SplashPage/images/2_mobile_user.js';
 import VistualData1 from '../components/SplashPage/images/3_visual_data.js';
@@ -15,7 +15,7 @@ import VistualData1 from '../components/SplashPage/images/3_visual_data.js';
 export default function SplashPage() {
   return (
     <div className='splash'>
-      <div>
+      <div className='splash_top-section'>
         <h1 className='electronic'>electronic</h1>
         <h1 className='primary-title d-and-o-t'>
           Diagnostic & Outcome Testing
@@ -25,7 +25,7 @@ export default function SplashPage() {
         </h2>
         <img
           className='splash__primary-image'
-          src={womanInTherapy}
+          src={womanInTherapySVG}
           title='Woman meeting with a therapist'
           alt='Woman meeting with a therapist'
         />
@@ -51,19 +51,19 @@ export default function SplashPage() {
         backwards={false}
       /> */}
       <SplashPageSection2
-        image={<TakingNotes1/>}
+        image={<TakingNotes1 />}
         desc={
           'Choose from our database of online tests for clients & therapists'
         }
         backwards={false}
       />
       <SplashPageSection2
-        image={<MobileUser1/>}
+        image={<MobileUser1 />}
         desc={'Complete the tests at a convenient time & place on any screen'}
         backwards={true}
       />
       <SplashPageSection2
-        image={<VistualData1/>}
+        image={<VistualData1 />}
         desc={'View results & progress in convenient summaries & graphs'}
         backwards={false}
       />

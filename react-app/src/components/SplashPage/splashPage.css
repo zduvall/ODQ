@@ -21,9 +21,12 @@
   margin-bottom: 0;
 }
 
+.splash_top-section {
+  width: 100%;
+}
+
 .splash__primary-image {
   width: 100%;
-  padding-top: .5rem;
   transform: scale(0.9);
 }
 

@@ -5,8 +5,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 import FeedbackForm from '../components/Feedback/FeedbackForm';
 
 // images
-import goodByeImg from '../components/Feedback/images/leaving-through-door.svg';
-import feedbackImg from '../components/Feedback/images/undraw_Redesign_feedback.svg';
+import LeaveThroughDoorSVG from '../components/Feedback/images/LeaveThroughDoorSVG';
+import GeneralFeedbackSVG from '../components/Feedback/images/GeneralFeedbackSVG';
 
 // css
 import '../components/Feedback/Feedback.css';
@@ -48,12 +48,8 @@ export default function Unsubscribe() {
       <FeedbackForm type={pathname.slice(1)} />
       <div className='one1rem-ht' />
       <div className='site__sub-section'>
-        <img
-          className='feedback-image'
-          src={pathname === '/feedback' ? feedbackImg : goodByeImg}
-          alt={'Person exiting through door'}
-          title={'Person exiting through door'}
-        />
+        {pathname !== '/feedback' && <LeaveThroughDoorSVG />}
+        {pathname === '/feedback' && <GeneralFeedbackSVG />}
       </div>
     </div>
   );

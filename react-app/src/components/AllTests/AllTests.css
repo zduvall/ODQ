@@ -12,4 +12,5 @@
 
 .test-summary {
   cursor: pointer;
+  margin-bottom: .25rem;
 }

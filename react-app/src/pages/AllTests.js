@@ -15,7 +15,10 @@ export default function AllTests() {
         <div className='all-tests-list'>
           {Object.values(tests).map((test) => (
             <details key={test.code}>
-              <summary className='test-summary'>{test.abbr}</summary>
+              <summary className='test-summary'>
+                {test.abbr}{' '}
+                <span className='tertiary-text'>({test.target})</span>
+              </summary>
               <DropdownTestInfo test={test} />
             </details>
           ))}

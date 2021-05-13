@@ -7,8 +7,8 @@ const PCL5 = {
   name: 'PTSD Checklist for DSM-5',
   description:
     'The PCL-5 is a 20-item self-report measure that assesses the 20 DSM-5 symptoms of PTSD. The PCL-5 has a variety of purposes, including: (1) monitoring symptom change during and after treatment, (2) screening individuals for PTSD, and (3) making a provisional PTSD diagnosis.',
-  link:
-    'https://www.ptsd.va.gov/professional/assessment/adult-sr/ptsd-checklist.asp',
+  target: 'trauma - adult',
+  link: 'https://www.ptsd.va.gov/professional/assessment/adult-sr/ptsd-checklist.asp',
   instructions:
     'Below is a list of problems that people sometimes have in response to a very stressful experience. Please read each problem carefully and then choose the most appropriate response to indicate how much you have been bothered by that problem in the past month.',
   score:
@@ -80,8 +80,7 @@ const PCL5 = {
         {
           id: 's1q1',
           type: 'Radio',
-          stem:
-            'Repeated, disturbing, and unwanted memories of the stressful experience?',
+          stem: 'Repeated, disturbing, and unwanted memories of the stressful experience?',
           scale: scaleIntensity,
         },
         {
@@ -93,64 +92,55 @@ const PCL5 = {
         {
           id: 's1q3',
           type: 'Radio',
-          stem:
-            'Suddenly feeling or acting as if the stressful experience were actually happening again (as if you were actually back there reliving it)?',
+          stem: 'Suddenly feeling or acting as if the stressful experience were actually happening again (as if you were actually back there reliving it)?',
           scale: scaleIntensity,
         },
         {
           id: 's1q4',
           type: 'Radio',
-          stem:
-            'Feeling very upset when something reminded you of the stressful experience?',
+          stem: 'Feeling very upset when something reminded you of the stressful experience?',
           scale: scaleIntensity,
         },
         {
           id: 's1q5',
           type: 'Radio',
-          stem:
-            'Having strong physical reactions when something reminded you of the stressful experience (for example, heart pounding, trouble breathing, sweating)?',
+          stem: 'Having strong physical reactions when something reminded you of the stressful experience (for example, heart pounding, trouble breathing, sweating)?',
           scale: scaleIntensity,
         },
         {
           id: 's1q6',
           type: 'Radio',
-          stem:
-            'Avoiding memories, thoughts, or feelings related to the stressful experience?',
+          stem: 'Avoiding memories, thoughts, or feelings related to the stressful experience?',
           scale: scaleIntensity,
         },
         {
           id: 's1q7',
           type: 'Radio',
-          stem:
-            'Avoiding external reminders of the stressful experience (for example, people, places, conversations, activities, objects, or situations)?',
+          stem: 'Avoiding external reminders of the stressful experience (for example, people, places, conversations, activities, objects, or situations)?',
           scale: scaleIntensity,
         },
         {
           id: 's1q8',
           type: 'Radio',
-          stem:
-            'Trouble remembering important parts of the stressful experience?',
+          stem: 'Trouble remembering important parts of the stressful experience?',
           scale: scaleIntensity,
         },
         {
           id: 's1q9',
           type: 'Radio',
-          stem:
-            'Having strong negative beliefs about yourself, other people, or the world (for example, having thoughts such as: I am bad, there is something seriously wrong with me, no one can be trusted, the world is completely dangerous)?',
+          stem: 'Having strong negative beliefs about yourself, other people, or the world (for example, having thoughts such as: I am bad, there is something seriously wrong with me, no one can be trusted, the world is completely dangerous)?',
           scale: scaleIntensity,
         },
         {
           id: 's1q10',
           type: 'Radio',
-          stem:
-            'Blaming yourself or someone else for the stressful experience or what happened after it?',
+          stem: 'Blaming yourself or someone else for the stressful experience or what happened after it?',
           scale: scaleIntensity,
         },
         {
           id: 's1q11',
           type: 'Radio',
-          stem:
-            'Having strong negative feelings such as fear, horror, anger, guilt, or shame?',
+          stem: 'Having strong negative feelings such as fear, horror, anger, guilt, or shame?',
           scale: scaleIntensity,
         },
         {
@@ -168,8 +158,7 @@ const PCL5 = {
         {
           id: 's1q14',
           type: 'Radio',
-          stem:
-            'Trouble experiencing positive feelings (for example, being unable to feel happiness or have loving feelings for people close to you)?',
+          stem: 'Trouble experiencing positive feelings (for example, being unable to feel happiness or have loving feelings for people close to you)?',
           scale: scaleIntensity,
         },
         {
@@ -181,8 +170,7 @@ const PCL5 = {
         {
           id: 's1q16',
           type: 'Radio',
-          stem:
-            ' Taking too many risks or doing things that could cause you harm?',
+          stem: ' Taking too many risks or doing things that could cause you harm?',
           scale: scaleIntensity,
         },
         {

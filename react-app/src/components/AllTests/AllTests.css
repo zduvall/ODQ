@@ -1,16 +1,40 @@
 .all-tests-list {
   display: grid;
   width: 100%;
-  /* grid-template-columns: 1fr 1fr; */
 }
-/* .all-tests-list {
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  flex-direction: column;
-} */
 
 .test-summary {
   cursor: pointer;
-  margin-bottom: .25rem;
+  border: 0.25rem solid transparent;
+  outline: none;
+  padding: 0.5rem;
+  display: block;
+  background: var(--tertiary-color-light);
+  color: var(--primary-color);
+  padding-left: 2.2rem;
+  position: relative;
+  cursor: pointer;
+}
+details {
+  box-sizing: border-box;
+  margin-top: 5px;
+  background: white;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details[open] > .test-summary:before {
+  transform: rotate(90deg);
+}
+.test-summary:before {
+  content: '';
+  border-width: 0.4rem;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--primary-color);
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  transform: rotate(0);
+  transform-origin: 0.2rem 50%;
+  transition: 0.25s transform ease;
 }

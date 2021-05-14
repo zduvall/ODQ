@@ -1,28 +1,14 @@
-import { useSelector } from 'react-redux';
-
-// import check subscription type function
-import checkSubType from '../../services/checkSubType';
+// import component
+import PremiumBadge from '../PremiumBadge';
 
 // import free tests
 import { freeTests } from '../../assets';
 
-export default function DropdownTestInfo({ test }) {
-  const subType = useSelector((state) => state.session.user?.subType) || 0;
-
+export default function TestInfo({ test }) {
   return (
     <>
       <h2 className='primary-title cntr-txt-sml-margin'>
-        {test.name}{' '}
-        {!freeTests.includes(test.code) && (
-          <i
-            title={
-              checkSubType(test.code, subType)
-                ? 'As a s subscribing user, you have access to premium tests.'
-                : 'Subscribing users have access to premium tests'
-            }
-            className='fas fa-medal medal-w-title'
-          ></i>
-        )}
+        {test.name} {!freeTests.includes(test.code) && <PremiumBadge />}
       </h2>
       <h3 className='tertiary-title cntr-txt-sml-margin'>({test.abbr})</h3>
       <div className='test-descriptions-text'>

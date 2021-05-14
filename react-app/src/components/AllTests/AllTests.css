@@ -13,15 +13,17 @@
   position: relative;
 }
 
+.test-summary::marker {
+  display: none;
+}
+
 .test-details {
-  box-sizing: border-box;
-  margin-top: 5px;
   background: white;
   border-radius: var(--primary-radius);
 }
 
-.test-details .test-summary::-webkit-details-marker {
-  display: none;
+.test-details + .test-details {
+  margin-top: 0.6rem;
 }
 
 .test-details[open] > .test-summary:before {
@@ -52,7 +54,7 @@
   }
 }
 
-@keyframes invisiblyGrowFontSize {
+@keyframes growFontSize {
   0% {
     font-size: 0;
     opacity: 0;
@@ -71,12 +73,12 @@
   }
 }
 .test-details[open] .test-info {
-  animation-name: invisiblyGrowFontSize, fadeIn;
-  animation-duration: 200ms, 200ms;
-  animation-delay: 0ms, 140ms;
+  animation-name: growFontSize, fadeIn;
+  animation-duration: 200ms, 250ms;
+  animation-delay: 0ms, 160ms;
 }
 
-/* @keyframes invisiblyShrinkFontSize {
+/* @keyframes shrinkFontSize {
   0% {
     font-size: 1em;
     opacity: 0;
@@ -95,7 +97,7 @@
   }
 }
 .test-details .test-info {
-  animation-name: invisiblyShrinkFontSize, fadeOut;
+  animation-name: shrinkFontSize, fadeOut;
   animation-duration: 200ms, 200ms;
   animation-delay: 0ms, 140ms;
 } */

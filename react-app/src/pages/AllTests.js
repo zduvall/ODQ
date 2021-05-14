@@ -2,7 +2,7 @@
 import tests from '../assets/index';
 
 // import component
-import DropdownTestInfo from '../components/AllTests/TestInfo';
+import TestInfo from '../components/AllTests/TestInfo';
 
 // import css
 import '../components/AllTests/AllTests.css';
@@ -14,12 +14,14 @@ export default function AllTests() {
       <div className='site__sub-section'>
         <div className='all-tests-list'>
           {Object.values(tests).map((test) => (
-            <details key={test.code}>
+            <details key={test.code} className='test-details'>
               <summary className='test-summary'>
                 {test.abbr}{' '}
                 <span className='tertiary-text'>({test.target})</span>
               </summary>
-              <DropdownTestInfo test={test} />
+              <div className='test-info'>
+                <TestInfo test={test} />
+              </div>
             </details>
           ))}
         </div>

@@ -1,32 +1,30 @@
 .all-tests-list {
-  display: grid;
   width: 100%;
 }
 
 .test-summary {
   cursor: pointer;
   display: block;
+  background: var(--tertiary-color-light);
   border: 0.25rem solid transparent;
   border-radius: var(--primary-radius);
-  outline: none;
   padding: 0.5rem 0.5rem 0.5rem 2.2rem;
-  background: var(--tertiary-color-light);
   color: var(--primary-color);
   position: relative;
-  cursor: pointer;
 }
 
-details {
+.test-details {
   box-sizing: border-box;
   margin-top: 5px;
   background: white;
+  border-radius: var(--primary-radius);
 }
 
-details .test-summary::-webkit-details-marker {
+.test-details .test-summary::-webkit-details-marker {
   display: none;
 }
 
-details[open] > .test-summary:before {
+.test-details[open] > .test-summary:before {
   transform: rotate(90deg);
 }
 
@@ -41,4 +39,39 @@ details[open] > .test-summary:before {
   transform: rotate(0);
   transform-origin: 25% 50%;
   transition: 0.25s transform ease;
+}
+
+.test-info {
+  padding: 0 1.25rem;
+}
+
+@media (max-width: 800px) {
+  .test-info {
+    padding: 0 0.25rem;
+    font-size: 90%;
+  }
+}
+
+@keyframes invisiblyGrowFontSize {
+  0% {
+    font-size: 0;
+    opacity: 0;
+  }
+  100% {
+    font-size: 1em;
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.test-details[open] .test-info {
+  animation-name: invisiblyGrowFontSize, fadeIn;
+  animation-duration: 200ms, 200ms;
+  animation-delay: 0ms, 140ms;
 }

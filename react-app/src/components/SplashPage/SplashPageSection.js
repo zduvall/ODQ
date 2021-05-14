@@ -1,5 +1,4 @@
 export default function SplashPageSection({ image, desc, backwards }) {
-  console.log(image);
 
   return (
     <div

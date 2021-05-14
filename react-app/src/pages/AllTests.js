@@ -9,14 +9,12 @@ import PremiumBadge from '../components/PremiumBadge';
 import '../components/AllTests/AllTests.css';
 
 export default function AllTests() {
+  // close all other details elements when opening a new one
   function handleClick(e) {
     const details = document.querySelectorAll('details');
     details.forEach((detail) => {
-      // close all other details elements when opening a new one
       if (!detail.contains(e.target)) {
         detail.removeAttribute('open');
-      } else {
-        // detail.setAttribute('open', true);
       }
     });
   }
@@ -31,7 +29,6 @@ export default function AllTests() {
               key={test.code}
               className='test-details'
               onClick={handleClick}
-              // open={false}
             >
               <summary className='test-summary'>
                 {test.abbr}{' '}

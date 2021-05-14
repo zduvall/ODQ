@@ -4,8 +4,9 @@ import PCL5 from './PCL5';
 import PHQ9 from './PHQ9';
 import SWLS from './SWLS';
 
-// remember also to update test_form.py when adding new tests
+// if add new tests, also update test_form.py
 const tests = { ACE, GAD7, PCL5, PHQ9, SWLS };
+// if change free tests, also update client_routes.py
 export const freeTests = [ACE.code, SWLS.code];
 
 export function horizontalAnnotation(

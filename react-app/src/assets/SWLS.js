@@ -7,6 +7,7 @@ const SWLS = {
   name: 'Satisfaction with Life Scale',
   description:
     "The SWLS is a short 5-item instrument designed to measure global cognitive judgments of satisfaction with one's life.",
+  target: 'life satisfaction',
   link: 'http://labs.psychology.illinois.edu/~ediener/SWLS.html',
   instructions:
     'Below are five statements with which you may agree or disagree. Please be open and honest in your responding.',

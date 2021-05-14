@@ -11,6 +11,7 @@ const PHQ9 = {
   name: 'Patient Health Questionnaire-9',
   description:
     'A 9-item self-administered test used to assess the severity of major depressive disorder. Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include "not at all", "several days", "more than half the days" and "nearly every day".',
+  target: 'depression',
   link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1495268/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',
@@ -105,29 +106,25 @@ const PHQ9 = {
         {
           id: 's1q6',
           type: 'Radio',
-          stem:
-            'Feeling bad about yourself — or that you are a failure or have let yourself or your family down?',
+          stem: 'Feeling bad about yourself — or that you are a failure or have let yourself or your family down?',
           scale: scaleFrequency,
         },
         {
           id: 's1q7',
           type: 'Radio',
-          stem:
-            'Trouble concentrating on things, such as reading the newspaper or watching television?',
+          stem: 'Trouble concentrating on things, such as reading the newspaper or watching television?',
           scale: scaleFrequency,
         },
         {
           id: 's1q8',
           type: 'Radio',
-          stem:
-            'Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual?',
+          stem: 'Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual?',
           scale: scaleFrequency,
         },
         {
           id: 's1q9',
           type: 'Radio',
-          stem:
-            'Thoughts that you would be better off dead or of hurting yourself in some way?',
+          stem: 'Thoughts that you would be better off dead or of hurting yourself in some way?',
           scale: scaleFrequency,
         },
       ],
@@ -139,8 +136,7 @@ const PHQ9 = {
         {
           id: 's2q1',
           type: 'Radio',
-          stem:
-            'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
+          stem: 'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
           scale: scaleDifficulty,
         },
       ],

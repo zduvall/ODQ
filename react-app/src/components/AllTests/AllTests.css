@@ -1,0 +1,103 @@
+.all-tests-list {
+  width: 100%;
+}
+
+.test-summary {
+  cursor: pointer;
+  display: block;
+  background: var(--tertiary-color-light);
+  border: 0.25rem solid transparent;
+  border-radius: var(--primary-radius);
+  padding: 0.5rem 0.5rem 0.5rem 2.2rem;
+  color: var(--primary-color);
+  position: relative;
+}
+
+.test-summary::marker {
+  display: none;
+}
+
+.test-details {
+  background: white;
+  border-radius: var(--primary-radius);
+}
+
+.test-details + .test-details {
+  margin-top: 0.6rem;
+}
+
+.test-details[open] > .test-summary:before {
+  transform: rotate(90deg);
+}
+
+.test-summary:before {
+  content: '';
+  border-width: 0.4rem;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--primary-color);
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  transform: rotate(0);
+  transform-origin: 25% 50%;
+  transition: 0.25s transform ease;
+}
+
+.test-info {
+  padding: 0 1.25rem;
+}
+
+@media (max-width: 800px) {
+  .test-info {
+    padding: 0 0.25rem;
+    font-size: 90%;
+  }
+}
+
+@keyframes growFontSize {
+  0% {
+    font-size: 0;
+    opacity: 0;
+  }
+  100% {
+    font-size: 1rem;
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.test-details[open] .test-info {
+  animation-name: growFontSize, fadeIn;
+  animation-duration: 200ms, 250ms;
+  animation-delay: 0ms, 160ms;
+}
+
+/* @keyframes shrinkFontSize {
+  0% {
+    font-size: 1em;
+    opacity: 0;
+  }
+  100% {
+    font-size: 0;
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.test-details .test-info {
+  animation-name: shrinkFontSize, fadeOut;
+  animation-duration: 200ms, 200ms;
+  animation-delay: 0ms, 140ms;
+} */

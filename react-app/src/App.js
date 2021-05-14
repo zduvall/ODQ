@@ -7,17 +7,6 @@ import { authenticateUser } from './store/session';
 import { getClients } from './store/clients';
 
 // // components
-// import ProtectedRoute from './components/auth/ProtectedRoute';
-// import SplashPage from './pages/SplashPage';
-// import Login from './pages/Login';
-// import SignUp from './pages/SignUp';
-// import Clients from './pages/Clients';
-// import Client from './pages/Client';
-// import Account from './pages/Account';
-// import Payments from './pages/Payments';
-// import ClientForm from './pages/ClientForm';
-// import TestForm from './pages/TestForm';
-// import TermsOfUse from './pages/TermsOfUse';
 import NavBar from './components/NavBar/index.js';
 import Footer from './components/Footer';
 import LoadingNotFoundInvalid from './components/LoadingNotFoundInvalid';
@@ -28,9 +17,10 @@ const Login = lazy(() => import('./pages/Login'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const Clients = lazy(() => import('./pages/Clients'));
 const Client = lazy(() => import('./pages/Client'));
+const ClientForm = lazy(() => import('./pages/ClientForm'));
 const Account = lazy(() => import('./pages/Account'));
 const Payments = lazy(() => import('./pages/Payments'));
-const ClientForm = lazy(() => import('./pages/ClientForm'));
+const AllTests = lazy(() => import('./pages/AllTests'));
 const TestForm = lazy(() => import('./pages/TestForm'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
 const UnsubOrDeactivate = lazy(() => import('./pages/Feedback'));
@@ -114,6 +104,9 @@ function App() {
             >
               <Payments />
             </ProtectedRoute>
+            <Route path='/all-tests' exact={true}>
+              <AllTests />
+            </Route>
             <Route path='/test/:testCode/:userId/:clientId/:encURL' exact>
               <TestForm />
             </Route>

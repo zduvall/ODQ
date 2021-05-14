@@ -11,6 +11,7 @@ const GAD7 = {
   name: 'Generalized Anxiety Disorder-7',
   description:
     'A 7-item self-administered test used to assess the severity of generalized anxiety disorder. Each item asks the individual to rate the severity of his or her symptoms over the past two weeks. Response options include "not at all", "several days", "more than half the days" and "nearly every day".',
+  target: 'anxiety',
   link: 'https://pubmed.ncbi.nlm.nih.gov/16717171/',
   instructions:
     'This questionnaire is an important part of providing you with the best health care possible. Your answers will help in understanding problems that you may have. Please answer every question to the best of your ability unless you are requested to skip over a question.',
@@ -120,8 +121,7 @@ const GAD7 = {
         {
           id: 's2q1',
           type: 'Radio',
-          stem:
-            'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
+          stem: 'If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?',
           scale: scaleDifficulty,
         },
       ],

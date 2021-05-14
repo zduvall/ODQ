@@ -1,8 +1,9 @@
-// import test objects and array of premium tests
-import tests from '../assets/index';
+// import test objects and array of free tests
+import tests, { freeTests } from '../assets';
 
-// import component
+// import components
 import TestInfo from '../components/AllTests/TestInfo';
+import PremiumBadge from '../components/PremiumBadge';
 
 // import css
 import '../components/AllTests/AllTests.css';
@@ -34,6 +35,13 @@ export default function AllTests() {
             >
               <summary className='test-summary'>
                 {test.abbr}{' '}
+                {!freeTests.includes(test.code) ? (
+                  <>
+                    <PremiumBadge />{' '}
+                  </>
+                ) : (
+                  ''
+                )}
                 <span className='tertiary-text'>({test.target})</span>
               </summary>
               <div className='test-info'>

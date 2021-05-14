@@ -24,7 +24,11 @@ export default function AllTests() {
       <div className='site__sub-section'>
         <div className='all-tests-list'>
           {Object.values(tests).map((test) => (
-            <TestDetailsElement test={test} handleClick={handleClick} />
+            <TestDetailsElement
+              key={test.code}
+              test={test}
+              handleClick={handleClick}
+            />
           ))}
         </div>
       </div>

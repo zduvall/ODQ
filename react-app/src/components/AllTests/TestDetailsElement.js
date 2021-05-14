@@ -7,7 +7,7 @@ import PremiumBadge from '../PremiumBadge';
 
 export default function TestDetailsElement({ test, handleClick }) {
   return (
-    <details key={test.code} className='test-details' onClick={handleClick}>
+    <details className='test-details' onClick={handleClick}>
       <summary className='test-summary'>
         {test.abbr}{' '}
         {!freeTests.includes(test.code) ? (

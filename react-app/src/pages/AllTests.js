@@ -1,9 +1,8 @@
-// import test objects and array of free tests
-import tests, { freeTests } from '../assets';
+// import test objects
+import tests from '../assets';
 
 // import components
-import TestInfo from '../components/AllTests/TestInfo';
-import PremiumBadge from '../components/PremiumBadge';
+import TestDetailsElement from '../components/AllTests/TestDetailsElement';
 
 // import css
 import '../components/AllTests/AllTests.css';
@@ -25,26 +24,7 @@ export default function AllTests() {
       <div className='site__sub-section'>
         <div className='all-tests-list'>
           {Object.values(tests).map((test) => (
-            <details
-              key={test.code}
-              className='test-details'
-              onClick={handleClick}
-            >
-              <summary className='test-summary'>
-                {test.abbr}{' '}
-                {!freeTests.includes(test.code) ? (
-                  <>
-                    <PremiumBadge />{' '}
-                  </>
-                ) : (
-                  ''
-                )}
-                <span className='tertiary-text'>({test.target})</span>
-              </summary>
-              <div className='test-info'>
-                <TestInfo test={test} />
-              </div>
-            </details>
+            <TestDetailsElement test={test} handleClick={handleClick} />
           ))}
         </div>
       </div>

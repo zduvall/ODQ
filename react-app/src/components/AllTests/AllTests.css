@@ -58,7 +58,7 @@
     opacity: 0;
   }
   100% {
-    font-size: 1em;
+    font-size: 1rem;
     opacity: 0;
   }
 }

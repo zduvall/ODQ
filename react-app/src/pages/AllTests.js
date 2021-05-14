@@ -8,18 +8,15 @@ import TestInfo from '../components/AllTests/TestInfo';
 import '../components/AllTests/AllTests.css';
 
 export default function AllTests() {
-  // Only allow one details element open at a time
-  const details = document.querySelectorAll('details');
-  details.forEach((targetDetail) => {
-    targetDetail.addEventListener('click', () => {
-      // Close all the details that are not targetDetail.
-      details.forEach((detail) => {
-        if (detail !== targetDetail) {
-          detail.removeAttribute('open');
-        }
-      });
+  // close all other details elements when opening a new one
+  function handleClick(e) {
+    const details = document.querySelectorAll('details');
+    details.forEach((detail) => {
+      if (!detail.contains(e.target)) {
+        detail.removeAttribute('open');
+      }
     });
-  });
+  }
 
   return (
     <div className='site__page'>
@@ -27,7 +24,11 @@ export default function AllTests() {
       <div className='site__sub-section'>
         <div className='all-tests-list'>
           {Object.values(tests).map((test) => (
-            <details key={test.code} className='test-details'>
+            <details
+              key={test.code}
+              className='test-details'
+              onClick={handleClick}
+            >
               <summary className='test-summary'>
                 {test.abbr}{' '}
                 <span className='tertiary-text'>({test.target})</span>

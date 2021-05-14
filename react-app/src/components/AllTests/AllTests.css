@@ -76,7 +76,7 @@
   animation-delay: 0ms, 140ms;
 }
 
-@keyframes invisiblyShrinkFontSize {
+/* @keyframes invisiblyShrinkFontSize {
   0% {
     font-size: 1em;
     opacity: 0;
@@ -98,4 +98,4 @@
   animation-name: invisiblyShrinkFontSize, fadeOut;
   animation-duration: 200ms, 200ms;
   animation-delay: 0ms, 140ms;
-}
+} */

@@ -44,7 +44,7 @@
 }
 
 .test-info {
-  padding: 0 1.25rem;
+  padding: 0 1.25rem 0.25rem 1.25rem;
 }
 
 @media (max-width: 800px) {

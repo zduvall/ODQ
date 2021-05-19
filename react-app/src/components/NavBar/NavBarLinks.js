@@ -1,38 +1,20 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // import custom hook
 import { useWindowWidth } from '../../services/windowWidth';
 
 // import components
 import Dropdown from './Dropdown';
-import NavBarLinks from './NavBarLinks';
 
-// import thunk
-import { logoutUser } from '../../store/session';
-
-// import css and pic
-import './navBar.css';
-import dotLogo from './dot-logo.webp';
-
-const NavBar = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+export default function NavBarLinks({
+  setShowDropdown,
+  showDropdown,
+  handleClick,
+  handleLogout,
+}) {
   const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
-
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const handleClick = () => {
-    setShowDropdown(false);
-  };
-
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    setShowDropdown(false);
-  };
 
   // hide navbar when srolling on small screens
   let hideScroll = window.pageYOffset;
@@ -154,31 +136,5 @@ const NavBar = () => {
       );
     }
   }
-
-  return (
-    <header id='navbar' className='site-header'>
-      <div
-        className='site-header__title primary-title'
-        onClick={() => history.push('/')}
-      >
-        <img className='logo' src={dotLogo} alt='DOT logo' />
-        <span className='s-h__t-emph'>D</span>iagnostic &{' '}
-        <span className='s-h__t-emph'>O</span>utcome{' '}
-        <span className='s-h__t-emph'>T</span>esting
-      </div>
-      <nav className='nav'>
-        <ul className='nav__wrapper'>
-          <NavBarLinks
-            setShowDropdown={setShowDropdown}
-            showDropdown={showDropdown}
-            handleClick={handleClick}
-            handleLogout={handleLogout}
-          />
-        </ul>
-        {/* <ul className='nav__wrapper'>{navLinks}</ul> */}
-      </nav>
-    </header>
-  );
-};
-
-export default NavBar;
+  return navLinks;
+}

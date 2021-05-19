@@ -16,24 +16,6 @@ export default function NavBarLinks({
   const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
 
-  // hide navbar when srolling on small screens
-  let hideScroll = window.pageYOffset;
-  window.onscroll = function () {
-    if (width > 850) return;
-
-    setShowDropdown(false);
-
-    let currentScrollPos = window.pageYOffset;
-
-    if (hideScroll > window.pageYOffset) {
-      document.getElementById('navbar').style.top = '0';
-    } else {
-      document.getElementById('navbar').style.top = '-70px';
-    }
-
-    hideScroll = currentScrollPos;
-  };
-
   // create nav links for logged in vs logged out
   let navLinks;
 

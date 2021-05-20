@@ -17,7 +17,22 @@ export default function Dropdown({
             : 'nav__dropdown__button-closed'
         }`}
       ></i>
-      {showDropdown && (
+      {/* {showDropdown && (
+        <> */}
+      <ul
+        className={`nav__dropdown ${
+          showDropdown ? '' : 'nav__dropdown__hidden'
+        }`}
+      >
+        {dropdownLinks}
+      </ul>
+      <div
+        onClick={toggleDropdown}
+        className='nav__dropdown__rest-of-page'
+      ></div>
+      {/* </>
+      )} */}
+      {/* {showDropdown && (
         <>
           <ul className='nav__dropdown'>{dropdownLinks}</ul>
           <div
@@ -25,7 +40,7 @@ export default function Dropdown({
             className='nav__dropdown__rest-of-page'
           ></div>
         </>
-      )}
+      )} */}
     </>
   );
 }

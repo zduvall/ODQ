@@ -14,6 +14,13 @@
   transform-style: preserve-3d;
 }
 
+@media (max-width: 800px) {
+  .site-header {
+    /* box-shadow: none; */
+    box-shadow: inset 0 -1rem transparent;
+  }
+}
+
 .site-header__title {
   display: flex;
   align-items: center;
@@ -85,11 +92,12 @@
   padding: 0 10%;
   transform: translateZ(-1rem);
   bottom: -8rem;
-  transition: bottom 0.5s ease;
+  transition: bottom 0.5s ease, color 1s ease;
 }
 
 .nav__dropdown__hidden {
   bottom: 0;
+  color: rgb(255, 255, 255);
 }
 
 .nav__dropdown__button-closed {

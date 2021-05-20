@@ -17,7 +17,12 @@
 @media (max-width: 800px) {
   .site-header {
     box-shadow: none;
-    /* box-shadow: inset 0 -1rem transparent; */
+    /* background: rgb(255, 255, 255);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ); */
   }
 }
 

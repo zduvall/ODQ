@@ -119,11 +119,14 @@
 
 .nav__dropdown__rest-of-page {
   position: fixed;
-  top: 4rem;
+  /* translateZ(-2rem) makes it so it's behind the dropdown, so dropdown items can still be clicked */
+  transform: translateZ(-2rem);
+  top: 0;
   right: 0;
   left: 0;
   bottom: 0;
   background-color: transparent;
+  height: 100vh;
 }
 
 .logout {

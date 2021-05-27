@@ -32,10 +32,12 @@ export default function Dropdown({
         {hideLinks && <p></p>}
         {!hideLinks && dropdownLinks}
       </ul>
-      <div
-        onClick={toggleDropdown}
-        className='nav__dropdown__rest-of-page'
-      ></div>
+      {showDropdown && (
+        <div
+          onClick={toggleDropdown}
+          className='nav__dropdown__rest-of-page'
+        ></div>
+      )}
     </>
   );
 }

@@ -17,7 +17,6 @@
 @media (max-width: 800px) {
   .site-header {
     box-shadow: none;
-    /* ----------------- left off here and below ----------------- */
     background: rgb(255, 255, 255);
     background: linear-gradient(
       180deg,

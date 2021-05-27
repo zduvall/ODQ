@@ -21,7 +21,7 @@ const NavBar = () => {
   const width = useWindowWidth();
 
   const [showDropdown, setShowDropdown] = useState(false);
-  const [hideLinks, setHideLinks] = useState(false);
+  const [hideLinks, setHideLinks] = useState(true);
 
   const handleClick = () => {
     setShowDropdown(false);

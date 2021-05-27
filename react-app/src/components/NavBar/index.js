@@ -21,6 +21,7 @@ const NavBar = () => {
   const width = useWindowWidth();
 
   const [showDropdown, setShowDropdown] = useState(false);
+  const [hideLinks, setHideLinks] = useState(false);
 
   const handleClick = () => {
     setShowDropdown(false);
@@ -37,6 +38,7 @@ const NavBar = () => {
     if (width > 850) return;
 
     setShowDropdown(false);
+    setTimeout(() => setHideLinks(true), 500);
 
     let currentScrollPos = window.pageYOffset;
 
@@ -67,6 +69,8 @@ const NavBar = () => {
             showDropdown={showDropdown}
             handleClick={handleClick}
             handleLogout={handleLogout}
+            hideLinks={hideLinks}
+            setHideLinks={setHideLinks}
           />
         </ul>
       </nav>

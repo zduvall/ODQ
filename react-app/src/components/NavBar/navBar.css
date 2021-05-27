@@ -17,12 +17,14 @@
 @media (max-width: 800px) {
   .site-header {
     box-shadow: none;
+    /* ----------------- left off here and below ----------------- */
     /* background: rgb(255, 255, 255);
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 1) 0%,
       rgba(255, 255, 255, 0) 100%
     ); */
+    /* background: linear-gradient(transparent, transparent 50%, brown 50%); */
   }
 }
 
@@ -93,6 +95,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 0 10%;
+  /* ----------------- also need to figure out why can still click even though further back ----------------- */
   transform: translateZ(-1rem);
   bottom: -8rem;
   transition: bottom 0.5s ease, color 1s ease;

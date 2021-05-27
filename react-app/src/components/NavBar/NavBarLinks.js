@@ -12,6 +12,8 @@ export default function NavBarLinks({
   showDropdown,
   handleClick,
   handleLogout,
+  hideLinks,
+  setHideLinks,
 }) {
   const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
@@ -101,6 +103,8 @@ export default function NavBarLinks({
           dropdownLinks={loggedInLinks}
           showDropdown={showDropdown}
           setShowDropdown={setShowDropdown}
+          hideLinks={hideLinks}
+          setHideLinks={setHideLinks}
         />
       );
     }
@@ -114,6 +118,8 @@ export default function NavBarLinks({
           dropdownLinks={loggedOutLinks}
           showDropdown={showDropdown}
           setShowDropdown={setShowDropdown}
+          hideLinks={hideLinks}
+          setHideLinks={setHideLinks}
         />
       );
     }

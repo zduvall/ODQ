@@ -1,10 +1,21 @@
+// import { useState } from 'react';
+
 export default function Dropdown({
   dropdownLinks,
   showDropdown,
   setShowDropdown,
+  hideLinks,
+  setHideLinks,
 }) {
+  // const [hideLinks, setHideLinks] = useState(true);
+
   const toggleDropdown = () => {
     setShowDropdown((prevShow) => !prevShow);
+    if (hideLinks) {
+      setHideLinks(false);
+    } else {
+      setTimeout(() => setHideLinks(true), 500);
+    }
   };
 
   return (
@@ -22,7 +33,8 @@ export default function Dropdown({
           showDropdown ? '' : 'nav__dropdown__hidden'
         }`}
       >
-        {dropdownLinks}
+        {!hideLinks && dropdownLinks}
+        {hideLinks && <p></p>}
       </ul>
       <div
         onClick={toggleDropdown}

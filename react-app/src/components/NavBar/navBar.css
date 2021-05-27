@@ -18,13 +18,13 @@
   .site-header {
     box-shadow: none;
     /* ----------------- left off here and below ----------------- */
-    /* background: rgb(255, 255, 255);
+    background: rgb(255, 255, 255);
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 85%,
       rgba(255, 255, 255, 0) 100%
-    ); */
-    /* background: linear-gradient(transparent, transparent 50%, brown 50%); */
+    );
   }
 }
 
@@ -96,13 +96,19 @@
   width: 100%;
   padding: 0 10%;
   transform: translateZ(-1rem);
-  bottom: -8rem;
   transition: bottom 0.5s ease, color 1s ease;
+}
+
+/* how far drop down goes when clicked to account for 3 vs 4 navlinks */
+.nav__dropdown__logged-out {
+  bottom: -8rem;
+}
+.nav__dropdown__logged-in {
+  bottom: -10.5rem;
 }
 
 .nav__dropdown__hidden {
   bottom: 0;
-  color: rgb(255, 255, 255);
 }
 
 .nav__dropdown__button-closed {

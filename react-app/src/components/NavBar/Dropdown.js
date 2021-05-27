@@ -14,6 +14,13 @@ export default function Dropdown({
     }
   };
 
+  const checkIfLoggedIn = () => {
+    return (
+      dropdownLinks.props.children[dropdownLinks.props.children.length - 1]
+        .props.children === 'Logout'
+    );
+  };
+
   return (
     <>
       <i
@@ -27,6 +34,10 @@ export default function Dropdown({
       <ul
         className={`nav__dropdown ${
           showDropdown ? '' : 'nav__dropdown__hidden'
+        } ${
+          checkIfLoggedIn()
+            ? 'nav__dropdown__logged-in'
+            : 'nav__dropdown__logged-out'
         }`}
       >
         {hideLinks && <p></p>}

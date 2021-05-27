@@ -95,7 +95,6 @@
   box-sizing: border-box;
   width: 100%;
   padding: 0 10%;
-  /* ----------------- also need to figure out why can still click even though further back ----------------- */
   transform: translateZ(-1rem);
   bottom: -8rem;
   transition: bottom 0.5s ease, color 1s ease;

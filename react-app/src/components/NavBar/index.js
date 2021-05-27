@@ -25,11 +25,13 @@ const NavBar = () => {
 
   const handleClick = () => {
     setShowDropdown(false);
+    setTimeout(() => setHideLinks(true), 500);
   };
 
   const handleLogout = () => {
     dispatch(logoutUser());
     setShowDropdown(false);
+    setTimeout(() => setHideLinks(true), 500);
   };
 
   // hide navbar when srolling on small screens

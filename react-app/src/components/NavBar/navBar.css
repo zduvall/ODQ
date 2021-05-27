@@ -98,7 +98,7 @@
   transition: bottom 0.5s ease, color 1s ease;
 }
 
-/* how far drop down goes when clicked to account for 3 vs 4 navlinks */
+/* next 2 = how far drop down goes when clicked to account for 3 vs 4 navlinks */
 .nav__dropdown__logged-out {
   bottom: -8rem;
 }
@@ -133,6 +133,8 @@
   background-color: transparent;
   height: 100vh;
 }
+
+/* other */
 
 .logout {
   margin: 0;

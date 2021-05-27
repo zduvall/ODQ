@@ -1,6 +1,5 @@
 .site-header {
   position: sticky;
-  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,6 +11,20 @@
   font-size: 1.2rem;
   height: 4rem;
   transition: top 0.3s;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    box-shadow: none;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 85%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
 }
 
 .site-header__title {
@@ -71,18 +84,30 @@
 }
 
 .nav__dropdown {
-  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   position: absolute;
   right: 0;
-  margin-top: 2.5rem;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 6px -3px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   width: 100%;
   padding: 0 10%;
+  transform: translateZ(-1rem);
+  transition: bottom 0.5s ease, color 1s ease;
+}
+
+/* next 2 = how far drop down goes when clicked to account for 3 vs 4 navlinks */
+.nav__dropdown__logged-out {
+  bottom: -8rem;
+}
+.nav__dropdown__logged-in {
+  bottom: -10.5rem;
+}
+
+.nav__dropdown__hidden {
+  bottom: 0;
 }
 
 .nav__dropdown__button-closed {
@@ -99,12 +124,17 @@
 
 .nav__dropdown__rest-of-page {
   position: fixed;
-  top: 4rem;
+  /* translateZ(-2rem) makes it so it's behind the dropdown, so dropdown items can still be clicked */
+  transform: translateZ(-2rem);
+  top: 0;
   right: 0;
   left: 0;
   bottom: 0;
   background-color: transparent;
+  height: 100vh;
 }
+
+/* other */
 
 .logout {
   margin: 0;

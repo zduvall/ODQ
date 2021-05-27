@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 
 // import custom hook
 import { useWindowWidth } from '../../services/windowWidth';
 
 // import components
-import Dropdown from './Dropdown';
+import NavBarLinks from './NavBarLinks';
 
 // import thunk
 import { logoutUser } from '../../store/session';
@@ -19,18 +18,20 @@ import dotLogo from './dot-logo.webp';
 const NavBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
 
   const [showDropdown, setShowDropdown] = useState(false);
+  const [hideLinks, setHideLinks] = useState(true);
 
   const handleClick = () => {
     setShowDropdown(false);
+    setTimeout(() => setHideLinks(true), 500);
   };
 
   const handleLogout = () => {
     dispatch(logoutUser());
     setShowDropdown(false);
+    setTimeout(() => setHideLinks(true), 500);
   };
 
   // hide navbar when srolling on small screens
@@ -39,6 +40,7 @@ const NavBar = () => {
     if (width > 850) return;
 
     setShowDropdown(false);
+    setTimeout(() => setHideLinks(true), 500);
 
     let currentScrollPos = window.pageYOffset;
 
@@ -50,109 +52,6 @@ const NavBar = () => {
 
     hideScroll = currentScrollPos;
   };
-
-  // create nav links for logged in vs logged out
-  let navLinks;
-
-  let navItemClass = width > 800 ? 'nav__item' : 'nav__dropdown__item';
-
-  let loggedInLinks = (
-    <>
-      <NavLink
-        className={navItemClass}
-        to='/clients'
-        exact
-        activeClassName='nav__item-active'
-        onClick={handleClick}
-      >
-        Clients
-      </NavLink>
-      <NavLink
-        className={navItemClass}
-        to='/account'
-        exact
-        activeClassName='nav__item-active'
-        onClick={handleClick}
-      >
-        Account
-      </NavLink>
-      <NavLink
-        className={navItemClass}
-        to='/all-tests'
-        exact
-        activeClassName='nav__item-active'
-        onClick={handleClick}
-      >
-        Tests
-      </NavLink>
-      <button className={navItemClass} onClick={handleLogout}>
-        Logout
-      </button>
-    </>
-  );
-
-  let loggedOutLinks = (
-    <>
-      <NavLink
-        className={navItemClass}
-        to='/all-tests'
-        exact
-        activeClassName='nav__item-active'
-        onClick={handleClick}
-      >
-        Tests
-      </NavLink>
-      <NavLink
-        className={navItemClass}
-        to='/sign-up'
-        exact
-        activeClassName='nav__item-active'
-        onClick={handleClick}
-      >
-        Sign Up
-      </NavLink>
-      <NavLink
-        className={navItemClass}
-        to='/log-in'
-        exact
-        activeClassName='nav__item-active'
-        onClick={handleClick}
-      >
-        Log In
-      </NavLink>
-    </>
-  );
-
-  // links when a client is taking a test = none
-  if (window.location.pathname.startsWith('/test')) {
-    navLinks = null;
-  } else if (!!sessionUser) {
-    // links for logged in user
-    if (width > 800) {
-      navLinks = loggedInLinks;
-    } else {
-      navLinks = (
-        <Dropdown
-          dropdownLinks={loggedInLinks}
-          showDropdown={showDropdown}
-          setShowDropdown={setShowDropdown}
-        />
-      );
-    }
-  } else {
-    // links for logged out user
-    if (width > 800) {
-      navLinks = loggedOutLinks;
-    } else {
-      navLinks = (
-        <Dropdown
-          dropdownLinks={loggedOutLinks}
-          showDropdown={showDropdown}
-          setShowDropdown={setShowDropdown}
-        />
-      );
-    }
-  }
 
   return (
     <header id='navbar' className='site-header'>
@@ -166,7 +65,16 @@ const NavBar = () => {
         <span className='s-h__t-emph'>T</span>esting
       </div>
       <nav className='nav'>
-        <ul className='nav__wrapper'>{navLinks}</ul>
+        <ul className='nav__wrapper'>
+          <NavBarLinks
+            setShowDropdown={setShowDropdown}
+            showDropdown={showDropdown}
+            handleClick={handleClick}
+            handleLogout={handleLogout}
+            hideLinks={hideLinks}
+            setHideLinks={setHideLinks}
+          />
+        </ul>
       </nav>
     </header>
   );

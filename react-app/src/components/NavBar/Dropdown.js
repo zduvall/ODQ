@@ -2,9 +2,21 @@ export default function Dropdown({
   dropdownLinks,
   showDropdown,
   setShowDropdown,
+  hideLinks,
+  setHideLinks,
 }) {
   const toggleDropdown = () => {
     setShowDropdown((prevShow) => !prevShow);
+    if (hideLinks) {
+      setHideLinks(false);
+    } else {
+      setTimeout(() => setHideLinks(true), 500);
+    }
+  };
+
+  const checkIfLoggedIn = () => {
+    const navElements = dropdownLinks.props.children;
+    return navElements[navElements.length - 1].props.children === 'Logout';
   };
 
   return (
@@ -17,14 +29,23 @@ export default function Dropdown({
             : 'nav__dropdown__button-closed'
         }`}
       ></i>
+      <ul
+        className={`nav__dropdown ${
+          showDropdown ? '' : 'nav__dropdown__hidden'
+        } ${
+          checkIfLoggedIn()
+            ? 'nav__dropdown__logged-in'
+            : 'nav__dropdown__logged-out'
+        }`}
+      >
+        {hideLinks && <p></p>}
+        {!hideLinks && dropdownLinks}
+      </ul>
       {showDropdown && (
-        <>
-          <ul className='nav__dropdown'>{dropdownLinks}</ul>
-          <div
-            onClick={toggleDropdown}
-            className='nav__dropdown__rest-of-page'
-          ></div>
-        </>
+        <div
+          onClick={toggleDropdown}
+          className='nav__dropdown__rest-of-page'
+        ></div>
       )}
     </>
   );

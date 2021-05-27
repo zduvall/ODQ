@@ -44,7 +44,7 @@
 }
 
 .test-info {
-  padding: 0 1.25rem;
+  padding: 0 1.25rem 0.25rem 1.25rem;
 }
 
 @media (max-width: 800px) {
@@ -64,6 +64,7 @@
     opacity: 0;
   }
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -72,6 +73,7 @@
     opacity: 1;
   }
 }
+
 .test-details[open] .test-info {
   animation-name: growFontSize, fadeIn;
   animation-duration: 200ms, 250ms;

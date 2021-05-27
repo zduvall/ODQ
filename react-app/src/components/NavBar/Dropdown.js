@@ -15,10 +15,8 @@ export default function Dropdown({
   };
 
   const checkIfLoggedIn = () => {
-    return (
-      dropdownLinks.props.children[dropdownLinks.props.children.length - 1]
-        .props.children === 'Logout'
-    );
+    const navElements = dropdownLinks.props.children;
+    return navElements[navElements.length - 1].props.children === 'Logout';
   };
 
   return (

@@ -88,8 +88,9 @@ export default function TestForm() {
     <div className='site__page'>
       {!showTest && (
         <>
-          <TestIntro />
           <BirthYearValidator setShowTest={setShowTest} clientId={clientId} />
+          <div className='one1rem-ht' />
+          <TestIntro />
         </>
       )}
       {showTest && (

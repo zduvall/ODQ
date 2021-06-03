@@ -87,7 +87,10 @@ export default function TestForm() {
   return (
     <div className='site__page'>
       {!showTest && (
-        <BirthYearValidator setShowTest={setShowTest} clientId={clientId} />
+        <>
+          <TestIntro />
+          <BirthYearValidator setShowTest={setShowTest} clientId={clientId} />
+        </>
       )}
       {showTest && (
         <div>

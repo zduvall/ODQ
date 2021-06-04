@@ -90,7 +90,7 @@ export default function TestForm() {
         <>
           <BirthYearValidator setShowTest={setShowTest} clientId={clientId} />
           <div className='one1rem-ht' />
-          <TestIntro />
+          <TestIntro length={`${test.minMinutes} - ${test.maxMinutes} minutes`} />
         </>
       )}
       {showTest && (

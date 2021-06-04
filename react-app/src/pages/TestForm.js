@@ -88,9 +88,12 @@ export default function TestForm() {
     <div className='site__page'>
       {!showTest && (
         <>
+          <div className='one1rem-ht' />
           <BirthYearValidator setShowTest={setShowTest} clientId={clientId} />
           <div className='one1rem-ht' />
-          <TestIntro length={`${test.minMinutes} - ${test.maxMinutes} minutes`} />
+          <TestIntro
+            length={`${test.minMinutes} - ${test.maxMinutes} minutes`}
+          />
         </>
       )}
       {showTest && (

@@ -8,9 +8,10 @@ import CryptoJS from 'crypto-js';
 import tests from '../assets';
 
 // import css
-import '../components/TestForm/TestTemplate.css'
+import '../components/TestForm/TestTemplate.css';
 
 // import components
+import TestIntro from '../components/TestForm/TestIntro';
 import TestHeader from '../components/TestForm/TestHeader';
 import BirthYearValidator from '../components/TestForm/BirthYearValidator';
 import TestComplete from '../components/TestForm/TestComplete';
@@ -86,7 +87,14 @@ export default function TestForm() {
   return (
     <div className='site__page'>
       {!showTest && (
-        <BirthYearValidator setShowTest={setShowTest} clientId={clientId} />
+        <>
+          <div className='one1rem-ht' />
+          <BirthYearValidator setShowTest={setShowTest} clientId={clientId} />
+          <div className='one1rem-ht' />
+          <TestIntro
+            length={`${test.minMinutes} - ${test.maxMinutes} minutes`}
+          />
+        </>
       )}
       {showTest && (
         <div>

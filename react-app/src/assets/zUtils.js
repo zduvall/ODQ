@@ -37,7 +37,7 @@ export const scaleDifficulty = [
 ];
 
 // SWLS
-export const scaleAgreement = [
+export const scaleAgreement7 = [
   { value: 0, label: 'Strongly Disagree' },
   { value: 1, label: 'Disagree' },
   { value: 2, label: 'Slightly Disagree' },
@@ -48,7 +48,7 @@ export const scaleAgreement = [
 ];
 
 // BR-WAI
-export const scaleAgreementShort = [
+export const scaleAgreement5 = [
   { value: 1, label: 'Strongly Disagree' },
   { value: 2, label: 'Disagree' },
   { value: 3, label: 'Neutral' },

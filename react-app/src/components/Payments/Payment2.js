@@ -58,7 +58,6 @@ export default function Payment1() {
     style: {
       base: {
         fontSize: '17px',
-        backgroundColor: 'white',
         '::placeholder': {
           fontSize: '17px',
         },

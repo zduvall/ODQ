@@ -8,20 +8,16 @@
   top: -0.75em;
 }
 
-.payment-row {
-  padding-right: 1rem;
-}
-
 .StripeElement {
   width: 100%;
-  margin: 0.5rem;
-  padding: 0.5rem;
+  margin: 0.6rem;
+  padding: 0.6rem;
   border-radius: var(--primary-radius);
   border: var(--tertiary-border);
   font-size: 1.1rem;
   box-sizing: border-box;
   background-color: white;
-  max-height: 2.35rem;
+  height: 2.625rem;
 }
 
 .CardField-input-wrapper {

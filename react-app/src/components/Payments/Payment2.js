@@ -86,7 +86,7 @@ export default function Payment1() {
               <div key={error}>{error}</div>
             ))}
           </div>
-          <div className='form-row payment-row form__input'>
+          <div className='form-row payment-row'>
             <CardElement
               options={cardElementOptions}
               onChange={(e) => setErrors(e.error ? [e.error.message] : [])}

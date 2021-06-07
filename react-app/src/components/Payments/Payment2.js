@@ -1,3 +1,5 @@
+// this component is for credit car information
+
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 

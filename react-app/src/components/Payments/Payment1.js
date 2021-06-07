@@ -1,4 +1,4 @@
-// customer information 
+// this is the component for customer information 
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';

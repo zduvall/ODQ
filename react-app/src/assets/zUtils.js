@@ -47,6 +47,15 @@ export const scaleAgreement = [
   { value: 6, label: 'Strongly Agree' },
 ];
 
+// BR-WAI
+export const scaleAgreementShort = [
+  { value: 1, label: 'Strongly Disagree' },
+  { value: 2, label: 'Disagree' },
+  { value: 3, label: 'Neutral' },
+  { value: 4, label: 'Agree' },
+  { value: 5, label: 'Strongly Agree' },
+];
+
 // for chart annotations
 export function horizontalAnnotation(
   yValue,

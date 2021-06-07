@@ -1,4 +1,6 @@
-// this component is for credit car information
+// This component is for credit car information.
+// Without any API calls, it creates a payment method in stripe.
+// Nothing is updated in database at this point. Still nothing in redux store.
 
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';

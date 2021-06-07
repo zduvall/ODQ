@@ -1,5 +1,6 @@
 // This is the component to gather customer information.
-// It also creates or updates the customer in stripe and database/redux via the api call.
+// It creates or updates the customer in stripe and database via the api call. 
+// Nothing yet updated in redux.
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';

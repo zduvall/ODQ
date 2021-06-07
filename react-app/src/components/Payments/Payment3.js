@@ -1,3 +1,7 @@
+// This is the component to confirm subscription.
+// It attaches the payment method to the customer, creates a subscription in
+// stripe, updates the DB, and adds the new or updated info into redux store.
+
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';

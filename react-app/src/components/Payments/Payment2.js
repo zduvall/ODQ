@@ -1,3 +1,7 @@
+// This component is for credit car information.
+// Without any API calls, it creates a payment method in stripe.
+// Nothing is updated in database at this point. Still nothing in redux store.
+
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -56,7 +60,6 @@ export default function Payment1() {
     style: {
       base: {
         fontSize: '17px',
-        backgroundColor: 'white',
         '::placeholder': {
           fontSize: '17px',
         },
@@ -84,7 +87,7 @@ export default function Payment1() {
               <div key={error}>{error}</div>
             ))}
           </div>
-          <div className='form-row payment-row form__input'>
+          <div className='form-row'>
             <CardElement
               options={cardElementOptions}
               onChange={(e) => setErrors(e.error ? [e.error.message] : [])}

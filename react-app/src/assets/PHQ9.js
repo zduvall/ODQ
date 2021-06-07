@@ -5,7 +5,6 @@ import {
 } from './zUtils';
 
 const PHQ9 = {
-  id: 2,
   abbr: 'PHQ-9',
   code: 'PHQ9',
   name: 'Patient Health Questionnaire-9',

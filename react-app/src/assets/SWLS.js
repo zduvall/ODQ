@@ -1,7 +1,6 @@
 import { horizontalAnnotation, scaleAgreement } from './zUtils';
 
 const SWLS = {
-  id: 4,
   abbr: 'SWLS',
   code: 'SWLS',
   name: 'Satisfaction with Life Scale',

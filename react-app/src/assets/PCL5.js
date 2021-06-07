@@ -1,7 +1,6 @@
 import { horizontalAnnotation, scaleIntensity } from './zUtils';
 
 const PCL5 = {
-  id: 4,
   abbr: 'PCL-5',
   code: 'PCL5',
   name: 'PTSD Checklist for DSM-5',

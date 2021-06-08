@@ -7,18 +7,18 @@ const SWLS = {
   description:
     'The LDQ is a 10-item questionnaire designed to measure severity of dependence on any drug including alcohol.',
   target: 'substance dependence',
-  link: 'https://pubmed.ncbi.nlm.nih.gov/8044122/',
+  link: 'https://www.result4addiction.net/compare-universal-dependence', // alternative: 'https://pubmed.ncbi.nlm.nih.gov/8044122/'
   instructions:
-    'In answering this questionnaire think about the last week and your main substance groups. Please indicate the answer that is most appropriate to you.',
+    'In answering this questionnaire think about the last week and your main substance groups. Please indicate the answers that are most appropriate to you.',
   score:
-    'Each of the options on the 7-point likert scale correspond with the numbers 1 - 7 (1 being "Strongly Disagree" and 7 being "Strongly Agree") respectively. Add up the points from each chosen response to get the total score.',
+    'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “Never,” “Sometimes,” “Often,” and “Nearly Always.” LDQ total score for the ten items ranges from 0 to 30.',
   interpretation:
-    'Higher scores indicate higher levels of satisfaction with life as follows: 30 – 35 high satisfaction; 25 - 29 moderately high satisfaction; 20 – 24 average satisfaction; 15 – 19 below average satisfaction; 10 – 14 dissatisfaction; 5 – 9 extreme dissatisfaction.',
+    'Dependence is a continuous data variable; however, suggested cut-off scores are: low dependence <=10; moderate dependence 11-20; severe dependence >=21. The reliable change score is >=4 and functional population scores are male <10 female <5.',
   selfAdmin: true,
-  minMinutes: 0,
-  maxMinutes: 1,
+  minMinutes: 2,
+  maxMinutes: 5,
   attribution:
-    'Developed by Ed Diener, Robert A. Emmons, Randy J. Larsen and Sharon Griffin.',
+    'Raistrick, D., Bradshaw, J., Tober, G., et al. (1994) Development of the Leeds Dependence Questionnaire (LDQ): a questionnaire to measure alcohol and opiate dependence in the context of a treatment evaluation package. Addiction, 89, 563–72.',
   chartData: {
     datapoints: (tests) => {
       const points = [];
@@ -30,7 +30,11 @@ const SWLS = {
           Number(res.s1q3) +
           Number(res.s1q4) +
           Number(res.s1q5) +
-          5;
+          Number(res.s1q6) +
+          Number(res.s1q7) +
+          Number(res.s1q8) +
+          Number(res.s1q9) +
+          Number(res.s1q10);
         points.push(sumRes);
       });
       return points;
@@ -41,8 +45,8 @@ const SWLS = {
       yAxes: [
         {
           ticks: {
-            max: 35,
-            min: 5,
+            max: 30,
+            min: 0,
             stepSize: 5,
           },
         },
@@ -51,24 +55,22 @@ const SWLS = {
     annotation: {
       drawTime: 'beforeDatasetsDraw',
       annotations: [
-        horizontalAnnotation('5', 'extreme dissatisfaction', 'transparent'),
-        horizontalAnnotation('10', 'dissatisfaction'),
-        horizontalAnnotation('15', 'below average satisfaction'),
-        horizontalAnnotation('20', 'average satisfaction'),
-        horizontalAnnotation('25', 'moderately high satisfaction'),
-        horizontalAnnotation('30', 'high satisfaction'),
+        horizontalAnnotation('1', 'low dependence', 'transparent'),
+        horizontalAnnotation('11', 'moderate dependence'),
+        horizontalAnnotation('21', 'severe dependence'),
       ],
     },
   },
   sections: [
     {
       id: 1,
-      instructions: 'How much do you agree or disagree with each statement?',
+      instructions:
+        'Think about your drinking and drug use over the last month...',
       questions: [
         {
           id: 's1q1',
           type: 'Radio',
-          stem: 'In most ways my life is close to my ideal.',
+          stem: 'Do you Wnd yourself thinking about when you will next be able to have another drink or take drugs?',
           scale: scaleAgreement5,
         },
         {

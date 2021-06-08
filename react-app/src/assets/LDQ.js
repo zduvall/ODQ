@@ -9,11 +9,11 @@ const LDQ = {
   target: 'substance dependence',
   link: 'https://www.result4addiction.net/compare-universal-dependence', // alternative: 'https://pubmed.ncbi.nlm.nih.gov/8044122/'
   instructions:
-    'In answering this questionnaire think about the last week and your main substance groups. Please indicate the answers that are most appropriate to you.',
+    'In answering this questionnaire think about the last month and your main substance groups. Please indicate the answers that are most appropriate to you.',
   score:
-    'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “Never,” “Sometimes,” “Often,” and “Nearly Always.” LDQ total score for the ten items ranges from 0 to 30.',
+    'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “Never,” “Sometimes,” “Often,” and “Nearly Always.” A total score on the LDQ for the ten items ranges from 0 to 30.',
   interpretation:
-    'Dependence is a continuous data variable; however, suggested cut-off scores are: low dependence <=10; moderate dependence 11-20; severe dependence >=21. The reliable change score is >=4 and functional population scores are male <10 female <5.',
+    'Dependence is a continuous data variable; however, suggested cut-off scores are: low dependence <=10; moderate dependence 11-20; severe dependence >=21. The reliable change score is >=4, and functional population scores are male <10 female <5.',
   selfAdmin: true,
   minMinutes: 2,
   maxMinutes: 5,

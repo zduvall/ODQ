@@ -1,6 +1,6 @@
 import { horizontalAnnotation, scaleFrequency2 } from './zUtils';
 
-const SWLS = {
+const LDQ = {
   abbr: 'LDQ',
   code: 'LDQ',
   name: 'Leeds Dependence Questionnaire',
@@ -76,25 +76,55 @@ const SWLS = {
         {
           id: 's1q2',
           type: 'Radio',
-          stem: 'The conditions of my life are excellent.',
+          stem: 'Is drinking or taking drugs more important than anything else you might do during the day?',
           scale: scaleFrequency2,
         },
         {
           id: 's1q3',
           type: 'Radio',
-          stem: 'I am satisfied with life.',
+          stem: 'Do you feel that your need for drink or drugs is too strong to control?',
           scale: scaleFrequency2,
         },
         {
           id: 's1q4',
           type: 'Radio',
-          stem: 'So far I have gotten the important things I want in life.',
+          stem: 'Do you plan your days around getting and taking drink or drugs?',
           scale: scaleFrequency2,
         },
         {
           id: 's1q5',
           type: 'Radio',
-          stem: 'If I could live my life over, I would change almost nothing.',
+          stem: 'Do you drink or take drugs in a particular way to increase the effect it gives you?',
+          scale: scaleFrequency2,
+        },
+        {
+          id: 's1q6',
+          type: 'Radio',
+          stem: 'Do you drink or take drugs morning, afternoon and evening?',
+          scale: scaleFrequency2,
+        },
+        {
+          id: 's1q7',
+          type: 'Radio',
+          stem: 'Do you feel you have to carry on drinking or taking drugs once you have started?',
+          scale: scaleFrequency2,
+        },
+        {
+          id: 's1q8',
+          type: 'Radio',
+          stem: 'Is getting an effect more important than the particular drink or drug you take?',
+          scale: scaleFrequency2,
+        },
+        {
+          id: 's1q9',
+          type: 'Radio',
+          stem: 'Do you want to take more drink or drugs when the effects start to wear off?',
+          scale: scaleFrequency2,
+        },
+        {
+          id: 's1q10',
+          type: 'Radio',
+          stem: 'Do you find it diffcult to cope with life without drink or drugs?',
           scale: scaleFrequency2,
         },
       ],
@@ -102,4 +132,4 @@ const SWLS = {
   ],
 };
 
-export default SWLS;
+export default LDQ;

@@ -1,15 +1,15 @@
 import { horizontalAnnotation, scaleAgreement5 } from './zUtils';
 
 const SWLS = {
-  abbr: 'BR-WAI',
-  code: 'BRWAI',
-  name: 'Satisfaction with Life Scale',
+  abbr: 'LDQ',
+  code: 'LDQ',
+  name: 'Leeds Dependence Questionnaire',
   description:
-    "The SWLS is a short 5-item instrument designed to measure global cognitive judgments of satisfaction with one's life.",
-  target: 'life satisfaction',
-  link: 'http://labs.psychology.illinois.edu/~ediener/SWLS.html',
+    'The LDQ is a 10-item questionnaire designed to measure severity of dependence on any drug including alcohol.',
+  target: 'substance dependence',
+  link: 'https://pubmed.ncbi.nlm.nih.gov/8044122/',
   instructions:
-    'Below are five statements with which you may agree or disagree. Please be open and honest in your responding.',
+    'In answering this questionnaire think about the last week and your main substance groups. Please indicate the answer that is most appropriate to you.',
   score:
     'Each of the options on the 7-point likert scale correspond with the numbers 1 - 7 (1 being "Strongly Disagree" and 7 being "Strongly Agree") respectively. Add up the points from each chosen response to get the total score.',
   interpretation:

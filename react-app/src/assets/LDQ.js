@@ -1,4 +1,4 @@
-import { horizontalAnnotation, scaleAgreement5 } from './zUtils';
+import { horizontalAnnotation, scaleFrequency2 } from './zUtils';
 
 const SWLS = {
   abbr: 'LDQ',
@@ -70,32 +70,32 @@ const SWLS = {
         {
           id: 's1q1',
           type: 'Radio',
-          stem: 'Do you Wnd yourself thinking about when you will next be able to have another drink or take drugs?',
-          scale: scaleAgreement5,
+          stem: 'Do you find yourself thinking about when you will next be able to have another drink or take drugs?',
+          scale: scaleFrequency2,
         },
         {
           id: 's1q2',
           type: 'Radio',
           stem: 'The conditions of my life are excellent.',
-          scale: scaleAgreement5,
+          scale: scaleFrequency2,
         },
         {
           id: 's1q3',
           type: 'Radio',
           stem: 'I am satisfied with life.',
-          scale: scaleAgreement5,
+          scale: scaleFrequency2,
         },
         {
           id: 's1q4',
           type: 'Radio',
           stem: 'So far I have gotten the important things I want in life.',
-          scale: scaleAgreement5,
+          scale: scaleFrequency2,
         },
         {
           id: 's1q5',
           type: 'Radio',
           stem: 'If I could live my life over, I would change almost nothing.',
-          scale: scaleAgreement5,
+          scale: scaleFrequency2,
         },
       ],
     },

@@ -19,6 +19,13 @@ export const scaleFrequency = [
   { value: 3, label: 'Nearly every day' },
 ];
 
+export const scaleFrequency2 = [
+  { value: 0, label: 'Never' },
+  { value: 1, label: 'Sometimes' },
+  { value: 2, label: 'Often' },
+  { value: 3, label: 'Nearly Always' },
+];
+
 // PCL-5
 export const scaleIntensity = [
   { value: 0, label: 'Not at all' },

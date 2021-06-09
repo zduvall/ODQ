@@ -3,22 +3,21 @@ import { horizontalAnnotation, scaleFrequency2 } from './zUtils';
 const BGQ = {
   abbr: 'BGQ',
   code: 'BGQ',
-  name: 'Leeds Dependence Questionnaire',
+  name: 'Brief Grief Questionnaire',
   description:
     'The BGQ is a 10-item questionnaire designed to measure severity of dependence on any drug including alcohol.',
   target: 'substance dependence',
-  link: 'https://www.result4addiction.net/compare-universal-dependence', // alternative: 'https://pubmed.ncbi.nlm.nih.gov/8044122/'
+  link: 'https://socialsuitehq.com/product/brief-grief-questionnaire-bgq/',
   instructions:
     'In answering this questionnaire think about the last month and your main substance groups. Please indicate the answers that are most appropriate to you.',
   score:
-    'Scores of 0, 1, 2, and 3 are assigned to the response categories, respectively, of “Never,” “Sometimes,” “Often,” and “Nearly Always.” A total score on the BGQ for the ten items ranges from 0 to 30.',
+    'The BGQ scale ranges from 0 to 2, with 0 = “Not at all”, 1 = “Somewhat”, and 2 = “A lot”. A score of 5 or more may be suggestive of the presence of complicated grief; however, a full evaluation by a clinician is necessary to make this diagnosis.',
   interpretation:
     'Dependence is a continuous data variable; however, suggested cut-off scores are: low dependence <=10; moderate dependence 11-20; severe dependence >=21. The reliable change score is >=4, and functional population scores are male <10 female <5.',
   selfAdmin: true,
   minMinutes: 2,
   maxMinutes: 5,
-  attribution:
-    'Raistrick, D., Bradshaw, J., Tober, G., et al. (1994) Development of the Leeds Dependence Questionnaire (BGQ): a questionnaire to measure alcohol and opiate dependence in the context of a treatment evaluation package. Addiction, 89, 563–72.',
+  attribution: 'Dr Katherine Shear, Dr Susan Essock',
   chartData: {
     datapoints: (tests) => {
       const points = [];

@@ -54,13 +54,11 @@ export const scaleAgreement7 = [
   { value: 6, label: 'Strongly Agree' },
 ];
 
-// BR-WAI
-export const scaleAgreement5 = [
-  { value: 1, label: 'Strongly Disagree' },
-  { value: 2, label: 'Disagree' },
-  { value: 3, label: 'Neutral' },
-  { value: 4, label: 'Agree' },
-  { value: 5, label: 'Strongly Agree' },
+// BGQ
+export const scaleAgreement3 = [
+  { value: 0, label: 'Not at all' },
+  { value: 1, label: 'Somewhat' },
+  { value: 2, label: 'A lot' },
 ];
 
 // for chart annotations

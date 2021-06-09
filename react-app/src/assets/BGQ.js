@@ -1,4 +1,4 @@
-import { horizontalAnnotation, scaleFrequency2 } from './zUtils';
+import { horizontalAnnotation, scaleAgreement3 } from './zUtils';
 
 const BGQ = {
   abbr: 'BGQ',
@@ -28,12 +28,7 @@ const BGQ = {
           Number(res.s1q2) +
           Number(res.s1q3) +
           Number(res.s1q4) +
-          Number(res.s1q5) +
-          Number(res.s1q6) +
-          Number(res.s1q7) +
-          Number(res.s1q8) +
-          Number(res.s1q9) +
-          Number(res.s1q10);
+          Number(res.s1q5);
         points.push(sumRes);
       });
       return points;
@@ -69,62 +64,32 @@ const BGQ = {
         {
           id: 's1q1',
           type: 'Radio',
-          stem: 'Do you find yourself thinking about when you will next be able to have another drink or take drugs?',
-          scale: scaleFrequency2,
+          stem: 'How much are you having trouble accepting the death of ________________ ?',
+          scale: scaleAgreement3,
         },
         {
           id: 's1q2',
           type: 'Radio',
-          stem: 'Is drinking or taking drugs more important than anything else you might do during the day?',
-          scale: scaleFrequency2,
+          stem: 'How much does your grief (sadness and longing) interfere with your life?',
+          scale: scaleAgreement3,
         },
         {
           id: 's1q3',
           type: 'Radio',
-          stem: 'Do you feel that your need for drink or drugs is too strong to control?',
-          scale: scaleFrequency2,
+          stem: 'How much are you having images or thoughts of ________________ when s/he died or other images or thoughts about ________________ that really bother you?',
+          scale: scaleAgreement3,
         },
         {
           id: 's1q4',
           type: 'Radio',
-          stem: 'Do you plan your days around getting and taking drink or drugs?',
-          scale: scaleFrequency2,
+          stem: 'Are there things you used to do when ________________ was alive that you don’t feel comfortable doing anymore, that you avoid? Like going somewhere you went with him/her, or doing things you used to enjoy together? Or avoiding looking at pictures or talking about ________________ ? How much are you avoiding these things?',
+          scale: scaleAgreement3,
         },
         {
           id: 's1q5',
           type: 'Radio',
-          stem: 'Do you drink or take drugs in a particular way to increase the effect it gives you?',
-          scale: scaleFrequency2,
-        },
-        {
-          id: 's1q6',
-          type: 'Radio',
-          stem: 'Do you drink or take drugs morning, afternoon and evening?',
-          scale: scaleFrequency2,
-        },
-        {
-          id: 's1q7',
-          type: 'Radio',
-          stem: 'Do you feel you have to carry on drinking or taking drugs once you have started?',
-          scale: scaleFrequency2,
-        },
-        {
-          id: 's1q8',
-          type: 'Radio',
-          stem: 'Is getting an effect more important than the particular drink or drug you take?',
-          scale: scaleFrequency2,
-        },
-        {
-          id: 's1q9',
-          type: 'Radio',
-          stem: 'Do you want to take more drink or drugs when the effects start to wear off?',
-          scale: scaleFrequency2,
-        },
-        {
-          id: 's1q10',
-          type: 'Radio',
-          stem: 'Do you find it diffcult to cope with life without drink or drugs?',
-          scale: scaleFrequency2,
+          stem: 'How much are you feeling cut off or distant from other people since ________________ died, even people you used to be close to like family or friends?',
+          scale: scaleAgreement3,
         },
       ],
     },

@@ -5,18 +5,18 @@ const BGQ = {
   code: 'BGQ',
   name: 'Brief Grief Questionnaire',
   description:
-    'The BCQ is a 5-item self-report or interview instrument for screening complicated grief. The BCQ is particularly useful for clinicians or programs looking to measure the extent of complicated grief symptoms before, during and after an intervention. .',
+    'The BCQ is a 5-item self-report or interview instrument for screening complicated grief. The BCQ is particularly useful for clinicians or programs looking to measure the extent of complicated grief symptoms before, during and after an intervention.',
   target: 'substance dependence',
   link: 'https://socialsuitehq.com/product/brief-grief-questionnaire-bgq/',
   instructions:
     'Please indicate the answers that are most appropriate to you based on the scale provided.',
   score:
-    'The BGQ scale ranges from 0 to 2, with 0 = “Not at all”, 1 = “Somewhat”, and 2 = “A lot”.',
+    'The BGQ scale ranges from 0 to 2, with 0 = “Not at all”, 1 = “Somewhat”, and 2 = “A lot”, with a max score of 10',
   interpretation:
     'A score of 5 or more may be suggestive of the presence of complicated grief; however, a full evaluation by a clinician is necessary to make this diagnosis.',
   selfAdmin: true,
-  minMinutes: 2,
-  maxMinutes: 5,
+  minMinutes: 1,
+  maxMinutes: 3,
   attribution: 'Dr Katherine Shear, Dr Susan Essock',
   chartData: {
     datapoints: (tests) => {
@@ -39,27 +39,22 @@ const BGQ = {
       yAxes: [
         {
           ticks: {
-            max: 30,
+            max: 10,
             min: 0,
-            stepSize: 5,
+            stepSize: 2,
           },
         },
       ],
     },
     annotation: {
       drawTime: 'beforeDatasetsDraw',
-      annotations: [
-        horizontalAnnotation('1', 'low dependence', 'transparent'),
-        horizontalAnnotation('11', 'moderate dependence'),
-        horizontalAnnotation('21', 'severe dependence'),
-      ],
+      annotations: [horizontalAnnotation('5', 'possible complicated grief')],
     },
   },
   sections: [
     {
       id: 1,
-      instructions:
-        'Think about your drinking and drug use over the last month...',
+      instructions: 'With regards to the individual you lost...',
       questions: [
         {
           id: 's1q1',

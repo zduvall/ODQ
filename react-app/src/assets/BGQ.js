@@ -5,15 +5,15 @@ const BGQ = {
   code: 'BGQ',
   name: 'Brief Grief Questionnaire',
   description:
-    'The BGQ is a 10-item questionnaire designed to measure severity of dependence on any drug including alcohol.',
+    'The BCQ is a 5-item self-report or interview instrument for screening complicated grief. The BCQ is particularly useful for clinicians or programs looking to measure the extent of complicated grief symptoms before, during and after an intervention. .',
   target: 'substance dependence',
   link: 'https://socialsuitehq.com/product/brief-grief-questionnaire-bgq/',
   instructions:
-    'In answering this questionnaire think about the last month and your main substance groups. Please indicate the answers that are most appropriate to you.',
+    'Please indicate the answers that are most appropriate to you based on the scale provided.',
   score:
-    'The BGQ scale ranges from 0 to 2, with 0 = “Not at all”, 1 = “Somewhat”, and 2 = “A lot”. A score of 5 or more may be suggestive of the presence of complicated grief; however, a full evaluation by a clinician is necessary to make this diagnosis.',
+    'The BGQ scale ranges from 0 to 2, with 0 = “Not at all”, 1 = “Somewhat”, and 2 = “A lot”.',
   interpretation:
-    'Dependence is a continuous data variable; however, suggested cut-off scores are: low dependence <=10; moderate dependence 11-20; severe dependence >=21. The reliable change score is >=4, and functional population scores are male <10 female <5.',
+    'A score of 5 or more may be suggestive of the presence of complicated grief; however, a full evaluation by a clinician is necessary to make this diagnosis.',
   selfAdmin: true,
   minMinutes: 2,
   maxMinutes: 5,

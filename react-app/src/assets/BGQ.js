@@ -6,7 +6,7 @@ const BGQ = {
   name: 'Brief Grief Questionnaire',
   description:
     'The BCQ is a 5-item self-report or interview instrument for screening complicated grief. The BCQ is particularly useful for clinicians or programs looking to measure the extent of complicated grief symptoms before, during and after an intervention.',
-  target: 'substance dependence',
+  target: 'complicated grief',
   link: 'https://socialsuitehq.com/product/brief-grief-questionnaire-bgq/',
   instructions:
     'Please indicate the answers that are most appropriate to you based on the scale provided.',

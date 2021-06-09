@@ -1,4 +1,5 @@
 import ACE from './ACE';
+import BGQ from './BGQ';
 import LDQ from './LDQ';
 import GAD7 from './GAD7';
 import PCL5 from './PCL5';
@@ -6,7 +7,7 @@ import PHQ9 from './PHQ9';
 import SWLS from './SWLS';
 
 // if add new tests, also update test_form.py
-const tests = { ACE, LDQ, GAD7, PCL5, PHQ9, SWLS };
+const tests = { ACE, BGQ, LDQ, GAD7, PCL5, PHQ9, SWLS };
 // if change free tests, also update client_routes.py
 export const freeTests = [ACE.code, SWLS.code];
 

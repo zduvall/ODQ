@@ -55,7 +55,7 @@ const LDQ = {
     annotation: {
       drawTime: 'beforeDatasetsDraw',
       annotations: [
-        horizontalAnnotation('1', 'low dependence', 'transparent'),
+        horizontalAnnotation('0', 'low dependence', 'transparent'),
         horizontalAnnotation('11', 'moderate dependence'),
         horizontalAnnotation('21', 'severe dependence'),
       ],

@@ -117,6 +117,8 @@ def add_payment_info():
             expand=["latest_invoice.payment_intent"],
         )
 
+        # I set this up in case I ever had more than one product, in order to
+        # dynamically store the subscription type. Right now there's only 1.
         # make sure to update this in addition to priceID in Payment3.js if change subscription price
         product_dict = {"prod_Jduf0NBJjssJpL": 1}
 

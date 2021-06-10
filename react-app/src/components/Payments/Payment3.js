@@ -33,6 +33,7 @@ export default function Payment1() {
     setErrors([]);
     setProcessingTo(true);
 
+    // make sure to update this in addition to product_dict in payment_routes.py if change subscription price
     const priceId = 'price_1J0cqNJUL0dIO0rKV44p2IAR';
 
     const res = await dispatch(

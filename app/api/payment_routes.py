@@ -117,7 +117,8 @@ def add_payment_info():
             expand=["latest_invoice.payment_intent"],
         )
 
-        product_dict = {"prod_JGiarSkv0bSEhu": 1}
+        # make sure to update this in addition to priceID in Payment3.js if change subscription price
+        product_dict = {"prod_Jduf0NBJjssJpL": 1}
 
         subType = product_dict[subscription["items"]["data"][0]["plan"]["product"]]
 

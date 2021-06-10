@@ -1,7 +1,6 @@
-import { horizontalAnnotation, scaleAgreement } from './zUtils';
+import { horizontalAnnotation, scaleAgreement7 } from './zUtils';
 
 const SWLS = {
-  id: 4,
   abbr: 'SWLS',
   code: 'SWLS',
   name: 'Satisfaction with Life Scale',
@@ -70,31 +69,31 @@ const SWLS = {
           id: 's1q1',
           type: 'Radio',
           stem: 'In most ways my life is close to my ideal.',
-          scale: scaleAgreement,
+          scale: scaleAgreement7,
         },
         {
           id: 's1q2',
           type: 'Radio',
           stem: 'The conditions of my life are excellent.',
-          scale: scaleAgreement,
+          scale: scaleAgreement7,
         },
         {
           id: 's1q3',
           type: 'Radio',
           stem: 'I am satisfied with life.',
-          scale: scaleAgreement,
+          scale: scaleAgreement7,
         },
         {
           id: 's1q4',
           type: 'Radio',
           stem: 'So far I have gotten the important things I want in life.',
-          scale: scaleAgreement,
+          scale: scaleAgreement7,
         },
         {
           id: 's1q5',
           type: 'Radio',
           stem: 'If I could live my life over, I would change almost nothing.',
-          scale: scaleAgreement,
+          scale: scaleAgreement7,
         },
       ],
     },

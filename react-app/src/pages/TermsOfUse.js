@@ -24,7 +24,10 @@ export default function TermsOfUse() {
           Information on this website should not be used by patients to
           self-diagnose a mental health or other condition. Patients should
           always consult with a mental health or other health care professional
-          for advice or information about a diagnosis and treatment.
+          for advice or information about a diagnosis and treatment. Information
+          provided on this website, including results of questionnaires, is not
+          exhaustive and shall not be construed as medical advice or a treatment
+          recommendation by eDOT.
         </p>
         <p>
           Many questionnaires on this website are based on patient self-report.

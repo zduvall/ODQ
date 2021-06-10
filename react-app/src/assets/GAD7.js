@@ -5,7 +5,6 @@ import {
 } from './zUtils';
 
 const GAD7 = {
-  id: 2,
   abbr: 'GAD-7',
   code: 'GAD7',
   name: 'Generalized Anxiety Disorder-7',

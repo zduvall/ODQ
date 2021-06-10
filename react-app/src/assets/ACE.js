@@ -1,7 +1,6 @@
 import { horizontalAnnotation, scaleYesNo } from './zUtils';
 
 const ACE = {
-  id: 3,
   abbr: 'ACE',
   code: 'ACE',
   name: 'Adverse Childhood Experience Questionnaire',

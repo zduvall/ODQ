@@ -62,7 +62,7 @@ export default function SubscriptionInfo() {
                   Premium Subscription{' '}
                   <i
                     title={
-                      'As a subscribing user, you have access to all tests.'
+                      'Premium test. As a subscribing user, you have access to all tests.'
                     }
                     className='fas fa-medal medal-w-title primary-title'
                   ></i>

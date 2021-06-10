@@ -19,6 +19,13 @@ export const scaleFrequency = [
   { value: 3, label: 'Nearly every day' },
 ];
 
+export const scaleFrequency2 = [
+  { value: 0, label: 'Never' },
+  { value: 1, label: 'Sometimes' },
+  { value: 2, label: 'Often' },
+  { value: 3, label: 'Nearly Always' },
+];
+
 // PCL-5
 export const scaleIntensity = [
   { value: 0, label: 'Not at all' },
@@ -37,7 +44,7 @@ export const scaleDifficulty = [
 ];
 
 // SWLS
-export const scaleAgreement = [
+export const scaleAgreement7 = [
   { value: 0, label: 'Strongly Disagree' },
   { value: 1, label: 'Disagree' },
   { value: 2, label: 'Slightly Disagree' },
@@ -45,6 +52,13 @@ export const scaleAgreement = [
   { value: 4, label: 'Slightly Agree' },
   { value: 5, label: 'Agree' },
   { value: 6, label: 'Strongly Agree' },
+];
+
+// BGQ
+export const scaleAgreement3 = [
+  { value: 0, label: 'Not at all' },
+  { value: 1, label: 'Somewhat' },
+  { value: 2, label: 'A lot' },
 ];
 
 // for chart annotations

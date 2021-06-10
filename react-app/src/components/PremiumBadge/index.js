@@ -7,7 +7,7 @@ export default function PremiumBadge() {
     <i
       title={
         subType
-          ? 'As a subscribing user, you have access to premium tests.'
+          ? 'Premium test. As a subscribing user, you have access to all tests.'
           : 'Subscribing users have access to premium tests'
       }
       className='fas fa-medal medal-w-title'

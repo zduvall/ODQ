@@ -2,17 +2,12 @@ import json
 from datetime import date
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, BooleanField, DateTimeField
-from wtforms.validators import (
-    DataRequired,
-    ValidationError,
-    Length,
-    InputRequired,
-)
+from wtforms import StringField, IntegerField, DateTimeField
+from wtforms.validators import DataRequired, ValidationError
 
 
 def validate_code(form, testCode):
-    valid_codes = ["ACE", "GAD7", "PCL5", "PHQ9", "SWLS"]
+    valid_codes = ["ACE", "BGQ", "LDQ", "GAD7", "PCL5", "PHQ9", "SWLS"]
     if testCode.data not in valid_codes:
         raise ValidationError("Please provide a valid test code")
 

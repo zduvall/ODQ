@@ -26,9 +26,9 @@ export default function SubscriptionInfo() {
   };
 
   useEffect(() => {
-    if (sessionUser.subType && new Date(nextBillDate) < new Date()) {
+    // if (sessionUser.subType && new Date(nextBillDate) < new Date()) {
       dispatch(updateNextBillDate(stripeSubId));
-    }
+    // }
   }, [dispatch, sessionUser.subType, stripeSubId, nextBillDate]);
 
   // ------ lazy components ------
@@ -98,14 +98,14 @@ export default function SubscriptionInfo() {
 
           {!sessionUser.subType && (
             <p className='tertiary-text' style={{ fontSize: '0.9rem' }}>
-              (Subscribe for $7.99 / month to access all tests)
+              (Subscribe for $3.99 / month to access all tests)
             </p>
           )}
           {!!sessionUser.subType && (
             <p>
               <span className='underline'>Next Payment</span>:{' '}
               <span className='tertiary-text'>
-                $7.99 on {new Date(nextBillDate).toLocaleDateString()}
+                $3.99 on {new Date(nextBillDate).toLocaleDateString()}
               </span>
             </p>
           )}

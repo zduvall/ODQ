@@ -173,11 +173,11 @@ def cancel_subscription():
         return {"errors": error}, 200
 
 
-@payment_routes.route("/get-bill-date/<path:stripeSubId>", methods=["GET"])
+@payment_routes.route("/get-bill-date-and-status/<path:stripeSubId>", methods=["GET"])
 @login_required
-def get_bill_date(stripeSubId):
+def get_bill_date_and_status(stripeSubId):
     """
-    Get the next billing date from stripe
+    Get the next billing date and subscription status from stripe
     """
     subscription = stripe.Subscription.retrieve(stripeSubId)
 

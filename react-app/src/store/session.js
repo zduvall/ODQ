@@ -177,8 +177,10 @@ export const cancelSubscription = (userId, stripeSubId) => async (dispatch) => {
   }
 };
 
-export const updateNextBillDate = (stripeSubId) => async (dispatch) => {
-  const res = await fetch(`/api/payments/get-bill-date-and-status/${stripeSubId}`);
+export const updateBillDateAndStatus = (stripeSubId) => async (dispatch) => {
+  const res = await fetch(
+    `/api/payments/get-bill-date-and-status/${stripeSubId}`
+  );
 
   if (res.ok) {
     const user = await res.json();

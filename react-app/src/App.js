@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 // import thunks
-import { authenticateUser, updateNextBillDate } from './store/session';
+import { authenticateUser, updateBillDateAndStatus } from './store/session';
 import { getClients } from './store/clients';
 
 // // components
@@ -51,7 +51,7 @@ function App() {
       console.log({ oneMonthLater }, new Date());
 
       if (oneMonthLater && oneMonthLater > new Date()) {
-        dispatch(updateNextBillDate(sessionUser.customer.stripeSubId));
+        dispatch(updateBillDateAndStatus(sessionUser.customer.stripeSubId));
       }
     }
   }, [

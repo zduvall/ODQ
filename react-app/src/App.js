@@ -36,29 +36,28 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (sessionUser && sessionUser !== 'do not load') {
+    if (loaded && sessionUser && sessionUser !== 'do not load') {
       dispatch(getClients(sessionUser.id));
     }
-  }, [dispatch, sessionUser]);
+  }, [dispatch, loaded, sessionUser]);
 
   useEffect(() => {
     // if subscribed, update bill dates and check to make sure subscription is
     // still active (only check after it's been one month since last bill date)
-    if (sessionUser.subType) {
+    if (loaded && sessionUser.subType) {
       let oneMoSncLstBill = new Date(sessionUser.customer.lastBillDate);
       oneMoSncLstBill.setMonth(oneMoSncLstBill.getMonth() + 1);
-
-      console.log({ oneMoSncLstBill }, new Date());
-
+      
       if (oneMoSncLstBill && oneMoSncLstBill > new Date()) {
         dispatch(updateBillDateAndStatus(sessionUser.customer.stripeSubId));
       }
     }
   }, [
     dispatch,
-    sessionUser.subType,
-    sessionUser.customer?.lastBillDate,
-    sessionUser.customer?.stripeSubId,
+    loaded,
+    sessionUser?.subType,
+    sessionUser?.customer?.lastBillDate,
+    sessionUser?.customer?.stripeSubId,
   ]);
 
   if (!loaded || sessionUser === 'do not load') {

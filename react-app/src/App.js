@@ -42,22 +42,22 @@ function App() {
   }, [dispatch, sessionUser]);
 
   useEffect(() => {
-    // check to make sure subscription is still active if user has a subscription
+    // if subscribed, update bill dates and check to make sure subscription is
+    // still active (only check after it's been one month since last bill date)
     if (sessionUser.subType) {
-      const lastBillDate = new Date(sessionUser?.customer.nextBillDate);
-      const oneMonthLater = new Date();
-      oneMonthLater.setMonth(lastBillDate.getMonth() + 1);
+      let oneMoSncLstBill = new Date(sessionUser.customer.lastBillDate);
+      oneMoSncLstBill.setMonth(oneMoSncLstBill.getMonth() + 1);
 
-      console.log({ oneMonthLater }, new Date());
+      console.log({ oneMoSncLstBill }, new Date());
 
-      if (oneMonthLater && oneMonthLater > new Date()) {
+      if (oneMoSncLstBill && oneMoSncLstBill > new Date()) {
         dispatch(updateBillDateAndStatus(sessionUser.customer.stripeSubId));
       }
     }
   }, [
     dispatch,
     sessionUser.subType,
-    sessionUser.customer?.nextBillDate,
+    sessionUser.customer?.lastBillDate,
     sessionUser.customer?.stripeSubId,
   ]);
 

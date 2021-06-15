@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 // import thunks
-import { authenticateUser } from './store/session';
+import { authenticateUser, updateNextBillDate } from './store/session';
 import { getClients } from './store/clients';
 
 // // components
@@ -40,6 +40,26 @@ function App() {
       dispatch(getClients(sessionUser.id));
     }
   }, [dispatch, sessionUser]);
+
+  useEffect(() => {
+    // check to make sure subscription is still active if user has a subscription
+    if (sessionUser.subType) {
+      const lastBillDate = new Date(sessionUser?.customer.nextBillDate);
+      const oneMonthLater = new Date();
+      oneMonthLater.setMonth(lastBillDate.getMonth() + 1);
+
+      console.log({ oneMonthLater }, new Date());
+
+      if (oneMonthLater && oneMonthLater > new Date()) {
+        dispatch(updateNextBillDate(sessionUser.customer.stripeSubId));
+      }
+    }
+  }, [
+    dispatch,
+    sessionUser.subType,
+    sessionUser.customer?.nextBillDate,
+    sessionUser.customer?.stripeSubId,
+  ]);
 
   if (!loaded || sessionUser === 'do not load') {
     return <LoadingNotFoundInvalid message={'Loading eDOT...'} />;

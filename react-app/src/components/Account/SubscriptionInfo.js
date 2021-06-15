@@ -1,9 +1,6 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, lazy, Suspense } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// import thunks
-import { updateNextBillDate } from '../../store/session';
 
 // import component
 // import ModalConfirmButton from '../ModalConfirmButton';
@@ -11,25 +8,18 @@ import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
 const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
 
 export default function SubscriptionInfo() {
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
 
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
 
-  const { brand, last4, expMonth, expYear, stripeSubId, nextBillDate } =
+  const { brand, last4, expMonth, expYear, nextBillDate } =
     sessionUser.customer || {}; // in case there isn't a customer attached yet.
 
   const handleUnsubscribe = () => {
     history.push('/unsubscribe');
   };
-
-  useEffect(() => {
-    // if (sessionUser.subType && new Date(nextBillDate) < new Date()) {
-      dispatch(updateNextBillDate(stripeSubId));
-    // }
-  }, [dispatch, sessionUser.subType, stripeSubId, nextBillDate]);
 
   // ------ lazy components ------
   const renderLoader = () => (

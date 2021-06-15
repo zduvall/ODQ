@@ -182,14 +182,12 @@ def get_bill_date_and_status(stripeSubId):
     subscription = stripe.Subscription.retrieve(stripeSubId)
 
     sub_status = subscription.status
-    last_payment_date = datetime.fromtimestamp(subscription.current_period_start)
-    bill_date = datetime.fromtimestamp(subscription.current_period_end)
-    print("-------------------------------------------------------")
-    print(sub_status)
-    print(last_payment_date)
-    print("-------------------------------------------------------")
+    last_bill_date = datetime.fromtimestamp(subscription.current_period_start)
+    next_bill_date = datetime.fromtimestamp(subscription.current_period_end)
 
-    current_user.customer.nextBillDate = bill_date
+    current_user.customer.subStatus = sub_status
+    current_user.customer.lastBillDate = last_bill_date
+    current_user.customer.nextBillDate = next_bill_date
 
     db.session.add(current_user)
     db.session.commit()

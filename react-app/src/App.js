@@ -47,8 +47,8 @@ function App() {
     if (loaded && sessionUser.subType) {
       let oneMoSncLstBill = new Date(sessionUser.customer.lastBillDate);
       oneMoSncLstBill.setMonth(oneMoSncLstBill.getMonth() + 1);
-      
-      if (oneMoSncLstBill && oneMoSncLstBill > new Date()) {
+
+      if (oneMoSncLstBill && oneMoSncLstBill < new Date()) {
         dispatch(updateBillDateAndStatus(sessionUser.customer.stripeSubId));
       }
     }

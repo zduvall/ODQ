@@ -13,7 +13,7 @@ import { useClientTestsContext } from '../../pages/Client';
 // import tests
 import tests from '../../assets';
 
-// import check subType
+// import check test subscription type and subscription status
 import checkTestSubTypeAndStatus from '../../services/checkTestSubTypeAndStatus';
 
 // import css
@@ -71,7 +71,8 @@ export default function TestDropDownNewUrl() {
           </option>
           {Object.values(tests).map((t) => (
             <option value={t.code} key={t.code}>
-              {t.abbr} {checkTestSubTypeAndStatus(t.code, sessionUser.subType) ? '' : '*'}
+              {t.abbr}{' '}
+              {checkTestSubTypeAndStatus(t.code, sessionUser) ? '' : '*'}
               {/* {checkTestSubTypeAndStatus(sessionUser.subType, t.code) ? '' : `${'\uf5a2'}`} */}
             </option>
           ))}

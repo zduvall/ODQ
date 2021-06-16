@@ -17,16 +17,16 @@ export default function ModalNewUrl({
   newUrl,
   test,
 }) {
-  const subType = useSelector((state) => state.session.user.subType);
+  const sessionUser = useSelector((state) => state.session.user);
 
   return (
     <>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          {checkTestSubTypeAndStatus(test.code, subType) && (
+          {checkTestSubTypeAndStatus(test.code, sessionUser) && (
             <NewUrl newUrl={newUrl} client={client} test={test} />
           )}
-          {!checkTestSubTypeAndStatus(test.code, subType) && (
+          {!checkTestSubTypeAndStatus(test.code, sessionUser) && (
             <PremiumRequired testAbbr={test.abbr} />
           )}
         </Modal>

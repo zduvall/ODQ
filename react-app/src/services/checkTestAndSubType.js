@@ -2,6 +2,9 @@
 import { freeTests } from '../assets';
 
 export default function checkTestAndSubType(code, subType) {
+  
+  const subStatus = {};
+
   if (!subType && !freeTests.includes(code)) {
     return false;
   }

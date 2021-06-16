@@ -10,7 +10,7 @@ export default function checkTestSubTypeAndStatus(code, sessionUser) {
 
   const { subType } = sessionUser;
 
-  // if the subscription type is not premium and the test is not free, false
+  // if the subscription type is not premium and the test is not free, return false
   if (!subType && !freeTests.includes(code)) {
     return false;
   }
@@ -23,7 +23,7 @@ export default function checkTestSubTypeAndStatus(code, sessionUser) {
       return false;
     }
   }
-  // in all other cases (subscriptin isn't active, but it's been less than one month since last bill) default to true
+  // in all other cases (subscriptin isn't active, but it's been less than one month since last bill), default to true
   return true;
 }
 

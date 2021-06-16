@@ -14,7 +14,7 @@ import { useClientTestsContext } from '../../pages/Client';
 import tests from '../../assets';
 
 // import check subType
-import checkSubType from '../../services/checkSubType';
+import checkTestAndSubType from '../../services/checkTestAndSubType';
 
 // import css
 import './Client.css';
@@ -71,8 +71,8 @@ export default function TestDropDownNewUrl() {
           </option>
           {Object.values(tests).map((t) => (
             <option value={t.code} key={t.code}>
-              {t.abbr} {checkSubType(t.code, sessionUser.subType) ? '' : '*'}
-              {/* {checkSubType(sessionUser.subType, t.code) ? '' : `${'\uf5a2'}`} */}
+              {t.abbr} {checkTestAndSubType(t.code, sessionUser.subType) ? '' : '*'}
+              {/* {checkTestAndSubType(sessionUser.subType, t.code) ? '' : `${'\uf5a2'}`} */}
             </option>
           ))}
         </select>

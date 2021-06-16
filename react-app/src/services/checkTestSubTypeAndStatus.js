@@ -3,9 +3,10 @@ import { freeTests } from '../assets';
 
 export default function checkTestSubTypeAndStatus(code, sessionUser) {
   const { subStatus, lastBillDate } = sessionUser.customer;
+  const activeOrTrial = ['active', 'trialing'].includes(subStatus);
 
-  // when they have an active subscription or it's a free test, just return true always
-  if (subStatus === 'active' || freeTests.includes(code)) return true;
+  // when they have an active/trial subscription or it's a free test, just return true always
+  if (activeOrTrial || freeTests.includes(code)) return true;
 
   const { subType } = sessionUser;
 
@@ -13,8 +14,8 @@ export default function checkTestSubTypeAndStatus(code, sessionUser) {
   if (!subType && !freeTests.includes(code)) {
     return false;
   }
-  // if the subscription type is premium and status is no longer active, they have one month of service from the last billing (so return false after 1 month)
-  if (subType && subStatus !== 'active') {
+  // if the subscription type is premium and status is no longer active/trial, they have one month of service from the last billing (so return false after 1 month)
+  if (subType && !activeOrTrial) {
     const endServiceDate = new Date(lastBillDate);
     endServiceDate.setMonth(endServiceDate.getMonth() + 1);
 

@@ -8,7 +8,7 @@ import PremiumRequired from './PremiumRequired';
 import { Modal } from '../../../context/Modal';
 
 // import check subscription type function
-import checkTestAndSubType from '../../../services/checkTestAndSubType';
+import checkTestSubTypeAndStatus from '../../../services/checkTestSubTypeAndStatus';
 
 export default function ModalNewUrl({
   showModal,
@@ -23,10 +23,10 @@ export default function ModalNewUrl({
     <>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          {checkTestAndSubType(test.code, subType) && (
+          {checkTestSubTypeAndStatus(test.code, subType) && (
             <NewUrl newUrl={newUrl} client={client} test={test} />
           )}
-          {!checkTestAndSubType(test.code, subType) && (
+          {!checkTestSubTypeAndStatus(test.code, subType) && (
             <PremiumRequired testAbbr={test.abbr} />
           )}
         </Modal>

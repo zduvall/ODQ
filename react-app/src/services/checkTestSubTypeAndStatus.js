@@ -14,8 +14,8 @@ export default function checkTestSubTypeAndStatus(code, sessionUser) {
   if (!subType && !freeTests.includes(code)) {
     return false;
   }
-  // if the subscription type is premium and status is no longer active/trial, they have one month of service from the last billing (so return false after 1 month)
-  if (subType && !activeOrTrial) {
+  // if the subscription type is premium and a payment fails, they have one month of service from the last billing (so return false after 1 month)
+  if (subType && subStatus === 'unpaid') {
     const endServiceDate = new Date(lastBillDate);
     endServiceDate.setMonth(endServiceDate.getMonth() + 1);
 

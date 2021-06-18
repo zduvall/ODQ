@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 // import components
 import Type from './AccountDetails/Type';
+import Access from './AccountDetails/Access';
 
 // import ModalConfirmButton from '../ModalConfirmButton';
 import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
@@ -46,17 +47,10 @@ export default function SubscriptionInfo() {
       <ModalConfirmButtonLazy />
       <div className='site__sub-section__data subscription-container'>
         <div className='lft-align'>
-
+          
           <Type subType={sessionUser.subType} />
-
-          <p>
-            <span className='underline'>Access</span>:{' '}
-            <span className='tertiary-text'>
-              {!!sessionUser.subType
-                ? 'all tests in eDOT database.'
-                : 'free tests in eDOT database'}
-            </span>
-          </p>
+          
+          <Access subType={sessionUser.subType} />
 
           <p>
             <span className='underline'>Billing</span>:{' '}

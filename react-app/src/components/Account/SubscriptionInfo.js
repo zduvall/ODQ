@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import Type from './AccountDetails/Type';
 import Access from './AccountDetails/Access';
 import Billing from './AccountDetails/Billing';
+import NextPayment from './AccountDetails/NextPayment';
 
 // import ModalConfirmButton from '../ModalConfirmButton';
 import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
@@ -51,7 +52,7 @@ export default function SubscriptionInfo() {
           <Type subType={sessionUser.subType} />
 
           <Access subType={sessionUser.subType} />
-          
+
           <Billing
             subType={sessionUser.subType}
             brand={brand}
@@ -65,14 +66,7 @@ export default function SubscriptionInfo() {
               (Subscribe for $3.99 / month to access all tests)
             </p>
           )}
-          {!!sessionUser.subType && (
-            <p>
-              <span className='underline'>Next Payment</span>:{' '}
-              <span className='tertiary-text'>
-                $3.99 on {new Date(nextBillDate).toLocaleDateString()}
-              </span>
-            </p>
-          )}
+          {!!sessionUser.subType && <NextPayment nextBillDate={nextBillDate} />}
         </div>
       </div>
       <div className='buttons-grp-colLrg-rowSml'>

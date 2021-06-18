@@ -1,4 +1,5 @@
-export default function Billing({ subType, brand, last4, expMonth, expYear }) {
+export default function Billing({ subType, customer }) {
+  const { brand, last4, expMonth, expYear } = customer || {}; // in case there isn't a customer attached yet.
   return (
     <p>
       <span className='underline'>Billing</span>:{' '}

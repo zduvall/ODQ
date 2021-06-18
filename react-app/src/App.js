@@ -44,7 +44,7 @@ function App() {
   useEffect(() => {
     // if subscribed, update bill dates and check to make sure subscription is
     // still active (only check after it's been one month since last bill date)
-    if (loaded && sessionUser.subType) {
+    if (loaded && sessionUser?.subType) {
       let oneMoSncLstBill = new Date(sessionUser.customer.lastBillDate);
       oneMoSncLstBill.setMonth(oneMoSncLstBill.getMonth() + 1);
 

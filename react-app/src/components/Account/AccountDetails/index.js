@@ -5,8 +5,7 @@ import InvitationToSubscribe from './InvitationToSubscribe';
 import NextPayment from './NextPayment';
 
 export default function AccountDetails({ sessionUser }) {
-  const { brand, last4, expMonth, expYear, nextBillDate } =
-    sessionUser.customer || {}; // in case there isn't a customer attached yet.
+  // const { nextBillDate } = sessionUser.customer || {}; // in case there isn't a customer attached yet.
 
   return (
     <div className='lft-align'>
@@ -14,16 +13,12 @@ export default function AccountDetails({ sessionUser }) {
 
       <Access subType={sessionUser.subType} />
 
-      <Billing
-        subType={sessionUser.subType}
-        brand={brand}
-        last4={last4}
-        expMonth={expMonth}
-        expYear={expYear}
-      />
+      <Billing subType={sessionUser.subType} customer={sessionUser?.customer} />
 
       {!sessionUser.subType && <InvitationToSubscribe />}
-      {!!sessionUser.subType && <NextPayment nextBillDate={nextBillDate} />}
+      {!!sessionUser.subType && (
+        <NextPayment nextBillDate={sessionUser?.customer?.nextBillDate} />
+      )}
     </div>
   );
 }

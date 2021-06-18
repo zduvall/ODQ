@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 // import components
 import AccountDetails from './AccountDetails';
+import SubscribeButton from './Buttons/SubscribeButton';
 
 // import ModalConfirmButton from '../ModalConfirmButton';
 import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
@@ -46,20 +47,7 @@ export default function SubscriptionInfo() {
         <AccountDetails sessionUser={sessionUser} />
       </div>
       <div className='buttons-grp-colLrg-rowSml'>
-        {!sessionUser.subType && (
-          <button
-            className='primary-button dashboard__button'
-            onClick={() => history.push('/payments/1')}
-            disabled={process.env.NODE_ENV === 'production'}
-            title={
-              process.env.NODE_ENV === 'production'
-                ? 'Subscription ability coming soon'
-                : ''
-            }
-          >
-            Subscribe
-          </button>
-        )}
+        {!sessionUser.subType && <SubscribeButton />}
         {!!sessionUser.subType && (
           <button
             className='delete-button dashboard__button'

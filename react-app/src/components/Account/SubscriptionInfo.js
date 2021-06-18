@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 // import components
 import AccountDetails from './AccountDetails';
 import SubscribeButton from './Buttons/SubscribeButton';
+import UnsubscribeButton from './Buttons/UnsubscribeButton';
 
 // import ModalConfirmButton from '../ModalConfirmButton';
 import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
@@ -49,12 +50,9 @@ export default function SubscriptionInfo() {
       <div className='buttons-grp-colLrg-rowSml'>
         {!sessionUser.subType && <SubscribeButton />}
         {!!sessionUser.subType && (
-          <button
-            className='delete-button dashboard__button'
-            onClick={() => setShowUnsubscribeModal(true)}
-          >
-            Unsubscribe
-          </button>
+          <UnsubscribeButton
+            setShowUnsubscribeModal={setShowUnsubscribeModal}
+          />
         )}
       </div>
     </div>

@@ -5,7 +5,6 @@ import InvitationToSubscribe from './InvitationToSubscribe';
 import NextPayment from './NextPayment';
 
 export default function AccountDetails({ sessionUser }) {
-  // const { nextBillDate } = sessionUser.customer || {}; // in case there isn't a customer attached yet.
 
   return (
     <div className='lft-align'>

@@ -3,11 +3,6 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // import components
-import Type from './AccountDetails/Type';
-import Access from './AccountDetails/Access';
-import Billing from './AccountDetails/Billing';
-import InvitationToSubscribe from './AccountDetails/InvitationToSubscribe';
-import NextPayment from './AccountDetails/NextPayment';
 import AccountDetails from './AccountDetails';
 
 // import ModalConfirmButton from '../ModalConfirmButton';
@@ -20,9 +15,6 @@ export default function SubscriptionInfo() {
   const sessionUser = useSelector((state) => state.session.user);
 
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
-
-  const { brand, last4, expMonth, expYear, nextBillDate } =
-    sessionUser.customer || {}; // in case there isn't a customer attached yet.
 
   const handleUnsubscribe = () => {
     history.push('/unsubscribe');

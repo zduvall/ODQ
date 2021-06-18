@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import Type from './AccountDetails/Type';
 import Access from './AccountDetails/Access';
 import Billing from './AccountDetails/Billing';
+import InvitationToSubscribe from './AccountDetails/InvitationToSubscribe';
 import NextPayment from './AccountDetails/NextPayment';
 
 // import ModalConfirmButton from '../ModalConfirmButton';
@@ -47,6 +48,7 @@ export default function SubscriptionInfo() {
   return (
     <div className='site__sub-section'>
       <ModalConfirmButtonLazy />
+
       <div className='site__sub-section__data subscription-container'>
         <div className='lft-align'>
           <Type subType={sessionUser.subType} />
@@ -61,11 +63,7 @@ export default function SubscriptionInfo() {
             expYear={expYear}
           />
 
-          {!sessionUser.subType && (
-            <p className='tertiary-text' style={{ fontSize: '0.9rem' }}>
-              (Subscribe for $3.99 / month to access all tests)
-            </p>
-          )}
+          {!sessionUser.subType && <InvitationToSubscribe />}
           {!!sessionUser.subType && <NextPayment nextBillDate={nextBillDate} />}
         </div>
       </div>

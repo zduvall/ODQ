@@ -3,7 +3,7 @@ export default function Access(subType) {
     <p>
       <span className='underline'>Access</span>:{' '}
       <span className='tertiary-text'>
-        {!!subType
+        {subType
           ? 'all tests in eDOT database.'
           : 'free tests in eDOT database'}
       </span>

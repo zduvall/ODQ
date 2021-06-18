@@ -3,7 +3,7 @@ export default function Type(subType) {
     <p>
       <span className='underline bold'>Type</span>:{' '}
       <span className='primary-text'>
-        {!!subType ? (
+        {subType ? (
           <>
             Premium Subscription{' '}
             <i

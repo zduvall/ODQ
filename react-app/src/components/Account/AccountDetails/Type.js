@@ -1,4 +1,4 @@
-export default function Type(subType) {
+export default function Type({ subType }) {
   return (
     <p>
       <span className='underline bold'>Type</span>:{' '}

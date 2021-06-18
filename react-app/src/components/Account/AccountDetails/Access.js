@@ -1,4 +1,4 @@
-export default function Access(subType) {
+export default function Access({ subType }) {
   return (
     <p>
       <span className='underline'>Access</span>:{' '}

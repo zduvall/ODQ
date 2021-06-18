@@ -1,5 +1,4 @@
 export default function Billing({ subType, brand, last4, expMonth, expYear }) {
-  console.log({ brand, last4, expMonth, expYear });
   return (
     <p>
       <span className='underline'>Billing</span>:{' '}

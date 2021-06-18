@@ -2,7 +2,9 @@ import { useState, lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-// import component
+// import components
+import Type from './AccountDetails/Type';
+
 // import ModalConfirmButton from '../ModalConfirmButton';
 import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
 const ModalConfirmButton = lazy(() => import('../ModalConfirmButton'));
@@ -44,24 +46,8 @@ export default function SubscriptionInfo() {
       <ModalConfirmButtonLazy />
       <div className='site__sub-section__data subscription-container'>
         <div className='lft-align'>
-          <p>
-            <span className='underline bold'>Type</span>:{' '}
-            <span className='primary-text'>
-              {!!sessionUser.subType ? (
-                <>
-                  Premium Subscription{' '}
-                  <i
-                    title={
-                      'Premium test. As a subscribing user, you have access to all tests.'
-                    }
-                    className='fas fa-medal medal-w-title primary-title'
-                  ></i>
-                </>
-              ) : (
-                'Free Account'
-              )}
-            </span>
-          </p>
+
+          <Type subType={sessionUser.subType} />
 
           <p>
             <span className='underline'>Access</span>:{' '}

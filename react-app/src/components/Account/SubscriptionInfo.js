@@ -8,6 +8,7 @@ import Access from './AccountDetails/Access';
 import Billing from './AccountDetails/Billing';
 import InvitationToSubscribe from './AccountDetails/InvitationToSubscribe';
 import NextPayment from './AccountDetails/NextPayment';
+import AccountDetails from './AccountDetails';
 
 // import ModalConfirmButton from '../ModalConfirmButton';
 import LoadingNotFoundInvalid from '../../components/LoadingNotFoundInvalid';
@@ -50,22 +51,7 @@ export default function SubscriptionInfo() {
       <ModalConfirmButtonLazy />
 
       <div className='site__sub-section__data subscription-container'>
-        <div className='lft-align'>
-          <Type subType={sessionUser.subType} />
-
-          <Access subType={sessionUser.subType} />
-
-          <Billing
-            subType={sessionUser.subType}
-            brand={brand}
-            last4={last4}
-            expMonth={expMonth}
-            expYear={expYear}
-          />
-
-          {!sessionUser.subType && <InvitationToSubscribe />}
-          {!!sessionUser.subType && <NextPayment nextBillDate={nextBillDate} />}
-        </div>
+        <AccountDetails sessionUser={sessionUser} />
       </div>
       <div className='buttons-grp-colLrg-rowSml'>
         {!sessionUser.subType && (

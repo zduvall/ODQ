@@ -51,6 +51,7 @@ export default function SubscriptionInfo() {
           <Type subType={sessionUser.subType} />
 
           <Access subType={sessionUser.subType} />
+          
           <Billing
             subType={sessionUser.subType}
             brand={brand}

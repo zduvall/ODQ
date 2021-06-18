@@ -4,7 +4,7 @@ export default function Billing({ subType, brand, last4, expMonth, expYear }) {
     <p>
       <span className='underline'>Billing</span>:{' '}
       <span className='tertiary-text'>
-        {!!subType ? (
+        {subType ? (
           <>
             {brand.charAt(0).toUpperCase() + brand.slice(1)} (***{last4}, exp:{' '}
             {expMonth}/{expYear.toString().slice(2)})

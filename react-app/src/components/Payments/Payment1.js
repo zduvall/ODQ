@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
@@ -14,6 +14,7 @@ import countryCodes from '../../services/countryCodes';
 
 export default function Payment1() {
   const history = useHistory();
+  const location = useLocation()
   const sessionUser = useSelector((state) => state.session.user);
   const { setBillingInfo } = usePaymentsContext();
 
@@ -58,7 +59,8 @@ export default function Payment1() {
 
     if (!customer.errors) {
       setBillingInfo(customer);
-      history.push('/payments/2');
+      history.push(`${location.pathname.slice(0,-1)}2`); // got to either '/payments/2' or '/payments/update/2'
+      // history.push('/payments/2');
     } else {
       setProcessingTo(false);
       setErrors(customer.errors);

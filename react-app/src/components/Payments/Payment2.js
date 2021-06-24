@@ -3,7 +3,7 @@
 // Nothing is updated in database at this point. Still nothing in redux store.
 
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
@@ -13,6 +13,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 export default function Payment1() {
   const history = useHistory();
+  const location = useLocation();
 
   const { billingInfo, setPaymentMethod } = usePaymentsContext();
 
@@ -41,7 +42,8 @@ export default function Payment1() {
 
       if (!paymentMethodRes.error) {
         setPaymentMethod(paymentMethodRes.paymentMethod);
-        history.push('/payments/3');
+        history.push(`${location.pathname.slice(0,-1)}3`); // got to appropriate page between '/payments/3' & '/payments/update/3'
+        // history.push('/payments/3');
       } else {
         setProcessingTo(false);
         setErrors([paymentMethodRes.error.message]);
@@ -53,8 +55,9 @@ export default function Payment1() {
   }
 
   useEffect(() => {
-    if (!billingInfo) history.push('/payments/1');
-  }, [billingInfo, history]);
+    if (!billingInfo) history.push(`${location.pathname.slice(0,-1)}1`); // got to appropriate page between '/payments/1' & '/payments/update/1'
+    // if (!billingInfo) history.push('/payments/1');
+  }, [billingInfo, history, location]);
 
   const cardElementOptions = {
     style: {
@@ -115,7 +118,7 @@ export default function Payment1() {
           <button
             className='secondary-button form__button dashboard__button'
             type='button'
-            onClick={() => history.push('/payments/1')}
+            onClick={() => history.push(`${location.pathname.slice(0,-1)}1`)} // got to appropriate page between '/payments/1' & '/payments/update/1'
           >
             Back
           </button>

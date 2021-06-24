@@ -23,8 +23,8 @@ export default function Payment1() {
   const [isProcessing, setProcessingTo] = useState();
 
   useEffect(() => {
-    if (!billingInfo || !paymentMethod) history.push('/payments/1');
-  }, [billingInfo, paymentMethod, history]);
+    if (!billingInfo || !paymentMethod) history.push(`${location.pathname.slice(0,-1)}1`); // got to appropriate page between '/payments/1' & '/payments/update/1'
+  }, [billingInfo, paymentMethod, history, location]);
 
   if (!billingInfo || !paymentMethod) return null;
 

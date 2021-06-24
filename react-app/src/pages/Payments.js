@@ -31,6 +31,7 @@ export default function Payments() {
 
   const { subPageId } = useParams('subPageId');
 
+  const [paymentURL, setPaymentURL] = useState('/payments/')
   const [billingInfo, setBillingInfo] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
 
@@ -38,7 +39,7 @@ export default function Payments() {
   useEffect(() => {
     // but don't redirect if they are subscribed and trying to update their payment
     if (sessionUser.subType && location.pathname.startsWith('/payments/update/')) {
-      return
+      setPaymentURL('/payments/update/')
     } else if (sessionUser.subType || process.env.NODE_ENV === 'production') {
       history.push('/account');
     }
@@ -78,7 +79,8 @@ export default function Payments() {
       value={{ billingInfo, setBillingInfo, paymentMethod, setPaymentMethod }}
     >
       <div className='site__page'>
-        <h1 className='primary-title'>Premium Subscription</h1>
+        {paymentURL === '/payments/' && <h1 className='primary-title'>Premium Subscription</h1>}
+        {paymentURL === '/payments/update/' && <h1 className='primary-title'>Update Billing Information</h1>}
         {subPageId === '1' && <Payment1Lazy />}
         {subPageId === '2' && <Payment2Lazy />}
         {subPageId === '3' && <Payment3Lazy />}

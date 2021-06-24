@@ -13,9 +13,9 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 export default function Payment1() {
   const history = useHistory();
-  const location = useLocation();
+  // const location = useLocation();
 
-  const { billingInfo, setPaymentMethod } = usePaymentsContext();
+  const { billingInfo, setPaymentMethod, paymentURL } = usePaymentsContext();
 
   // stripe
   const stripe = useStripe();
@@ -42,7 +42,7 @@ export default function Payment1() {
 
       if (!paymentMethodRes.error) {
         setPaymentMethod(paymentMethodRes.paymentMethod);
-        history.push(`${location.pathname.slice(0,-1)}3`); // got to appropriate page between '/payments/3' & '/payments/update/3'
+        history.push(`${paymentURL}3`); // got to appropriate page between '/payments/3' & '/payments/update/3'
       } else {
         setProcessingTo(false);
         setErrors([paymentMethodRes.error.message]);
@@ -54,8 +54,8 @@ export default function Payment1() {
   }
 
   useEffect(() => {
-    if (!billingInfo) history.push(`${location.pathname.slice(0,-1)}1`); // got to appropriate page between '/payments/1' & '/payments/update/1'
-  }, [billingInfo, history, location]);
+    if (!billingInfo) history.push(`${paymentURL}1`); // got to appropriate page between '/payments/1' & '/payments/update/1'
+  }, [billingInfo, history, paymentURL]);
 
   const cardElementOptions = {
     style: {
@@ -116,7 +116,7 @@ export default function Payment1() {
           <button
             className='secondary-button form__button dashboard__button'
             type='button'
-            onClick={() => history.push(`${location.pathname.slice(0,-1)}1`)} // got to appropriate page between '/payments/1' & '/payments/update/1'
+            onClick={() => history.push(`${paymentURL}1`)} // got to appropriate page between '/payments/1' & '/payments/update/1'
           >
             Back
           </button>

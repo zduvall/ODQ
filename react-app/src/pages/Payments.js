@@ -80,7 +80,7 @@ export default function Payments() {
     >
       <div className='site__page'>
         {paymentURL === '/payments/' && <h1 className='primary-title'>Premium Subscription</h1>}
-        {paymentURL === '/payments/update/' && <h1 className='primary-title'>Update Billing Information</h1>}
+        {paymentURL === '/payments/update/' && <h1 className='primary-title'>Update Billing</h1>}
         {subPageId === '1' && <Payment1Lazy />}
         {subPageId === '2' && <Payment2Lazy />}
         {subPageId === '3' && <Payment3Lazy />}

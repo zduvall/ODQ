@@ -46,9 +46,12 @@ export default function Payments() {
   }, [sessionUser, location, history]);
 
   // --------------------------------------------------------------------------------------------
-  // next thing to do is make it so this page can also be used for updating payment information.
-  // I'll probably need to use a different route to differentiate, and update the useEffect above
-  // Then I need to render account info differently when a payment fails
+  // next thing to do is make sure that when I'm on the route 'payments/update/:subPageId" I'm not
+  // creating a second subscription for the same product on the same customer. Maybe I should do it
+  // by passing another variable to the API and changing how my "/create-subscription" route works?
+  // I also still need to make sure I'm rendering account details for billing properly when a payment
+  // fails -- let them know they have 30 days to fix it (and then make sure stripe bills correctly
+  // when they do fix it)
   // https://stripe.com/docs/api/subscriptions/object
   // https://stripe.com/docs/testing
   // https://dashboard.stripe.com/settings/billing/automatic

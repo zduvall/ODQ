@@ -3,7 +3,7 @@
 // Nothing is updated in database at this point. Still nothing in redux store.
 
 import { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // import context
 import { usePaymentsContext } from '../../pages/Payments';
@@ -13,8 +13,6 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 export default function Payment1() {
   const history = useHistory();
-  // const location = useLocation();
-
   const { billingInfo, setPaymentMethod, paymentURL } = usePaymentsContext();
 
   // stripe

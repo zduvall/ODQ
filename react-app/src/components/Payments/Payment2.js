@@ -43,7 +43,6 @@ export default function Payment1() {
       if (!paymentMethodRes.error) {
         setPaymentMethod(paymentMethodRes.paymentMethod);
         history.push(`${location.pathname.slice(0,-1)}3`); // got to appropriate page between '/payments/3' & '/payments/update/3'
-        // history.push('/payments/3');
       } else {
         setProcessingTo(false);
         setErrors([paymentMethodRes.error.message]);
@@ -56,7 +55,6 @@ export default function Payment1() {
 
   useEffect(() => {
     if (!billingInfo) history.push(`${location.pathname.slice(0,-1)}1`); // got to appropriate page between '/payments/1' & '/payments/update/1'
-    // if (!billingInfo) history.push('/payments/1');
   }, [billingInfo, history, location]);
 
   const cardElementOptions = {

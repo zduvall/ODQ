@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // import thunk
 import { addPaymentMethod } from '../../store/session';
@@ -14,17 +14,16 @@ import { usePaymentsContext } from '../../pages/Payments';
 
 export default function Payment1() {
   const history = useHistory();
-  const location = useLocation();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const { billingInfo, paymentMethod } = usePaymentsContext();
+  const { billingInfo, paymentMethod, paymentURL } = usePaymentsContext();
 
   const [errors, setErrors] = useState([]);
   const [isProcessing, setProcessingTo] = useState();
 
   useEffect(() => {
-    if (!billingInfo || !paymentMethod) history.push(`${location.pathname.slice(0,-1)}1`); // got to appropriate page between '/payments/1' & '/payments/update/1'
-  }, [billingInfo, paymentMethod, history, location]);
+    if (!billingInfo || !paymentMethod) history.push(`${paymentURL}1`); // got to appropriate page between '/payments/1' & '/payments/update/1'
+  }, [billingInfo, paymentMethod, history, paymentURL]);
 
   if (!billingInfo || !paymentMethod) return null;
 
@@ -100,7 +99,7 @@ export default function Payment1() {
           <button
             className='secondary-button form__button dashboard__button'
             disabled={isProcessing}
-            onClick={() => history.push(`${location.pathname.slice(0,-1)}1`)} // got to appropriate page between '/payments/1' & '/payments/update/1'
+            onClick={() => history.push(`${paymentURL}1`)} // got to appropriate page between '/payments/1' & '/payments/update/1'
           >
             Restart
           </button>

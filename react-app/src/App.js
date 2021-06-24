@@ -117,6 +117,13 @@ function App() {
               <Account />
             </ProtectedRoute>
             <ProtectedRoute
+              path='/payments/update/:subPageId'
+              exact={true}
+              authenticated={!!sessionUser} 
+            >
+              <Payments />
+            </ProtectedRoute>
+            <ProtectedRoute
               path='/payments/:subPageId'
               exact={true}
               authenticated={!!sessionUser}

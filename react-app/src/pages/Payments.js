@@ -7,7 +7,7 @@ import {
   Suspense,
 } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 
 // import css
 import '../components/Payments/Payments.css';
@@ -26,6 +26,7 @@ export const usePaymentsContext = () => useContext(PaymentsContext);
 
 export default function Payments() {
   const history = useHistory();
+  const location = useLocation();
   const sessionUser = useSelector((state) => state.session.user);
 
   const { subPageId } = useParams('subPageId');
@@ -33,11 +34,24 @@ export default function Payments() {
   const [billingInfo, setBillingInfo] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
 
-  // redirect to account page if try to access payments page while already subscribed
+  // redirect to account page if try to access payments page while already subscribed (or if while in production)
   useEffect(() => {
-    if (sessionUser.subType || process.env.NODE_ENV === 'production')
+    // but don't redirect if they are subscribed and trying to update their payment
+    if (sessionUser.subType && location.pathname.startsWith('/payments/update/')) {
+      return
+    } else if (sessionUser.subType || process.env.NODE_ENV === 'production') {
       history.push('/account');
-  }, [sessionUser, history]);
+    }
+  }, [sessionUser, location, history]);
+
+  // --------------------------------------------------------------------------------------------
+  // next thing to do is make it so this page can also be used for updating payment information.
+  // I'll probably need to use a different route to differentiate, and update the useEffect above
+  // Then I need to render account info differently when a payment fails
+  // https://stripe.com/docs/api/subscriptions/object
+  // https://stripe.com/docs/testing
+  // https://dashboard.stripe.com/settings/billing/automatic
+  // --------------------------------------------------------------------------------------------
 
   // ------ lazy components ------
   const renderLoader = () => (
@@ -72,7 +86,6 @@ export default function Payments() {
     </PaymentsContext.Provider>
   );
 }
-
 
 // 1 = billing information
 // 2 = payment method

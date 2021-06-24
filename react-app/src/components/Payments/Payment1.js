@@ -60,7 +60,6 @@ export default function Payment1() {
     if (!customer.errors) {
       setBillingInfo(customer);
       history.push(`${location.pathname.slice(0,-1)}2`); // got to either '/payments/2' or '/payments/update/2'
-      // history.push('/payments/2');
     } else {
       setProcessingTo(false);
       setErrors(customer.errors);

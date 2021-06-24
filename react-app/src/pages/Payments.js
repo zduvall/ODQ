@@ -76,7 +76,7 @@ export default function Payments() {
   );
   return (
     <PaymentsContext.Provider
-      value={{ billingInfo, setBillingInfo, paymentMethod, setPaymentMethod }}
+      value={{ billingInfo, setBillingInfo, paymentMethod, setPaymentMethod, paymentURL }}
     >
       <div className='site__page'>
         {paymentURL === '/payments/' && <h1 className='primary-title'>Premium Subscription</h1>}

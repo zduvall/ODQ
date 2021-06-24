@@ -94,7 +94,7 @@ export default function Payment1() {
             disabled={isProcessing || errors.length}
             onClick={handleSubscribe}
           >
-            {isProcessing && !errors.length ? 'Processing...' : 'Subscribe'}
+            {isProcessing && !errors.length ? 'Processing...' : paymentURL === '/payments/' ? 'Subscribe' : 'Update'}
           </button>
           <button
             className='secondary-button form__button dashboard__button'

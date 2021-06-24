@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 // import components
 import AccountDetails from './AccountDetails';
 import SubscribeButton from './Buttons/SubscribeButton';
+import UpdateBillingButton from './Buttons/UpdateBillingButton';
 import UnsubscribeButton from './Buttons/UnsubscribeButton';
 
 // import ModalConfirmButton from '../ModalConfirmButton';
@@ -50,9 +51,12 @@ export default function SubscriptionInfo() {
       <div className='buttons-grp-colLrg-rowSml'>
         {!sessionUser.subType && <SubscribeButton />}
         {!!sessionUser.subType && (
-          <UnsubscribeButton
-            setShowUnsubscribeModal={setShowUnsubscribeModal}
-          />
+          <>
+            <UpdateBillingButton/>
+            <UnsubscribeButton
+              setShowUnsubscribeModal={setShowUnsubscribeModal}
+            />
+          </>
         )}
       </div>
     </div>
